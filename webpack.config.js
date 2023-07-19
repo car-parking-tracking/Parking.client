@@ -19,12 +19,10 @@ module.exports = {
     port: 3000,
     historyApiFallback: true,
     client: {
-      overlay: false,
-      // overlay: { errors: true, warnings: false, runtimeErrors: true, },
+      overlay: 'none',
     },
   },
   output: {
-    // filename: "main.js",
     path: path.resolve(__dirname, 'dist'),
     clean: true,
   },
