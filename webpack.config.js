@@ -14,6 +14,7 @@ module.exports = {
     open: true,
     compress: true,
     hot: 'only',
+    static: './dist',
     // https: true,
     host: 'localhost',
     port: 3000,
@@ -27,9 +28,6 @@ module.exports = {
     clean: true,
   },
   devtool: 'inline-source-map',
-  devServer: {
-    static: './dist',
-  },
   plugins: [
     new HtmlWebpackPlugin({
       title: 'Development',

@@ -3,11 +3,19 @@
   "version": "1.0.0",
   "private": true,
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/car-parking-tracking/Parking.client"
+  },
   "scripts": {
     "build": "webpack --config webpack.config.js",
     "dev": "webpack serve --open --node-env=development --port 3000",
     "storybook": "storybook dev -p 6006",
-    "build-storybook": "storybook build"
+    "build-storybook": "storybook build",
+    "lint": "eslint ."
+  },
+  "engines": {
+    "node": "18"
   },
   "devDependencies": {
     "@storybook/addon-essentials": "7.1.0",
@@ -20,8 +28,13 @@
     "@storybook/testing-library": "0.2.0",
     "@types/react": "18.2.15",
     "@types/react-dom": "18.2.7",
+    "@typescript-eslint/eslint-plugin": "6.1.0",
+    "@typescript-eslint/parser": "6.1.0",
     "css-loader": "6.8.1",
+    "eslint": "8.45.0",
+    "eslint-plugin-react": "7.32.2",
     "html-webpack-plugin": "5.5.3",
+    "husky": "8.0.3",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "sass": "1.63.6",
