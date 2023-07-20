@@ -22,7 +22,9 @@
 ### Usage
 | Command | Description |
 | --- | --- |
-| `npm run dev` | Run project in developer mode |
-| `npm run build` | Build project to `dist` |
-| `npm run storybook` | Run Storybook |
-| `npm run build-storybook` | Build Storybook |
+| `dev` | Run project in developer mode |
+| `build` | Build project to `dist` |
+| `storybook` | Run Storybook |
+| `build-storybook` | Build Storybook |
+| `lint` | Linter |
+| `test` | Tests |
