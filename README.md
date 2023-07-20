@@ -1,5 +1,16 @@
 # Parking service client app
 
+<p align="center">
+  <a href="https://github.com/facebook/jest">
+    <img src="https://img.shields.io/badge/Jest-tested-eee.svg?logo=jest&labelColor=99424f" alt="jest tested"/>
+  </a>
+  <a href="#">
+      <img src="https://img.shields.io/badge/license-MIT-blue.svg" alt="Provided under the MIT license." />
+  </a>
+</p>
+
+<!-- ![example branch parameter](https://github.com/car-parking-tracking/Parking.client/actions/workflows/<WORKFLOW_FILE>/badge.svg?event=push) -->
+
 ### Installation
 | Command | Description |
 | --- | --- |
