@@ -1,4 +1,6 @@
-import { Button } from "./button.styles"
+import { StoryFn } from '@storybook/react'
+import { Button } from './button.styles'
+import { ButtonProps } from './button.types'
 
 export default {
   title: 'Button',
@@ -9,16 +11,18 @@ export default {
       description: 'button appearance option',
       options: ['contained', 'outlined', 'link'],
       control: {
-        type: 'radio'
-      }
-
-    }
-  }
+        type: 'radio',
+      },
+    },
+  },
 }
 
-export const Default = () => <Button
-  as='button'
-  color='#4c70bd'
-  variant='contained'>
-  Click
-</Button>
+const Template: StoryFn<ButtonProps> = args => <Button {...args} />
+
+export const Default = Template.bind({})
+Default.args = {
+  variant: 'contained',
+  color: '#4c70bd',
+  children: 'Click me',
+  disabled: false
+}
