@@ -8,7 +8,6 @@ module.exports = {
   mode: isProduction ? 'production' : 'development',
   entry: {
     index: './src/app.tsx',
-    styles: './src/styles.scss',
   },
   devServer: {
     open: true,
@@ -40,17 +39,6 @@ module.exports = {
         test: /\.tsx?$/,
         use: 'ts-loader',
         exclude: /node_modules/,
-      },
-      {
-        test: /\.s[ac]ss$/i,
-        use: [
-          // Creates `style` nodes from JS strings
-          'style-loader',
-          // Translates CSS into CommonJS
-          'css-loader',
-          // Compiles Sass to CSS
-          'sass-loader',
-        ],
       },
     ],
   },
