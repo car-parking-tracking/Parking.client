@@ -1,6 +1,5 @@
 import styled, { css } from 'styled-components'
 import { rgba, lighten } from 'polished'
-
 import { ButtonProps } from './button.types'
 
 const shared = css<ButtonProps>`
@@ -29,12 +28,10 @@ const contained = css<ButtonProps>`
     background-color: ${({ color }) => lighten(0.1, color)};
   }
   &:active {
-    box-shadow: -0.25rem -0.1875rem 0.25rem transparent,
-      0.125rem 0.25rem 0.6875rem ${({ color }) => rgba(color, 0.2)};
+    box-shadow: -0.25rem -0.1875rem 0.25rem transparent, 0.125rem 0.25rem 0.6875rem ${({ color }) => rgba(color, 0.2)};
   }
   &:focus-visible {
-    box-shadow: -0.25rem -0.1875rem 0.25rem transparent,
-      0.125rem 0.25rem 0.6875rem ${({ color }) => rgba(color, 0.2)};
+    box-shadow: -0.25rem -0.1875rem 0.25rem transparent, 0.125rem 0.25rem 0.6875rem ${({ color }) => rgba(color, 0.2)};
   }
 `
 const outlined = css<ButtonProps>`
