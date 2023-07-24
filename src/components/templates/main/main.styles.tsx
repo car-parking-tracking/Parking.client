@@ -2,7 +2,7 @@ import styled from 'styled-components'
 
 import { Button } from '../../atoms'
 
-export const BtnClick = styled(Button)`
+export const ButtonTemplate = styled(Button)`
   margin-block: 2rem;
 `
 export const Title = styled.h1`
