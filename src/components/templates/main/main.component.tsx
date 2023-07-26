@@ -25,7 +25,7 @@ export const MainTemplate: React.FC = () => {
         <Modal
           title="Регистрация"
           description="Заполните все поля для регистрации на сервисе"
-          buttonText="Зарегестрироваться"
+          buttonText="Зарегистрироваться"
           isCloseButton={true}
           setOpenCallback={setShowModal}>
           <InputForm type="text" name="name" placeholder="Имя и фамилия" isError={false} errorMessage="Проверьте написание имени" />

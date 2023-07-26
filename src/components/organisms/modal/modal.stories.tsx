@@ -14,6 +14,6 @@ export const Default = Template.bind({})
 Default.args = {
   title: 'Регистрация',
   description: 'Заполните все поля',
-  buttonText: "Зарегестрироваться",
+  buttonText: "Зарегистрироваться",
   children: <InputForm type='text' name="email" placeholder="E-mail" />,
 }

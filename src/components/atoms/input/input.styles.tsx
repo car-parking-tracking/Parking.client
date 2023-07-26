@@ -9,22 +9,22 @@ const shared = css<InputProps>`
 `
 const form = css<InputProps>`
   ${shared}
-  border-radius: 12px;
-  padding: 0 8px 0 16px;
-  height: 48px;
-  width: 552px;
-  margin-top: 8px;
+  border-radius: 0.75rem;
+  padding: 0 0.5rem 0 1rem;
+  height: 3rem;
+  width: 34.5rem;
+  margin-top: 0.5rem;
 `
 
 //TODO: добавить значок поиска
 const search = css<InputProps>`
   ${shared}
-  border-radius: 6px;
-  padding: 0 6px 0 8px;
-  height: 32px;
-  width: 442px;
-  font-size: 13px;
-  line-height: 20px;
+  border-radius: 0.375rem;
+  padding: 0 0.375rem 0 0.5rem;
+  height: 2rem;
+  width: 27.625rem;
+  font-size: 0.813rem;
+  line-height: 1.25rem;
 `
 
 export const Input = styled.input<InputProps>`
