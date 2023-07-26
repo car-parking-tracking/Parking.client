@@ -7,13 +7,11 @@ const shared = css<ButtonProps>`
   opacity: ${({ disabled }) => (disabled ? '0.5' : '1')};
   display: inline-block;
   transition: 0.3s ease-in-out;
-  font-weight: 700;
-  font-size: 1rem;
+  font-weight: 800;
   line-height: 1.5rem;
-  padding: 0.5rem;
   outline: none;
-  border-radius: 3rem;
-  width: 10.5rem;
+  border-radius: 12px;
+  padding: 0px 16px;
   height: 3rem;
 `
 
@@ -61,7 +59,7 @@ const link = css<ButtonProps>`
   border: none;
 
   &:hover {
-    color: #fff;
+    color: ${({ color }) => rgba(color, 0.5)};
   }
   &:active {
     color: ${({ color }) => rgba(color, 0.05)};

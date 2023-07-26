@@ -22,11 +22,11 @@ export const GlobalStyle = createGlobalStyle`
     min-width: 320px;
     min-height: 100vh;
     background-color: var(--bg-color);
-    font-family: 'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
-    font-size: 16px;
+    font-family: 'Manrope', sans-serif;
+    font-size: 15px;
     font-weight: 500;
     font-style: normal;
-    line-height: 19px;
+    line-height: 24px;
     color: var(--color-text);
   *,
   *::after,
