@@ -1,10 +1,5 @@
 import styled from 'styled-components'
 
-import { Button } from '../../atoms'
-
-export const ButtonTemplate = styled(Button)`
-  margin-block: 2rem;
-`
 export const Title = styled.h1`
   margin-bottom: 1rem;
   font-size: 1.875rem;
@@ -12,8 +7,8 @@ export const Title = styled.h1`
 `
 
 export const Section = styled.div`
-  width: 480px;
-  height: 800px;
+  width: 100vw;
+  height: 100vh;
   background-color: gray;
   display: flex;
   flex-direction: column;

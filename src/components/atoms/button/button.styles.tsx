@@ -7,14 +7,11 @@ const shared = css<ButtonProps>`
   opacity: ${({ disabled }) => (disabled ? '0.5' : '1')};
   display: inline-block;
   transition: 0.3s ease-in-out;
-  font-weight: 700;
-  font-size: 1rem;
-  line-height: 1.5rem;
-  padding: 0.5rem;
+  font-weight: 800;
   outline: none;
-  border-radius: 3rem;
-  width: 10.5rem;
-  height: 3rem;
+  border-radius: 0.75rem;
+  padding: 0rem 1.5rem;
+  height: 3.5rem;
 `
 
 const contained = css<ButtonProps>`
@@ -22,7 +19,7 @@ const contained = css<ButtonProps>`
   color: #ffff;
   border: 0.0625rem solid transparent;
   background-color: ${({ color }) => color};
-  box-shadow: 0px 4px 5px rgba(0, 0, 0, 0.1);
+  box-shadow: 0rem 0.25rem 0.313rem rgba(0, 0, 0, 0.1);
 
   &:hover {
     background-color: ${({ color }) => lighten(0.1, color)};
@@ -59,9 +56,9 @@ const link = css<ButtonProps>`
   color: ${({ color }) => color};
   background-color: transparent;
   border: none;
-
+  font-weight: 500;
   &:hover {
-    color: #fff;
+    color: ${({ color }) => rgba(color, 0.5)};
   }
   &:active {
     color: ${({ color }) => rgba(color, 0.05)};
