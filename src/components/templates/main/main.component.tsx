@@ -1,10 +1,9 @@
 import React, { useState } from 'react'
 
-import { YaMap } from '../../organisms/ya-map'
-import {  Section, Title } from './main.styles'
+import { Section, Title } from './main.styles'
 import { InputForm } from '../../molecules'
 import { Button } from '../../atoms'
-import { Modal } from '../../organisms/modal/modal'
+import { Modal, YaMap } from '../../organisms'
 
 export const MainTemplate: React.FC = () => {
   const [showModal, setShowModal] = useState(false)
@@ -15,7 +14,7 @@ export const MainTemplate: React.FC = () => {
 
   //TODO: создать и вынести форму как отдельный организм (на обсуждение)
   //Пока что чисто инпуты для того, чтобы показать как модалка работает
-  
+
   return (
     <Section>
       <Title>Our parking find service</Title>
