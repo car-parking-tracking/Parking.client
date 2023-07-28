@@ -1,6 +1,5 @@
-const isVisible = (element: HTMLElement) => !!element && !!(element.offsetWidth || element.offsetHeight || element.getClientRects().length)
-
-export default function hideOnClickOutside(element: HTMLElement, callback: (e?: any) => void) {
+// Utility that can be used to catch outside click events
+export default function hideOnClickOutside(element: HTMLElement, callback: () => void) {
   const outsideClickListener = (event: MouseEvent) => {
     const target = event.target as HTMLElement
     if (target && !element.contains(target) && isVisible(element)) {
@@ -16,3 +15,5 @@ export default function hideOnClickOutside(element: HTMLElement, callback: (e?: 
 
   document.addEventListener('click', outsideClickListener)
 }
+
+const isVisible = (element: HTMLElement) => !!element && !!(element.offsetWidth || element.offsetHeight || element.getClientRects().length)

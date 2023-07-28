@@ -22,7 +22,7 @@ const Favorites = () => {
   const [visible, setVisible] = useState(false)
   const ref = useRef<HTMLDivElement>(null)
 
-  const handleClick = (event: React.MouseEvent<HTMLElement>) => {
+  const handleClick = (event?: React.MouseEvent<HTMLElement>) => {
     if (event) event.stopPropagation()
     setVisible(!visible)
   }
