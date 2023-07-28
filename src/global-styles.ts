@@ -8,6 +8,9 @@ export const GlobalStyle = createGlobalStyle`
     --color-bg-main: lightgray;
     --color-bg-panel: #333333;
     --color-text: #fff;
+    --color-bg-element: #808080;
+
+    --font-main: 'Manrope', sans-serif;
   }
 
   html,
@@ -21,7 +24,7 @@ export const GlobalStyle = createGlobalStyle`
     min-width: 20rem;
     min-height: 100vh;
     background-color: var(--color-bg-main);
-    font-family: 'Manrope', sans-serif;
+    font-family: var(--font-main);
     font-size: 0.938rem;
     font-weight: 500;
     font-style: normal;
@@ -85,6 +88,6 @@ export const GlobalStyle = createGlobalStyle`
   }
   
   .small {
-    font-size: .75rem;
+    font-size: .75em;
   }
   `

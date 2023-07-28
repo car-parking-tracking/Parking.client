@@ -3,7 +3,7 @@ import styled from 'styled-components'
 
 const Header: React.FC = () => {
   return (
-    <WarapHeader>
+    <WrapHeader>
       <div>
         <Company>
           <Logo />
@@ -28,11 +28,11 @@ const Header: React.FC = () => {
         <span>User</span>
         <UserLogo />
       </User>
-    </WarapHeader>
+    </WrapHeader>
   )
 }
 
-const WarapHeader = styled.header`
+const WrapHeader = styled.header`
   width: 100vw;
   background-color: var(--color-bg-panel);
   display: flex;
@@ -71,6 +71,6 @@ const UserLogo = styled.div`
   width: 2.75rem;
   height: 2.75rem;
   border-radius: 50%;
-  background-color: white;
+  background-color: var(--color-bg-element);
 `
 export default Header
