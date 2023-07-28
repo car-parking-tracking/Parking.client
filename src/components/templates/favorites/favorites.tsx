@@ -1,7 +1,8 @@
-import React from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import styled from 'styled-components'
 import SquareButton from '../../atoms/squareButton/squareButton'
 import FavoriteEl from '../../molecules/favorite/favorite'
+import hideOnClickOutside from '../../../utils/modal'
 
 // Just for example
 const favorites = [
@@ -18,18 +19,36 @@ const favorites = [
 ]
 
 const Favorites = () => {
-  return (
-    <WrapFavorites>
+  const [visible, setVisible] = useState(false)
+  const ref = useRef<HTMLDivElement>(null)
+
+  const handleClick = (event: React.MouseEvent<HTMLElement>) => {
+    if (event) event.stopPropagation()
+    setVisible(!visible)
+  }
+
+  useEffect(() => {
+    if (visible && ref.current) {
+      hideOnClickOutside(ref.current, handleClick)
+    }
+  }, [visible])
+
+  return visible ? (
+    <WrapFavorites ref={ref}>
       <WrapInfo>
         <p>Сохранённые парковки</p>
         <SquareButton icon="plus" />
       </WrapInfo>
       <ul>
         {favorites.map(({ name, like }, id) => (
-          <FavoriteEl id={id} name={name} like={like} />
+          <FavoriteEl key={id} id={id} name={name} like={like} />
         ))}
       </ul>
     </WrapFavorites>
+  ) : (
+    <WrapActions>
+      <SquareButton icon="marker" onClick={handleClick} />
+    </WrapActions>
   )
 }
 
@@ -52,5 +71,13 @@ const WrapInfo = styled.div`
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
+`
+// Temporary component used to show Favorites panel
+const WrapActions = styled.div`
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding: 1rem;
+  z-index: 100;
 `
 export default Favorites
