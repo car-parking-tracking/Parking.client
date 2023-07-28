@@ -1,9 +1,13 @@
+import Header from '../../components/elements/header/header'
 import { MainTemplate } from '../../components'
 
 const MainPage: React.FC = () => {
-    return (
-        <MainTemplate />
-    )
+  return (
+    <>
+      <Header />
+      <MainTemplate />
+    </>
+  )
 }
 
 export default MainPage

@@ -8,7 +8,7 @@ export const Title = styled.h1`
 
 export const Section = styled.div`
   width: 100vw;
-  height: 100vh;
+  height: 100%;
   background-color: gray;
   display: flex;
   flex-direction: column;

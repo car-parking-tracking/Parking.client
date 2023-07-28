@@ -5,7 +5,8 @@ export const GlobalStyle = createGlobalStyle`
   ${normalize()}
   
   :root {
-    --bg-color: lightgray;
+    --color-bg-main: lightgray;
+    --color-bg-panel: #333333;
     --color-text: #fff;
   }
 
@@ -15,19 +16,19 @@ export const GlobalStyle = createGlobalStyle`
     height: 100vh;
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
     box-sizing: border-box;
     width: 100%;
     min-width: 20rem;
     min-height: 100vh;
-    background-color: var(--bg-color);
+    background-color: var(--color-bg-main);
     font-family: 'Manrope', sans-serif;
     font-size: 0.938rem;
     font-weight: 500;
     font-style: normal;
     line-height: 1.5rem;
     color: var(--color-text);
+  }
+  
   *,
   *::after,
   *::before {
@@ -81,5 +82,9 @@ export const GlobalStyle = createGlobalStyle`
     display: inline-block;
     text-decoration: none;
     color: var(--color-text)
+  }
+  
+  .small {
+    font-size: .75rem;
   }
   `
