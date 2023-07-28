@@ -1,6 +1,6 @@
-import Header from '../../components/elements/header/header'
+import Header from '../../components/templates/header/header'
 import { MainTemplate } from '../../components'
-import Footer from '../../components/elements/footer/footer'
+import Footer from '../../components/templates/footer/footer'
 
 const MainPage: React.FC = () => {
   return (

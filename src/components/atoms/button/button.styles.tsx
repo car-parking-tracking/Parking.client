@@ -10,10 +10,9 @@ const shared = css<ButtonProps>`
   font-weight: 800;
   outline: none;
   border-radius: 0.75rem;
-  padding: 0rem 1.5rem;
+  padding: 0.25rem 1.5rem;
   height: 3.5rem;
 `
-
 const contained = css<ButtonProps>`
   ${shared}
   color: #ffff;
@@ -50,7 +49,17 @@ const outlined = css<ButtonProps>`
     border: 0.0625rem solid ${({ color }) => rgba(color, 1)};
   }
 `
+const small = css<ButtonProps>`
+  ${shared}
+  color: #ffff;
+  border: none;
+  height: unset;
+  background-color: ${({ color }) => color};
 
+  &:hover {
+    background-color: ${({ color }) => lighten(0.1, color)};
+  }
+`
 const link = css<ButtonProps>`
   ${shared};
   color: ${({ color }) => color};
@@ -75,6 +84,8 @@ export const Button = styled.button<ButtonProps>`
         return contained
       case 'outlined':
         return outlined
+      case 'small':
+        return small
       case 'link':
         return link
     }

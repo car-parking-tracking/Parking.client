@@ -7,8 +7,12 @@ export const GlobalStyle = createGlobalStyle`
   :root {
     --color-bg-main: lightgray;
     --color-bg-panel: #333333;
-    --color-text: #fff;
+    --color-bg-side: #F6F6F6;
     --color-bg-element: #808080;
+    --color-text: #fff;
+    --color-accend: #EBEBEB;
+    --color-text-side: #000;
+    --color-face: gray;
 
     --font-main: 'Manrope', sans-serif;
   }

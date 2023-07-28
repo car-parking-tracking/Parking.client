@@ -14,4 +14,5 @@ export const Section = styled.div`
   justify-content: center;
   align-items: center;
   overflow: hidden;
+  position: relative;
 `

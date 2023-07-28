@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import Company from '../company/company'
+import Company from '../../atoms/company/company'
 
 const Header: React.FC = () => {
   return (

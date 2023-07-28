@@ -4,6 +4,7 @@ import { Section, Title } from './main.styles'
 import { InputForm } from '../../molecules'
 import { Button } from '../../atoms'
 import { Modal, YaMap } from '../../organisms'
+import Favorites from '../favorites/favorites'
 
 export const MainTemplate: React.FC = () => {
   const [showModal, setShowModal] = useState(false)
@@ -41,6 +42,7 @@ export const MainTemplate: React.FC = () => {
           <InputForm type="password" name="password" placeholder="Пароль повторно" isError={false} errorMessage="Значения не совпадают, проверьте пароль" />
         </Modal>
       )}
+      <Favorites />
     </Section>
   )
 }

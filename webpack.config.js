@@ -12,7 +12,6 @@ module.exports = {
   devServer: {
     open: true,
     compress: true,
-    hot: 'only',
     static: './dist',
     // https: true,
     host: 'localhost',
@@ -39,6 +38,11 @@ module.exports = {
         test: /\.tsx?$/,
         use: 'ts-loader',
         exclude: /node_modules/,
+      },
+      {
+        test: /\.svg$/i,
+        issuer: /\.[jt]sx?$/,
+        use: ['@svgr/webpack', 'url-loader'],
       },
     ],
   },
