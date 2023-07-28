@@ -31,6 +31,12 @@ export const GlobalStyle = createGlobalStyle`
     line-height: 1.5rem;
     color: var(--color-text);
   }
+
+  #root {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+  }
   
   *,
   *::after,

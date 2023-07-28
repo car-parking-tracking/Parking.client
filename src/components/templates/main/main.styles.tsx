@@ -7,11 +7,11 @@ export const Title = styled.h1`
 `
 
 export const Section = styled.div`
-  width: 100vw;
-  height: 100%;
+  flex-basis: 100%;
   background-color: gray;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  overflow: hidden;
 `
