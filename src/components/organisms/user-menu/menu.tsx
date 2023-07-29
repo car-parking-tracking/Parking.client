@@ -57,5 +57,5 @@ const UserNav = styled.nav`
     }
   }
 `
-
+UserMenu.displayName = 'UserMenu'
 export default UserMenu
