@@ -1,6 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import Company from '../../atoms/company/company'
+import { Button } from '../../atoms'
 
 const Footer: React.FC = () => {
   return (
@@ -12,10 +13,14 @@ const Footer: React.FC = () => {
       <FooterNav>
         <ul>
           <li>
-            <a href="#">O компании</a>
+            <Button variant="link" onClick={() => console.log('O компании')}>
+              O компании
+            </Button>
           </li>
           <li>
-            <a href="malto: some.email.ru">some.email.ru</a>
+            <Button variant="link" onClick={() => (location.href = 'mailto: some.email.ru')}>
+              some.email.ru
+            </Button>
           </li>
         </ul>
       </FooterNav>
@@ -38,7 +43,6 @@ const FooterNav = styled.nav`
   ul {
     display: flex;
     flex-direction: row;
-    column-gap: 2rem;
   }
 `
 export default Footer

@@ -7,11 +7,11 @@ export const GlobalStyle = createGlobalStyle`
   :root {
     --color-bg-main: lightgray;
     --color-bg-panel: #333333;
-    --color-bg-side: #F6F6F6;
+    --color-bg-menu: #F6F6F6;
     --color-bg-element: #808080;
     --color-text: #fff;
-    --color-accend: #EBEBEB;
-    --color-text-side: #000;
+    --color-accend: #CBCBCB;
+    --color-text-menu: #000;
     --color-face: gray;
 
     --font-main: 'Manrope', sans-serif;
@@ -94,7 +94,7 @@ export const GlobalStyle = createGlobalStyle`
     cursor: pointer;
     display: inline-block;
     text-decoration: none;
-    color: var(--color-text)
+    color: inherit;
   }
   
   .small {

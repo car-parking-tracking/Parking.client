@@ -3,7 +3,7 @@ export default function hideOnClickOutside(element: HTMLElement, callback: () =>
   const outsideClickListener = (event: MouseEvent) => {
     const target = event.target as HTMLElement
     if (target && !element.contains(target) && isVisible(element)) {
-      // console.log('close')
+      event.stopPropagation()
       removeClickListener()
       callback()
     }
@@ -16,4 +16,5 @@ export default function hideOnClickOutside(element: HTMLElement, callback: () =>
   document.addEventListener('click', outsideClickListener)
 }
 
-const isVisible = (element: HTMLElement) => !!element && !!(element.offsetWidth || element.offsetHeight || element.getClientRects().length)
+// Idea taken from: https://github.com/jquery/jquery/blob/master/src/css/hiddenVisibleSelectors.js
+export const isVisible = (element: HTMLElement) => !!element && !!(element.offsetWidth || element.offsetHeight || element.getClientRects().length)

@@ -59,8 +59,8 @@ const WrapFavorites = styled.aside`
   width: 22%;
   min-width: 300px;
   height: 100%;
-  background-color: var(--color-bg-side);
-  color: var(--color-text-side);
+  background-color: var(--color-bg-menu);
+  color: var(--color-text-menu);
   padding: 1rem;
   overflow-y: auto;
 `

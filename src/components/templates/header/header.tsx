@@ -1,6 +1,8 @@
 import React from 'react'
 import styled from 'styled-components'
 import Company from '../../atoms/company/company'
+import User from '../user/user'
+import { Button } from '../../atoms'
 
 const Header: React.FC = () => {
   return (
@@ -10,53 +12,44 @@ const Header: React.FC = () => {
       <MainNav>
         <ul>
           <li>
-            <a href="#">Главная</a>
+            <Button variant="link" onClick={() => console.log('Главная')}>
+              Главная
+            </Button>
           </li>
           <li>
-            <a href="#">O компании</a>
+            <Button variant="link" onClick={() => console.log('O компании')}>
+              O компании
+            </Button>
           </li>
           <li>
-            <a href="#">Контакты</a>
+            <Button variant="link" onClick={() => console.log('Контакты')}>
+              Контакты
+            </Button>
           </li>
         </ul>
       </MainNav>
 
-      <User>
-        <span>User</span>
-        <UserLogo />
-      </User>
+      <User />
     </WrapHeader>
   )
 }
 
 const WrapHeader = styled.header`
   width: 100vw;
-  height: 4rem;
+  min-height: 4rem;
   background-color: var(--color-bg-panel);
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
   padding: 0.5rem 1rem;
+  z-index: 3;
 `
 const MainNav = styled.nav`
   ul {
     display: flex;
     flex-direction: row;
-    column-gap: 2rem;
   }
 `
-// Temporary elements for the future user component
-const User = styled.div`
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  column-gap: 0.5rem;
-`
-const UserLogo = styled.div`
-  width: 2.75rem;
-  height: 2.75rem;
-  border-radius: 50%;
-  background-color: var(--color-bg-element);
-`
+
 export default Header
