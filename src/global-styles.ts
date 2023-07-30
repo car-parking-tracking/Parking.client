@@ -14,7 +14,7 @@ export const GlobalStyle = createGlobalStyle`
     --color-text-menu: #000;
     --color-face: gray;
 
-    --font-main: 'Manrope', sans-serif;
+    --font-main: 'Arial Narrow', Arial, sans-serif;
   }
 
   html,
@@ -58,7 +58,6 @@ export const GlobalStyle = createGlobalStyle`
     list-style: none;
   }
 
-  body,
   h1,
   h2,
   h3,

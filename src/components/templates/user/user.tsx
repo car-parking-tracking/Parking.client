@@ -1,40 +1,24 @@
-import React, { useRef, useEffect } from 'react'
+import React from 'react'
 import styled from 'styled-components'
-import UserMenu from '../../organisms/user-menu/menu'
 import Link from '../../atoms/link/link'
-import hideOnClickOutside from '../../../utils/modal'
+import Interplay from '../../../utils/interplay'
+
+const interplay = new Interplay()
 
 const User: React.FC = () => {
-  const ref = useRef<HTMLDivElement>(null)
-
   const handleClick = (event: React.MouseEvent<HTMLElement>) => {
     event.stopPropagation()
-
-    if (ref.current) {
-      ref.current.hidden = !ref.current.hidden
-
-      if (!ref.current.hidden) {
-        hideOnClickOutside(ref.current, () => (ref.current!.hidden = true))
-      }
-    }
+    interplay.run('menu.switch')
   }
 
-  useEffect(() => {
-    if (ref.current) ref.current.hidden = true
-  }, [])
-
   return (
-    <>
-      <WrapRow>
-        <Link onClick={() => console.log('Регистрация')}>Регистрация</Link>
-        <WrapUser onClick={handleClick}>
-          <span>User</span>
-          <UserLogo />
-        </WrapUser>
-      </WrapRow>
-
-      <UserMenu ref={ref} />
-    </>
+    <WrapRow>
+      <Link onClick={() => console.log('Регистрация')}>Регистрация</Link>
+      <WrapUser onClick={handleClick}>
+        <span>User</span>
+        <UserLogo />
+      </WrapUser>
+    </WrapRow>
   )
 }
 
@@ -51,9 +35,10 @@ const WrapUser = styled.div`
   align-items: center;
   column-gap: 0.5rem;
   cursor: pointer;
-  transition: color 0.3s linear;
+  transition: opacity 0.3s linear;
+  opacity: 1;
   &:hover {
-    color: color-mix(in srgb, var(--color-text) 50%, transparent);
+    opacity: 0.6;
   }
 `
 const UserLogo = styled.div`

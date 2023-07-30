@@ -1,5 +1,4 @@
 import React, { useState } from 'react'
-
 import { Section, Title } from './main.styles'
 import { InputForm } from '../../molecules'
 import { Button } from '../../atoms'
@@ -22,7 +21,7 @@ export const MainTemplate: React.FC = () => {
       <Button variant="contained" color="lightgray" onClick={handleOpenModal}>
         Открыть модалку
       </Button>
-      {/* <YaMap /> */}
+      <YaMap />
       {showModal && (
         <Modal
           title="Регистрация"

@@ -1,11 +1,17 @@
-// Utility that can be used to catch outside click events
+/**
+ * Utility that can be used to catch outside click events
+ * @param element HTMLElement that must be hidden
+ * @param callback function that makes nessesary operations
+ */
 export default function hideOnClickOutside(element: HTMLElement, callback: () => void) {
   const outsideClickListener = (event: MouseEvent) => {
     const target = event.target as HTMLElement
-    if (target && !element.contains(target) && isVisible(element)) {
-      event.stopPropagation()
+    if (target && !element.contains(target)) {
       removeClickListener()
-      callback()
+      if (isVisible(element)) {
+        event.stopPropagation()
+        callback()
+      }
     }
   }
 

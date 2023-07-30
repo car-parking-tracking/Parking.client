@@ -3,11 +3,37 @@ import styled from 'styled-components'
 import Link from '../../atoms/link/link'
 import useForwardRef from '../../../hooks/useForwardRef'
 import Interplay from '../../../utils/interplay'
+import hideOnClickOutside from '../../../utils/modal'
 
 const interplay = new Interplay()
 
 const UserMenu = forwardRef<HTMLDivElement>((props, ref) => {
   const localRef = useForwardRef<HTMLDivElement>(ref)
+
+  const menuVisibilitySwitch = () => {
+    const el = localRef.current
+    if (el) {
+      const slideAnimation = [{ transform: 'translateY(0)' }, { transform: 'translateY(-100%)' }]
+      if (el.hidden) {
+        el.hidden = false
+        el.animate(slideAnimation, {
+          duration: 300,
+          direction: 'reverse',
+        })
+        hideOnClickOutside(el, menuVisibilitySwitch)
+      } else {
+        setTimeout(() => {
+          el.hidden = true
+        }, 280)
+        el.animate(slideAnimation, {
+          duration: 300,
+          direction: 'normal',
+        })
+      }
+    }
+  }
+
+  interplay.add('menu.switch', menuVisibilitySwitch)
 
   const handleClick = (event: React.MouseEvent<HTMLElement>) => {
     event.stopPropagation()
@@ -15,11 +41,11 @@ const UserMenu = forwardRef<HTMLDivElement>((props, ref) => {
     if (target.dataset.action) {
       interplay.run(target.dataset.action)
     }
-    if (localRef.current) localRef.current.hidden = true
+    menuVisibilitySwitch()
   }
 
   return (
-    <WrapMenu ref={localRef} {...props}>
+    <WrapMenu ref={localRef} {...props} hidden>
       <UserNav>
         <ul>
           <li>
@@ -49,7 +75,6 @@ const WrapMenu = styled.div`
   top: 4rem;
   right: 0;
   z-index: 2;
-  transition: 0.5s linear;
 `
 const UserNav = styled.nav`
   li {

@@ -1,5 +1,6 @@
 import React, { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
+import UserMenu from './components/organisms/user-menu/menu'
 
 import MainPage from './pages/MainPage'
 
@@ -10,6 +11,7 @@ const container = document.getElementById('root') as HTMLElement
 const initialChildren = (
   <StrictMode>
     <GlobalStyle />
+    <UserMenu />
     <MainPage />
   </StrictMode>
 )

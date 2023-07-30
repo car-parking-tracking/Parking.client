@@ -27,6 +27,21 @@ const Favorites = () => {
 
   const handleClick = (event?: React.MouseEvent<HTMLElement>) => {
     if (event) event.stopPropagation()
+
+    if (ref.current) {
+      const slideAnimation = [{ transform: 'translateX(0)' }, { transform: 'translateX(-100%)' }]
+      if (visible) {
+        setTimeout(() => {
+          setVisible(!visible)
+        }, 280)
+        ref.current.animate(slideAnimation, {
+          duration: 300,
+          direction: 'normal',
+        })
+        return
+      }
+    }
+
     setVisible(!visible)
   }
 
@@ -57,6 +72,14 @@ const Favorites = () => {
 }
 
 const WrapFavorites = styled.aside`
+  @keyframes show {
+    0% {
+      transform: translateX(-100%);
+    }
+    100% {
+      transform: translateX(0);
+    }
+  }
   position: absolute;
   top: 0;
   left: 0;
@@ -67,6 +90,7 @@ const WrapFavorites = styled.aside`
   color: var(--color-text-menu);
   padding: 1rem;
   overflow-y: auto;
+  animation: forwards 0.3s show;
 `
 const WrapInfo = styled.div`
   width: 100%;

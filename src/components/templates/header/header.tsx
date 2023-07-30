@@ -17,12 +17,14 @@ const Header: React.FC = () => {
             </Link>
           </li>
           <li>
-            <Link animation="fill" onClick={() => console.log('O компании')}>
+            <Link animation="underline" onClick={() => console.log('O компании')}>
               O компании
             </Link>
           </li>
           <li>
-            <Link onClick={() => console.log('Контакты')}>Контакты</Link>
+            <Link animation="underline" onClick={() => console.log('Контакты')}>
+              Контакты
+            </Link>
           </li>
         </ul>
       </MainNav>
@@ -41,6 +43,7 @@ const WrapHeader = styled.header`
   justify-content: space-between;
   align-items: center;
   padding: 0.5rem 1rem;
+  box-shadow: 0 4px 0.5rem rgba(0, 0, 0, 0.5);
   z-index: 3;
 `
 const MainNav = styled.nav`
