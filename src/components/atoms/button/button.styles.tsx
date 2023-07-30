@@ -2,10 +2,7 @@ import styled, { css } from 'styled-components'
 import { rgba, lighten } from 'polished'
 import { ButtonProps } from './button.types'
 
-const getColor = (color: string | undefined): string => color || '#fff'
-
 const shared = css<ButtonProps>`
-  --color: ${({ color }) => getColor(color)};
   cursor: ${({ disabled }) => (disabled ? 'auto' : 'pointer')};
   opacity: ${({ disabled }) => (disabled ? '0.5' : '1')};
   display: inline-block;
@@ -20,36 +17,36 @@ const contained = css<ButtonProps>`
   ${shared}
   color: #ffff;
   border: 0.0625rem solid transparent;
-  background-color: var(--color);
+  background-color: ${({ color }) => color};
   box-shadow: 0rem 0.25rem 0.313rem rgba(0, 0, 0, 0.1);
 
   &:hover {
-    background-color: ${({ color }) => lighten(0.1, getColor(color))};
+    background-color: ${({ color }) => lighten(0.1, color)};
   }
   &:active {
-    box-shadow: -0.25rem -0.1875rem 0.25rem transparent, 0.125rem 0.25rem 0.6875rem ${({ color }) => rgba(getColor(color), 0.2)};
+    box-shadow: -0.25rem -0.1875rem 0.25rem transparent, 0.125rem 0.25rem 0.6875rem ${({ color }) => rgba(color, 0.2)};
   }
   &:focus-visible {
-    box-shadow: -0.25rem -0.1875rem 0.25rem transparent, 0.125rem 0.25rem 0.6875rem ${({ color }) => rgba(getColor(color), 0.2)};
+    box-shadow: -0.25rem -0.1875rem 0.25rem transparent, 0.125rem 0.25rem 0.6875rem ${({ color }) => rgba(color, 0.2)};
   }
 `
 const outlined = css<ButtonProps>`
   ${shared}
   color: ${({ color }) => color};
   background-color: transparent;
-  border: 0.0625rem solid ${({ color }) => rgba(getColor(color), 0.5)};
+  border: 0.0625rem solid ${({ color }) => rgba(color, 0.5)};
   box-shadow: 0rem 0.25rem 0.3125rem rgba(0, 0, 0, 0.1);
 
   &:hover {
-    border: 0.0625rem solid var(--color);
+    border: 0.0625rem solid ${({ color }) => rgba(color, 1)};
   }
   &:active {
-    background: ${({ color }) => rgba(getColor(color), 0.5)};
-    border: 0.0625rem solid var(--color);
+    background: ${({ color }) => rgba(color, 0.05)};
+    border: 0.0625rem solid ${({ color }) => rgba(color, 1)};
   }
   &:focus-visible {
-    background: ${({ color }) => rgba(getColor(color), 0.5)};
-    border: 0.0625rem solid var(--color);
+    background: ${({ color }) => rgba(color, 0.05)};
+    border: 0.0625rem solid ${({ color }) => rgba(color, 1)};
   }
 `
 const small = css<ButtonProps>`
@@ -57,26 +54,26 @@ const small = css<ButtonProps>`
   color: #ffff;
   border: none;
   height: unset;
-  background-color: var(--color);
+  background-color: ${({ color }) => color};
 
   &:hover {
-    background-color: ${({ color }) => lighten(0.1, getColor(color))};
+    background-color: ${({ color }) => lighten(0.1, color)};
   }
 `
 const link = css<ButtonProps>`
   ${shared};
-  color: var(--color);
+  color: ${({ color }) => color};
   background-color: transparent;
   border: none;
   font-weight: 500;
   &:hover {
-    color: ${({ color }) => rgba(getColor(color), 0.5)};
+    color: ${({ color }) => rgba(color, 0.5)};
   }
   &:active {
-    color: ${({ color }) => rgba(getColor(color), 0.05)};
+    color: ${({ color }) => rgba(color, 0.05)};
   }
   &:focus-visible {
-    color: ${({ color }) => rgba(getColor(color), 0.05)};
+    color: ${({ color }) => rgba(color, 0.05)};
   }
 `
 
