@@ -1,5 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
+// Disabled cause looks terrible
 // import Company from '../../atoms/company/company'
 import Link from '../../atoms/link/link'
 
@@ -16,7 +17,7 @@ const Footer: React.FC = () => {
             <Link onClick={() => console.log('O компании')}>O компании</Link>
           </li>
           <li>
-            <Link onClick={() => (location.href = 'mailto: some.email.ru')}>some.email.ru</Link>
+            <Link href="mailto: some.email.ru">some.email.ru</Link>
           </li>
         </ul>
       </FooterNav>

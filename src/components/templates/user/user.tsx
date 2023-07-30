@@ -1,7 +1,7 @@
 import React, { useRef, useEffect } from 'react'
 import styled from 'styled-components'
 import UserMenu from '../../organisms/user-menu/menu'
-import { Button } from '../../atoms'
+import Link from '../../atoms/link/link'
 import hideOnClickOutside from '../../../utils/modal'
 
 const User: React.FC = () => {
@@ -26,9 +26,7 @@ const User: React.FC = () => {
   return (
     <>
       <WrapRow>
-        <Button variant="link" onClick={() => console.log('Регистрация')}>
-          Регистрация
-        </Button>
+        <Link onClick={() => console.log('Регистрация')}>Регистрация</Link>
         <WrapUser onClick={handleClick}>
           <span>User</span>
           <UserLogo />
@@ -44,7 +42,7 @@ const WrapRow = styled.div`
   display: flex;
   flex-direction: row;
   align-items: center;
-  column-gap: 0.5rem;
+  column-gap: 1rem;
 `
 const WrapUser = styled.div`
   color: var(--color-text);

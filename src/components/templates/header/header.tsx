@@ -12,10 +12,14 @@ const Header: React.FC = () => {
       <MainNav>
         <ul>
           <li>
-            <Link onClick={() => console.log('Главная')}>Главная</Link>
+            <Link animation="underline" onClick={() => console.log('Главная')}>
+              Главная
+            </Link>
           </li>
           <li>
-            <Link onClick={() => console.log('O компании')}>O компании</Link>
+            <Link animation="fill" onClick={() => console.log('O компании')}>
+              O компании
+            </Link>
           </li>
           <li>
             <Link onClick={() => console.log('Контакты')}>Контакты</Link>
