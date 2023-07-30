@@ -11,7 +11,7 @@ const defaultSructure: Indexed = {
   'registration.show': () => {},
 }
 
-class Interplay {
+export default class Interplay {
   private static _instance: Interplay
   private state: Indexed = { null: { null: null } }
 
@@ -34,8 +34,9 @@ class Interplay {
   }
 
   public run = (path: string) => {
-    const val = this.get(path)
-    if (typeof val === 'function') val()
+    const func = this.get(path)
+    if (typeof func === 'function') func()
+    else console.warn('Not a function: ', path)
   }
 
   public add = (path: string, value: unknown): void => {

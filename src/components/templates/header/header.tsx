@@ -2,7 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 import Company from '../../atoms/company/company'
 import User from '../user/user'
-import { Button } from '../../atoms'
+import Link from '../../atoms/link/link'
 
 const Header: React.FC = () => {
   return (
@@ -12,19 +12,13 @@ const Header: React.FC = () => {
       <MainNav>
         <ul>
           <li>
-            <Button variant="link" onClick={() => console.log('Главная')}>
-              Главная
-            </Button>
+            <Link onClick={() => console.log('Главная')}>Главная</Link>
           </li>
           <li>
-            <Button variant="link" onClick={() => console.log('O компании')}>
-              O компании
-            </Button>
+            <Link onClick={() => console.log('O компании')}>O компании</Link>
           </li>
           <li>
-            <Button variant="link" onClick={() => console.log('Контакты')}>
-              Контакты
-            </Button>
+            <Link onClick={() => console.log('Контакты')}>Контакты</Link>
           </li>
         </ul>
       </MainNav>
@@ -49,6 +43,7 @@ const MainNav = styled.nav`
   ul {
     display: flex;
     flex-direction: row;
+    column-gap: 2rem;
   }
 `
 

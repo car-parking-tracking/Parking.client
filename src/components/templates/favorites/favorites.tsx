@@ -3,6 +3,9 @@ import styled from 'styled-components'
 import SquareButton from '../../atoms/squareButton/squareButton'
 import FavoriteEl from '../../molecules/favorite/favorite'
 import hideOnClickOutside from '../../../utils/modal'
+import Interplay from '../../../utils/interplay'
+
+const interplay = new Interplay()
 
 // Just for example
 const favorites = [
@@ -31,6 +34,7 @@ const Favorites = () => {
     if (visible && ref.current) {
       hideOnClickOutside(ref.current, handleClick)
     }
+    interplay.add('favorites.switch', handleClick)
   }, [visible])
 
   return visible ? (

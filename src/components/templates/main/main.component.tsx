@@ -22,7 +22,7 @@ export const MainTemplate: React.FC = () => {
       <Button variant="contained" color="lightgray" onClick={handleOpenModal}>
         Открыть модалку
       </Button>
-      <YaMap />
+      {/* <YaMap /> */}
       {showModal && (
         <Modal
           title="Регистрация"

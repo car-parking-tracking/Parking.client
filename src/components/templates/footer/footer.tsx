@@ -1,26 +1,22 @@
 import React from 'react'
 import styled from 'styled-components'
-import Company from '../../atoms/company/company'
-import { Button } from '../../atoms'
+// import Company from '../../atoms/company/company'
+import Link from '../../atoms/link/link'
 
 const Footer: React.FC = () => {
   return (
     <WrapFooter>
       <div>
-        <Company />
+        {/* <Company /> */}
         <p className="small">© Parkonaft 2023</p>
       </div>
       <FooterNav>
         <ul>
           <li>
-            <Button variant="link" onClick={() => console.log('O компании')}>
-              O компании
-            </Button>
+            <Link onClick={() => console.log('O компании')}>O компании</Link>
           </li>
           <li>
-            <Button variant="link" onClick={() => (location.href = 'mailto: some.email.ru')}>
-              some.email.ru
-            </Button>
+            <Link onClick={() => (location.href = 'mailto: some.email.ru')}>some.email.ru</Link>
           </li>
         </ul>
       </FooterNav>
@@ -43,6 +39,7 @@ const FooterNav = styled.nav`
   ul {
     display: flex;
     flex-direction: row;
+    column-gap: 2rem;
   }
 `
 export default Footer

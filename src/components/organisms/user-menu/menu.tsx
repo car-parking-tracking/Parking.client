@@ -1,31 +1,40 @@
 import React, { forwardRef } from 'react'
 import styled from 'styled-components'
-import { Button } from '../../atoms'
+import Link from '../../atoms/link/link'
+import useForwardRef from '../../../hooks/useForwardRef'
+import Interplay from '../../../utils/interplay'
+
+const interplay = new Interplay()
 
 const UserMenu = forwardRef<HTMLDivElement>((props, ref) => {
+  const localRef = useForwardRef<HTMLDivElement>(ref)
+
+  const handleClick = (event: React.MouseEvent<HTMLElement>) => {
+    event.stopPropagation()
+    const target = event.target as HTMLElement
+    if (target.dataset.action) {
+      interplay.run(target.dataset.action)
+    }
+    if (localRef.current) localRef.current.hidden = true
+  }
+
   return (
-    <WrapMenu ref={ref} {...props}>
+    <WrapMenu ref={localRef} {...props}>
       <UserNav>
         <ul>
           <li>
-            <Button variant="link" color="black" onClick={() => console.log('Профиль')}>
-              Профиль
-            </Button>
+            <Link onClick={handleClick}>Профиль</Link>
           </li>
           <li>
-            <Button variant="link" color="black" onClick={() => console.log('Избранное')}>
+            <Link data-action="favorites.switch" onClick={handleClick}>
               Избранное
-            </Button>
+            </Link>
           </li>
           <li>
-            <Button variant="link" color="black" onClick={() => console.log('Feedback')}>
-              Feedback
-            </Button>
+            <Link onClick={handleClick}>Feedback</Link>
           </li>
           <li>
-            <Button variant="link" color="black" onClick={() => console.log('Выйти')}>
-              Выйти
-            </Button>
+            <Link onClick={handleClick}>Выйти</Link>
           </li>
         </ul>
       </UserNav>
@@ -43,14 +52,9 @@ const WrapMenu = styled.div`
   transition: 0.5s linear;
 `
 const UserNav = styled.nav`
-  /*   ul {
-    display: flex;
-    flex-direction: row;
-    column-gap: 2rem;
-  } */
   li {
     width: 100%;
-    /* padding: 0.5rem 2rem; */
+    padding: 0.5rem 2rem;
     transition: 0.3s linear;
     &:hover {
       background-color: var(--color-accend);
