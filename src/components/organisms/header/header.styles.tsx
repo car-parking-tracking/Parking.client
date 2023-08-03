@@ -17,8 +17,11 @@ export const NavList = styled.ul`
   align-items: center;
   column-gap: 1.0667rem;
   font-size: 1.0667rem;
+  list-style: none;
 
   a {
+    color: #fff;
+    text-decoration: none;
     transition: 0.3s;
     cursor: default;
   }
