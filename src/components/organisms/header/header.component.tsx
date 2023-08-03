@@ -1,13 +1,14 @@
-import { FC } from 'react'
+import { FC, useContext } from 'react'
 import { NavLink } from 'react-router-dom'
 
-import { Logo } from '../../molecules'
+import { LoginContext } from '../../../context'
 import { getInitials } from '../../../utils'
+import { Logo } from '../../molecules'
 import { AccountBtn, LoginBtn, NavList, Wrap } from './header.styles'
 import { HeaderProps } from './header.types'
 
 export const Header: FC<HeaderProps> = ({ onBtnClick }) => {
-  const isLoggedIn = false //здесь будет значение из рeдакса
+  const { isLoggedIn } = useContext(LoginContext) //здесь будет значение из рeдакса
   const currentUser = 'Имя Фамилия' //здесь будет значение из рeдакса
   const initials = getInitials(currentUser)
 
