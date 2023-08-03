@@ -10,7 +10,6 @@
   "scripts": {
     "build": "webpack --config webpack.config.js",
     "dev": "webpack serve --open --node-env=development --port 3000",
-    "storybook": "storybook dev -p 6006",
     "sb": "storybook dev -p 6006",
     "build-storybook": "storybook build",
     "lint": "eslint .",
