@@ -1,3 +1,5 @@
+import { decorateWithRouter } from './decorators'
+
 /** @type { import('@storybook/react').Preview } */
 const preview = {
   parameters: {
@@ -9,6 +11,7 @@ const preview = {
       },
     },
   },
+  decorators: [decorateWithRouter]
 }
 
 export default preview
