@@ -1,9 +1,8 @@
 import React, { useState } from 'react'
 
-import { Section, Title } from './main.styles'
+import { Section } from './main.styles'
 import { InputForm } from '../../molecules'
-import { Button } from '../../atoms'
-import { Modal, YaMap } from '../../organisms'
+import { Modal, YaMap, Header } from '../../organisms'
 
 export const MainTemplate: React.FC = () => {
   const [showModal, setShowModal] = useState(false)
@@ -17,10 +16,7 @@ export const MainTemplate: React.FC = () => {
 
   return (
     <Section>
-      <Title>Our parking find service</Title>
-      <Button variant="contained" color="lightgray" onClick={handleOpenModal}>
-        Открыть модалку
-      </Button>
+      <Header onBtnClick={handleOpenModal} />
       <YaMap />
       {showModal && (
         <Modal

@@ -7,6 +7,15 @@ const config = {
     options: {},
   },
   webpackFinal: async (config, { configType }) => {
+    config.module.rules = [
+      ...config.module.rules.map(rule => {
+        if (/svg/.test(rule.test)) {
+          return { ...rule, exclude: /\.svg$/i }
+        }
+        return rule
+      }),
+    ]
+
     config.module.rules.push({
       test: /\.(ts|tsx)$/,
       use: [
@@ -15,6 +24,12 @@ const config = {
         },
       ],
     })
+
+    config.module.rules.push({
+      test: /\.svg$/,
+      use: ['@svgr/webpack'],
+    });
+
     config.resolve.extensions = ['.tsx', '.ts', '.jsx', '.js']
     config.resolve.alias = {
       "@components": path.resolve(__dirname, "../", "src/components"),
