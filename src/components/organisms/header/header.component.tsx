@@ -1,11 +1,13 @@
 import { FC, useContext } from 'react'
 import { NavLink } from 'react-router-dom'
 
-import { LoginContext } from '../../../context'
+import { LoginContext } from '../../../context/loginContext'
 import { getInitials } from '../../../utils'
-import { Logo } from '../../molecules'
+
+import { Logo } from '@components/molecules'
 import { AccountBtn, LoginBtn, NavList, Wrap } from './header.styles'
 import { HeaderProps } from './header.types'
+
 
 export const Header: FC<HeaderProps> = ({ onBtnClick }) => {
   const { isLoggedIn } = useContext(LoginContext) //здесь будет значение из рeдакса
