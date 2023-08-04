@@ -1,4 +1,5 @@
 const path = require('path')
+const Dotenv = require('dotenv-webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 
 const isProduction = process.env.NODE_ENV == 'production'
@@ -32,6 +33,7 @@ module.exports = {
       title: 'Development',
       template: './src/index.html',
     }),
+    new Dotenv(),
   ],
   module: {
     rules: [
@@ -44,7 +46,14 @@ module.exports = {
         test: /\.svg?$/,
         issuer: /\.[jt]sx?$/,
         use: ['@svgr/webpack'],
-      }
+      },
+       {
+        test: /\.(png|jpg|gif|svg)$/i,
+        loader: "file-loader",
+        options: {
+          name: "[name].[ext]",
+        },
+      },
     ],
   },
   optimization: {
@@ -52,5 +61,16 @@ module.exports = {
   },
   resolve: {
     extensions: ['.tsx', '.ts', '.jsx', '.js', '...'],
+    alias: {
+		  "@components": path.resolve(__dirname, "src/components"),
+      "@assets": path.resolve(__dirname, "src/assets"),
+      "@constants": path.resolve(__dirname, "src/constants"),
+      "@mocks": path.resolve(__dirname, "src/mocks"),
+      "@pages": path.resolve(__dirname, "src/pages"),
+      "@atoms": path.resolve(__dirname, "src/components/atoms"),
+      "@molecules": path.resolve(__dirname, "src/components/molecules"),
+      "@organisms": path.resolve(__dirname, "src/components/organisms"),
+      "@templates": path.resolve(__dirname, "src/components/templates"),
+		}
   },
 }

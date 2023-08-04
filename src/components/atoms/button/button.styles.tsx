@@ -7,7 +7,7 @@ const shared = css<ButtonProps>`
   opacity: ${({ disabled }) => (disabled ? '0.5' : '1')};
   display: inline-block;
   transition: 0.3s ease-in-out;
-  font-weight: 800;
+  font-weight: 700;
   outline: none;
   border-radius: 0.75rem;
   padding: 0rem 1.5rem;

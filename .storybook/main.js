@@ -16,6 +16,17 @@ const config = {
       ],
     })
     config.resolve.extensions = ['.tsx', '.ts', '.jsx', '.js']
+    config.resolve.alias = {
+      "@components": path.resolve(__dirname, "../", "src/components"),
+      "@assets": path.resolve(__dirname, "../", "src/assets"),
+      "@constants": path.resolve(__dirname, "../", "src/constants"),
+      "@mocks": path.resolve(__dirname, "../", "src/mocks"),
+      "@pages": path.resolve(__dirname, "../", "src/pages"),
+      "@atoms": path.resolve(__dirname, "../", "src/components/atoms"),
+      "@molecules": path.resolve(__dirname, "../", "src/components/molecules"),
+      "@organisms": path.resolve(__dirname, "../", "src/components/organisms"),
+      "@templates": path.resolve(__dirname, "../", "src/components/templates"),
+    }
     return config
   },
   docs: {
