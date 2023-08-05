@@ -7,6 +7,14 @@ export const GlobalStyle = createGlobalStyle`
   :root {
     --bg-color: lightgray;
     --color-text: #fff;
+    --bg-active: #3C4158;
+    --txt-white: #FFF;
+    --button-bg-default: #218BEE;
+    --grey: #878787;
+    --button-bg-hover: #1655BB;
+    --button-bg-active: #3D3ACE;
+    --button-bg-disabled: #F4F3FE;
+    --button-text-disabled: #C5C0DB;
   }
 
   html,
@@ -22,7 +30,7 @@ export const GlobalStyle = createGlobalStyle`
     min-width: 20rem;
     min-height: 100vh;
     background-color: var(--bg-color);
-    font-family: 'Manrope', sans-serif;
+    font-family: 'Raleway', sans-serif;
     font-size: 0.938rem;
     font-weight: 500;
     font-style: normal;
@@ -82,4 +90,6 @@ export const GlobalStyle = createGlobalStyle`
     text-decoration: none;
     color: var(--color-text)
   }
+
+  
   `
