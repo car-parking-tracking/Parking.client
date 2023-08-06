@@ -1,8 +1,6 @@
 import styled, { css } from 'styled-components'
 import { InputProps } from './input.types'
 
-import searchImg from '@assets/icons/search.svg'
-
 const shared = css<InputProps>`
   color: rgba(27, 31, 59, 1);
   outline: none;
@@ -17,8 +15,6 @@ const form = css<InputProps>`
   width: 34.5rem;
   margin-top: 0.5rem;
 `
-
-//TODO: добавить значок поиска
 const search = css<InputProps>`
   ${shared}
   color: var(--bg-active);
@@ -28,22 +24,7 @@ const search = css<InputProps>`
   height: 3rem;
   width: 27.625rem;
   line-height: 1.5rem;
-  position: relative;
-
-  ::before {
-    content: '';
-    position: absolute;
-    top: 5px;
-    left: 5px;
-    z-index: 30;
-    width: 1.5rem; 
-    height: 1.5rem;
-    background-image: url(${searchImg});
-    background-size: cover;
-    background-repeat: no-repeat;
-  }
 `
-
 export const Input = styled.input<InputProps>`
   ${({ variant }) => {
     switch (variant) {

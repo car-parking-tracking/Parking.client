@@ -7,14 +7,10 @@ import { managerConfig, mapConfig } from './ya-map.config'
 import { ParkingCard } from '../parkingCard'
 import { YAMAP_API_KEY } from '@constants/environment'
 import { Portal } from '@components/atoms'
+import { InputSearch } from '@components/molecules'
 import placemark from '@assets/icons/placemark.svg'
 import placemarkActive from '@assets/icons/placemarkActive.svg'
 import { AnyObject } from '@pbe/react-yandex-maps/typings/util/typing'
-
-import { InputSearch } from '../../molecules'
-
-const API_KEY = "d37743d4-8576-4f45-a4a1-3e794a0a3d10"
-
 
 export const YaMap: React.FC = () => {
   const [activePortal, setActivePortal] = useState<boolean>(false)
@@ -64,14 +60,13 @@ export const YaMap: React.FC = () => {
       try {
         if (value) {
           const res = await fetch(
-            `https://geocode-maps.yandex.ru/1.x/?apikey=${API_KEY}&geocode=Москва, улица ${value}&ll=55.751774,37.618380&spn=1.5,1.5&format=json`
+            `https://geocode-maps.yandex.ru/1.x/?apikey=${YAMAP_API_KEY}&geocode=Москва, улица ${value}&ll=55.751774,37.618380&spn=1.5,1.5&format=json`
           );
           const data = await res.json();
           const collection = data.response.GeoObjectCollection.featureMember.map(
             (item: any) => item.GeoObject
           );
           setOptions(() => collection);
-          console.log(collection);
         }
       } catch (e) {
         console.log(e);
@@ -100,7 +95,7 @@ export const YaMap: React.FC = () => {
       <YMaps
         query={{
           load: "package.full",
-          apikey: API_KEY
+          apikey: YAMAP_API_KEY
         }}>
         <InputSearch
           options={options}
