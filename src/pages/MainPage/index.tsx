@@ -1,9 +1,7 @@
 import { MainTemplate } from '../../components'
 
 const MainPage: React.FC = () => {
-    return (
-        <MainTemplate />
-    )
+  return <MainTemplate />
 }
 
 export default MainPage

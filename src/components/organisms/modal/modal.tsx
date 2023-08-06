@@ -12,7 +12,7 @@ export const Modal: FC<ModalProps> = ({ title, description, isCloseButton, butto
   }
 
   //TODO: сделать SVG отдельным компом
-  
+
   return (
     <View visible={open}>
       <CloseButton variant="link" color="#fff" onClick={handleClose}>

@@ -10,6 +10,4 @@ export default {
 const Template: StoryFn<ParkingCardProps> = args => <ParkingCard {...args} />
 
 export const Default = Template.bind({})
-Default.args = {
-  
-}
+Default.args = {}
