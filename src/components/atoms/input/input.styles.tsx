@@ -19,12 +19,13 @@ const form = css<InputProps>`
 //TODO: добавить значок поиска
 const search = css<InputProps>`
   ${shared}
+  color: var(--bg-active);
   border-radius: 0.375rem;
-  padding: 0 0.375rem 0 0.5rem;
+  font-weight: 400;
+  padding: 0.75rem 0.5rem 0.75rem 1rem;
   height: 2rem;
   width: 27.625rem;
-  font-size: 0.813rem;
-  line-height: 1.25rem;
+  line-height: 1.5rem;
 `
 
 export const Input = styled.input<InputProps>`

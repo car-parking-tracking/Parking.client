@@ -10,6 +10,8 @@ import {
   Description
 } from './inputSearch.styles'
 
+import search from '@assets/icons/search.svg'
+
 export const InputSearch: FC<InputSearchProps> = ({ options, onSearchChange }) => {
   const [value, setValue] = useState('')
   const [showOptions, setShowOptions] = useState(false);
@@ -29,6 +31,7 @@ export const InputSearch: FC<InputSearchProps> = ({ options, onSearchChange }) =
 
   return (
     <Wrapper>
+      <img src={search} />
       <WrapperInput>
         <Search
           variant='search'

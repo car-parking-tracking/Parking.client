@@ -7,7 +7,7 @@ export const mapConfig = {
   defaultState: {
     center: [55.7482634, 37.6618718],
     zoom: 16,
-    controls: ['zoomControl'],
+    controls: [],
   },
   options: {
     yandexMapDisablePoiInteractivity: true,

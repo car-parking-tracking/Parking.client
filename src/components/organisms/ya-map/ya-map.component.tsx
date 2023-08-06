@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { useState, useEffect } from 'react'
-import { Map, YMaps } from '@pbe/react-yandex-maps'
-
+import { Map, YMaps, ObjectManager } from '@pbe/react-yandex-maps'
+import { IEvent } from 'yandex-maps'
 import { Wrapper } from './ya-map.styles'
 import { managerConfig, mapConfig } from './ya-map.config'
 import { ParkingCard } from '../parkingCard'
@@ -9,7 +9,6 @@ import { YAMAP_API_KEY } from '@constants/environment'
 import { Portal } from '@components/atoms'
 import placemark from '@assets/icons/placemark.svg'
 import placemarkActive from '@assets/icons/placemarkActive.svg'
-import { YMaps, Map, ObjectManager } from '@pbe/react-yandex-maps'
 import { AnyObject } from '@pbe/react-yandex-maps/typings/util/typing'
 
 import { InputSearch } from '../../molecules'
@@ -18,19 +17,54 @@ const API_KEY = "d37743d4-8576-4f45-a4a1-3e794a0a3d10"
 
 
 export const YaMap: React.FC = () => {
-
-  const [newCoords, setNewCoords] = useState([
-    55.75177425008563, 37.618380908341514
-  ]);
+  const [activePortal, setActivePortal] = useState<boolean>(false)
+  const [manager, setManager] = useState<AnyObject>()
+  const [newCoords, setNewCoords] = useState([55.751774, 37.618380]);
   const [value, setValue] = useState("");
   const [options, setOptions] = useState<any[]>([]);
+
+  const handleOpenBalloon = (e: IEvent) => {
+    manager?.objects.setObjectOptions(e.get('objectId'), {
+      iconImageHref: placemarkActive,
+    })
+    setTimeout(() => {
+      setActivePortal(true)
+    }, 0)
+  }
+
+  const handleCloseBalloon = (e: IEvent) => {
+    manager?.objects.setObjectOptions(e.get('objectId'), {
+      iconImageHref: placemark,
+    })
+    setActivePortal(false)
+  }
+
+  useEffect(() => {
+    manager?.objects.balloon.events.add('open', (e: IEvent) => {
+      handleOpenBalloon(e)
+    })
+
+    manager?.objects.balloon.events.add('close', (e: IEvent) => {
+      handleCloseBalloon(e)
+    })
+
+    return () => {
+      manager?.objects.balloon.events.remove('open', (e: IEvent) => {
+        handleOpenBalloon(e)
+      })
+
+      manager?.objects.balloon.events.remove('close', (e: IEvent) => {
+        handleCloseBalloon(e)
+      })
+    }
+  }, [manager])
 
   useEffect(() => {
     (async () => {
       try {
         if (value) {
           const res = await fetch(
-            `https://geocode-maps.yandex.ru/1.x/?apikey=${API_KEY}&geocode=Москва, улица ${value}&ll=37.622504,55.753215&spn=1.5,1.5&format=json`
+            `https://geocode-maps.yandex.ru/1.x/?apikey=${API_KEY}&geocode=Москва, улица ${value}&ll=55.751774,37.618380&spn=1.5,1.5&format=json`
           );
           const data = await res.json();
           const collection = data.response.GeoObjectCollection.featureMember.map(
@@ -76,8 +110,13 @@ export const YaMap: React.FC = () => {
           state={{
             ...mapConfig.defaultState,
             center: newCoords
-          }}
-        >
+          }}>
+          <ObjectManager {...managerConfig} instanceRef={(ref: AnyObject) => setManager(ref)} />
+          {activePortal && (
+            <Portal getHTMLElementId={'parking'}>
+              <ParkingCard />
+            </Portal>
+          )}
         </Map>
       </YMaps>
     </Wrapper >

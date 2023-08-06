@@ -4,10 +4,9 @@ import { Input } from '../../atoms/input'
 
 export const Wrapper = styled.div`
   display: flex;
-  gap: 12px;
   position: absolute;
-  top: 9px;
-  left: 165px;
+  top: 0.4375rem;
+  left: 11rem;
   z-index: 10;
 `
 export const WrapperInput = styled.div`
@@ -15,52 +14,45 @@ export const WrapperInput = styled.div`
   flex-direction: column;
 `
 export const Search = styled(Input)`
-  width: 442px;
-  line-height: 24px;
-  font-size: 16px;
-  font-weight: 400;
-  color: #191C30E5;
-  padding: 12px 8px 12px 16px;
-  height: 48px;
+  width: 27.625rem;
+  height: 3rem;
   border-radius: ${({ showOptions }: { showOptions: boolean }) => (showOptions ? '12px 12px 0 0' : '12px')};
 `
 export const Option = styled.div`
   display: flex;
   flex-direction: column;
-  padding: 8px;
+  padding: 0.5rem;
   cursor: pointer;
-  background-color: #fff;
-  color: #000;
-  border-radius: 8px;
-  padding: 10px 8px;
+  background-color: var(--txt-white);
+  border-radius: 0.5rem;
+  padding: 0.625rem 0.5rem;
   border: none;
 
   :hover {
-    background-color: #F8FAFB;
+    background-color: var(--search-item-hover);
   }
   
 `
 export const DataList = styled.div`
   display: flex;
   flex-direction: column;
-  background-color: #fff;
-  border-radius:  0 0 12px 12px;
-  padding: 8px;
-  gap: 4px;
-  width: 442px;
+  background-color: var(--txt-white);
+  border-radius: 0 0 0.75rem 0.75rem;
+  padding: 0.5rem;
+  gap: 0.25rem;
+  width: 27.625rem;
   font-weight: 400;
-  color: #191C30E5;
-  box-shadow: 0px 3px 6px 0px rgba(0, 0, 0, 0.05), 0px 11px 11px 0px rgba(0, 0, 0, 0.04), 0px 25px 15px 0px rgba(0, 0, 0, 0.03);
+  box-shadow: 0 0.1875rem 0.375rem 0 rgba(0, 0, 0, 0.05), 
+  0 0.6875rem 0.6875rem 0 rgba(0, 0, 0, 0.04),
+  0 1.5625rem 0.9375rem 0 rgba(0, 0, 0, 0.03);
 `
-export const Name = styled.span`
-  color: rgba(25, 28, 48, 0.90);
-  font-family: 'Raleway', sans-serif;
-  font-size: 16px;
-  line-height: 24px;
+export const Name = styled.p`
+  color: var(--search-item-name);
+  line-height: 1.5rem;
 `
-export const Description = styled.span`
-  color: rgba(27, 31, 59, 0.65);
-  line-height: 20px;
-  font-size: 13px;
-  font-weight: 500;
+export const Description = styled.p`
+  color: var(--search-item-desc);
+  font-family: 'Manrope', sans-serif;
+  line-height: 1.25rem;
+  font-size: 0.8125rem;
 `
