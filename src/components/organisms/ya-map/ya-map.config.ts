@@ -4,7 +4,7 @@ export const mapConfig = {
   defaultState: {
     center: [55.75177425008563, 37.618380908341514],
     zoom: 14,
-    controls: ['zoomControl', 'fullscreenControl'],
+    controls: ['fullscreenControl'],
   },
-  modules: ['control.ZoomControl', 'control.FullscreenControl'],
+  modules: ['control.FullscreenControl'],
 }

@@ -23,13 +23,14 @@ export const YaMap: React.FC = () => {
       try {
         if (value) {
           const res = await fetch(
-            `https://geocode-maps.yandex.ru/1.x/?apikey=${API_KEY}&format=json&geocode=${value}`
+            `https://geocode-maps.yandex.ru/1.x/?apikey=${API_KEY}&geocode=Москва, улица ${value}&ll=37.622504,55.753215&spn=1.5,1.5&format=json`
           );
           const data = await res.json();
           const collection = data.response.GeoObjectCollection.featureMember.map(
             (item: any) => item.GeoObject
           );
           setOptions(() => collection);
+          console.log(collection);
         }
       } catch (e) {
         console.log(e);

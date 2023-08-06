@@ -3,36 +3,54 @@ import { useState, FC } from 'react'
 
 import { InputSearchProps } from './inputSearch.types'
 
-import { Input } from '../../atoms'
+import {
+  WrapperInput, DataList, Option, Search,
+  Wrapper,
+} from './inputSearch.styles'
 
 export const InputSearch: FC<InputSearchProps> = ({ options, onSearchChange }) => {
   const [value, setValue] = useState('')
+  const [showOptions, setShowOptions] = useState(false);
 
   const handleInput = (e: React.ChangeEvent<HTMLInputElement>) => {
     const newValue = e.target.value
     setValue(newValue)
     onSearchChange(newValue)
+    setShowOptions(newValue !== '')
   }
 
+  const handleOptionClick = (newValue: string) => {
+    setValue(newValue);
+    onSearchChange(newValue);
+    setShowOptions(false);
+  };
+
   return (
-    <>
-      <Input
-        variant='search'
-        name='serch'
-        type="text"
-        value={value}
-        onChange={handleInput}
-        list="options-list"
-        placeholder="Адрес или объект"
-      />
-      <datalist id="options-list">
-        {options.map((item: any, index) => (
-          <option
-            key={index}
-            value={`${item.name} ${item.description !== undefined ? item.description : ''}`}
-          />
-        ))}
-      </datalist>
-    </>
+    <Wrapper>
+      <img src='' />
+      <WrapperInput>
+        <Search
+          variant='search'
+          name='serch'
+          type="text"
+          value={value}
+          onChange={handleInput}
+          list="options-list"
+          placeholder="Название улицы или № парковки"
+        />
+        {showOptions && (
+          <DataList>
+            {options.map((item: any, index) => (
+              <Option
+                key={index}
+                onClick={() => handleOptionClick(`${item.name} ${item.description}`)}
+              >
+                {`${item.name} ${item.description}`}
+              </Option>
+            ))}
+          </DataList>
+        )}
+      </WrapperInput>
+    </Wrapper>
   )
 }
