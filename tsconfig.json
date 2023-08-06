@@ -17,7 +17,14 @@
     "strict": true,
     "forceConsistentCasingInFileNames": true,
     "resolveJsonModule": true,
-    "isolatedModules": true
+    "isolatedModules": true,
+    "paths": {
+      "@components/*": ["./src/components/*"],
+      "@assets/*": ["./src/assets/*"],
+      "@constants/*": ["./src/constants/*"],
+      "@mocks/*": ["./src/mocks/*"],
+      "@pages/*": ["./src/pages/*"],
+    }
   },
   "include": ["src"],
   "exclude": ["node_modules", ".storybook"]

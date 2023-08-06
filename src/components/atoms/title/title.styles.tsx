@@ -5,7 +5,7 @@ const shared = css<TitleProps>`
   color: rgba(25, 28, 48, 0.9);
   font-size: 1.25rem;
   line-height: 1.5rem;
-  font-weight: 800;
+  font-weight: 700;
 `
 const modal = css<TitleProps>`
   ${shared}

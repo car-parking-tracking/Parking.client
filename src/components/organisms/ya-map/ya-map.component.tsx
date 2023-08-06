@@ -3,7 +3,14 @@ import { useState, useEffect } from 'react'
 import { Map, YMaps } from '@pbe/react-yandex-maps'
 
 import { Wrapper } from './ya-map.styles'
-import { mapConfig } from './ya-map.config'
+import { managerConfig, mapConfig } from './ya-map.config'
+import { ParkingCard } from '../parkingCard'
+import { YAMAP_API_KEY } from '@constants/environment'
+import { Portal } from '@components/atoms'
+import placemark from '@assets/icons/placemark.svg'
+import placemarkActive from '@assets/icons/placemarkActive.svg'
+import { YMaps, Map, ObjectManager } from '@pbe/react-yandex-maps'
+import { AnyObject } from '@pbe/react-yandex-maps/typings/util/typing'
 
 import { InputSearch } from '../../molecules'
 
