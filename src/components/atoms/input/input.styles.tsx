@@ -1,6 +1,8 @@
 import styled, { css } from 'styled-components'
 import { InputProps } from './input.types'
 
+import searchImg from '@assets/icons/search.svg'
+
 const shared = css<InputProps>`
   color: rgba(27, 31, 59, 1);
   outline: none;
@@ -22,10 +24,24 @@ const search = css<InputProps>`
   color: var(--bg-active);
   border-radius: 0.375rem;
   font-weight: 400;
-  padding: 0.75rem 0.5rem 0.75rem 1rem;
-  height: 2rem;
+  padding: 0.75rem 0.5rem 0.75rem 2rem;
+  height: 3rem;
   width: 27.625rem;
   line-height: 1.5rem;
+  position: relative;
+
+  ::before {
+    content: '';
+    position: absolute;
+    top: 5px;
+    left: 5px;
+    z-index: 30;
+    width: 1.5rem; 
+    height: 1.5rem;
+    background-image: url(${searchImg});
+    background-size: cover;
+    background-repeat: no-repeat;
+  }
 `
 
 export const Input = styled.input<InputProps>`

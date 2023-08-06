@@ -15,7 +15,6 @@ export const WrapperInput = styled.div`
 `
 export const Search = styled(Input)`
   width: 27.625rem;
-  height: 3rem;
   border-radius: ${({ showOptions }: { showOptions: boolean }) => (showOptions ? '12px 12px 0 0' : '12px')};
 `
 export const Option = styled.div`
