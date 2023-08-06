@@ -6,6 +6,8 @@ import { InputSearchProps } from './inputSearch.types'
 import {
   WrapperInput, DataList, Option, Search,
   Wrapper,
+  Name,
+  Description
 } from './inputSearch.styles'
 
 export const InputSearch: FC<InputSearchProps> = ({ options, onSearchChange }) => {
@@ -27,7 +29,6 @@ export const InputSearch: FC<InputSearchProps> = ({ options, onSearchChange }) =
 
   return (
     <Wrapper>
-      <img src='' />
       <WrapperInput>
         <Search
           variant='search'
@@ -37,6 +38,7 @@ export const InputSearch: FC<InputSearchProps> = ({ options, onSearchChange }) =
           onChange={handleInput}
           list="options-list"
           placeholder="Название улицы или № парковки"
+          showOptions={showOptions}
         />
         {showOptions && (
           <DataList>
@@ -45,7 +47,8 @@ export const InputSearch: FC<InputSearchProps> = ({ options, onSearchChange }) =
                 key={index}
                 onClick={() => handleOptionClick(`${item.name} ${item.description}`)}
               >
-                {`${item.name} ${item.description}`}
+                <Name>{item.name}</Name>
+                <Description>{item.description.split(',')[0]}</Description>
               </Option>
             ))}
           </DataList>
