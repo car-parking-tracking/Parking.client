@@ -6,7 +6,7 @@ import search from '@assets/icons/search.svg'
 
 export const Wrapper = styled.div`
   position: absolute;
-  top: 0.4375rem;
+  top: 0.5rem;
   left: 6.25rem;
   z-index: 10;
 `

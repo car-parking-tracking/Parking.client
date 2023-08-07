@@ -16,7 +16,7 @@ const shared = css<ButtonProps>`
 
 const contained = css<ButtonProps>`
   ${shared}
-  color: #ffff;
+  color: var(--color-text);
   border: 0.0625rem solid transparent;
   background-color: ${({ color }) => color};
   box-shadow: 0rem 0.25rem 0.313rem rgba(0, 0, 0, 0.1);
