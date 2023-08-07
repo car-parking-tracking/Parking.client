@@ -1,4 +1,4 @@
-import { MainTemplate } from '../../components'
+import { MainTemplate } from '@components/templates'
 
 const MainPage: React.FC = () => {
   return <MainTemplate />

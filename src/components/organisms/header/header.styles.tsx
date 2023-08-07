@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { Button } from '../../atoms'
+import { Button } from '@components/atoms'
 
 export const Wrap = styled.header`
   padding: 0.5rem 2rem;
@@ -17,7 +17,7 @@ export const NavList = styled.ul`
   align-items: center;
   column-gap: 1rem;
   font-weight: 400;
-  line-height: 24px;
+  line-height: 1.5rem;
   list-style: none;
 
   a {
@@ -26,7 +26,7 @@ export const NavList = styled.ul`
     transition: 0.3s;
 
     :hover {
-      color: #1655bb;
+      color: var(--button-bg-hover);
     }
   }
 `
@@ -34,9 +34,9 @@ export const LoginBtn = styled(Button)`
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 73px;
-  height: 46px;
-  padding: 12px 20px;
+  width: 4.5625rem;
+  height: 2.875rem;
+  padding: 0.75rem 1.25rem;
   font-size: 1rem;
   font-weight: 600;
   line-height: 1.5;

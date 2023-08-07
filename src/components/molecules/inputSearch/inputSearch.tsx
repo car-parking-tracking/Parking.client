@@ -3,17 +3,7 @@ import { useState, FC } from 'react'
 
 import { InputSearchProps } from './inputSearch.types'
 
-import {
-  WrapperInput,
-  DataList,
-  Option,
-  Search,
-  Wrapper,
-  Name,
-  Description,
-  ClearButton,
-  ClearIcon
-} from './inputSearch.styles'
+import { WrapperInput, DataList, Option, Search, Wrapper, Name, Description, ClearButton, ClearIcon } from './inputSearch.styles'
 
 import close from '@assets/icons/close.svg'
 

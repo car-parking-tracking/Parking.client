@@ -15,7 +15,6 @@ module.exports = {
     compress: true,
     hot: 'only',
     static: './dist',
-    // https: true,
     host: 'localhost',
     port: 3000,
     historyApiFallback: true,

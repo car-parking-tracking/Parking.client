@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { Input } from '../../atoms'
+import { Input } from '@components/atoms'
 
 export const Container = styled.div`
   position: relative;

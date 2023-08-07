@@ -1,13 +1,13 @@
 import styled from 'styled-components'
 
-import { Input } from '../../atoms/input'
+import { Input } from '@components/atoms'
 
 import search from '@assets/icons/search.svg'
 
 export const Wrapper = styled.div`
   position: absolute;
   top: 0.5rem;
-  left: 6.25rem;
+  left: 6.5rem;
   z-index: 10;
 `
 export const WrapperInput = styled.div`
@@ -29,9 +29,9 @@ export const WrapperInput = styled.div`
 `
 export const Search = styled(Input)`
   width: 27.625rem;
-  padding-left: 56px;
-  padding-right: 36px;
-  border-radius: ${({ showOptions }: { showOptions: boolean }) => (showOptions ? '12px 12px 0 0' : '12px')};
+  padding-left: 3.5rem;
+  padding-right: 2.25rem;
+  border-radius: ${({ showOptions }: { showOptions: boolean }) => (showOptions ? '0.75rem 0.75rem 0 0' : '0.75rem')};
 `
 export const Option = styled.div`
   display: flex;

@@ -1,9 +1,10 @@
 import { StoryFn } from '@storybook/react'
-
-import { Header } from './'
-import { HeaderProps } from './header.types'
 import { useContext } from 'react'
+
+import { Header } from './header.component'
+import { HeaderProps } from './header.types'
 import { LoginContext } from '../../../context'
+
 export default {
   title: 'Header',
   component: Header,

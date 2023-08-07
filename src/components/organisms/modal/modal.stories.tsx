@@ -1,7 +1,7 @@
 import { StoryFn } from '@storybook/react'
 import { ModalProps } from './modal.types'
 import { Modal } from './modal'
-import { InputForm } from '../../molecules'
+import { InputForm } from '@components/molecules'
 
 export default {
   title: 'Modal',
