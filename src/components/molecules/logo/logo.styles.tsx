@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 
 export const LogoLink = styled(Link)`
   width: fit-content;
-  height: 1.55rem;
+  height: 3rem;
   transition: 0.3s;
 
   &:hover {

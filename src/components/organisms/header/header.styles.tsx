@@ -2,25 +2,26 @@ import styled from 'styled-components'
 import { Button } from '../../atoms'
 
 export const Wrap = styled.header`
-  padding: 1rem 2rem;
+  padding: 0.5rem 2rem;
   width: 100%;
   display: grid;
   grid-template-columns: 1fr max-content;
   align-items: center;
-  column-gap: 5.3333rem;
-  background: #272b3b;
+  column-gap: 3.5rem;
+  background: var(--bg-active);
 `
 
 export const NavList = styled.ul`
   display: grid;
   grid-template-columns: 1fr repeat(2, max-content);
   align-items: center;
-  column-gap: 1.0667rem;
-  font-size: 1.0667rem;
+  column-gap: 1rem;
+  font-weight: 400;
+  line-height: 24px;
   list-style: none;
 
   a {
-    color: #fff;
+    color: var(--color-text);
     text-decoration: none;
     transition: 0.3s;
     cursor: default;
