@@ -30,6 +30,7 @@ export const WrapperInput = styled.div`
 export const Search = styled(Input)`
   width: 27.625rem;
   padding-left: 56px;
+  padding-right: 37px;
   border-radius: ${({ showOptions }: { showOptions: boolean }) => (showOptions ? '12px 12px 0 0' : '12px')};
 `
 export const Option = styled.div`
@@ -64,4 +65,20 @@ export const Description = styled.p`
   font-family: 'Manrope', sans-serif;
   line-height: 1.25rem;
   font-size: 0.8125rem;
+`
+export const ClearButton = styled.button`
+  position: absolute;
+  top: 1rem;
+  right: 0.75rem;
+  width: 1rem;
+  height: 1rem;
+  padding: 0;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  z-index: 11;
+`
+export const ClearIcon = styled.img`
+  width: 1rem;
+  height: 1rem;
 `

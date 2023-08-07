@@ -3,11 +3,24 @@ import { useState, FC } from 'react'
 
 import { InputSearchProps } from './inputSearch.types'
 
-import { WrapperInput, DataList, Option, Search, Wrapper, Name, Description } from './inputSearch.styles'
+import {
+  WrapperInput,
+  DataList,
+  Option,
+  Search,
+  Wrapper,
+  Name,
+  Description,
+  ClearButton,
+  ClearIcon
+} from './inputSearch.styles'
+
+import close from '@assets/icons/close.svg'
 
 export const InputSearch: FC<InputSearchProps> = ({ options, onSearchChange }) => {
   const [value, setValue] = useState('')
   const [showOptions, setShowOptions] = useState(false)
+  const [isInputFocused, setIsInputFocused] = useState(false)
 
   const handleInput = (e: React.ChangeEvent<HTMLInputElement>) => {
     const newValue = e.target.value
@@ -22,6 +35,15 @@ export const InputSearch: FC<InputSearchProps> = ({ options, onSearchChange }) =
     setShowOptions(false)
   }
 
+  const handleClearClick = () => {
+    setValue('')
+    onSearchChange('')
+  }
+
+  const handleInputFocus = () => {
+    setIsInputFocused(true)
+  }
+
   return (
     <Wrapper>
       <WrapperInput>
@@ -31,10 +53,16 @@ export const InputSearch: FC<InputSearchProps> = ({ options, onSearchChange }) =
           type="text"
           value={value}
           onChange={handleInput}
+          onFocus={handleInputFocus}
           list="options-list"
           placeholder="Название улицы или № парковки"
           showOptions={showOptions}
         />
+        {isInputFocused && value && (
+          <ClearButton onClick={handleClearClick}>
+            <ClearIcon src={close} alt="Очистить" />
+          </ClearButton>
+        )}
         {showOptions && (
           <DataList>
             {options.map((item: any, index) => (
