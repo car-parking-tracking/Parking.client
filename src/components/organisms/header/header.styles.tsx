@@ -24,19 +24,25 @@ export const NavList = styled.ul`
     color: var(--color-text);
     text-decoration: none;
     transition: 0.3s;
-    cursor: default;
-  }
 
-  a:hover {
-    color: #1655bb;
+    :hover {
+      color: #1655bb;
+    }
   }
 `
 export const LoginBtn = styled(Button)`
-  height: 2.6667rem;
-  padding: 0 1.578rem;
-  font-size: 1.0667rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 73px;
+  height: 46px;
+  padding: 12px 20px;
+  font-size: 1rem;
   font-weight: 600;
   line-height: 1.5;
+  background: var(--bg-active);
+  border: 2px solid var(--button-bg-default);
+  box-shadow: none;
 `
 export const AccountBtn = styled(Button)`
   padding: 0;
