@@ -13,10 +13,9 @@ const shared = css<ButtonProps>`
   padding: 0rem 1.5rem;
   height: 3.5rem;
 `
-
 const contained = css<ButtonProps>`
   ${shared}
-  color: #ffff;
+  color: var(--color-text);
   border: 0.0625rem solid transparent;
   background-color: ${({ color }) => color};
   box-shadow: 0rem 0.25rem 0.313rem rgba(0, 0, 0, 0.1);
@@ -50,7 +49,6 @@ const outlined = css<ButtonProps>`
     border: 0.0625rem solid ${({ color }) => rgba(color, 1)};
   }
 `
-
 const link = css<ButtonProps>`
   ${shared};
   color: ${({ color }) => color};
@@ -67,7 +65,6 @@ const link = css<ButtonProps>`
     color: ${({ color }) => rgba(color, 0.05)};
   }
 `
-
 export const Button = styled.button<ButtonProps>`
   ${({ variant }) => {
     switch (variant) {

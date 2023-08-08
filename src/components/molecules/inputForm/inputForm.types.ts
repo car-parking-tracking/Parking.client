@@ -1,7 +1,7 @@
 export interface InputFormProps {
-  name: string;
-  type: string;
-  placeholder?: string;
-  isError?: boolean;
-  errorMessage?: string;
+  name: string
+  type: string
+  placeholder?: string
+  isError?: boolean
+  errorMessage?: string
 }

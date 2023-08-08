@@ -1,7 +1,7 @@
 import { FC, useState } from 'react'
 import { ModalProps } from './modal.types'
 import { CloseButton, View, Container, ButtonGroup } from './modal.styles'
-import { Button, Description, Title } from '../../atoms'
+import { Button, Description, Title } from '@components/atoms'
 
 export const Modal: FC<ModalProps> = ({ title, description, isCloseButton, buttonText, setOpenCallback, children }) => {
   const [open, setOpen] = useState<boolean>(true)
@@ -11,8 +11,6 @@ export const Modal: FC<ModalProps> = ({ title, description, isCloseButton, butto
     if (setOpenCallback) setOpenCallback(false)
   }
 
-  //TODO: сделать SVG отдельным компом
-  
   return (
     <View visible={open}>
       <CloseButton variant="link" color="#fff" onClick={handleClose}>

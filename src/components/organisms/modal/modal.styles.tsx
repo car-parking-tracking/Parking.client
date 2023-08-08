@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { Button } from '../../atoms'
+import { Button } from '@components/atoms'
 
 export const View = styled.div<{ visible: boolean }>`
   width: 100vw;

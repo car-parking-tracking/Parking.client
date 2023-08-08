@@ -34,15 +34,11 @@ export const Wrapper = styled.div`
     animation: fadeIn 0.3s ease-in-out;
     border: none !important;
     position: absolute;
-    top: 17.5rem;
-    left: 5rem;
+    top: 18.6rem;
+    left: 6rem;
   }
 
   .ymaps-2-1-79-balloon__tail {
     display: none !important;
-  }
-
-  .ymaps-2-1-79-image {
-    fill: #ffb600;
   }
 `

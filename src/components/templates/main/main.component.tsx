@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
 
 import { Section } from './main.styles'
-import { InputForm } from '../../molecules'
-import { Modal, YaMap, Header } from '../../organisms'
+import { InputForm } from '@components/molecules'
+import { Modal, YaMap, Header } from '@components/organisms'
 
 export const MainTemplate: React.FC = () => {
   const [showModal, setShowModal] = useState(false)

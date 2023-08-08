@@ -24,5 +24,5 @@ Default.args = {
   variant: 'contained',
   color: '#4c70bd',
   children: 'Click me',
-  disabled: false
+  disabled: false,
 }

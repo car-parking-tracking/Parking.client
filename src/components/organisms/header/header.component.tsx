@@ -8,7 +8,6 @@ import { Logo } from '@components/molecules'
 import { AccountBtn, LoginBtn, NavList, Wrap } from './header.styles'
 import { HeaderProps } from './header.types'
 
-
 export const Header: FC<HeaderProps> = ({ onBtnClick }) => {
   const { isLoggedIn } = useContext(LoginContext) //здесь будет значение из рeдакса
   const currentUser = 'Имя Фамилия' //здесь будет значение из рeдакса

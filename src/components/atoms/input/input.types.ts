@@ -1,5 +1,5 @@
 export interface InputProps {
-  variant: 'form' | 'search';
-  name: string;
-  placeholder?: string;
+  variant: 'form' | 'search'
+  name: string
+  placeholder?: string
 }

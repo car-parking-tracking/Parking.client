@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { Input } from '../../atoms'
+import { Input } from '@components/atoms'
 
 export const Container = styled.div`
   position: relative;
@@ -14,7 +14,7 @@ export const Label = styled.label`
   top: 1.313rem;
   transition: 0.3s ease all;
   color: rgba(27, 31, 59, 0.65);
-  
+
   ${Input}:focus ~ & {
     font-size: 0.813rem;
     line-height: 1.25rem;
@@ -34,7 +34,6 @@ export const StyledInput = styled(Input)`
   ::placeholder {
     opacity: 0;
   }
-  
 `
 export const Span = styled.span`
   margin-top: 0.438rem;

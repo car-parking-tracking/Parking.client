@@ -15,6 +15,9 @@ export const GlobalStyle = createGlobalStyle`
     --button-bg-active: #3D3ACE;
     --button-bg-disabled: #F4F3FE;
     --button-text-disabled: #C5C0DB;
+    --search-item-hover: #F8FAFB;
+    --search-item-desc: #1B1F3BA6;
+    --search-item-name:#191C30E5;
   }
 
   html,
@@ -31,9 +34,10 @@ export const GlobalStyle = createGlobalStyle`
     min-height: 100vh;
     background-color: var(--bg-color);
     font-family: 'Raleway', sans-serif;
-    font-size: 0.938rem;
+    font-size: 16px;
     font-weight: 500;
     font-style: normal;
+    font-variant-numeric: lining-nums proportional-nums;
     line-height: 1.5rem;
     color: var(--color-text);
   *,
@@ -90,6 +94,4 @@ export const GlobalStyle = createGlobalStyle`
     text-decoration: none;
     color: var(--color-text)
   }
-
-  
   `

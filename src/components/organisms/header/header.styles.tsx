@@ -1,41 +1,48 @@
 import styled from 'styled-components'
-import { Button } from '../../atoms'
+import { Button } from '@components/atoms'
 
 export const Wrap = styled.header`
-  padding: 1rem 2rem;
+  padding: 0.5rem 2rem;
   width: 100%;
   display: grid;
   grid-template-columns: 1fr max-content;
   align-items: center;
-  column-gap: 5.3333rem;
-  background: #272b3b;
+  column-gap: 3.5rem;
+  background: var(--bg-active);
 `
 
 export const NavList = styled.ul`
   display: grid;
   grid-template-columns: 1fr repeat(2, max-content);
   align-items: center;
-  column-gap: 1.0667rem;
-  font-size: 1.0667rem;
+  column-gap: 1rem;
+  font-weight: 400;
+  line-height: 1.5rem;
   list-style: none;
 
   a {
-    color: #fff;
+    color: var(--color-text);
     text-decoration: none;
     transition: 0.3s;
-    cursor: default;
-  }
 
-  a:hover {
-    color: #1655bb;
+    :hover {
+      color: var(--button-bg-hover);
+    }
   }
 `
 export const LoginBtn = styled(Button)`
-  height: 2.6667rem;
-  padding: 0 1.578rem;
-  font-size: 1.0667rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 4.5625rem;
+  height: 2.875rem;
+  padding: 0.75rem 1.25rem;
+  font-size: 1rem;
   font-weight: 600;
   line-height: 1.5;
+  background: var(--bg-active);
+  border: 2px solid var(--button-bg-default);
+  box-shadow: none;
 `
 export const AccountBtn = styled(Button)`
   padding: 0;

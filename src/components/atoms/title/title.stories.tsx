@@ -22,5 +22,5 @@ const Template: StoryFn<TitleProps> = args => <Title {...args} />
 export const Default = Template.bind({})
 Default.args = {
   variant: 'modal',
-  children: "Регистрация"
+  children: 'Регистрация',
 }

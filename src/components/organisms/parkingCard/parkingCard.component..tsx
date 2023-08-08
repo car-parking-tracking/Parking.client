@@ -1,7 +1,7 @@
 import { FC } from 'react'
 import { Wrapper } from './parkingCard.styles'
 import { ParkingCardProps } from './parkingCard.types'
-import { Button } from '../../atoms'
+import { Button } from '@components/atoms'
 
 export const ParkingCard: FC<ParkingCardProps> = () => {
   return (
