@@ -11,6 +11,7 @@ import { InputSearch } from '@components/molecules'
 import placemark from '@assets/icons/placemark.svg'
 import placemarkActive from '@assets/icons/placemarkActive.svg'
 import { AnyObject } from '@pbe/react-yandex-maps/typings/util/typing'
+import { data } from '@mocks/parkingData'
 
 export const YaMap: React.FC = () => {
   const [activePortal, setActivePortal] = useState<boolean>(false)
@@ -18,9 +19,16 @@ export const YaMap: React.FC = () => {
   const [newCoords, setNewCoords] = useState([55.751774, 37.61838])
   const [value, setValue] = useState('')
   const [options, setOptions] = useState<any[]>([])
+  const [activeParkingData, setActiveParkingData] = useState<AnyObject | null>(null)
 
   const handleOpenBalloon = (e: IEvent) => {
-    manager?.objects.setObjectOptions(e.get('objectId'), {
+    const parkingID = e.get('objectId')
+    if (typeof parkingID === 'number') {
+      const parkingData = data.find(obj => obj.id === parkingID)
+      parkingData && setActiveParkingData(parkingData)
+    }
+
+    manager?.objects.setObjectOptions(parkingID, {
       iconImageHref: placemarkActive,
     })
     setTimeout(() => {
@@ -33,6 +41,7 @@ export const YaMap: React.FC = () => {
       iconImageHref: placemark,
     })
     setActivePortal(false)
+    setActiveParkingData(null)
   }
 
   useEffect(() => {
@@ -101,7 +110,12 @@ export const YaMap: React.FC = () => {
           <ObjectManager {...managerConfig} instanceRef={(ref: AnyObject) => setManager(ref)} />
           {activePortal && (
             <Portal getHTMLElementId={'parking'}>
-              <ParkingCard />
+              <ParkingCard
+                id={activeParkingData?.id || 0}
+                address={activeParkingData?.address || 'Нет данных'}
+                carCapacity={activeParkingData?.carCapacity || 'Нет данных'}
+                tariffs={activeParkingData?.tariffs || 'Нет данных'}
+              />
             </Portal>
           )}
         </Map>
