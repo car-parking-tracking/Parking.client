@@ -1,12 +1,13 @@
 import styled from 'styled-components'
+import CloseIcon from '@assets/icons/close-icon.svg'
 
 export const Wrapper = styled.div`
   width: 100%;
   flex-grow: 1;
 
   #parking {
-    width: 17.75rem;
-    height: 19.625rem;
+    width: var(--parking-card-width);
+    height: var(--parking-card-height);
   }
 
   .ymaps-2-1-79-balloon {
@@ -36,6 +37,19 @@ export const Wrapper = styled.div`
     position: absolute;
     top: 18.6rem;
     left: 6rem;
+    border-radius: 6px;
+  }
+
+  .ymaps-2-1-79-balloon__close {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+  }
+
+  .ymaps-2-1-79-balloon__close-button {
+    width: 16px;
+    height: 16px;
+    background: url(${CloseIcon}) center/contain no-repeat;
   }
 
   .ymaps-2-1-79-balloon__tail {

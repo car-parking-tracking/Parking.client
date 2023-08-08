@@ -18,6 +18,8 @@ export const GlobalStyle = createGlobalStyle`
     --search-item-hover: #F8FAFB;
     --search-item-desc: #1B1F3BA6;
     --search-item-name:#191C30E5;
+    --parking-card-width: 283px;
+    --parking-card-height: 329px;
   }
 
   html,
@@ -94,4 +96,4 @@ export const GlobalStyle = createGlobalStyle`
     text-decoration: none;
     color: var(--color-text)
   }
-  `
+}`
