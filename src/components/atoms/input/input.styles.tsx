@@ -4,7 +4,7 @@ import { InputProps } from './input.types'
 const shared = css<InputProps>`
   color: rgba(27, 31, 59, 1);
   outline: none;
-  border: 1px solid rgba(224, 224, 224, 1);
+  border: 0.0625rem solid rgba(224, 224, 224, 1);
   placeholder: ${({ placeholder }) => placeholder};
 `
 const form = css<InputProps>`

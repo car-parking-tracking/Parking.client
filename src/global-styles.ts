@@ -19,7 +19,7 @@ export const GlobalStyle = createGlobalStyle`
     --search-item-desc: #1B1F3BA6;
     --search-item-name:#191C30E5;
     --parking-card-width: 283px;
-    --parking-card-height: 329px;
+    --parking-card-height: 313px;
   }
 
   html,
