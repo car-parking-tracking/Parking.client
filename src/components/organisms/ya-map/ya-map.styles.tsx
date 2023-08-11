@@ -42,18 +42,18 @@ export const Wrapper = styled.div`
     position: absolute;
     top: 18.6rem;
     left: 6rem;
-    border-radius: 6px;
+    border-radius: 0.375rem;
   }
 
   .ymaps-2-1-79-balloon__close {
     position: absolute;
-    top: 12px;
-    right: 12px;
+    top: 0.75rem;
+    right: 0.75rem;
   }
 
   .ymaps-2-1-79-balloon__close-button {
-    width: 16px;
-    height: 16px;
+    width: 1rem;
+    height: 1rem;
     background: url(${CloseIcon}) center/contain no-repeat;
   }
 

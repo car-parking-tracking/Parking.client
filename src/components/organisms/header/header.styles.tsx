@@ -4,7 +4,7 @@ import { Button } from '@components/atoms'
 export const Wrapper = styled.header`
   position: absolute;
   z-index: 10;
-  top: 8px;
+  top: 0.5rem;
   left: 0;
   width: 100%;
   display: grid;
@@ -17,11 +17,11 @@ export const Wrapper = styled.header`
     content: '';
     position: absolute;
     z-index: -1;
-    right: 32px;
-    width: 416px;
-    height: 64px;
-    border-radius: 12px;
-    background: rgba(60, 65, 88, 0.80);
+    right: 2rem;
+    width: 26rem;
+    height: 4rem;
+    border-radius: 0.75rem;
+    background: rgba(60, 65, 88, 0.8);
   }
 `
 export const NavList = styled.ul`
