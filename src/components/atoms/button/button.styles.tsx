@@ -1,8 +1,8 @@
 import styled, { css } from 'styled-components'
-import { rgba, lighten } from 'polished'
 import { ButtonProps } from './button.types'
 
 const shared = css<ButtonProps>`
+  color: var(--color-text);
   cursor: ${({ disabled }) => (disabled ? 'auto' : 'pointer')};
   opacity: ${({ disabled }) => (disabled ? '0.5' : '1')};
   display: inline-block;
@@ -15,54 +15,31 @@ const shared = css<ButtonProps>`
 `
 const contained = css<ButtonProps>`
   ${shared}
-  color: var(--color-text);
   border: 0.0625rem solid transparent;
-  background-color: ${({ color }) => color};
+  background-color: var(--grey);
   box-shadow: 0rem 0.25rem 0.313rem rgba(0, 0, 0, 0.1);
 
   &:hover {
-    background-color: ${({ color }) => lighten(0.1, color)};
+    background-color: var(--button-bg-hover);
   }
   &:active {
-    box-shadow: -0.25rem -0.1875rem 0.25rem transparent, 0.125rem 0.25rem 0.6875rem ${({ color }) => rgba(color, 0.2)};
-  }
-  &:focus-visible {
-    box-shadow: -0.25rem -0.1875rem 0.25rem transparent, 0.125rem 0.25rem 0.6875rem ${({ color }) => rgba(color, 0.2)};
+    background-color: var(--button-bg-active);
   }
 `
 const outlined = css<ButtonProps>`
   ${shared}
-  color: ${({ color }) => color};
+  color: var(--grey);
   background-color: transparent;
-  border: 0.0625rem solid ${({ color }) => rgba(color, 0.5)};
+  border: 0.0625rem solid var(--grey);
   box-shadow: 0rem 0.25rem 0.3125rem rgba(0, 0, 0, 0.1);
 
   &:hover {
-    border: 0.0625rem solid ${({ color }) => rgba(color, 1)};
+    color: var(--button-bg-hover);
+    border: 0.0625rem solid var(--button-bg-hover);
   }
   &:active {
-    background: ${({ color }) => rgba(color, 0.05)};
-    border: 0.0625rem solid ${({ color }) => rgba(color, 1)};
-  }
-  &:focus-visible {
-    background: ${({ color }) => rgba(color, 0.05)};
-    border: 0.0625rem solid ${({ color }) => rgba(color, 1)};
-  }
-`
-const link = css<ButtonProps>`
-  ${shared};
-  color: ${({ color }) => color};
-  background-color: transparent;
-  border: none;
-  font-weight: 500;
-  &:hover {
-    color: ${({ color }) => rgba(color, 0.5)};
-  }
-  &:active {
-    color: ${({ color }) => rgba(color, 0.05)};
-  }
-  &:focus-visible {
-    color: ${({ color }) => rgba(color, 0.05)};
+    background-color: var(--button-bg-active);
+    border: 0.0625rem solid var(--button-bg-active);
   }
 `
 export const Button = styled.button<ButtonProps>`
@@ -72,8 +49,6 @@ export const Button = styled.button<ButtonProps>`
         return contained
       case 'outlined':
         return outlined
-      case 'link':
-        return link
     }
   }}
 `

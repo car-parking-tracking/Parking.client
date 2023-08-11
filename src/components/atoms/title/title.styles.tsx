@@ -11,7 +11,6 @@ const modal = css<TitleProps>`
   ${shared}
   margin-bottom: 0.5rem;
 `
-
 export const Title = styled.h1<TitleProps>`
   ${({ variant }) => {
     switch (variant) {

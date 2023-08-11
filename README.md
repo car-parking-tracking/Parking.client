@@ -24,7 +24,7 @@
 | --- | --- |
 | `dev` | Run project in developer mode |
 | `build` | Build project to `dist` |
-| `storybook` | Run Storybook |
+| `sb` | Run Storybook |
 | `build-storybook` | Build Storybook |
 | `lint` | Linter |
 | `test` | Tests |

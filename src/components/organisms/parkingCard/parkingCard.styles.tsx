@@ -43,7 +43,6 @@ export const InfoDesc = styled.p`
   text-overflow: ellipsis;
   overflow: hidden;
 `
-
 export const Adress = styled(InfoDesc)`
   max-height: 32px;
   white-space: normal;
@@ -54,7 +53,6 @@ export const Adress = styled(InfoDesc)`
   -webkit-line-clamp: 2;
   -moz-line-clamp: 2;
 `
-
 export const FavouriteBtn = styled(Button)`
   padding: 0;
   width: 100%;
@@ -67,4 +65,5 @@ export const FavouriteBtn = styled(Button)`
   font-weight: 600;
   line-height: 24px;
   border: 0;
+  background: var(--button-bg-default);
 `

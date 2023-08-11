@@ -13,7 +13,7 @@ export const Modal: FC<ModalProps> = ({ title, description, isCloseButton, butto
 
   return (
     <View visible={open}>
-      <CloseButton variant="link" color="#fff" onClick={handleClose}>
+      <CloseButton variant="outlined" onClick={handleClose}>
         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
           <path
             fillRule="evenodd"
@@ -29,11 +29,11 @@ export const Modal: FC<ModalProps> = ({ title, description, isCloseButton, butto
         {children}
         <ButtonGroup>
           {isCloseButton && (
-            <Button color="#808080" variant="link" onClick={handleClose}>
+            <Button variant="outlined" onClick={handleClose}>
               Закрыть
             </Button>
           )}
-          <Button color="#808080" variant="contained">
+          <Button variant="contained">
             {buttonText}
           </Button>
         </ButtonGroup>
