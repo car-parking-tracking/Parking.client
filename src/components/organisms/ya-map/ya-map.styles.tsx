@@ -7,7 +7,7 @@ export const Wrapper = styled.div`
 
   #parking {
     width: var(--parking-card-width);
-    height: var(--parking-card-height);
+    min-height: var(--parking-card-height);
   }
 
   .ymaps-2-1-79-balloon {
@@ -29,6 +29,11 @@ export const Wrapper = styled.div`
       opacity: 1;
       transform: translateY(~);
     }
+  }
+
+  .ymaps-2-1-79-balloon__content > ymaps {
+    min-height: var(--parking-card-height) !important;
+    height: unset !important;
   }
 
   .ymaps-2-1-79-balloon__layout {

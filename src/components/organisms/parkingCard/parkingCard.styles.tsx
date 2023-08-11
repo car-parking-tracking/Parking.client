@@ -4,7 +4,7 @@ import { Button } from '@components/atoms'
 export const Wrapper = styled.section`
   box-sizing: border-box;
   padding: 20px;
-  height: var(--parking-card-height);
+  min-height: var(--parking-card-height);
   display: flex;
   flex-direction: column;
   font-family: Raleway, sans-serif;
@@ -29,30 +29,20 @@ export const InfoItem = styled.li`
   flex-direction: column;
   gap: 1px;
   line-height: 1;
-  font-weight: 500;
 `
 export const InfoTitle = styled.h3`
   font-size: 14px;
   color: #959595;
+  font-weight: 500;
 `
 export const InfoDesc = styled.p`
   font-size: 16px;
   color: #141414;
   font-variant-numeric: lining-nums proportional-nums;
-  white-space: nowrap;
-  text-overflow: ellipsis;
-  overflow: hidden;
+  word-wrap: break-word;
+  font-weight: 600;
 `
-export const Adress = styled(InfoDesc)`
-  max-height: 32px;
-  white-space: normal;
-  display: -webkit-box;
-  display: -moz-box;
-  -webkit-box-orient: vertical;
-  -moz-box-orient: vertical;
-  -webkit-line-clamp: 2;
-  -moz-line-clamp: 2;
-`
+
 export const FavouriteBtn = styled(Button)`
   padding: 0;
   width: 100%;

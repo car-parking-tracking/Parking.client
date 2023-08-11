@@ -1,5 +1,5 @@
 import { FC } from 'react'
-import { Wrapper, Title, InfoList, InfoItem, InfoTitle, InfoDesc, Adress, FavouriteBtn } from './parkingCard.styles'
+import { Wrapper, Title, InfoList, InfoItem, InfoTitle, InfoDesc, FavouriteBtn } from './parkingCard.styles'
 import { ParkingCardProps } from './parkingCard.types'
 import LikeInactive from '@assets/icons/like-inactive.svg'
 
@@ -12,7 +12,7 @@ export const ParkingCard: FC<ParkingCardProps> = ({ id, address, carCapacity, ta
       <InfoList>
         <InfoItem>
           <InfoTitle>Адрес</InfoTitle>
-          <Adress>{address}</Adress>
+          <InfoDesc>{address}</InfoDesc>
         </InfoItem>
         <InfoItem>
           <InfoTitle>Цена за час</InfoTitle>
