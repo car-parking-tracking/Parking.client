@@ -9,7 +9,7 @@ export default {
     variant: {
       type: 'string',
       description: 'button appearance option',
-      options: ['contained', 'outlined', 'link'],
+      options: ['contained', 'outlined'],
       control: {
         type: 'radio',
       },
@@ -22,7 +22,6 @@ const Template: StoryFn<ButtonProps> = args => <Button {...args} />
 export const Default = Template.bind({})
 Default.args = {
   variant: 'contained',
-  color: '#4c70bd',
   children: 'Click me',
   disabled: false,
 }

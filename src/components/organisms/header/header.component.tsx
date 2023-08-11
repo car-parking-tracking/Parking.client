@@ -31,7 +31,7 @@ export const Header: FC<HeaderProps> = ({ onBtnClick }) => {
         </NavList>
       </nav>
       {isLoggedIn ? (
-        <AccountBtn variant="contained" color="#3473D9" onClick={onBtnClick}>
+        <AccountBtn variant="contained" onClick={onBtnClick}>
           {initials}
         </AccountBtn>
       ) : (

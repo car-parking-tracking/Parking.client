@@ -67,4 +67,5 @@ export const FavouriteBtn = styled(Button)`
   font-weight: 600;
   line-height: 24px;
   border: 0;
+  background: var(--button-bg-default);
 `
