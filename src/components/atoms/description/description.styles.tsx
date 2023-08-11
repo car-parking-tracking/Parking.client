@@ -9,14 +9,12 @@ const modal = css<DescriptionProps>`
   ${shared}
   margin-bottom: 0.5rem;
 `
-
 const text = css<DescriptionProps>`
   font-size: 1.25rem;
   font-style: normal;
   font-weight: 400;
   line-height: 1.375rem;
 `
-
 export const Description = styled.p<DescriptionProps>`
   ${({ variant }) => {
     switch (variant) {

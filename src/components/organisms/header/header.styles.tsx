@@ -24,7 +24,6 @@ export const Wrapper = styled.header`
     background: rgba(60, 65, 88, 0.80);
   }
 `
-
 export const NavList = styled.ul`
   display: grid;
   grid-template-columns: 1fr repeat(2, max-content);
@@ -65,4 +64,5 @@ export const AccountBtn = styled(Button)`
   align-items: center;
   justify-content: center;
   border-radius: 50%;
+  background: var(--button-bg-default);
 `

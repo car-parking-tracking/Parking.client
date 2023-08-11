@@ -5,7 +5,6 @@ export const Title = styled.h1`
   font-size: 1.875rem;
   line-height: 2.75rem;
 `
-
 export const Section = styled.div`
   width: 100vw;
   height: 100vh;

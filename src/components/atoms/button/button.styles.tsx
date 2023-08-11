@@ -42,7 +42,6 @@ const outlined = css<ButtonProps>`
     border: 0.0625rem solid var(--button-bg-active);
   }
 `
-
 export const Button = styled.button<ButtonProps>`
   ${({ variant }) => {
     switch (variant) {
