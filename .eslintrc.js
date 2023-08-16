@@ -1,5 +1,6 @@
 module.exports = {
     "rules": {
+        "no-extra-semi": "off",
         "react/jsx-uses-react": "error",   
         "react/jsx-uses-vars": "error",
         "no-console": "warn",

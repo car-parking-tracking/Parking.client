@@ -1,4 +1,3 @@
-import { features } from '@mocks/features'
 import placemark from '@assets/icons/placemark.svg'
 
 export const mapConfig = {
@@ -18,7 +17,7 @@ export const mapConfig = {
 export const managerConfig = {
   options: {
     clusterize: true,
-    gridSize: 256,
+    gridSize: 128,
   },
   objects: {
     iconLayout: 'default#image',
@@ -26,7 +25,6 @@ export const managerConfig = {
     iconImageHref: placemark,
     hideIconOnBalloonOpen: false,
   },
-  defaultFeatures: JSON.stringify(features),
   clusters: {
     preset: 'islands#blueClusterIcons',
   },
