@@ -1,11 +1,6 @@
-name: Lint
+name: Start all checks
 
-on:
-  pull_request:
-  push:
-    branches:
-      - main
-      - dev
+on: [pull_request]
 
 jobs:
   eslint:
