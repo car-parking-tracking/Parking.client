@@ -17,6 +17,7 @@ module.exports = {
     static: './dist',
     host: 'localhost',
     port: 3000,
+    host: '0.0.0.0',
     historyApiFallback: true,
     client: {
       overlay: false,

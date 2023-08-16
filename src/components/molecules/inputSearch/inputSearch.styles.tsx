@@ -54,7 +54,10 @@ export const DataList = styled.div`
   background-color: var(--txt-white);
   border-radius: 0 0 0.75rem 0.75rem;
   font-weight: 400;
-  box-shadow: 0 0.1875rem 0.375rem 0 rgba(0, 0, 0, 0.05), 0 0.6875rem 0.6875rem 0 rgba(0, 0, 0, 0.04), 0 1.5625rem 0.9375rem 0 rgba(0, 0, 0, 0.03);
+  box-shadow:
+    0 0.1875rem 0.375rem 0 rgba(0, 0, 0, 0.05),
+    0 0.6875rem 0.6875rem 0 rgba(0, 0, 0, 0.04),
+    0 1.5625rem 0.9375rem 0 rgba(0, 0, 0, 0.03);
 `
 export const Name = styled.p`
   color: var(--search-item-name);
