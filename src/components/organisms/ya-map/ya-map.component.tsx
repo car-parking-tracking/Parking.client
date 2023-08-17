@@ -11,7 +11,7 @@ import { InputSearch } from '@components/molecules'
 import placemark from '@assets/icons/placemark.svg'
 import placemarkActive from '@assets/icons/placemarkActive.svg'
 import { AnyObject } from '@pbe/react-yandex-maps/typings/util/typing'
-import { data } from '@mocks/parkingData'
+import { useFetchFeatureCollectionQuery } from '@app/store/api/collection/collectionApi'
 
 export const YaMap: React.FC = () => {
   const [activePortal, setActivePortal] = useState<boolean>(false)
@@ -19,8 +19,9 @@ export const YaMap: React.FC = () => {
   const [newCoords, setNewCoords] = useState([55.751774, 37.61838])
   const [value, setValue] = useState('')
   const [options, setOptions] = useState<any[]>([])
-  const [features, setFeatures] = useState<any>()
   const [activeParkingData, setActiveParkingData] = useState<AnyObject | null>(null)
+
+  const { data } = useFetchFeatureCollectionQuery()
 
   const handleOpenBalloon = (e: IEvent) => {
     const parkingID = e.get('objectId')
@@ -75,18 +76,6 @@ export const YaMap: React.FC = () => {
   useEffect(() => {
     ;(async () => {
       try {
-        const res = await fetch(`http://91.226.83.42/api/v1/feature_collection/`)
-        const data = await res.json()
-        setFeatures(() => data)
-      } catch (e) {
-        console.log(e)
-      }
-    })()
-  }, [])
-
-  useEffect(() => {
-    ;(async () => {
-      try {
         if (value) {
           const res = await fetch(
             `https://geocode-maps.yandex.ru/1.x/?apikey=${YAMAP_API_KEY}&geocode=Москва, улица ${value}&ll=55.751774,37.618380&spn=1.5,1.5&format=json`
@@ -127,7 +116,7 @@ export const YaMap: React.FC = () => {
             ...mapConfig.defaultState,
             center: newCoords,
           }}>
-          {features && <ObjectManager {...managerConfig} defaultFeatures={features} instanceRef={(ref: AnyObject) => setManager(ref)} />}
+          {data && <ObjectManager {...managerConfig} defaultFeatures={data} instanceRef={(ref: AnyObject) => setManager(ref)} />}
 
           {activePortal && (
             <Portal getHTMLElementId={'parking'}>

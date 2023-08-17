@@ -67,6 +67,7 @@ module.exports = {
       "@constants": path.resolve(__dirname, "src/constants"),
       "@mocks": path.resolve(__dirname, "src/mocks"),
       "@pages": path.resolve(__dirname, "src/pages"),
+      "@app": path.resolve(__dirname, "src/app"),
 		}
   },
 }

@@ -24,6 +24,7 @@
       "@constants/*": ["./src/constants/*"],
       "@mocks/*": ["./src/mocks/*"],
       "@pages/*": ["./src/pages/*"],
+      "@app/*": ["./src/app/*"],
     }
   },
   "include": ["src"],
