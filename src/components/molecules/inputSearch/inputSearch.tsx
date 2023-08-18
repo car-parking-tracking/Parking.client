@@ -28,6 +28,7 @@ export const InputSearch: FC<InputSearchProps> = ({ options, onSearchChange }) =
   const handleClearClick = () => {
     setValue('')
     onSearchChange('')
+    setShowOptions(false)
   }
 
   const handleInputFocus = () => {
@@ -58,7 +59,7 @@ export const InputSearch: FC<InputSearchProps> = ({ options, onSearchChange }) =
             {options.map((item: any, index) => (
               <Option key={index} onClick={() => handleOptionClick(`${item.name} ${item.description}`)}>
                 <Name>{item.name}</Name>
-                <Description>{item.description.split(',')[0]}</Description>
+                <Description>{item.description}</Description>
               </Option>
             ))}
           </DataList>
