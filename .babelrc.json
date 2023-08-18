@@ -12,5 +12,5 @@
     "@babel/preset-react",
     "@babel/preset-flow"
   ],
-  "plugins": []
+  "plugins": ["@babel/plugin-syntax-dynamic-import"]
 }

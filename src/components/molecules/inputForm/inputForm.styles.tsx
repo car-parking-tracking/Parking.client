@@ -6,7 +6,6 @@ export const Container = styled.div`
   display: flex;
   flex-direction: column;
 `
-
 export const Label = styled.label`
   position: absolute;
   pointer-events: none;
@@ -29,7 +28,6 @@ export const Label = styled.label`
     top: 0.375rem;
   }
 `
-
 export const StyledInput = styled(Input)`
   ::placeholder {
     opacity: 0;

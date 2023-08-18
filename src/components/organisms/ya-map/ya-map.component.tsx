@@ -11,7 +11,7 @@ import { InputSearch } from '@components/molecules'
 import placemark from '@assets/icons/placemark.svg'
 import placemarkActive from '@assets/icons/placemarkActive.svg'
 import { AnyObject } from '@pbe/react-yandex-maps/typings/util/typing'
-import { data } from '@mocks/parkingData'
+import { useFetchFeatureCollectionQuery } from '@app/store/api/collection/collectionApi'
 
 export const YaMap: React.FC = () => {
   const [activePortal, setActivePortal] = useState<boolean>(false)
@@ -21,11 +21,20 @@ export const YaMap: React.FC = () => {
   const [options, setOptions] = useState<any[]>([])
   const [activeParkingData, setActiveParkingData] = useState<AnyObject | null>(null)
 
+  const { data } = useFetchFeatureCollectionQuery()
+
   const handleOpenBalloon = (e: IEvent) => {
     const parkingID = e.get('objectId')
     if (typeof parkingID === 'number') {
-      const parkingData = data.find(obj => obj.id === parkingID)
-      parkingData && setActiveParkingData(parkingData)
+      ;(async () => {
+        try {
+          const res = await fetch(`http://91.226.83.42/api/v1/parking_lots/${parkingID}/`)
+          const data = await res.json()
+          setActiveParkingData(data)
+        } catch (e) {
+          console.log(e)
+        }
+      })()
     }
 
     manager?.objects.setObjectOptions(parkingID, {
@@ -65,7 +74,7 @@ export const YaMap: React.FC = () => {
   }, [manager])
 
   useEffect(() => {
-    (async () => {
+    ;(async () => {
       try {
         if (value) {
           const res = await fetch(
@@ -107,14 +116,15 @@ export const YaMap: React.FC = () => {
             ...mapConfig.defaultState,
             center: newCoords,
           }}>
-          <ObjectManager {...managerConfig} instanceRef={(ref: AnyObject) => setManager(ref)} />
+          {data && <ObjectManager {...managerConfig} defaultFeatures={data} instanceRef={(ref: AnyObject) => setManager(ref)} />}
+
           {activePortal && (
             <Portal getHTMLElementId={'parking'}>
               <ParkingCard
                 id={activeParkingData?.id || 0}
                 address={activeParkingData?.address || 'Нет данных'}
-                carCapacity={activeParkingData?.carCapacity || 'Нет данных'}
-                tariffs={activeParkingData?.tariffs || 'Нет данных'}
+                carCapacity={activeParkingData?.car_capacity || 'Нет данных'}
+                tariffs={'Нет данных'}
               />
             </Portal>
           )}

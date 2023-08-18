@@ -1,0 +1,23 @@
+name: Lint
+
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+      - dev
+
+jobs:
+  eslint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 16
+      - name: Lint
+        run: npm run lint
+      - name: Prettier
+        run: npm run prettier
+      - name: Test
+        run: npm run test

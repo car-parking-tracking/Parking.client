@@ -17,6 +17,7 @@ module.exports = {
     static: './dist',
     host: 'localhost',
     port: 3000,
+    host: '0.0.0.0',
     historyApiFallback: true,
     client: {
       overlay: false,
@@ -66,6 +67,7 @@ module.exports = {
       "@constants": path.resolve(__dirname, "src/constants"),
       "@mocks": path.resolve(__dirname, "src/mocks"),
       "@pages": path.resolve(__dirname, "src/pages"),
+      "@app": path.resolve(__dirname, "src/app"),
 		}
   },
 }

@@ -35,7 +35,7 @@ export const Header: FC<HeaderProps> = ({ onBtnClick }) => {
           {initials}
         </AccountBtn>
       ) : (
-        <LoginBtn variant="contained" color="#3473D9" onClick={onBtnClick}>
+        <LoginBtn variant="contained" onClick={onBtnClick}>
           Вход
         </LoginBtn>
       )}
