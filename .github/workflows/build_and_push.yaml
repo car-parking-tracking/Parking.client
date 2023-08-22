@@ -1,10 +1,9 @@
 name: Publish Docker image
 
 on: 
-  push:
   pull_request:
     branches:
-      - "**"
+      - main
 
 jobs:
   push_to_dockerhub:
@@ -24,4 +23,20 @@ jobs:
       uses: docker/build-push-action@v2 
       with:
           push: true
-          tags: shinonhorror/repo:latest 
+          tags: parkonaft/client:latest
+
+  deploy:
+    runs-on: ubuntu-latest
+    needs: push_to_dockerhub
+    
+    steps:
+      - name: executing remote ssh commands to deploy
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.HOST_ADDRESS }}
+          username: ${{ secrets.HOST_USER }}
+          password: ${{ secrets.HOST_PASSWORD }}
+          script: |
+            cd ../home/backend/infra/
+            sudo docker compose down --rmi local
+            sudo docker compose up --build -d
