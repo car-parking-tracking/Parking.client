@@ -16,6 +16,14 @@ const config = {
         return rule
       }),
     ]
+    
+    config.module.rules.push({
+      test: /\.(png|jpg|gif|svg)$/i,
+        loader: "file-loader",
+        options: {
+          name: "[name].[ext]",
+        },
+    })  
 
     config.module.rules.push({
       test: /\.(ts|tsx)$/,
@@ -25,11 +33,6 @@ const config = {
         },
       ],
     })
-
-    config.module.rules.push({
-      test: /\.svg$/,
-      use: ['@svgr/webpack'],
-    });
 
     config.resolve.extensions = ['.tsx', '.ts', '.jsx', '.js']
     config.resolve.alias = {

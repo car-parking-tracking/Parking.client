@@ -1,11 +1,9 @@
-name: Lint
+name: Start all checks
 
-on:
+on: 
   pull_request:
-  push:
     branches:
-      - main
-      - dev
+      - '**'
 
 jobs:
   eslint:
@@ -15,6 +13,8 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           node-version: 16
+      - name: Install main deps
+        run: npm install
       - name: Lint
         run: npm run lint
       - name: Prettier
