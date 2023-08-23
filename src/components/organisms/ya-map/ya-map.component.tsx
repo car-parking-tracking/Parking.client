@@ -27,7 +27,7 @@ export const YaMap: React.FC = () => {
   const handleOpenBalloon = (e: IEvent) => {
     const parkingID = e.get('objectId')
     if (typeof parkingID === 'number') {
-      ; (async () => {
+      ;(async () => {
         try {
           const res = await fetch(`http://91.226.83.42/api/v1/parking_lots/${parkingID}/`)
           const data = await res.json()
@@ -75,7 +75,7 @@ export const YaMap: React.FC = () => {
   }, [manager])
 
   useEffect(() => {
-    ; (async () => {
+    ;(async () => {
       try {
         if (value) {
           const res = await fetch(
@@ -83,7 +83,7 @@ export const YaMap: React.FC = () => {
           )
           const data = await res.json()
           const collection = data.response.GeoObjectCollection.featureMember.map((item: any) => item.GeoObject)
-          console.log(collection);
+          console.log(collection)
           setOptions(() => collection)
         }
       } catch (e) {
@@ -118,7 +118,7 @@ export const YaMap: React.FC = () => {
           state={{
             ...mapConfig.defaultState,
             center: newCoords,
-            zoom: zoom
+            zoom: zoom,
           }}>
           {data && <ObjectManager {...managerConfig} defaultFeatures={JSON.stringify(data)} instanceRef={(ref: AnyObject) => setManager(ref)} />}
 

@@ -1,4 +1,4 @@
-import * as yup from 'yup';
+import * as yup from 'yup'
 
 export const yupSchemaRegForm = yup.object().shape({
   last_name: yup
@@ -27,22 +27,18 @@ export const yupSchemaRegForm = yup.object().shape({
     .string()
     .required('Поле обязательно для заполнения')
     .oneOf([yup.ref('password'), ''], 'Пароли не совпадают'),
-});
+})
 
 export const yupSchemaAuthForm = yup.object().shape({
   email: yup
     .string()
     .required('Поле обязательно для заполнения')
     .matches(/^[\w-]+@[a-zA-Z]+\.[a-zA-Z]+$/, 'Введите корректный email'),
-  password: yup
-    .string()
-    .required('Поле обязательно для заполнения')
-});
+  password: yup.string().required('Поле обязательно для заполнения'),
+})
 
 export const yupRecoverPasswordForm = yup.object().shape({
-  password_old: yup
-    .string()
-    .required('Поле обязательно для заполнения'),
+  password_old: yup.string().required('Поле обязательно для заполнения'),
   password_new: yup
     .string()
     .required('Поле обязательно для заполнения')
@@ -53,10 +49,8 @@ export const yupRecoverPasswordForm = yup.object().shape({
     .string()
     .required('Поле обязательно для заполнения')
     .oneOf([yup.ref('password_new'), ''], 'Пароли не совпадают'),
-});
+})
 
 export const yupSearchForm = yup.object().shape({
-  search: yup
-    .string()
-    .matches(/^[-а-яёА-ЯЁ0-9,.№/ ]+$/, 'Может содержать только буквы кириллицы, цифры и спецсимволы'),
-});
+  search: yup.string().matches(/^[-а-яёА-ЯЁ0-9,.№/ ]+$/, 'Может содержать только буквы кириллицы, цифры и спецсимволы'),
+})

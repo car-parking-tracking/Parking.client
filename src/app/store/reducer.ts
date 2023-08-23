@@ -1,7 +1,7 @@
-import { combineReducers } from '@reduxjs/toolkit';
-import { baseApi } from './api/baseApi';
-import { collectionApi } from './api/collection/collectionApi';
-import { CombinedState } from '@reduxjs/toolkit/dist/query/core/apiState';
+import { combineReducers } from '@reduxjs/toolkit'
+import { baseApi } from './api/baseApi'
+import { collectionApi } from './api/collection/collectionApi'
+import { CombinedState } from '@reduxjs/toolkit/dist/query/core/apiState'
 
 export interface IReducer {
   baseApi: CombinedState<Record<never, never>, 'USER_INFO', 'baseApi'>
