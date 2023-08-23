@@ -78,10 +78,11 @@ export const YaMap: React.FC = () => {
       try {
         if (value) {
           const res = await fetch(
-            `https://geocode-maps.yandex.ru/1.x/?apikey=${YAMAP_API_KEY}&geocode=Москва, улица ${value}&ll=55.751774,37.618380&spn=1.5,1.5&format=json`
+            `https://geocode-maps.yandex.ru/1.x/?apikey=${YAMAP_API_KEY}&geocode=${value}&ll=37.618380,55.751774&spn=1.5,1.5&format=json`
           )
           const data = await res.json()
           const collection = data.response.GeoObjectCollection.featureMember.map((item: any) => item.GeoObject)
+          console.log(collection);
           setOptions(() => collection)
         }
       } catch (e) {
@@ -116,7 +117,7 @@ export const YaMap: React.FC = () => {
             ...mapConfig.defaultState,
             center: newCoords,
           }}>
-          {data && <ObjectManager {...managerConfig} defaultFeatures={data} instanceRef={(ref: AnyObject) => setManager(ref)} />}
+          {data && <ObjectManager {...managerConfig} defaultFeatures={JSON.stringify(data)} instanceRef={(ref: AnyObject) => setManager(ref)} />}
 
           {activePortal && (
             <Portal getHTMLElementId={'parking'}>
@@ -124,7 +125,7 @@ export const YaMap: React.FC = () => {
                 id={activeParkingData?.id || 0}
                 address={activeParkingData?.address || 'Нет данных'}
                 carCapacity={activeParkingData?.car_capacity || 'Нет данных'}
-                tariffs={'Нет данных'}
+                tariffs={[{hourPrice: 100}]}
               />
             </Portal>
           )}
