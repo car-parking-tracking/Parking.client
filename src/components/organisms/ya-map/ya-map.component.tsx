@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { useState, useEffect } from 'react'
-import { Map, YMaps, ObjectManager } from '@pbe/react-yandex-maps'
+import { Map, YMaps, ObjectManager, ZoomControl } from '@pbe/react-yandex-maps'
 import { IEvent } from 'yandex-maps'
 import { Wrapper } from './ya-map.styles'
 import { managerConfig, mapConfig } from './ya-map.config'
@@ -20,13 +20,14 @@ export const YaMap: React.FC = () => {
   const [value, setValue] = useState('')
   const [options, setOptions] = useState<any[]>([])
   const [activeParkingData, setActiveParkingData] = useState<AnyObject | null>(null)
+  const [zoom, setZoom] = useState(16)
 
   const { data } = useFetchFeatureCollectionQuery()
 
   const handleOpenBalloon = (e: IEvent) => {
     const parkingID = e.get('objectId')
     if (typeof parkingID === 'number') {
-      ;(async () => {
+      ; (async () => {
         try {
           const res = await fetch(`http://91.226.83.42/api/v1/parking_lots/${parkingID}/`)
           const data = await res.json()
@@ -74,11 +75,11 @@ export const YaMap: React.FC = () => {
   }, [manager])
 
   useEffect(() => {
-    ;(async () => {
+    ; (async () => {
       try {
         if (value) {
           const res = await fetch(
-            `https://geocode-maps.yandex.ru/1.x/?apikey=${YAMAP_API_KEY}&geocode=${value}&ll=37.618380,55.751774&spn=1.5,1.5&format=json`
+            `https://geocode-maps.yandex.ru/1.x/?apikey=${YAMAP_API_KEY}&geocode=${value}&ll=37.620927,55.751590&spn=0.65,0.65&rspn=1&format=json`
           )
           const data = await res.json()
           const collection = data.response.GeoObjectCollection.featureMember.map((item: any) => item.GeoObject)
@@ -99,6 +100,7 @@ export const YaMap: React.FC = () => {
         .map((item: any) => Number(item))
         .reverse()
       setNewCoords(coords)
+      setZoom(18)
     }
     setValue(newValue)
   }
@@ -116,8 +118,11 @@ export const YaMap: React.FC = () => {
           state={{
             ...mapConfig.defaultState,
             center: newCoords,
+            zoom: zoom
           }}>
           {data && <ObjectManager {...managerConfig} defaultFeatures={JSON.stringify(data)} instanceRef={(ref: AnyObject) => setManager(ref)} />}
+
+          <ZoomControl options={{ position: { right: 32, top: 90 }, size: 'large' }} />
 
           {activePortal && (
             <Portal getHTMLElementId={'parking'}>
@@ -125,7 +130,7 @@ export const YaMap: React.FC = () => {
                 id={activeParkingData?.id || 0}
                 address={activeParkingData?.address || 'Нет данных'}
                 carCapacity={activeParkingData?.car_capacity || 'Нет данных'}
-                tariffs={[{hourPrice: 100}]}
+                tariffs={[{ hourPrice: 100 }]}
               />
             </Portal>
           )}

@@ -11,7 +11,7 @@ export const mapConfig = {
   options: {
     yandexMapDisablePoiInteractivity: true,
   },
-  modules: ['control.ZoomControl'],
+  modules: [],
 }
 
 export const managerConfig = {
