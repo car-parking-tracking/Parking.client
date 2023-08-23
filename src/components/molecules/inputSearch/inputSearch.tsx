@@ -12,6 +12,8 @@ export const InputSearch: FC<InputSearchProps> = ({ options, onSearchChange }) =
   const [showOptions, setShowOptions] = useState(false)
   const [isInputFocused, setIsInputFocused] = useState(false)
 
+  const notEmptyOptions = options.length > 0
+
   const handleInput = (e: React.ChangeEvent<HTMLInputElement>) => {
     const newValue = e.target.value
     setValue(newValue)
@@ -48,13 +50,14 @@ export const InputSearch: FC<InputSearchProps> = ({ options, onSearchChange }) =
           list="options-list"
           placeholder="Название улицы или № парковки"
           showOptions={showOptions}
+          notEmptyOptions={notEmptyOptions}
         />
         {isInputFocused && value && (
           <ClearButton onClick={handleClearClick}>
             <ClearIcon src={close} alt="Очистить" />
           </ClearButton>
         )}
-        {showOptions && (
+        {showOptions && notEmptyOptions && (
           <DataList>
             {options.map((item: any, index) => (
               <Option key={index} onClick={() => handleOptionClick(`${item.name} ${item.description}`)}>

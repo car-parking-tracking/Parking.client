@@ -31,14 +31,14 @@ export const Search = styled(Input)`
   width: 27.625rem;
   padding-left: 3.5rem;
   padding-right: 2.25rem;
-  border-radius: ${({ showOptions }: { showOptions: boolean }) => (showOptions ? '0.75rem 0.75rem 0 0' : '0.75rem')};
+  border-radius: ${({ showOptions, notEmptyOptions }: { showOptions: boolean, notEmptyOptions: boolean }) => (showOptions && notEmptyOptions ? '0.75rem 0.75rem 0 0' : '0.75rem')};
 `
 export const Option = styled.div`
   display: flex;
   flex-direction: column;
   cursor: pointer;
   border-radius: 0.5rem;
-  padding: 0.5rem;
+  padding: 0.625rem 0.5rem;
   background-color: var(--txt-white);
 
   :hover {
@@ -49,8 +49,10 @@ export const DataList = styled.div`
   display: flex;
   flex-direction: column;
   width: 27.625rem;
+  max-height: 16.5rem;
   padding: 0.5rem;
   gap: 0.25rem;
+  overflow-y: auto; 
   background-color: var(--txt-white);
   border-radius: 0 0 0.75rem 0.75rem;
   font-weight: 400;
@@ -58,6 +60,16 @@ export const DataList = styled.div`
     0 0.1875rem 0.375rem 0 rgba(0, 0, 0, 0.05),
     0 0.6875rem 0.6875rem 0 rgba(0, 0, 0, 0.04),
     0 1.5625rem 0.9375rem 0 rgba(0, 0, 0, 0.03);
+
+  ::-webkit-scrollbar {
+    width: 1px;
+  }
+  ::-webkit-scrollbar-thumb {
+    background-color: transparent;
+  }
+  ::-webkit-scrollbar-track {
+    background-color: transparent;
+  }
 `
 export const Name = styled.p`
   color: var(--search-item-name);
