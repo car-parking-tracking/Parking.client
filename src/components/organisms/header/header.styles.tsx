@@ -34,7 +34,7 @@ export const NavList = styled.ul`
   list-style: none;
 
   a {
-    color: var(--color-text);
+    color: var(--txt-white);
     text-decoration: none;
     transition: 0.3s;
 
