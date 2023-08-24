@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { useState, FC } from 'react'
+import { useState, FC, useEffect } from 'react'
 
 import { InputSearchProps } from './inputSearch.types'
 
@@ -11,8 +11,14 @@ export const InputSearch: FC<InputSearchProps> = ({ options, onSearchChange }) =
   const [value, setValue] = useState('')
   const [showOptions, setShowOptions] = useState(false)
   const [isInputFocused, setIsInputFocused] = useState(false)
+  const [isEmptyOptions, setIsEmptyOptions] = useState(false)
+  const [isLoading, setIsLoading] = useState(false)
 
-  const notEmptyOptions = options.length > 0
+  useEffect(() => {
+    setIsEmptyOptions(options.length === 0 && !isLoading);
+  }, [options, isLoading]);
+
+  // const notEmptyOptions = options.length > 0
 
   const handleInput = (e: React.ChangeEvent<HTMLInputElement>) => {
     const newValue = e.target.value
@@ -50,21 +56,26 @@ export const InputSearch: FC<InputSearchProps> = ({ options, onSearchChange }) =
           list="options-list"
           placeholder="Название улицы или № парковки"
           showOptions={showOptions}
-          notEmptyOptions={notEmptyOptions}
         />
         {isInputFocused && value && (
           <ClearButton onClick={handleClearClick}>
             <ClearIcon src={close} alt="Очистить" />
           </ClearButton>
         )}
-        {showOptions && notEmptyOptions && (
+        {showOptions && (
           <DataList>
-            {options.map((item: any, index) => (
-              <Option key={index} onClick={() => handleOptionClick(`${item.name} ${item.description}`)}>
-                <Name>{item.name}</Name>
-                <Description>{item.description}</Description>
+            {isEmptyOptions ? ( // Отображаем сообщение об ошибке, если список пуст
+              <Option>
+                <Name>Ничего не найдено</Name>
               </Option>
-            ))}
+            ) : (
+              options.map((item: any, index) => (
+                <Option key={index} onClick={() => handleOptionClick(`${item.name} ${item.description}`)}>
+                  <Name>{item.name}</Name>
+                  <Description>{item.description}</Description>
+                </Option>
+              ))
+            )}
           </DataList>
         )}
       </WrapperInput>
