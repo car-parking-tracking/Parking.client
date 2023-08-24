@@ -6,7 +6,6 @@ export const GlobalStyle = createGlobalStyle`
   
   :root {
     --bg-color: lightgray;
-    --color-text: #fff;
     --bg-active: #3C4158;
     --txt-white: #FFF;
     --button-bg-default: #218BEE;
@@ -17,7 +16,7 @@ export const GlobalStyle = createGlobalStyle`
     --button-text-disabled: #C5C0DB;
     --search-item-hover: #F8FAFB;
     --search-item-desc: #1B1F3BA6;
-    --search-item-name:#191C30E5;
+    --search-item-name: #191C30E5;
     --parking-card-width: 283px;
     --parking-card-height: 313px;
   }
@@ -41,7 +40,7 @@ export const GlobalStyle = createGlobalStyle`
     font-style: normal;
     font-variant-numeric: lining-nums proportional-nums;
     line-height: 1.5rem;
-    color: var(--color-text);
+    color: var(--txt-white);
   *,
   *::after,
   *::before {
@@ -94,6 +93,6 @@ export const GlobalStyle = createGlobalStyle`
     cursor: pointer;
     display: inline-block;
     text-decoration: none;
-    color: var(--color-text)
+    color: var(--txt-white)
   }
 }`

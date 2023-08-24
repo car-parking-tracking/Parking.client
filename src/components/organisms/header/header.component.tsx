@@ -31,11 +31,11 @@ export const Header: FC<HeaderProps> = ({ onBtnClick }) => {
         </NavList>
       </nav>
       {isLoggedIn ? (
-        <AccountBtn variant="contained" onClick={onBtnClick}>
+        <AccountBtn variant="secondary" onClick={onBtnClick}>
           {initials}
         </AccountBtn>
       ) : (
-        <LoginBtn variant="contained" onClick={onBtnClick}>
+        <LoginBtn variant="secondary" onClick={onBtnClick}>
           Вход
         </LoginBtn>
       )}

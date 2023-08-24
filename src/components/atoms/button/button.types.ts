@@ -1,7 +1,7 @@
 import React from 'react'
 
 export interface ButtonProps {
-  variant: 'contained' | 'outlined'
+  variant: 'secondary' | 'outlined'
   onClick?: (event: React.MouseEvent<HTMLButtonElement>) => void
   children?: React.ReactNode
   disabled?: boolean

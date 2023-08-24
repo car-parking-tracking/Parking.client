@@ -33,7 +33,7 @@ export const Modal: FC<ModalProps> = ({ title, description, isCloseButton, butto
               Закрыть
             </Button>
           )}
-          <Button variant="contained">{buttonText}</Button>
+          <Button variant="secondary">{buttonText}</Button>
         </ButtonGroup>
       </Container>
     </View>
