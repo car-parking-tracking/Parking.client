@@ -32,7 +32,7 @@ export const YaMap: React.FC = () => {
   const handleOpenBalloon = (e: IEvent) => {
     const parkingID = e.get('objectId')
     if (typeof parkingID === 'number') {
-      ; (async () => {
+      ;(async () => {
         try {
           const res = await fetch(`http://91.226.83.42/api/v1/parking_lots/${parkingID}/`)
           const data = await res.json()

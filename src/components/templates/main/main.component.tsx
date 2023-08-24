@@ -11,9 +11,6 @@ export const MainTemplate: React.FC = () => {
     setShowModal(true)
   }
 
-  //TODO: создать и вынести форму как отдельный организм (на обсуждение)
-  //Пока что чисто инпуты для того, чтобы показать как модалка работает
-
   return (
     <Section>
       <Header onBtnClick={handleOpenModal} />

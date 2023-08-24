@@ -31,8 +31,7 @@ export const Search = styled(Input)`
   width: 27.625rem;
   padding-left: 3.5rem;
   padding-right: 2.25rem;
-  border-radius: ${({ showOptions }: { showOptions: boolean; }) =>
-    showOptions ? '0.75rem 0.75rem 0 0' : '0.75rem'};
+  border-radius: ${({ showOptions }: { showOptions: boolean }) => (showOptions ? '0.75rem 0.75rem 0 0' : '0.75rem')};
 `
 export const Option = styled.div`
   display: flex;

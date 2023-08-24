@@ -26,7 +26,7 @@ const search = css<InputProps>`
   height: 3rem;
   width: 27.625rem;
   line-height: 1.5rem;
-  box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.30);
+  box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.3);
 `
 export const Input = styled.input<InputProps>`
   ${({ variant }) => {

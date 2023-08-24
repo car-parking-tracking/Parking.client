@@ -15,10 +15,8 @@ export const InputSearch: FC<InputSearchProps> = ({ options, onSearchChange }) =
   const [isLoading, setIsLoading] = useState(false)
 
   useEffect(() => {
-    setIsEmptyOptions(options.length === 0 && !isLoading);
-  }, [options, isLoading]);
-
-  // const notEmptyOptions = options.length > 0
+    setIsEmptyOptions(options.length === 0 && !isLoading)
+  }, [options, isLoading])
 
   const handleInput = (e: React.ChangeEvent<HTMLInputElement>) => {
     const newValue = e.target.value
@@ -64,7 +62,7 @@ export const InputSearch: FC<InputSearchProps> = ({ options, onSearchChange }) =
         )}
         {showOptions && (
           <DataList>
-            {isEmptyOptions ? ( // Отображаем сообщение об ошибке, если список пуст
+            {isEmptyOptions ? (
               <Option>
                 <Name>Ничего не найдено</Name>
               </Option>
