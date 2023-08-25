@@ -28,7 +28,7 @@ export const ParkingCard: FC<ParkingCardProps> = ({ id, address, carCapacity, ta
         </InfoItem>
       </InfoList>
 
-      <FavouriteBtn variant="contained">
+      <FavouriteBtn variant="secondary">
         Добавить в избранное
         <img src={LikeInactive} alt="сердце" />
       </FavouriteBtn>

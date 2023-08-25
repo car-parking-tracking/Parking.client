@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { useState, FC } from 'react'
+import { useState, FC, useEffect } from 'react'
 
 import { InputSearchProps } from './inputSearch.types'
 
@@ -11,6 +11,12 @@ export const InputSearch: FC<InputSearchProps> = ({ options, onSearchChange }) =
   const [value, setValue] = useState('')
   const [showOptions, setShowOptions] = useState(false)
   const [isInputFocused, setIsInputFocused] = useState(false)
+  const [isEmptyOptions, setIsEmptyOptions] = useState(false)
+  const [isLoading, setIsLoading] = useState(false)
+
+  useEffect(() => {
+    setIsEmptyOptions(options.length === 0 && !isLoading)
+  }, [options, isLoading])
 
   const handleInput = (e: React.ChangeEvent<HTMLInputElement>) => {
     const newValue = e.target.value
@@ -56,12 +62,18 @@ export const InputSearch: FC<InputSearchProps> = ({ options, onSearchChange }) =
         )}
         {showOptions && (
           <DataList>
-            {options.map((item: any, index) => (
-              <Option key={index} onClick={() => handleOptionClick(`${item.name} ${item.description}`)}>
-                <Name>{item.name}</Name>
-                <Description>{item.description}</Description>
+            {isEmptyOptions ? (
+              <Option>
+                <Name>Ничего не найдено</Name>
               </Option>
-            ))}
+            ) : (
+              options.map((item: any, index) => (
+                <Option key={index} onClick={() => handleOptionClick(`${item.name} ${item.description}`)}>
+                  <Name>{item.name}</Name>
+                  <Description>{item.description}</Description>
+                </Option>
+              ))
+            )}
           </DataList>
         )}
       </WrapperInput>
