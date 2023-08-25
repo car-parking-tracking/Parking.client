@@ -1,5 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { useState, useEffect } from 'react'
+import { skipToken } from '@reduxjs/toolkit/dist/query'
 import { Map, YMaps, ObjectManager, ZoomControl } from '@pbe/react-yandex-maps'
 import { IEvent } from 'yandex-maps'
 import { Wrapper } from './ya-map.styles'
@@ -11,8 +12,7 @@ import { InputSearch } from '@components/molecules'
 import placemark from '@assets/icons/placemark.svg'
 import placemarkActive from '@assets/icons/placemarkActive.svg'
 import { AnyObject } from '@pbe/react-yandex-maps/typings/util/typing'
-import { useFetchFeatureCollectionQuery } from '@app/store/api/collection/collectionApi'
-import { useFetchGeocodeDataQuery } from '@app/store/api/geocoder/geocoderApi'
+import { useFetchFeatureCollectionQuery, useFetchGeocodeDataQuery, useFetchLotByIdQuery } from '@app/store/api'
 
 export const YaMap: React.FC = () => {
   const [activePortal, setActivePortal] = useState<boolean>(false)
@@ -21,6 +21,7 @@ export const YaMap: React.FC = () => {
   const [value, setValue] = useState('')
   const [options, setOptions] = useState<any[]>([])
   const [activeParkingData, setActiveParkingData] = useState<AnyObject | null>(null)
+  const [parkingID, setParkingID] = useState<number | null>(null)
   const [zoom, setZoom] = useState(16)
 
   const { data } = useFetchFeatureCollectionQuery()
@@ -28,20 +29,17 @@ export const YaMap: React.FC = () => {
   const { data: geocodeData } = useFetchGeocodeDataQuery(value, {
     skip: !value,
   })
+  
+  const { data: lotData } = useFetchLotByIdQuery(parkingID ?? skipToken)
+
+  useEffect(() => {
+    lotData && setActiveParkingData(lotData)
+  }, [lotData])
 
   const handleOpenBalloon = (e: IEvent) => {
     const parkingID = e.get('objectId')
-    if (typeof parkingID === 'number') {
-      ;(async () => {
-        try {
-          const res = await fetch(`http://91.226.83.42/api/v1/parking_lots/${parkingID}/`)
-          const data = await res.json()
-          setActiveParkingData(data)
-        } catch (e) {
-          console.log(e)
-        }
-      })()
-    }
+    if (typeof parkingID !== 'number') return
+    setParkingID(parkingID)
 
     manager?.objects.setObjectOptions(parkingID, {
       iconImageHref: placemarkActive,
