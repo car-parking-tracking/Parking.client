@@ -10,7 +10,7 @@ export const lotsApi = baseApi.injectEndpoints({
       query: (id?: number) => ({
         url: `${LOTS_API_PATH}${id}/`,
         method: HTTP_METHOD.GET,
-        providesTags: [{ type: 'LOT_DATA', id: 'INFO' }],
+        providesTags: [{ type: 'LOTS_DATA', id: 'INFO' }],
       }),
     }),
   }),
