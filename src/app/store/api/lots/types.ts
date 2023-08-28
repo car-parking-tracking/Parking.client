@@ -7,13 +7,21 @@ type ITariff = {
   HourPrice?: number
 }
 
-export interface ILot {
+export type ILotItemGeometry = {
+  type: string
+  coordinates: Array<number>
+}
+
+export type ILotCollection = {
+  type: string
+  lots: ILotItem[]
+}
+export interface ILotItem {
   id: number
   address: string
   car_capacity: number
   is_favorited: boolean
   tariffs: ITariff[]
-  latitude: number
-  longitude: number
+  geometry: ILotItemGeometry
 }
 

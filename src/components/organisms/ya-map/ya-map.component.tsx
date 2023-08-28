@@ -12,7 +12,7 @@ import { InputSearch } from '@components/molecules'
 import placemark from '@assets/icons/placemark.svg'
 import placemarkActive from '@assets/icons/placemarkActive.svg'
 import { AnyObject } from '@pbe/react-yandex-maps/typings/util/typing'
-import { useFetchFeatureCollectionQuery, useFetchGeocodeDataQuery, useFetchLotByIdQuery } from '@app/store/api'
+import { useFetchFeatureCollectionQuery, useFetchGeocodeDataQuery, useFetchLotByIdQuery, useFetchLotsIdCollectionQuery } from '@app/store/api'
 
 export const YaMap: React.FC = () => {
   const [activePortal, setActivePortal] = useState<boolean>(false)
@@ -30,8 +30,12 @@ export const YaMap: React.FC = () => {
   const { data: geocodeData } = useFetchGeocodeDataQuery(value, {
     skip: !value,
   })
-  
+
   const { data: lotData } = useFetchLotByIdQuery(parkingID ?? skipToken)
+
+  const { data: lotsCollectionData } = useFetchLotsIdCollectionQuery(value, {
+    skip: !value
+  })
 
   useEffect(() => {
     lotData && setActiveParkingData(lotData)
@@ -87,18 +91,18 @@ export const YaMap: React.FC = () => {
   }, [geocodeData])
 
   useEffect(() => {
-    if (parkingData) {
-      // Обработка данных из data.features и добавление их в options
-      const featuresCollection = parkingData.features.map((feature: any) => {
+    if (lotsCollectionData) {
+      // Обработка данных из data.lots и добавление их в options
+      const lotsCollection = lotsCollectionData.lots.map((lot: any) => {
         return {
-          name: `Парковка № ${feature.id}`,
-          description: feature.geometry.coordinates
+          name: `Парковка № ${lot.id}`,
+          description: lot.geometry.coordinates
         };
       });
-      setOptions(prevOptions => [...prevOptions, ...featuresCollection]);
-      console.log(parkingData);
+      setOptions(prevOptions => [...prevOptions, ...lotsCollection]);
+      console.log(lotsCollectionData);
     }
-  }, [parkingData]);
+  }, [lotsCollectionData]);
 
   const handleInputChange = (newValue: string) => {
     const obg = options.find(item => newValue.includes(item.name));
