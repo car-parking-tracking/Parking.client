@@ -41,16 +41,5 @@ export const InfoDesc = styled.p`
 `
 
 export const FavouriteBtn = styled(Button)`
-  padding: 0;
   width: 100%;
-  height: 3rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.75rem;
-  font-size: 0.875rem;
-  font-weight: 600;
-  line-height: 1.5rem;
-  border: 0;
-  background: var(--button-bg-default);
 `

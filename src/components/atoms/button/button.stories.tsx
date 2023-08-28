@@ -9,7 +9,7 @@ export default {
     variant: {
       type: 'string',
       description: 'button appearance option',
-      options: ['secondary', 'outlined'],
+      options: ['secondary', 'primary', 'outlined', 'icon'],
       control: {
         type: 'radio',
       },
@@ -22,6 +22,11 @@ const Template: StoryFn<ButtonProps> = args => <Button {...args} />
 export const Default = Template.bind({})
 Default.args = {
   variant: 'secondary',
-  children: 'Click me',
+  children: (
+    <>
+      Добавить в избранное
+      <div id="masked"></div>
+    </>
+  ),
   disabled: false,
 }
