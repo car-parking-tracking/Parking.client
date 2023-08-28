@@ -68,7 +68,7 @@ export const InputSearch: FC<InputSearchProps> = ({ options, onSearchChange }) =
               </Option>
             ) : (
               options.map((item: any, index) => (
-                <Option key={index} onClick={() => handleOptionClick(`${item.name} ${item.description}`)}>
+                <Option key={index} onClick={() => handleOptionClick(`${item.name}`)}>
                   <Name>{item.name}</Name>
                   <Description>{item.description}</Description>
                 </Option>

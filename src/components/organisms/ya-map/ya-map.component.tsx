@@ -11,8 +11,9 @@ import { InputSearch } from '@components/molecules'
 import placemark from '@assets/icons/placemark.svg'
 import placemarkActive from '@assets/icons/placemarkActive.svg'
 import { AnyObject } from '@pbe/react-yandex-maps/typings/util/typing'
-import { useFetchFeatureCollectionQuery } from '@app/store/api/collection/collectionApi'
+import { useFetchFeatureCollectionQuery, useFetchFeatureIdCollectionQuery } from '@app/store/api/collection/collectionApi'
 import { useFetchGeocodeDataQuery } from '@app/store/api/geocoder/geocoderApi'
+import { useFetchLotsDataQuery } from '@app/store/api/lots/lotsApi'
 
 export const YaMap: React.FC = () => {
   const [activePortal, setActivePortal] = useState<boolean>(false)
@@ -22,6 +23,7 @@ export const YaMap: React.FC = () => {
   const [options, setOptions] = useState<any[]>([])
   const [activeParkingData, setActiveParkingData] = useState<AnyObject | null>(null)
   const [zoom, setZoom] = useState(16)
+  const [lotsOptions, setLotsOptions] = useState<any[]>([]);
 
   const { data } = useFetchFeatureCollectionQuery()
 
@@ -29,10 +31,15 @@ export const YaMap: React.FC = () => {
     skip: !value,
   })
 
+  const { data: parkingData } = useFetchFeatureIdCollectionQuery(value, {
+    skip: !value,
+  })
+
+
   const handleOpenBalloon = (e: IEvent) => {
     const parkingID = e.get('objectId')
     if (typeof parkingID === 'number') {
-      ;(async () => {
+      ; (async () => {
         try {
           const res = await fetch(`http://91.226.83.42/api/v1/parking_lots/${parkingID}/`)
           const data = await res.json()
@@ -83,21 +90,51 @@ export const YaMap: React.FC = () => {
     if (geocodeData) {
       const collection = geocodeData.response.GeoObjectCollection.featureMember.map((item: any) => item.GeoObject)
       setOptions(() => collection)
+      console.log(collection);
     }
   }, [geocodeData])
 
-  const handleInputChange = (newValue: string) => {
-    const obg = options.find(item => newValue.includes(item.name) && newValue.includes(item.description))
-    if (obg) {
-      const coords = obg.Point.pos
-        .split(' ')
-        .map((item: any) => Number(item))
-        .reverse()
-      setNewCoords(coords)
-      setZoom(18)
+  useEffect(() => {
+    if (parkingData) {
+      // Обработка данных из data.features и добавление их в options
+      const featuresCollection = parkingData.features.map((feature: any) => {
+        return {
+          name: `Парковка № ${feature.id}`,
+          description: feature.geometry.coordinates
+        };
+      });
+      setOptions(prevOptions => [...prevOptions, ...featuresCollection]);
+      console.log(parkingData);
     }
-    setValue(newValue)
-  }
+  }, [parkingData]);
+
+  const handleInputChange = (newValue: string) => {
+    const obg = options.find(item => newValue.includes(item.name));
+
+    if (obg) {
+      let coords;
+
+      if (obg.Point) {
+        // Для данных с Point
+        coords = obg.Point.pos
+          .split(' ')
+          .map((item: any) => Number(item))
+          .reverse();
+      } else if (obg.geometry) {
+        // Для данных с geometry.coordinates
+        coords = obg.geometry.coordinates
+        console.log(coords);
+      }
+
+      if (coords) {
+        setNewCoords(coords);
+        console.log(coords);
+        setZoom(18);
+      }
+    }
+
+    setValue(newValue);
+  };
 
   return (
     <Wrapper>
