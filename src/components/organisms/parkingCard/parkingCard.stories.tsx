@@ -1,13 +1,25 @@
 import { StoryFn } from '@storybook/react'
+import styled from 'styled-components'
+
 import { ParkingCardProps } from './parkingCard.types'
 import { ParkingCard } from './parkingCard.component.'
+
+const ParkingCardContainer = styled.div`
+  width: 283px;
+  height: 313px;
+  border-radius: 12px;
+  background: #fff;
+`
 
 export default {
   title: 'ParkingCard',
   component: ParkingCard,
 }
 
-const Template: StoryFn<ParkingCardProps> = args => <ParkingCard {...args} />
+const Template: StoryFn<ParkingCardProps> = args =>
+  <ParkingCardContainer>
+    <ParkingCard {...args} />
+  </ParkingCardContainer>
 
 export const Default = Template.bind({})
 Default.args = {

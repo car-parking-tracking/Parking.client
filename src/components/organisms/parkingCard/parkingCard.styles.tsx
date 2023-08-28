@@ -11,6 +11,7 @@ export const Title = styled.h2`
   margin-bottom: 0.75rem;
   line-height: 1.4;
   font-size: 1.25rem;
+  color: #000;
   font-weight: 600;
   font-variant-numeric: lining-nums proportional-nums;
   font-feature-settings: 'liga' off;
