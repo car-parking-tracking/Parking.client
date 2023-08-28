@@ -2,7 +2,7 @@ import { HTTP_METHOD } from '@constants/variables'
 import { baseApi } from '../baseApi'
 import { IFeatureCollection } from './types'
 
-const COLLECTION_API_PATH = 'feature_collection'
+const COLLECTION_API_PATH = 'feature_collection/'
 
 export const collectionApi = baseApi.injectEndpoints({
   endpoints: builder => ({
@@ -15,7 +15,7 @@ export const collectionApi = baseApi.injectEndpoints({
     }),
     fetchFeatureIdCollection: builder.query<IFeatureCollection, string>({
       query: (id: string) => ({
-        url: `${COLLECTION_API_PATH}/${id}`,
+        url: `${COLLECTION_API_PATH}${id}`,
         method: HTTP_METHOD.GET,
         providesTags: [{ type: 'COLLECTION_DATA', id: 'INFO' }],
       }),
