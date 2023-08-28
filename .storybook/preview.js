@@ -10,23 +10,6 @@ const preview = {
         date: /Date$/,
       },
     },
-    backgrounds: {
-      default: 'light',
-      values: [
-        {
-          name: 'light',
-          value: '#f8f8f8',
-        },
-        {
-          name: 'dark',
-          value: '#333',
-        },
-        {
-          name: 'brand',
-          value: '#272b3b',
-        },
-      ]
-    }
   },
   decorators: [decorateWithRouter, decorateWithLoginContext]
 }
