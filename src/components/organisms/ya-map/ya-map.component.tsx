@@ -95,30 +95,27 @@ export const YaMap: React.FC = () => {
   // }, [geocodeData])
 
   useEffect(() => {
-    if (selectedLotId !== null) {
+    if (selectedLotId !== null && lot) {
       console.log(selectedLotId)
-      if (lot) {
-        console.log('lotData', lot)
-        const lotCoords = [lot.latitude, lot.longitude]
-        console.log(lotCoords)
-        setNewCoords(lotCoords)
-        setZoom(21)
-      }
+      console.log('lotData', lot)
+      const lotCoords = [lot.latitude, lot.longitude]
+      console.log(lotCoords)
+      setNewCoords(lotCoords)
+      setZoom(21)
+      setSelectedLotId(null)
     }
-    else {
-      if (lotsCollectionData) {
-        console.log("lotsCollectionData:", lotsCollectionData);
-        const lotsCollection = lotsCollectionData.results.map((lot: any) => {
-          return {
-            name: lot.id,
-            description: lot.address
-          };
-        });
-        setOptions(prevOptions => [...prevOptions, ...lotsCollection]);
-        console.log(lotsCollectionData);
-      }
+    else if (!selectedLotId && lotsCollectionData) {
+      console.log("lotsCollectionData:", lotsCollectionData);
+      const lotsCollection = lotsCollectionData.results.map((lot: any) => {
+        return {
+          name: lot.id,
+          description: lot.address
+        };
+      });
+      setOptions(prevOptions => [...prevOptions, ...lotsCollection]);
+      console.log(lotsCollectionData);
     }
-  }, [selectedLotId, lotsCollectionData, lotData]);
+  }, [selectedLotId, lotsCollectionData, lot]);
 
   const handleInputChange = (newValue: string) => {
     const obg = options.find(item => newValue.includes(item.name))
