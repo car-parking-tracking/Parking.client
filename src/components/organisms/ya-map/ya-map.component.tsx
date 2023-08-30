@@ -23,7 +23,7 @@ export const YaMap: React.FC = () => {
   const [activeParkingData, setActiveParkingData] = useState<AnyObject | null>(null)
   const [parkingID, setParkingID] = useState<number | null>(null)
   const [zoom, setZoom] = useState(16)
-  const [lotsOptions, setLotsOptions] = useState<any[]>([]);
+  const [selectedLotId, setSelectedLotId] = useState<number | null>(null);
 
   const { data } = useFetchFeatureCollectionQuery()
 
@@ -33,8 +33,12 @@ export const YaMap: React.FC = () => {
 
   const { data: lotData } = useFetchLotByIdQuery(parkingID ?? skipToken)
 
+  const { data: lot } = useFetchLotByIdQuery(Number(value), {
+    skip: !value,
+  })
+
   const { data: lotsCollectionData } = useFetchLotsIdCollectionQuery(value, {
-    skip: !value
+    skip: !value,
   })
 
   useEffect(() => {
@@ -82,55 +86,61 @@ export const YaMap: React.FC = () => {
     }
   }, [manager])
 
-  useEffect(() => {
-    if (geocodeData) {
-      const collection = geocodeData.response.GeoObjectCollection.featureMember.map((item: any) => item.GeoObject)
-      setOptions(() => collection)
-      console.log(collection);
-    }
-  }, [geocodeData])
+  // useEffect(() => {
+  //   if (geocodeData) {
+  //     const collection = geocodeData.response.GeoObjectCollection.featureMember.map((item: any) => item.GeoObject)
+  //     setOptions(() => collection)
+  //     console.log(collection);
+  //   }
+  // }, [geocodeData])
 
   useEffect(() => {
-    if (lotsCollectionData) {
-      // Обработка данных из data.lots и добавление их в options
-      const lotsCollection = lotsCollectionData.lots.map((lot: any) => {
-        return {
-          name: `Парковка № ${lot.id}`,
-          description: lot.geometry.coordinates
-        };
-      });
-      setOptions(prevOptions => [...prevOptions, ...lotsCollection]);
-      console.log(lotsCollectionData);
+    if (selectedLotId !== null) {
+      console.log(selectedLotId)
+      if (lot) {
+        console.log('lotData', lot)
+        const lotCoords = [lot.latitude, lot.longitude]
+        console.log(lotCoords)
+        setNewCoords(lotCoords)
+        setZoom(21)
+      }
     }
-  }, [lotsCollectionData]);
+    else {
+      if (lotsCollectionData) {
+        console.log("lotsCollectionData:", lotsCollectionData);
+        const lotsCollection = lotsCollectionData.results.map((lot: any) => {
+          return {
+            name: lot.id,
+            description: lot.address
+          };
+        });
+        setOptions(prevOptions => [...prevOptions, ...lotsCollection]);
+        console.log(lotsCollectionData);
+      }
+    }
+  }, [selectedLotId, lotsCollectionData, lotData]);
 
   const handleInputChange = (newValue: string) => {
-    const obg = options.find(item => newValue.includes(item.name));
+    const obg = options.find(item => newValue.includes(item.name))
+
+    let coords
 
     if (obg) {
-      let coords;
-
       if (obg.Point) {
-        // Для данных с Point
         coords = obg.Point.pos
           .split(' ')
           .map((item: any) => Number(item))
-          .reverse();
-      } else if (obg.geometry) {
-        // Для данных с geometry.coordinates
-        coords = obg.geometry.coordinates
-        console.log(coords);
-      }
-
-      if (coords) {
-        setNewCoords(coords);
-        console.log(coords);
-        setZoom(18);
+          .reverse()
+        setNewCoords(coords)
+        setZoom(18)
+      } else {
+        console.log(newValue)
+        setSelectedLotId(Number(newValue))
+        console.log(selectedLotId)
       }
     }
-
-    setValue(newValue);
-  };
+    setValue(newValue)
+  }
 
   return (
     <Wrapper>
