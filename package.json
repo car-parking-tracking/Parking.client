@@ -16,8 +16,8 @@
     "lint": "eslint .",
     "test": "jest",
     "prettier": "npx prettier -w .",
-    "docker-build": "docker build . -t parking-client",
-    "docker-start": "docker run -d -p 8000:3000 --name client-server parking-client"
+    "docker-build": "docker build . -t parkonaft/client",
+    "docker-start": "docker run -d -p 8000:3000 --name client-server parkonaft/client"
   },
   "engines": {
     "node": "18"
