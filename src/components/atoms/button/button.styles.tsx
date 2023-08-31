@@ -100,6 +100,27 @@ const outlined = css<ButtonProps>`
   }
 `
 
+const filter = css<ButtonProps>`
+  ${shared}
+  color: var(--bg-active);
+  font-weight: 500;
+  border: none;
+  background-color: transparent;
+  border-bottom: 1px solid var(--button-bg-default);
+  border-radius: 0;
+  padding: 6px 18px;
+  min-width: 139px;
+
+  &:hover {
+    border-bottom: 1px solid var(--button-bg-hover);
+  }
+
+  &:disabled {
+    color: var(--grey);
+    border-bottom: 1px solid #E0E0E0;
+  }
+`
+
 export const Button = styled.button<ButtonProps>`
   ${({ variant }) => {
     switch (variant) {
@@ -111,6 +132,8 @@ export const Button = styled.button<ButtonProps>`
         return outlined
       case 'icon':
         return icon
+      case 'filter':
+        return filter
     }
   }}
 `
