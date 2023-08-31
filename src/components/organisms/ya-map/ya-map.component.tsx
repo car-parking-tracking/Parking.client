@@ -23,7 +23,6 @@ export const YaMap: React.FC = () => {
   const [activeParkingData, setActiveParkingData] = useState<AnyObject | null>(null)
   const [parkingID, setParkingID] = useState<number | null>(null)
   const [zoom, setZoom] = useState(16)
-  const [selectedLotId, setSelectedLotId] = useState<number | null>(null);
 
   const { data } = useFetchFeatureCollectionQuery()
 
@@ -32,10 +31,6 @@ export const YaMap: React.FC = () => {
   })
 
   const { data: lotData } = useFetchLotByIdQuery(parkingID ?? skipToken)
-
-  const { data: lot } = useFetchLotByIdQuery(Number(value), {
-    skip: !value,
-  })
 
   const { data: lotsCollectionData } = useFetchLotsIdCollectionQuery(value, {
     skip: !value,
@@ -86,42 +81,40 @@ export const YaMap: React.FC = () => {
     }
   }, [manager])
 
-  // useEffect(() => {
-  //   if (geocodeData) {
-  //     const collection = geocodeData.response.GeoObjectCollection.featureMember.map((item: any) => item.GeoObject)
-  //     setOptions(() => collection)
-  //     console.log(collection);
-  //   }
-  // }, [geocodeData])
-
   useEffect(() => {
-    if (selectedLotId !== null && lot) {
-      console.log(selectedLotId)
-      console.log('lotData', lot)
-      const lotCoords = [lot.latitude, lot.longitude]
-      console.log(lotCoords)
-      setNewCoords(lotCoords)
-      setZoom(21)
-      setSelectedLotId(null)
+    if (geocodeData) {
+      const collection = geocodeData.response.GeoObjectCollection.featureMember.map((item: any) => item.GeoObject)
+
+      if (lotsCollectionData) {
+        const lotsCollection = lotsCollectionData.results.map((lot: any) => {
+          return {
+            name: lot.id,
+            description: lot.address,
+            coords: [lot.latitude, lot.longitude],
+          }
+        })
+        setOptions(() => [...collection, ...lotsCollection])
+      } else {
+        setOptions(() => collection)
+      }
+      console.log(collection)
     }
-    else if (!selectedLotId && lotsCollectionData) {
-      console.log("lotsCollectionData:", lotsCollectionData);
-      const lotsCollection = lotsCollectionData.results.map((lot: any) => {
-        return {
-          name: lot.id,
-          description: lot.address
-        };
-      });
-      setOptions(prevOptions => [...prevOptions, ...lotsCollection]);
-      console.log(lotsCollectionData);
-    }
-  }, [selectedLotId, lotsCollectionData, lot]);
+  }, [geocodeData, lotsCollectionData])
 
   const handleInputChange = (newValue: string) => {
-    const obg = options.find(item => newValue.includes(item.name))
+    setValue(newValue)
+  }
+
+  const handleOptionClick = (newValue: string) => {
+    let obg
+
+    if (isNaN(Number(newValue))) {
+      obg = options.find(item => newValue.includes(item.name))
+    } else {
+      obg = options.find(item => item.name === Number(newValue))
+    }
 
     let coords
-
     if (obg) {
       if (obg.Point) {
         coords = obg.Point.pos
@@ -129,14 +122,14 @@ export const YaMap: React.FC = () => {
           .map((item: any) => Number(item))
           .reverse()
         setNewCoords(coords)
-        setZoom(18)
+        setZoom(21)
       } else {
-        console.log(newValue)
-        setSelectedLotId(Number(newValue))
-        console.log(selectedLotId)
+        setNewCoords(obg.coords)
+        setParkingID(obg.name)
+        //manager?.objects.balloon.open(Number(obg.name))
+        setZoom(21)
       }
     }
-    setValue(newValue)
   }
 
   return (
@@ -146,7 +139,7 @@ export const YaMap: React.FC = () => {
           load: 'package.full',
           apikey: YAMAP_API_KEY,
         }}>
-        <InputSearch options={options} onSearchChange={handleInputChange} />
+        <InputSearch options={options} onSearchChange={handleInputChange} onOptionClick={handleOptionClick} />
         <Map
           {...mapConfig}
           state={{

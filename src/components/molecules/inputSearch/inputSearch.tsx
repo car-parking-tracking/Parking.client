@@ -7,7 +7,7 @@ import { WrapperInput, DataList, Option, Search, Wrapper, Name, Description, Cle
 
 import close from '@assets/icons/close.svg'
 
-export const InputSearch: FC<InputSearchProps> = ({ options, onSearchChange }) => {
+export const InputSearch: FC<InputSearchProps> = ({ options, onSearchChange, onOptionClick }) => {
   const [value, setValue] = useState('')
   const [showOptions, setShowOptions] = useState(false)
   const [isInputFocused, setIsInputFocused] = useState(false)
@@ -27,7 +27,7 @@ export const InputSearch: FC<InputSearchProps> = ({ options, onSearchChange }) =
 
   const handleOptionClick = (newValue: string) => {
     setValue(newValue)
-    onSearchChange(newValue)
+    onOptionClick(newValue)
     setShowOptions(false)
   }
 
@@ -63,18 +63,18 @@ export const InputSearch: FC<InputSearchProps> = ({ options, onSearchChange }) =
         {showOptions && (
           <DataList>
             {
-            // isEmptyOptions ? (
-            //   <Option>
-            //     <Name>Ничего не найдено</Name>
-            //   </Option>
-            // ) : (
+              // isEmptyOptions ? (
+              //   <Option>
+              //     <Name>Ничего не найдено</Name>
+              //   </Option>
+              // ) : (
               options.map((item: any, index) => (
                 <Option key={index} onClick={() => handleOptionClick(`${item.name}`)}>
                   <Name>{item.name}</Name>
                   <Description>{item.description}</Description>
                 </Option>
               ))
-            // )
+              // )
             }
           </DataList>
         )}
