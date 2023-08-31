@@ -9,6 +9,7 @@ export const Container = styled.div`
 `
 export const Label = styled.label`
   font-size: 0.875rem;
+  line-height: normal;
   pointer-events: none;
   transition: 0.3s ease all;
   color: rgba(27, 31, 59, 0.65);

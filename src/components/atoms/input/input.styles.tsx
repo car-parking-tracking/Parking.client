@@ -9,11 +9,10 @@ const shared = css<InputProps>`
 `
 const form = css<InputProps>`
   ${shared}
-  border: 0.0625rem solid rgba(224, 224, 224, 1);
+  border: 0.125rem solid rgba(224, 224, 224, 1);
   border-radius: 0.75rem;
   padding: 0 0.5rem 0 1rem;
-  height: 3rem;
-  width: 34.5rem;
+  height: 3.125rem;
   margin-top: 0.5rem;
 `
 const search = css<InputProps>`

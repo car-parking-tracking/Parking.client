@@ -16,7 +16,6 @@ const secondary = css<ButtonProps>`
   ${shared}
   border: 0.125rem solid transparent;
   background-color: var(--grey);
-  box-shadow: 0rem 0.25rem 0.313rem rgba(0, 0, 0, 0.1);
 
   &:hover {
     background-color: var(--button-bg-default);
@@ -31,7 +30,6 @@ const primary = css<ButtonProps>`
   ${shared}
   background-color: var(--button-bg-default);
   border: none;
-  box-shadow: 0rem 0.25rem 0.313rem rgba(0, 0, 0, 0.1);
 
   &:hover {
     background-color: var(--button-bg-hover);
@@ -47,7 +45,6 @@ const icon = css<ButtonProps>`
   ${shared}
   background-color: var(--button-bg-default);
   border: none;
-  box-shadow: 0rem 0.25rem 0.313rem rgba(0, 0, 0, 0.1);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -86,7 +83,6 @@ const outlined = css<ButtonProps>`
   color: var(--bg-active);
   background-color: transparent;
   border: 0.125rem solid var(--button-bg-default);
-  box-shadow: 0rem 0.25rem 0.313rem rgba(0, 0, 0, 0.1);
 
   &:hover {
     color: var(--txt-white);
