@@ -63,18 +63,18 @@ export const InputSearch: FC<InputSearchProps> = ({ options, onSearchChange, onO
         {showOptions && (
           <DataList>
             {
-              // isEmptyOptions ? (
-              //   <Option>
-              //     <Name>Ничего не найдено</Name>
-              //   </Option>
-              // ) : (
+              isEmptyOptions ? (
+                <Option>
+                  <Name>Ничего не найдено</Name>
+                </Option>
+              ) : (
               options.map((item: any, index) => (
                 <Option key={index} onClick={() => handleOptionClick(`${item.name}`)}>
                   <Name>{item.name}</Name>
                   <Description>{item.description}</Description>
                 </Option>
               ))
-              // )
+              )
             }
           </DataList>
         )}

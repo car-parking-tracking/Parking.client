@@ -27,7 +27,7 @@ export const YaMap: React.FC = () => {
   const { data } = useFetchFeatureCollectionQuery()
 
   const { data: geocodeData } = useFetchGeocodeDataQuery(value, {
-    skip: !value,
+    skip: !value || !isNaN(Number(value)) || Number(value) === 0,
   })
 
   const { data: lotData } = useFetchLotByIdQuery(parkingID ?? skipToken)
@@ -82,24 +82,25 @@ export const YaMap: React.FC = () => {
   }, [manager])
 
   useEffect(() => {
+    if (lotsCollectionData) {
+      const lotsCollection = lotsCollectionData.results.map((lot: any) => {
+        return {
+          name: lot.id,
+          description: lot.address,
+          coords: [lot.latitude, lot.longitude],
+        }
+      })
+      setOptions(() => [...lotsCollection])
+    }
+  }, [lotsCollectionData])
+
+  useEffect(() => {
     if (geocodeData) {
       const collection = geocodeData.response.GeoObjectCollection.featureMember.map((item: any) => item.GeoObject)
-
-      if (lotsCollectionData) {
-        const lotsCollection = lotsCollectionData.results.map((lot: any) => {
-          return {
-            name: lot.id,
-            description: lot.address,
-            coords: [lot.latitude, lot.longitude],
-          }
-        })
-        setOptions(() => [...collection, ...lotsCollection])
-      } else {
-        setOptions(() => collection)
-      }
+      setOptions(() => collection)
       console.log(collection)
     }
-  }, [geocodeData, lotsCollectionData])
+  }, [geocodeData])
 
   const handleInputChange = (newValue: string) => {
     setValue(newValue)
