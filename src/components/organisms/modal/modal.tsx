@@ -1,7 +1,6 @@
 import { FC, useState } from 'react'
 import { ModalProps } from './modal.types'
-import { CloseButton, View, Container, ButtonGroup } from './modal.styles'
-import { Button, Description, Title } from '@components/atoms'
+import { CloseButton, View, Container } from './modal.styles'
 
 export const Modal: FC<ModalProps> = ({ setOpenCallback, children }) => {
   const [open, setOpen] = useState<boolean>(true)

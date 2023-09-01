@@ -1,5 +1,4 @@
 import styled from 'styled-components'
-import { Button } from '@components/atoms'
 
 export const View = styled.div<{ visible: boolean }>`
   width: 100vw;
@@ -33,9 +32,3 @@ export const Container = styled.div`
   overflow: scroll;
   position: relative;
 `
-export const ButtonGroup = styled.div`
-  display: flex;
-  gap: 1rem;
-`
-
-
