@@ -12,8 +12,5 @@ const Template: StoryFn<ModalProps> = args => <Modal {...args} />
 
 export const Default = Template.bind({})
 Default.args = {
-  title: 'Регистрация',
-  description: 'Заполните все поля',
-  buttonText: 'Зарегистрироваться',
   children: <InputForm type="text" name="email" placeholder="E-mail" />,
 }

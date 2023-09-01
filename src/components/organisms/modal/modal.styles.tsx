@@ -15,7 +15,11 @@ export const CloseButton = styled.button`
   background: transparent;
   display: flex;
   align-items: center;
-  margin-left: auto;
+  margin: 0;
+  padding: 0;
+  position: absolute;
+  right: 2rem;
+  top: 2.625rem;
 `
 
 export const Container = styled.div`
@@ -27,15 +31,11 @@ export const Container = styled.div`
   padding: 2rem;
   background-color: rgba(255, 255, 255, 1);
   overflow: scroll;
+  position: relative;
 `
 export const ButtonGroup = styled.div`
   display: flex;
   gap: 1rem;
 `
 
-export const AuthForm = styled.form`
-  display: flex;
-  flex-direction: column;
-  margin: 2rem 0;
-  gap: 1rem;
-`
+
