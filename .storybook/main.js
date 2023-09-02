@@ -41,10 +41,6 @@ const config = {
       "@constants": path.resolve(__dirname, "../", "src/constants"),
       "@mocks": path.resolve(__dirname, "../", "src/mocks"),
       "@pages": path.resolve(__dirname, "../", "src/pages"),
-      "@atoms": path.resolve(__dirname, "../", "src/components/atoms"),
-      "@molecules": path.resolve(__dirname, "../", "src/components/molecules"),
-      "@organisms": path.resolve(__dirname, "../", "src/components/organisms"),
-      "@templates": path.resolve(__dirname, "../", "src/components/templates"),
     }
     return config
   },

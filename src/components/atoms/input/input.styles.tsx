@@ -6,6 +6,7 @@ const shared = css<InputProps>`
   outline: none;
   border: none;
   placeholder: ${({ placeholder }) => placeholder};
+  ${({ autoComplete }) => autoComplete && `autocomplete: ${autoComplete};`}
 `
 const form = css<InputProps>`
   ${shared}

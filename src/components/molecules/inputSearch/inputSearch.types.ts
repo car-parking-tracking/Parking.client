@@ -2,4 +2,5 @@
 export interface InputSearchProps {
   options: any[]
   onSearchChange: (value: string) => void
+  onOptionClick: (value: string) => void
 }

@@ -1,6 +1,6 @@
 import { StoryFn } from '@storybook/react'
 
-import { Logo } from './'
+import { Logo } from './logo'
 
 export default {
   title: 'Logo',

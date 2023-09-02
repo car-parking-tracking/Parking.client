@@ -17,7 +17,7 @@ export const mapConfig = {
 export const managerConfig = {
   options: {
     clusterize: true,
-    gridSize: 128,
+    gridSize: 256,
   },
   objects: {
     iconLayout: 'default#image',
