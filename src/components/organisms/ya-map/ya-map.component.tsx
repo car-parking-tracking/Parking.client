@@ -12,7 +12,7 @@ import { InputSearch } from '@components/molecules'
 import placemark from '@assets/icons/placemark.svg'
 import placemarkActive from '@assets/icons/placemarkActive.svg'
 import { AnyObject } from '@pbe/react-yandex-maps/typings/util/typing'
-import { useFetchFeatureCollectionQuery, useFetchGeocodeDataQuery, useFetchLotByIdQuery } from '@app/store/api'
+import { useFetchFeatureCollectionQuery, useFetchGeocodeDataQuery, useFetchLotByIdQuery, useFetchLotsIdCollectionQuery } from '@app/store/api'
 
 export const YaMap: React.FC = () => {
   const [activePortal, setActivePortal] = useState<boolean>(false)
@@ -27,10 +27,14 @@ export const YaMap: React.FC = () => {
   const { data } = useFetchFeatureCollectionQuery()
 
   const { data: geocodeData } = useFetchGeocodeDataQuery(value, {
+    skip: !value || !isNaN(Number(value)) || Number(value) === 0,
+  })
+
+  const { data: lotData } = useFetchLotByIdQuery(parkingID ?? skipToken)
+
+  const { data: lotsCollectionData } = useFetchLotsIdCollectionQuery(value.replace('Парковка №', '').trim(), {
     skip: !value,
   })
-  
-  const { data: lotData } = useFetchLotByIdQuery(parkingID ?? skipToken)
 
   useEffect(() => {
     lotData && setActiveParkingData(lotData)
@@ -78,6 +82,20 @@ export const YaMap: React.FC = () => {
   }, [manager])
 
   useEffect(() => {
+    if (lotsCollectionData) {
+      const lotsCollection = lotsCollectionData.results.map((lot: any) => {
+        const nameParking = `Парковка № ${lot.id} `
+        return {
+          name: nameParking,
+          description: lot.address,
+          coords: [lot.latitude, lot.longitude],
+        }
+      })
+      setOptions(() => [...lotsCollection])
+    }
+  }, [lotsCollectionData])
+
+  useEffect(() => {
     if (geocodeData) {
       const collection = geocodeData.response.GeoObjectCollection.featureMember.map((item: any) => item.GeoObject)
       setOptions(() => collection)
@@ -85,16 +103,35 @@ export const YaMap: React.FC = () => {
   }, [geocodeData])
 
   const handleInputChange = (newValue: string) => {
-    const obg = options.find(item => newValue.includes(item.name) && newValue.includes(item.description))
-    if (obg) {
-      const coords = obg.Point.pos
-        .split(' ')
-        .map((item: any) => Number(item))
-        .reverse()
-      setNewCoords(coords)
-      setZoom(18)
-    }
     setValue(newValue)
+  }
+
+  const handleOptionClick = (newValue: string) => {
+    let obg
+
+    if (isNaN(Number(newValue))) {
+      obg = options.find(item => newValue.includes(item.name))
+    } else {
+      obg = options.find(item => item.name === Number(newValue))
+    }
+
+    let coords
+    if (obg) {
+      if (obg.Point) {
+        coords = obg.Point.pos
+          .split(' ')
+          .map((item: any) => Number(item))
+          .reverse()
+        setNewCoords(coords)
+        setZoom(21)
+      } else {
+        const parkingNumber = obg.name.replace('Парковка №', '').trim()
+        setNewCoords(obg.coords)
+        setParkingID(parkingNumber)
+        //manager?.objects.balloon.open(Number(obg.name)) //TODO: доделать открытие балуна
+        setZoom(21)
+      }
+    }
   }
 
   return (
@@ -104,7 +141,7 @@ export const YaMap: React.FC = () => {
           load: 'package.full',
           apikey: YAMAP_API_KEY,
         }}>
-        <InputSearch options={options} onSearchChange={handleInputChange} />
+        <InputSearch options={options} onSearchChange={handleInputChange} onOptionClick={handleOptionClick} />
         <Map
           {...mapConfig}
           state={{
