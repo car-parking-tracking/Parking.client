@@ -18,8 +18,8 @@ export const lotsApi = baseApi.injectEndpoints({
         url: `${LOTS_API_PATH}/?search=${id}`,
         method: HTTP_METHOD.GET,
         providesTags: [{ type: 'LOTS_DATA', id: 'INFO' }],
-      })
-    })
+      }),
+    }),
   }),
 })
 
