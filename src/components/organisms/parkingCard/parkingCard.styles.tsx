@@ -11,6 +11,7 @@ export const Title = styled.h2`
   margin-bottom: 0.75rem;
   line-height: 1.4;
   font-size: 1.25rem;
+  color: #000;
   font-weight: 600;
   font-variant-numeric: lining-nums proportional-nums;
   font-feature-settings: 'liga' off;
@@ -41,16 +42,5 @@ export const InfoDesc = styled.p`
 `
 
 export const FavouriteBtn = styled(Button)`
-  padding: 0;
   width: 100%;
-  height: 3rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.75rem;
-  font-size: 0.875rem;
-  font-weight: 600;
-  line-height: 1.5rem;
-  border: 0;
-  background: var(--button-bg-default);
 `

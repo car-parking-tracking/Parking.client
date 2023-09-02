@@ -1,7 +1,6 @@
 import { FC } from 'react'
 import { Wrapper, Title, InfoList, InfoItem, InfoTitle, InfoDesc, FavouriteBtn } from './parkingCard.styles'
 import { ParkingCardProps } from './parkingCard.types'
-import LikeInactive from '@assets/icons/like-inactive.svg'
 
 export const ParkingCard: FC<ParkingCardProps> = ({ id, address, carCapacity, tariffs }) => {
   const tariff = typeof tariffs === 'string' ? tariffs : `${tariffs[0].hourPrice} ₽`
@@ -28,9 +27,9 @@ export const ParkingCard: FC<ParkingCardProps> = ({ id, address, carCapacity, ta
         </InfoItem>
       </InfoList>
 
-      <FavouriteBtn variant="secondary">
+      <FavouriteBtn variant="icon">
         Добавить в избранное
-        <img src={LikeInactive} alt="сердце" />
+        <div id="masked"></div>
       </FavouriteBtn>
     </Wrapper>
   )
