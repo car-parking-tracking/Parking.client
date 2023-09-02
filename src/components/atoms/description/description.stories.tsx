@@ -14,10 +14,39 @@ export default {
         type: 'radio',
       },
     },
+    fontSize: {
+      description: 'Font size in pixels',
+      options: {
+        Small: '14',
+        Medium: '16',
+        Large: '20',
+      },
+      control: {
+        type: 'select',
+      },
+    },
+    fontWeight: {
+      description: 'Font weight',
+      options: {
+        Normal: '400',
+        Medium: '500',
+        SemiBold: '600',
+        Bold: '700',
+      },
+      type: 'select',
+    },
+    textColor: {
+      description: 'Text color',
+      control: {
+        type: 'color',
+      },
+    },
   },
 }
 
-const Template: StoryFn<DescriptionProps> = args => <Description {...args} />
+const Template: StoryFn<DescriptionProps> = args => (
+  <Description {...args} style={{ fontSize: `${args.fontSize}px`, color: args.textColor, fontWeight: args.fontWeight }} />
+)
 
 export const Default = Template.bind({})
 Default.args = {

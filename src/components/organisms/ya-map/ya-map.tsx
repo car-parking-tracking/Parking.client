@@ -30,7 +30,7 @@ export const YaMap: React.FC = () => {
 
   const { data: lotData } = useFetchLotByIdQuery(parkingID ?? skipToken)
 
-  const { data: lotsCollectionData } = useFetchLotsIdCollectionQuery(value, {
+  const { data: lotsCollectionData } = useFetchLotsIdCollectionQuery(value.replace('Парковка №', '').trim(), {
     skip: !value,
   })
 
@@ -63,7 +63,7 @@ export const YaMap: React.FC = () => {
           name: nameParking,
           description: lot.address,
           coords: [lot.latitude, lot.longitude],
-          id: lot.id
+          id: lot.id,
         }
       })
       setOptions(() => [...lotsCollection])
