@@ -53,6 +53,7 @@ export const InputSearch: FC<InputSearchProps> = ({ options, onSearchChange, onO
           onFocus={handleInputFocus}
           list="options-list"
           placeholder="Название улицы или № парковки"
+          autoComplete="off"
           showOptions={showOptions}
         />
         {isInputFocused && value && (
@@ -68,12 +69,12 @@ export const InputSearch: FC<InputSearchProps> = ({ options, onSearchChange, onO
                   <Name>Ничего не найдено</Name>
                 </Option>
               ) : (
-              options.map((item: any, index) => (
-                <Option key={index} onClick={() => handleOptionClick(`${item.name}`)}>
-                  <Name>{item.name}</Name>
-                  <Description>{item.description}</Description>
-                </Option>
-              ))
+                options.map((item: any, index) => (
+                  <Option key={index} onClick={() => handleOptionClick(`${item.name}`)}>
+                    <Name>{item.name}</Name>
+                    <Description>{item.description}</Description>
+                  </Option>
+                ))
               )
             }
           </DataList>
