@@ -24,4 +24,5 @@ export const Span = styled.span`
   margin-top: 0.438rem;
   font-size: 0.813rem;
   color: rgba(221, 76, 30, 1);
+  line-height: 1rem;
 `

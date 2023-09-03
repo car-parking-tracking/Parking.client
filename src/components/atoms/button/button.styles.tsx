@@ -98,11 +98,11 @@ const outlined = css<ButtonProps>`
 
 const filter = css<ButtonProps>`
   ${shared}
-  color: var(--bg-active);
+  color: var(--grey);
   font-weight: 500;
   border: none;
   background-color: transparent;
-  border-bottom: 1px solid var(--button-bg-default);
+  border-bottom: 1px solid #E0E0E0;
   border-radius: 0;
   padding: 6px 18px;
   min-width: 139px;
@@ -112,8 +112,8 @@ const filter = css<ButtonProps>`
   }
 
   &:disabled {
-    color: var(--grey);
-    border-bottom: 1px solid #E0E0E0;
+    color: var(--bg-active);
+    border-bottom: 1px solid var(--button-bg-default);
   }
 `
 
