@@ -117,6 +117,26 @@ const filter = css<ButtonProps>`
   }
 `
 
+const text = css<ButtonProps>`
+  ${shared}
+  font-size: 0.875rem;
+  font-weight: 400;
+  line-height: 1rem;
+  letter-spacing: 0.5px;
+  color: var(--button-bg-hover);
+  background: transparent;
+  border: none;
+  padding: 0;
+
+  &:hover {
+    color: var(--button-bg-hover);
+  }
+
+  &:disabled {
+    color: var(--button-bg-default);
+  }
+`
+
 export const Button = styled.button<ButtonProps>`
   ${({ variant }) => {
     switch (variant) {
@@ -130,6 +150,8 @@ export const Button = styled.button<ButtonProps>`
         return icon
       case 'filter':
         return filter
+      case 'text':
+        return text
     }
   }}
 `

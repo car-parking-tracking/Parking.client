@@ -1,56 +1,29 @@
 import { FC, useState } from 'react'
 import { AuthFormProps } from './authForm.types'
-import { ButtonGroup, Container, InputsContainer, LinkButton, LinksContainer, NavContainer } from './authForm.styles'
-import { InputForm, CheckboxContainer } from '@components/molecules'
+import { Container, NavContainer } from './authForm.styles'
+import { Register, Login } from '@components/organisms'
 import { Button } from '@components/atoms'
 
-export const AuthForm: FC<AuthFormProps> = ({ children, buttonText }) => {
+export const AuthForm: FC<AuthFormProps> = ({ children }) => {
 
-  const [loginForm, setLoginForm] = useState(true);
-  const [regForm, setRegForm] = useState(false);
+  const [formType, setFormType] = useState<'login' | 'register'>('login');
 
   const handleLoginButton = () => {
-    setLoginForm(true);
-    setRegForm(false);
+    setFormType('login')
   }
 
   const handleRegButton = () => {
-    setLoginForm(false);
-    setRegForm(true);
+    setFormType('register')
   }
 
   return (
     <Container>
       <NavContainer>
-        <Button type="button" variant="filter" onClick={handleLoginButton} disabled={loginForm}>Вход</Button>
-        <Button type="button" variant="filter" onClick={handleRegButton} disabled={regForm}>Регистрация</Button>
+        <Button type="button" variant="filter" onClick={handleLoginButton} disabled={formType === 'login'}>Вход</Button>
+        <Button type="button" variant="filter" onClick={handleRegButton} disabled={formType === 'register'}>Регистрация</Button>
       </NavContainer>
-      <InputsContainer>
-        {regForm && (
-          <>
-            <InputForm type="text" name="name" placeholder="Фамилия" isError={false} errorMessage="Проверьте написание имени" />
-            <InputForm type="text" name="name" placeholder="Имя" isError={false} errorMessage="Проверьте написание имени" />
-          </>
-        )}
-        <InputForm
-          type="text"
-          name="email"
-          placeholder="E-mail"
-          isError={false}
-          errorMessage="Проверьте адрес почты, он должен состоять из латинских символов"
-        />
-        <InputForm type="password" name="password" placeholder="Пароль" />
-        {regForm && <InputForm type="password" name="password" placeholder="Пароль повторно" isError={false} errorMessage="Значения не совпадают, проверьте пароль" />}
-      </InputsContainer>
-      {regForm && <CheckboxContainer name='checkbox' id='reg-checkbox' placeholder='Я принимаю «Условия использования» и «Политику конфиденциальности»' />}
-      {loginForm && <LinksContainer>
-        <LinkButton>Восстановить пароль</LinkButton>
-        <LinkButton>Зарегистрироваться</LinkButton>
-      </LinksContainer>}
-      <ButtonGroup>
-        {regForm && <Button type='submit' variant="primary">Зарегистрироваться</Button>}
-        {loginForm && <Button type='submit' variant="primary">Войти</Button>}
-      </ButtonGroup>
+      {formType === 'register' && <Register />}
+      {formType === 'login' && <Login />}
     </Container>
   )
 }
