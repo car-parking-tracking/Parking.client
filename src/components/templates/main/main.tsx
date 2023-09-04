@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 
 import { Section } from './main.styles'
 import { Modal, YaMap, Header, AuthForm } from '@components/organisms'
-import { FavoriteList } from '@components/organisms'
+import { FavoriteList, Account } from '@components/organisms'
 
 export const MainTemplate: React.FC = () => {
   const [showModal, setShowModal] = useState(true)
@@ -14,7 +14,12 @@ export const MainTemplate: React.FC = () => {
   const favoriteItems = [
     { id: 2402, address: 'ул. Херсонская, дом 32' },
     { id: 2416, address: 'ул. Каховка, дом 33 к. 1' },
-    // Другие элементы...
+    { id: 2416, address: 'ул. Каховка, дом 33 к. 1' },
+    { id: 2416, address: 'ул. Каховка, дом 33 к. 1' },
+    { id: 2416, address: 'ул. Каховка, дом 33 к. 1' },
+    { id: 2416, address: 'ул. Каховка, дом 33 к. 1' },
+    { id: 2416, address: 'ул. Каховка, дом 33 к. 1' },
+    { id: 2416, address: 'ул. Каховка, дом 33 к. 1' },
   ]
 
   return (
@@ -24,10 +29,9 @@ export const MainTemplate: React.FC = () => {
       <YaMap />
       {showModal && (
         <Modal setOpenCallback={setShowModal}>
+          {/* <Account /> */}
           <FavoriteList items={favoriteItems} />
           {/* <AuthForm /> */}
-          {/* <AuthForm /> */}
-          <Account />
         </Modal>
       )}
     </Section>

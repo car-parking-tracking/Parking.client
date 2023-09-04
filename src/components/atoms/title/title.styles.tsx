@@ -6,10 +6,11 @@ const shared = css<TitleProps>`
   font-size: 1.25rem;
   line-height: 1.5rem;
   font-weight: 700;
+  font-variant-numeric: lining-nums proportional-nums;
+  font-feature-settings: 'liga' off;
 `
 const modal = css<TitleProps>`
   ${shared}
-  color: var(--black);
   line-height: 1.75rem;
   font-size: 1.5rem;
 `
@@ -22,7 +23,7 @@ export const Title = styled.h1<TitleProps>`
     }
   }}
 `
-export const DefaultTitle = styled.h2<TitleProps>`
+export const DefaultTitle = styled.h3<TitleProps>`
   ${({ variant }) => {
     switch (variant) {
       case 'modal':

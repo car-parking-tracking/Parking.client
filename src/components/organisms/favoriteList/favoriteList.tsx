@@ -1,17 +1,23 @@
 import { FC } from 'react'
 
 import { FavoriteListProps } from './favoriteList.types'
-import { Wrapper, Title, Notification } from './favoriteList.styles'
+import { Wrapper, Title, Notification, List } from './favoriteList.styles'
 import { FavoriteCard } from '@components/molecules'
 
 export const FavoriteList: FC<FavoriteListProps> = ({ items }) => {
   return (
     <Wrapper>
-      <Title>Мои парковки</Title>
+      <Title variant="modal">Мои парковки</Title>
       {items.length === 0 ? (
-        <Notification variant="text">У Вас пока нет сохраненных парковок. Вы можете выбрать парковку на карте или воспользоваться поиском.</Notification>
+        <Notification variant="text">
+          У Вас пока нет сохраненных парковок. <br /> Вы можете выбрать парковку на карте <br /> или воспользоваться поиском.
+        </Notification>
       ) : (
-        items.map(item => <FavoriteCard key={item.id} {...item} />)
+        <List>
+          {items.map(item => (
+            <FavoriteCard key={item.id} {...item} />
+          ))}
+        </List>
       )}
     </Wrapper>
   )
