@@ -8,7 +8,7 @@ export const InputForm: FC<InputFormProps> = ({ name, type, placeholder, errorMe
   return (
     <Container>
       <Label htmlFor={name}>{placeholder}</Label>
-      <StyledInput {...register(name, { required })} type={type} variant="form" name={name} placeholder={placeholder} required />
+      <StyledInput {...register(name, { required })} type={type} variant="form" name={name} placeholder={placeholder} isError={isError} required />
       {isError && <Span>{errorMessage}</Span>}
     </Container>
   )

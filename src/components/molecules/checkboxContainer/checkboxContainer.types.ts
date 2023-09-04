@@ -4,4 +4,7 @@ export interface CheckboxContainerProps {
   placeholder?: string
   isError?: boolean
   errorMessage?: string
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  register: any
+  required: boolean
 }

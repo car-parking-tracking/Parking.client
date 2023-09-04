@@ -11,4 +11,5 @@ export interface IAuthValues {
   password_repeat: string
   last_name: string
   first_name: string
+  checkbox: boolean
 }

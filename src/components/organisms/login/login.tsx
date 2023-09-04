@@ -15,7 +15,7 @@ export const Login: FC<LoginProps> = ({ onOpenRegister }) => {
   const {
     register,
     handleSubmit,
-    formState: { errors },
+    formState: { errors, isValid },
   } = useForm<ILoginValues>({
     mode: 'onChange',
     resolver: yupResolver(yupSchemaAuthForm),
@@ -24,7 +24,7 @@ export const Login: FC<LoginProps> = ({ onOpenRegister }) => {
   const onSubmit: SubmitHandler<ILoginValues> = (data: FormData) => console.log(data)
 
   return (
-    <Container onSubmit={handleSubmit(onSubmit)}>
+    <Container onSubmit={handleSubmit(onSubmit)} noValidate>
       <InputsContainer>
         <InputForm
           type="text"
@@ -35,7 +35,15 @@ export const Login: FC<LoginProps> = ({ onOpenRegister }) => {
           errorMessage={errors.email?.message}
           required
         />
-        <InputForm type="password" name="password" register={register} placeholder="Пароль" required />
+        <InputForm
+          type="password"
+          name="password"
+          register={register}
+          placeholder="Пароль"
+          isError={!!errors.password?.message}
+          errorMessage={errors.password?.message}
+          required
+        />
       </InputsContainer>
       <ButtonTextContainer>
         <Button type="button" variant="text">
@@ -46,7 +54,7 @@ export const Login: FC<LoginProps> = ({ onOpenRegister }) => {
         </Button>
       </ButtonTextContainer>
       <ButtonGroup>
-        <Button type="submit" variant="primary">
+        <Button type="submit" variant="primary" disabled={!isValid}>
           Войти
         </Button>
       </ButtonGroup>

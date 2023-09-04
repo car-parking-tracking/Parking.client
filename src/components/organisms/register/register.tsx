@@ -15,7 +15,7 @@ export const Register: FC<RegisterProps> = () => {
   const {
     register,
     handleSubmit,
-    formState: { errors },
+    formState: { errors, isValid },
   } = useForm<IAuthValues>({
     mode: 'onChange',
     resolver: yupResolver(yupSchemaRegForm),
@@ -24,33 +24,64 @@ export const Register: FC<RegisterProps> = () => {
   const onSubmit: SubmitHandler<IAuthValues> = (data: FormData) => console.log(data)
 
   return (
-    <Container onSubmit={handleSubmit(onSubmit)}>
+    <Container onSubmit={handleSubmit(onSubmit)} noValidate>
       <InputsContainer>
-        <InputForm type="text" name="last_name" register={register} placeholder="Фамилия" isError={false} errorMessage="" required />
-        <InputForm type="text" name="first_name" register={register} placeholder="Имя" isError={false} errorMessage="Проверьте написание имени" required />
+        <InputForm
+          type="text"
+          name="last_name"
+          register={register}
+          placeholder="Фамилия"
+          isError={!!errors.last_name?.message}
+          errorMessage={errors.last_name?.message}
+          required
+        />
+        <InputForm
+          type="text"
+          name="first_name"
+          register={register}
+          placeholder="Имя"
+          isError={!!errors.first_name?.message}
+          errorMessage={errors.first_name?.message}
+          required
+        />
         <InputForm
           type="text"
           name="email"
           register={register}
           placeholder="E-mail"
-          isError={false}
-          errorMessage="Проверьте адрес почты, он должен состоять из латинских символов"
+          isError={!!errors.email?.message}
+          errorMessage={errors.email?.message}
           required
         />
-        <InputForm type="password" name="password" register={register} placeholder="Пароль" required />
         <InputForm
           type="password"
           name="password"
           register={register}
+          placeholder="Пароль"
+          isError={!!errors.password?.message}
+          errorMessage={errors.password?.message}
+          required
+        />
+        <InputForm
+          type="password"
+          name="password_repeat"
+          register={register}
           placeholder="Пароль повторно"
-          isError={false}
-          errorMessage="Значения не совпадают, проверьте пароль"
+          isError={!!errors.password_repeat?.message}
+          errorMessage={errors.password_repeat?.message}
           required
         />
       </InputsContainer>
-      <CheckboxContainer name="checkbox" id="reg-checkbox" placeholder="Я принимаю «Условия использования» и «Политику конфиденциальности»" />
+      <CheckboxContainer
+        name="checkbox"
+        id="reg-checkbox"
+        register={register}
+        placeholder="Я принимаю «Условия использования» и «Политику конфиденциальности»"
+        required={true}
+        isError={!!errors.checkbox?.message}
+      />
       <ButtonGroup>
-        <Button type="submit" variant="primary">
+        <Button type="submit" variant="primary" disabled={!isValid}>
           Зарегистрироваться
         </Button>
       </ButtonGroup>

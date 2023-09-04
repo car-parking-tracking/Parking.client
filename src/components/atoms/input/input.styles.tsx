@@ -10,7 +10,7 @@ const shared = css<InputProps>`
 `
 const form = css<InputProps>`
   ${shared}
-  border: 0.125rem solid rgba(224, 224, 224, 1);
+  border: 0.125rem solid ${({ isError }) => (isError ? 'var(--red)' : 'var(--grey-light)')};
   border-radius: 0.75rem;
   padding: 0 0.5rem 0 1rem;
   height: 3.125rem;
@@ -18,7 +18,7 @@ const form = css<InputProps>`
 `
 const search = css<InputProps>`
   ${shared}
-  border-bottom: 1px solid rgba(224, 224, 224, 1);
+  border-bottom: 1px solid var(--grey-light);
   color: var(--bg-active);
   border-radius: 0.375rem;
   font-weight: 400;

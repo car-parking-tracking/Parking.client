@@ -20,6 +20,7 @@ export const GlobalStyle = createGlobalStyle`
     --search-item-name: #191C30E5;
     --parking-card-width: 283px;
     --parking-card-height: 313px;
+    --red: #FF2121;
   }
 
   html,
