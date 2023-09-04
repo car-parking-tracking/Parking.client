@@ -5,13 +5,14 @@ import { Button, Description } from '@components/atoms'
 export const Wrapper = styled.div`
   display: flex;
   cursor: pointer;
-  min-height: 144px;
-  padding: 16px 20px;
+  width: 25.5rem;
+  min-height: 9rem;
+  padding: 1rem 1.25rem;
   flex-direction: column;
   align-items: flex-start;
   align-self: stretch;
-  gap: 12px;
-  border-radius: 16px;
+  gap: 0.75rem;
+  border-radius: 1rem;
   background: var(--grey-light);
 
   :hover {
@@ -25,34 +26,34 @@ export const Wrapper = styled.div`
 `
 export const Info = styled.div`
   color: ${({ isDeleted }: { isDeleted: boolean }) => (isDeleted ? 'var(--grey-button)' : 'var(--item-name)')};
-  height: 52px;
+  height: 3.25rem;
 `
 
 export const Title = styled.p`
   font-weight: 700;
-  line-height: 28px;
+  line-height: 1.75rem;
   letter-spacing: 0.32px;
 `
 export const Address = styled(Description)`
-  font-size: 14px;
+  font-size: 0.875rem;
   font-weight: 500;
 `
 
 export const ButtonGroup = styled.div`
   display: flex;
-  gap: 8px;
+  gap: 0.5rem;
 `
 
 export const ButtonSelected = styled(Button)`
-  width: 100px;
+  width: 6.25rem;
   font-style: normal;
-  line-height: 24px;
+  line-height: 1.5rem;
 `
 
 export const ButtonDelete = styled(Button)`
-  width: 97px;
+  width: 6.0625rem;
   font-style: normal;
-  line-height: 24px;
+  line-height: 1.5rem;
   color: var(--bg-active);
   background: var(--grey-button);
 
@@ -62,7 +63,7 @@ export const ButtonDelete = styled(Button)`
 `
 
 export const ButtonRestore = styled(Button)`
-  width: 141px;
+  width: 8.8125rem;
   font-style: normal;
-  line-height: 24px;
+  line-height: 1.5rem;
 `
