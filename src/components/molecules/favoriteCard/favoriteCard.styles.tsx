@@ -5,6 +5,7 @@ import { Button, Description } from '@components/atoms'
 export const Wrapper = styled.div`
   display: flex;
   cursor: pointer;
+  width: 408px;
   min-height: 144px;
   padding: 16px 20px;
   flex-direction: column;

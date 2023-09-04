@@ -19,10 +19,24 @@ export const Notification = styled(Description)`
 `
 export const List = styled.div`
   display: flex;
-  width: 100%;
   max-height: 619px;
+  width: 430px;
   flex-direction: column;
   margin-top: 28px;
   gap: 24px;
   overflow-y: auto;
+
+  ::-webkit-scrollbar {
+    width: 7px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: #fff;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: #878787;
+    border-radius: 16px;
+    border: 1px solid #fff;
+  }
 `
