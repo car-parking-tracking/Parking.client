@@ -2,7 +2,7 @@ import { StoryFn } from '@storybook/react'
 import styled from 'styled-components'
 
 import { ParkingCardProps } from './parkingCard.types'
-import { ParkingCard } from './parkingCard.component.'
+import { ParkingCard } from './parkingCard'
 
 const ParkingCardContainer = styled.div`
   width: 283px;
@@ -16,10 +16,11 @@ export default {
   component: ParkingCard,
 }
 
-const Template: StoryFn<ParkingCardProps> = args =>
+const Template: StoryFn<ParkingCardProps> = args => (
   <ParkingCardContainer>
     <ParkingCard {...args} />
   </ParkingCardContainer>
+)
 
 export const Default = Template.bind({})
 Default.args = {

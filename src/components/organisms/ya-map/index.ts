@@ -1,1 +1,1 @@
-export * from './ya-map.component'
+export * from './ya-map'
