@@ -7,7 +7,11 @@ const shared = css<DescriptionProps>`
 `
 const modal = css<DescriptionProps>`
   ${shared}
-  margin-bottom: 0.5rem;
+  font-size: 1rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 1.5rem;
+  letter-spacing: 0.031rem;
 `
 const text = css<DescriptionProps>`
   font-size: 1.25rem;

@@ -5,6 +5,7 @@ export const GlobalStyle = createGlobalStyle`
   ${normalize()}
   
   :root {
+    --black: #000;
     --bg-color: lightgray;
     --bg-active: #3C4158;
     --txt-white: #FFF;

@@ -10,7 +10,7 @@ const shared = css<ButtonProps>`
   transition: 0.3s ease-in-out;
   font-weight: 600;
   border-radius: 0.75rem;
-  padding: 12px 16px;
+  padding: 0.75rem 1rem;
 `
 const secondary = css<ButtonProps>`
   ${shared}
@@ -54,8 +54,8 @@ const icon = css<ButtonProps>`
   line-height: 1.5rem;
 
   #masked {
-    width: 20px;
-    height: 20px;
+    width: 1.25rem;
+    height: 1.25rem;
     mask-image: url(${LikeInactive});
     background: #fff;
     transition: 0.3s ease-in-out;
@@ -102,18 +102,18 @@ const filter = css<ButtonProps>`
   font-weight: 500;
   border: none;
   background-color: transparent;
-  border-bottom: 1px solid #E0E0E0;
+  border-bottom: 0.063rem solid #e0e0e0;
   border-radius: 0;
-  padding: 6px 18px;
-  min-width: 139px;
+  padding: 0.375rem 1.125rem;
+  min-width: 8.688rem;
 
   &:hover {
-    border-bottom: 1px solid var(--button-bg-hover);
+    border-bottom: 0.063rem solid var(--button-bg-hover);
   }
 
   &:disabled {
     color: var(--bg-active);
-    border-bottom: 1px solid var(--button-bg-default);
+    border-bottom: 0.063rem solid var(--button-bg-default);
   }
 `
 
@@ -122,7 +122,7 @@ const text = css<ButtonProps>`
   font-size: 0.875rem;
   font-weight: 400;
   line-height: 1rem;
-  letter-spacing: 0.5px;
+  letter-spacing: 0.031rem
   color: var(--button-bg-hover);
   background: transparent;
   border: none;

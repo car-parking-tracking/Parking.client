@@ -9,9 +9,20 @@ const shared = css<TitleProps>`
 `
 const modal = css<TitleProps>`
   ${shared}
-  margin-bottom: 0.5rem;
+  color: var(--black);
+  line-height: 1.75rem;
+  font-size: 1.5rem;
 `
+
 export const Title = styled.h1<TitleProps>`
+  ${({ variant }) => {
+    switch (variant) {
+      case 'modal':
+        return modal
+    }
+  }}
+`
+export const DefaultTitle = styled.h2<TitleProps>`
   ${({ variant }) => {
     switch (variant) {
       case 'modal':

@@ -62,7 +62,7 @@ export const DataList = styled.div`
     0 1.5625rem 0.9375rem 0 rgba(0, 0, 0, 0.03);
 
   ::-webkit-scrollbar {
-    width: 1px;
+    width: 0.063rem;
   }
   ::-webkit-scrollbar-thumb {
     background-color: transparent;

@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 
 import { Section } from './main.styles'
-import { Modal, YaMap, Header, AuthForm } from '@components/organisms'
+import { Modal, YaMap, Header, AuthForm, Account } from '@components/organisms'
 
 export const MainTemplate: React.FC = () => {
   const [showModal, setShowModal] = useState(false)
@@ -16,7 +16,8 @@ export const MainTemplate: React.FC = () => {
       <YaMap />
       {showModal && (
         <Modal setOpenCallback={setShowModal}>
-          <AuthForm />
+          {/* <AuthForm /> */}
+          <Account />
         </Modal>
       )}
     </Section>

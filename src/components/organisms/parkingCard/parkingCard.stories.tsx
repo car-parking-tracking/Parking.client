@@ -5,9 +5,9 @@ import { ParkingCardProps } from './parkingCard.types'
 import { ParkingCard } from './parkingCard'
 
 const ParkingCardContainer = styled.div`
-  width: 283px;
-  height: 313px;
-  border-radius: 12px;
+  width: 17.688rem;
+  height: 19.563rem;
+  border-radius: 0.75rem;
   background: #fff;
 `
 
