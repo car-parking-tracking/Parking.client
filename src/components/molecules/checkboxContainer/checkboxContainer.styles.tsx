@@ -44,7 +44,7 @@ export const Text = styled.p`
   font-weight: 400;
   line-height: 1rem;
   max-width: 17.68rem;
-  letter-spacing: 0.5px;
+  letter-spacing: 0.031rem;
 `
 
 export const Span = styled.span`

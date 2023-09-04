@@ -26,6 +26,8 @@ export const MainTemplate: React.FC = () => {
         <Modal setOpenCallback={setShowModal}>
           <FavoriteList items={favoriteItems} />
           {/* <AuthForm /> */}
+          {/* <AuthForm /> */}
+          <Account />
         </Modal>
       )}
     </Section>
