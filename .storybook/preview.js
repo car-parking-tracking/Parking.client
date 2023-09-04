@@ -11,7 +11,7 @@ const preview = {
       },
     },
   },
-  decorators: [decorateWithRouter, decorateWithLoginContext]
+  decorators: [decorateWithRouter, decorateWithLoginContext],
 }
 
 export default preview

@@ -5,7 +5,7 @@ import { InputSearchProps } from './inputSearch.types'
 
 export default {
   title: 'Search',
-  component: InputSearch
+  component: InputSearch,
 }
 
 const Template: StoryFn<InputSearchProps> = args => <InputSearch {...args} />
