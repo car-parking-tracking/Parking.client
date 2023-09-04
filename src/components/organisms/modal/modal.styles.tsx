@@ -6,6 +6,7 @@ export const View = styled.div<{ visible: boolean }>`
   display: ${({ visible }) => (visible ? 'flex' : 'none')};
   justify-content: end;
   position: absolute;
+  z-index: 1;
 `
 
 export const CloseButton = styled.button`
