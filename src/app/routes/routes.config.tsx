@@ -19,7 +19,7 @@ export const MAIN_ROUTES: Routes = [
     path: PAGES.MAIN,
     exact: true,
     main: () => <MainPage />,
-    sidebar: () => <></>,
+    sidebar: () => <Account />,
   },
   {
     path: PAGES.PROFILE,
@@ -34,6 +34,6 @@ export const MAIN_ROUTES: Routes = [
   {
     path: PAGES.AUTH,
     main: () => <MainPage />,
-    sidebar: () => <AuthForm/>,
+    sidebar: () => <AuthForm />,
   },
 ]

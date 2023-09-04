@@ -1,5 +1,5 @@
 import { FC } from 'react'
-import { Link, NavLink } from 'react-router-dom'
+import { NavLink } from 'react-router-dom'
 
 import { getInitials } from '../../../utils'
 
@@ -34,7 +34,7 @@ export const Header: FC<HeaderProps> = ({ onBtnClick, isLoggedIn }) => {
         </AccountBtn>
       ) : (
         <LoginBtn variant="secondary" onClick={onBtnClick}>
-          <Link to="/profile">Вход</Link>
+          Вход
         </LoginBtn>
       )}
     </Wrapper>
