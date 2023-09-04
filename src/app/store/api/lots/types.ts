@@ -7,7 +7,11 @@ type ITariff = {
   HourPrice?: number
 }
 
-export interface ILot {
+export type ILotCollection = {
+  type: string
+  results: ILotItem[]
+}
+export interface ILotItem {
   id: number
   address: string
   car_capacity: number
@@ -16,4 +20,3 @@ export interface ILot {
   latitude: number
   longitude: number
 }
-

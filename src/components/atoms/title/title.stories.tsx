@@ -23,7 +23,7 @@ export default {
       },
       control: {
         type: 'select',
-      }
+      },
     },
     fontWeight: {
       description: 'Font weight',

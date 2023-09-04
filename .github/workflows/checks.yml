@@ -1,6 +1,6 @@
 name: Start all checks
 
-on: 
+on:
   pull_request:
     branches:
       - '**'
