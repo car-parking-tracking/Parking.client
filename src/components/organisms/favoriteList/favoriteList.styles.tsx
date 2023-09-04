@@ -5,6 +5,7 @@ export const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+  height: 100%;
 `
 
 export const Title = styled(DefaultTitle)`
@@ -19,11 +20,11 @@ export const Notification = styled(Description)`
 `
 export const List = styled.div`
   display: flex;
-  max-height: 619px;
-  width: 430px;
+  width: 100%;
   flex-direction: column;
   margin-top: 28px;
   gap: 24px;
+  overflow-y: scroll;
   overflow-y: auto;
 
   ::-webkit-scrollbar {
