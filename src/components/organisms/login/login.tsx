@@ -9,31 +9,35 @@ import { Button } from '@components/atoms'
 
 import { yupSchemaAuthForm } from '../../../utils/validate'
 
-export const Login: FC<LoginProps> = () => {
+export const Login: FC<LoginProps> = ({ onOpenRegister }) => {
 
   type FormData = yup.InferType<typeof yupSchemaAuthForm>;
 
   const form = useForm({
+    mode: 'onChange',
     resolver: yupResolver(yupSchemaAuthForm)
   })
 
   const onSubmit = (data: FormData) => console.log(data);
 
+  console.log(form.formState.errors);
+
   return (
     <Container onSubmit={form.handleSubmit(onSubmit)}>
       <InputsContainer>
         <InputForm
+          {...form.register('email')}
           type="text"
           name="email"
           placeholder="E-mail"
-          isError={false}
-          errorMessage="Проверьте адрес почты, он должен состоять из латинских символов"
+          isError={!!form.formState.errors.email?.message}
+          errorMessage={form.formState.errors.email?.message}
         />
-        <InputForm type="password" name="password" placeholder="Пароль" />
+        <InputForm {...form.register('password')} type="password" name="password" placeholder="Пароль" />
       </InputsContainer>
       <ButtonTextContainer>
         <Button type='button' variant='text'>Восстановить пароль</Button>
-        <Button type='button' variant='text'>Зарегистрироваться</Button>
+        <Button type='button' variant='text' onClick={onOpenRegister}>Зарегистрироваться</Button>
       </ButtonTextContainer>
       <ButtonGroup>
         <Button type='submit' variant="primary">Войти</Button>
