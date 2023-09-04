@@ -5,6 +5,7 @@ export const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+  height: 100%;
 `
 
 export const Title = styled(DefaultTitle)`
@@ -20,9 +21,8 @@ export const Notification = styled(Description)`
 export const List = styled.div`
   display: flex;
   width: 100%;
-  max-height: 619px;
   flex-direction: column;
   margin-top: 28px;
   gap: 24px;
-  overflow-y: auto;
+  overflow-y: scroll;
 `
