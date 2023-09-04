@@ -1,18 +1,17 @@
-import { MemoryRouter } from 'react-router-dom';
+import { MemoryRouter } from 'react-router-dom'
 import { LoginContextProvider } from '../src/context'
-import {GlobalStyle} from '../src/global-styles'
+import { GlobalStyle } from '../src/global-styles'
 
-
-export const decorateWithRouter = (Story) => (
+export const decorateWithRouter = Story => (
   <MemoryRouter>
-    <GlobalStyle/>
+    <GlobalStyle />
     <Story />
   </MemoryRouter>
 )
 
-export const decorateWithLoginContext = (Story) => (
+export const decorateWithLoginContext = Story => (
   <LoginContextProvider>
-    <GlobalStyle/>
+    <GlobalStyle />
     <Story />
   </LoginContextProvider>
 )

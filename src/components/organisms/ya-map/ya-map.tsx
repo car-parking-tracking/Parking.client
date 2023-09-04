@@ -34,8 +34,6 @@ export const YaMap: React.FC = () => {
     skip: !value,
   })
 
-  const { data: lotData } = useFetchLotByIdQuery(parkingID ?? skipToken)
-  
   const handleOpenBalloon = (e: IEvent) => {
     const parkingID = e.get('objectId')
     if (typeof parkingID !== 'number') return
@@ -60,11 +58,12 @@ export const YaMap: React.FC = () => {
   useEffect(() => {
     if (lotsCollectionData) {
       const lotsCollection = lotsCollectionData.results.map((lot: any) => {
-        const nameParking = `Парковка № ${lot.id} `
+        const nameParking = `Парковка № ${lot.id}`
         return {
           name: nameParking,
           description: lot.address,
           coords: [lot.latitude, lot.longitude],
+          id: lot.id,
         }
       })
       setOptions(() => [...lotsCollection])
@@ -79,16 +78,17 @@ export const YaMap: React.FC = () => {
   }, [geocodeData])
 
   const handleInputChange = (newValue: string) => {
+    newValue = newValue.replace('Парковка №', '')
     setValue(newValue)
   }
 
   const handleOptionClick = (newValue: string) => {
     let obg
 
-    if (isNaN(Number(newValue))) {
+    if (!isNaN(Number(newValue))) {
       obg = options.find(item => newValue.includes(item.name))
     } else {
-      obg = options.find(item => item.name === Number(newValue))
+      obg = options.find(item => item.id === Number(newValue.replace('Парковка № ', '')))
     }
 
     let coords
@@ -101,9 +101,8 @@ export const YaMap: React.FC = () => {
         setNewCoords(coords)
         setZoom(21)
       } else {
-        const parkingNumber = obg.name.replace('Парковка №', '').trim()
         setNewCoords(obg.coords)
-        setParkingID(parkingNumber)
+        setParkingID(obg.id)
         //manager?.objects.balloon.open(Number(obg.name)) //TODO: доделать открытие балуна
         setZoom(21)
       }

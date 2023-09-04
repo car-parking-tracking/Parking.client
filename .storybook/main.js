@@ -1,4 +1,4 @@
-import path from 'path';
+import path from 'path'
 /** @type { import('@storybook/react-webpack5').StorybookConfig } */
 const config = {
   stories: ['../src/**/*.mdx', '../src/**/*.stories.@(js|jsx|mjs|ts|tsx)'],
@@ -16,14 +16,14 @@ const config = {
         return rule
       }),
     ]
-    
+
     config.module.rules.push({
       test: /\.(png|jpg|gif|svg)$/i,
-        loader: "file-loader",
-        options: {
-          name: "[name].[ext]",
-        },
-    })  
+      loader: 'file-loader',
+      options: {
+        name: '[name].[ext]',
+      },
+    })
 
     config.module.rules.push({
       test: /\.(ts|tsx)$/,
@@ -36,11 +36,11 @@ const config = {
 
     config.resolve.extensions = ['.tsx', '.ts', '.jsx', '.js']
     config.resolve.alias = {
-      "@components": path.resolve(__dirname, "../", "src/components"),
-      "@assets": path.resolve(__dirname, "../", "src/assets"),
-      "@constants": path.resolve(__dirname, "../", "src/constants"),
-      "@mocks": path.resolve(__dirname, "../", "src/mocks"),
-      "@pages": path.resolve(__dirname, "../", "src/pages"),
+      '@components': path.resolve(__dirname, '../', 'src/components'),
+      '@assets': path.resolve(__dirname, '../', 'src/assets'),
+      '@constants': path.resolve(__dirname, '../', 'src/constants'),
+      '@mocks': path.resolve(__dirname, '../', 'src/mocks'),
+      '@pages': path.resolve(__dirname, '../', 'src/pages'),
     }
     return config
   },
