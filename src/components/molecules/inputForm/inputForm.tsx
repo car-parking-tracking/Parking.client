@@ -7,8 +7,8 @@ import { Container, Label, Span, StyledInput } from './inputForm.styles'
 export const InputForm: FC<InputFormProps> = ({ name, type, placeholder, errorMessage, isError }) => {
   return (
     <Container>
-      <StyledInput type={type} variant="form" name={name} placeholder={placeholder} required />
       <Label htmlFor={name}>{placeholder}</Label>
+      <StyledInput type={type} variant="form" name={name} placeholder={placeholder} required />
       {isError && <Span>{errorMessage}</Span>}
     </Container>
   )
