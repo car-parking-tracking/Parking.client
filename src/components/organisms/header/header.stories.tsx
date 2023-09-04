@@ -1,7 +1,7 @@
 import { StoryFn } from '@storybook/react'
 import { useContext } from 'react'
 
-import { Header } from './header.component'
+import { Header } from './header'
 import { HeaderProps } from './header.types'
 import { LoginContext } from '../../../context'
 

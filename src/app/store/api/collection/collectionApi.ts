@@ -13,9 +13,9 @@ export const collectionApi = baseApi.injectEndpoints({
         providesTags: [{ type: 'COLLECTION_DATA', id: 'INFO' }],
       }),
     }),
-    fetchFeatureIdCollection: builder.query<IFeatureCollection, number>({
-      query: (id: number) => ({
-        url: `${COLLECTION_API_PATH}/${id}`,
+    fetchFeatureIdCollection: builder.query<IFeatureCollection, string>({
+      query: (id: string) => ({
+        url: `${COLLECTION_API_PATH}${id}`,
         method: HTTP_METHOD.GET,
         providesTags: [{ type: 'COLLECTION_DATA', id: 'INFO' }],
       }),

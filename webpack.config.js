@@ -1,44 +1,34 @@
 const path = require('path')
-const Dotenv = require('dotenv-webpack');
+const Dotenv = require('dotenv-webpack')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 
-const isProduction = process.env.NODE_ENV == 'production'
-console.log('Production mode: ', isProduction)
+const PATHS = {
+  src: path.join(__dirname, './src'),
+  dist: path.resolve(__dirname, './dist'),
+}
 
 module.exports = {
-  mode: isProduction ? 'production' : 'development',
+  externals: {
+    paths: PATHS,
+  },
   entry: {
-    index: './src/app.tsx',
+    index: path.join(PATHS.src, '/app.tsx'),
   },
-  devServer: {
-    open: true,
-    compress: true,
-    hot: 'only',
-    static: './dist',
-    host: 'localhost',
-    port: 3000,
-    host: '0.0.0.0',
-    historyApiFallback: true,
-    client: {
-      overlay: false,
-    },
-  },
-  output: {
-    path: path.resolve(__dirname, 'dist'),
-    clean: true,
-  },
-  devtool: 'inline-source-map',
   plugins: [
     new HtmlWebpackPlugin({
       title: 'Development',
-      template: './src/index.html',
+      template: path.join(PATHS.src, '/index.html'),
     }),
     new Dotenv(),
   ],
+  output: {
+    path: PATHS.dist,
+    clean: true,
+  },
   module: {
     rules: [
       {
-        test: /\.tsx?$/,
+        test: /\.(ts|tsx)?$/,
         use: 'ts-loader',
         exclude: /node_modules/,
       },
@@ -47,27 +37,25 @@ module.exports = {
         issuer: /\.[jt]sx?$/,
         use: ['@svgr/webpack'],
       },
-       {
+      {
         test: /\.(png|jpg|gif|svg)$/i,
-        loader: "file-loader",
+        loader: 'file-loader',
+        exclude: /node_modules/,
         options: {
-          name: "[name].[ext]",
+          name: '[name].[ext]',
         },
       },
     ],
   },
-  optimization: {
-    runtimeChunk: 'single',
-  },
   resolve: {
     extensions: ['.tsx', '.ts', '.jsx', '.js', '...'],
     alias: {
-		  "@components": path.resolve(__dirname, "src/components"),
-      "@assets": path.resolve(__dirname, "src/assets"),
-      "@constants": path.resolve(__dirname, "src/constants"),
-      "@mocks": path.resolve(__dirname, "src/mocks"),
-      "@pages": path.resolve(__dirname, "src/pages"),
-      "@app": path.resolve(__dirname, "src/app"),
-		}
+      '@components': path.resolve(__dirname, 'src/components'),
+      '@assets': path.resolve(__dirname, 'src/assets'),
+      '@constants': path.resolve(__dirname, 'src/constants'),
+      '@mocks': path.resolve(__dirname, 'src/mocks'),
+      '@pages': path.resolve(__dirname, 'src/pages'),
+      '@app': path.resolve(__dirname, 'src/app'),
+    },
   },
 }

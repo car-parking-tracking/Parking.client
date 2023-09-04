@@ -23,7 +23,7 @@ export default {
       },
       control: {
         type: 'select',
-      }
+      },
     },
     fontWeight: {
       description: 'Font weight',
@@ -44,7 +44,9 @@ export default {
   },
 }
 
-const Template: StoryFn<DescriptionProps> = args => <Description {...args} style={{ fontSize: `${args.fontSize}px`, color: args.textColor, fontWeight: args.fontWeight }} />
+const Template: StoryFn<DescriptionProps> = args => (
+  <Description {...args} style={{ fontSize: `${args.fontSize}px`, color: args.textColor, fontWeight: args.fontWeight }} />
+)
 
 export const Default = Template.bind({})
 Default.args = {
