@@ -9,15 +9,17 @@ export const GlobalStyle = createGlobalStyle`
     --bg-active: #3C4158;
     --txt-white: #FFF;
     --button-bg-default: #1D65ED;
+    --blue-light: #f2f9ff;
+    --grey-button: #e0e0e0;
     --grey: #878787;
-    --grey-light: #E0E0E0;
+    --grey-light: #F8FAFB;
     --button-bg-hover: #1655BB;
     --button-bg-active: #3D3ACE;
     --button-bg-disabled: #F4F3FE;
     --button-text-disabled: #C5C0DB;
     --search-item-hover: #F8FAFB;
-    --search-item-desc: #1B1F3BA6;
-    --search-item-name: #191C30E5;
+    --item-desc: #1B1F3BA6;
+    --item-name: #191C30E5;
     --parking-card-width: 283px;
     --parking-card-height: 313px;
   }

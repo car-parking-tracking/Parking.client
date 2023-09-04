@@ -72,11 +72,11 @@ export const DataList = styled.div`
   }
 `
 export const Name = styled.p`
-  color: var(--search-item-name);
+  color: var(--item-name);
   line-height: 1.5rem;
 `
 export const Description = styled.p`
-  color: var(--search-item-desc);
+  color: var(--item-desc);
   font-family: 'Manrope', sans-serif;
   line-height: 1.25rem;
   font-size: 0.8125rem;

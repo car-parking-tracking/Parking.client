@@ -11,10 +11,10 @@ const shared = css<ButtonProps>`
   font-weight: 600;
   border-radius: 0.75rem;
   padding: 12px 16px;
+  border: none;
 `
 const secondary = css<ButtonProps>`
   ${shared}
-  border: 0.125rem solid transparent;
   background-color: var(--grey);
 
   &:hover {
@@ -29,7 +29,6 @@ const secondary = css<ButtonProps>`
 const primary = css<ButtonProps>`
   ${shared}
   background-color: var(--button-bg-default);
-  border: none;
 
   &:hover {
     background-color: var(--button-bg-hover);
@@ -44,7 +43,6 @@ const primary = css<ButtonProps>`
 const icon = css<ButtonProps>`
   ${shared}
   background-color: var(--button-bg-default);
-  border: none;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -102,7 +100,7 @@ const filter = css<ButtonProps>`
   font-weight: 500;
   border: none;
   background-color: transparent;
-  border-bottom: 1px solid #E0E0E0;
+  border-bottom: 1px solid #e0e0e0;
   border-radius: 0;
   padding: 6px 18px;
   min-width: 139px;
