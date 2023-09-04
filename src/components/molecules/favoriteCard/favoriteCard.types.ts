@@ -1,5 +1,4 @@
 export interface FavoriteCardProps {
-    id: number
-    address: string
-    is_favorited: boolean
+  id: number
+  address: string
 }

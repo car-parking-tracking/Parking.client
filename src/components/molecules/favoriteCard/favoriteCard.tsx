@@ -3,7 +3,7 @@ import { FC, useState } from 'react'
 import { FavoriteCardProps } from './favoriteCard.types'
 import { Wrapper, Title, Address, ButtonGroup, ButtonSelected, ButtonDelete, Info, ButtonRestore } from './favoriteCard.styles'
 
-export const FavoriteCard: FC<FavoriteCardProps> = ({ id, address, is_favorited }) => {
+export const FavoriteCard: FC<FavoriteCardProps> = ({ id, address }) => {
   const [isDeleted, setIsDeleted] = useState(false)
 
   const handleDeleteClick = () => {
