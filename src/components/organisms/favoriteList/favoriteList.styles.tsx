@@ -9,26 +9,26 @@ export const Wrapper = styled.div`
 `
 
 export const Title = styled(DefaultTitle)`
-  padding-bottom: 8px;
+  padding-bottom: 0.5rem;
 `
 
 export const Notification = styled(Description)`
   color: #3c4158cc;
   font-size: 1rem;
-  line-height: 24px;
+  line-height: 1.5rem;
   letter-spacing: 0.5px;
 `
 export const List = styled.div`
   display: flex;
-  width: 100%;
+  width: 26.875rem;
   flex-direction: column;
-  margin-top: 28px;
-  gap: 24px;
-  overflow-y: scroll;
+  margin-top: 1.75rem;
+  gap: 1.5rem;
   overflow-y: auto;
+  padding-bottom: 0.375rem;
 
   ::-webkit-scrollbar {
-    width: 7px;
+    width: 0.4375rem;
   }
 
   ::-webkit-scrollbar-track {
@@ -37,7 +37,7 @@ export const List = styled.div`
 
   ::-webkit-scrollbar-thumb {
     background: #878787;
-    border-radius: 16px;
+    border-radius: 1rem;
     border: 1px solid #fff;
   }
 `
