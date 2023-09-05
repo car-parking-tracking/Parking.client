@@ -100,7 +100,7 @@ const filter = css<ButtonProps>`
   font-weight: 500;
   border: none;
   background-color: transparent;
-  border-bottom: 1px solid #E0E0E0;
+  border-bottom: 1px solid #e0e0e0;
   border-radius: 0;
   padding: 0.375rem 1.125rem;
   min-width: 8.688rem;
@@ -120,7 +120,7 @@ const text = css<ButtonProps>`
   font-size: 0.875rem;
   font-weight: 400;
   line-height: 1rem;
-  letter-spacing: 0.031rem
+  letter-spacing: 0.031rem;
   color: var(--button-bg-hover);
   background: transparent;
   padding: 0;

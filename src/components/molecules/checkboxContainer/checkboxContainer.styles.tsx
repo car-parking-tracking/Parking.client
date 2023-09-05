@@ -28,7 +28,7 @@ export const Checkbox = styled.input`
   z-index: -1;
 
   :checked {
-    &+Label::before {
+    & + Label::before {
       content: url(${CheckboxActive});
       background-color: var(--button-bg-default);
       display: flex;

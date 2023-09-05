@@ -63,5 +63,5 @@ export const AccountBtn = styled(Button)`
   align-items: center;
   justify-content: center;
   border-radius: 12px;
-  background: #BBC1C7;
+  background: #bbc1c7;
 `

@@ -25,12 +25,12 @@ export const CloseIcon = styled.img`
   height: 1rem;
 `
 export const Container = styled.div`
-  width: 29.5rem;
-  border-radius: 1.5rem 0 0 0;
   display: flex;
   flex-direction: column;
+  position: relative;
+  width: 29.5rem;
+  border-radius: 1.5rem 0 0 0;
   margin-top: 5rem;
   padding: 2rem;
   background-color: rgba(255, 255, 255, 1);
-  position: relative;
 `
