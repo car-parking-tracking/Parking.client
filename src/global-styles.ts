@@ -8,8 +8,9 @@ export const GlobalStyle = createGlobalStyle`
     --bg-color: lightgray;
     --bg-active: #3C4158;
     --txt-white: #FFF;
-    --button-bg-default: #218BEE;
+    --button-bg-default: #1D65ED;
     --grey: #878787;
+    --grey-light: #E0E0E0;
     --button-bg-hover: #1655BB;
     --button-bg-active: #3D3ACE;
     --button-bg-disabled: #F4F3FE;
@@ -19,6 +20,7 @@ export const GlobalStyle = createGlobalStyle`
     --search-item-name: #191C30E5;
     --parking-card-width: 283px;
     --parking-card-height: 313px;
+    --red: #FF2121;
   }
 
   html,

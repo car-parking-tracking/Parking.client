@@ -9,7 +9,7 @@ export default {
     variant: {
       type: 'string',
       description: 'button appearance option',
-      options: ['secondary', 'primary', 'outlined', 'icon'],
+      options: ['secondary', 'primary', 'outlined', 'icon', 'filter'],
       control: {
         type: 'radio',
       },

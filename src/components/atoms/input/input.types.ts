@@ -3,4 +3,5 @@ export interface InputProps {
   name: string
   placeholder?: string
   autoComplete?: 'off' | 'on'
+  isError?: boolean
 }
