@@ -32,5 +32,6 @@ export const Container = styled.div`
   margin-top: 5rem;
   padding: 2rem;
   background-color: rgba(255, 255, 255, 1);
+  overflow: scroll;
   position: relative;
 `
