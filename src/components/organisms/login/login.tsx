@@ -8,9 +8,11 @@ import { InputForm } from '@components/molecules'
 import { Button } from '@components/atoms'
 
 import { yupSchemaAuthForm } from '../../../utils/validate'
+import { useNavigate } from 'react-router-dom'
 
 export const Login: FC<LoginProps> = ({ onOpenRegister }) => {
   type FormData = yup.InferType<typeof yupSchemaAuthForm>
+  const navigate = useNavigate()
 
   const {
     register,
@@ -21,7 +23,10 @@ export const Login: FC<LoginProps> = ({ onOpenRegister }) => {
     resolver: yupResolver(yupSchemaAuthForm),
   })
 
-  const onSubmit: SubmitHandler<ILoginValues> = (data: FormData) => console.log(data)
+  const onSubmit: SubmitHandler<ILoginValues> = (data: FormData) => {
+    navigate('/')
+    console.log(data)
+  }
 
   return (
     <Container onSubmit={handleSubmit(onSubmit)} noValidate>
