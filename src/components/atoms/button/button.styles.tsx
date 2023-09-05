@@ -103,7 +103,7 @@ const filter = css<ButtonProps>`
   font-weight: 500;
   border: none;
   background-color: transparent;
-  border-bottom: 1px solid #E0E0E0;
+  border-bottom: 1px solid #e0e0e0;
   border-radius: 0;
   padding: 6px 18px;
   min-width: 139px;
@@ -138,6 +138,76 @@ const text = css<ButtonProps>`
   }
 `
 
+const animated = css<ButtonProps>`
+  ${shared}
+  width: 9.75rem;
+  padding: 0.6875rem 1.25rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-variant-numeric: lining-nums proportional-nums;
+  line-height: 1.5;
+  background: var(--button-bg-default);
+  border: 1px solid var(--button-bg-default);
+
+  &:has(#icon) {
+    justify-content: space-between;
+    color: var(--bg-active);
+    background: var(--txt-white);
+    transition: 0.5ms ease-out;
+  }
+
+  #icon {
+    position: relative;
+    width: 16px;
+    height: 16px;
+  }
+
+  #icon::before,
+  #icon::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0px;
+    background: var(--button-bg-default);
+    border-radius: 20px;
+  }
+
+  #icon::before {
+    width: 2px;
+    height: 0;
+    animation: 0.5s ease-in showBefore forwards;
+  }
+
+  #icon::after {
+    height: 2px;
+    width: 0;
+    animation: 1s ease-out 0.5s showAfter forwards;
+  }
+
+  @keyframes showBefore {
+    from {
+      height: 0;
+      transform: rotate(-45deg) translate(4px, -5px);
+    }
+    to {
+      height: 48%;
+      transform: rotate(-45deg) translate(1.5px, 1px);
+    }
+  }
+
+  @keyframes showAfter {
+    from {
+      width: 0;
+      transform: rotate(-50deg) translate(3px, 3px);
+    }
+    to {
+      width: 100%;
+      transform: rotate(-50deg) translate(6px, -3px);
+    }
+  }
+`
+
 export const Button = styled.button<ButtonProps>`
   ${({ variant }) => {
     switch (variant) {
@@ -153,6 +223,8 @@ export const Button = styled.button<ButtonProps>`
         return filter
       case 'text':
         return text
+      case 'animated':
+        return animated
     }
   }}
 `
