@@ -123,7 +123,6 @@ const text = css<ButtonProps>`
   letter-spacing: 0.031rem
   color: var(--button-bg-hover);
   background: transparent;
-  border: none;
   padding: 0;
 
   &:hover {

@@ -1,8 +1,8 @@
 import { FC, useState } from 'react'
+import { useNavigate } from 'react-router'
 import { ModalProps } from './modal.types'
-import { CloseButton, View, Container } from './modal.styles'
-import { useNavigate } from 'react-router-dom'
-import close from '@assets/icons/close-icon.svg'
+import close from '@assets/icons/close-icon.png'
+import { CloseButton, View, Container, CloseIcon } from './modal.styles'
 
 export const Modal: FC<ModalProps> = ({ setOpenCallback, children }) => {
   const [open, setOpen] = useState<boolean>(true)
@@ -18,7 +18,7 @@ export const Modal: FC<ModalProps> = ({ setOpenCallback, children }) => {
     <View visible={open}>
       <Container>
         <CloseButton onClick={handleClose}>
-          <img src={close} alt="close_icon" />
+          <CloseIcon src={close} alt="Закрыть" />
         </CloseButton>
         {children}
       </Container>

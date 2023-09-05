@@ -1,8 +1,8 @@
-import { FC, useState } from 'react'
-import { useForm } from 'react-hook-form'
-import * as yup from "yup";
-import { yupResolver } from '@hookform/resolvers/yup';
-import { RegisterProps } from './register.types'
+import { FC } from 'react'
+import { useForm, SubmitHandler } from 'react-hook-form'
+import * as yup from 'yup'
+import { yupResolver } from '@hookform/resolvers/yup'
+import { IAuthValues, RegisterProps } from './register.types'
 import { ButtonGroup, Container, InputsContainer } from './register.styles'
 import { InputForm, CheckboxContainer } from '@components/molecules'
 import { Button } from '@components/atoms'
@@ -10,33 +10,80 @@ import { Button } from '@components/atoms'
 import { yupSchemaRegForm } from '../../../utils/validate'
 
 export const Register: FC<RegisterProps> = () => {
+  type FormData = yup.InferType<typeof yupSchemaRegForm>
 
-  type FormData = yup.InferType<typeof yupSchemaRegForm>;
-
-  const form = useForm({
-    resolver: yupResolver(yupSchemaRegForm)
+  const {
+    register,
+    handleSubmit,
+    formState: { errors, isValid },
+  } = useForm<IAuthValues>({
+    mode: 'onChange',
+    resolver: yupResolver(yupSchemaRegForm),
   })
 
-  const onSubmit = (data: FormData) => console.log(data);
+  const onSubmit: SubmitHandler<IAuthValues> = (data: FormData) => console.log(data)
 
   return (
-    <Container onSubmit={form.handleSubmit(onSubmit)}>
+    <Container onSubmit={handleSubmit(onSubmit)} noValidate>
       <InputsContainer>
-        <InputForm {...form.register("last_name")} type="text" name="last_name" placeholder="Фамилия" isError={false} errorMessage="" />
-        <InputForm type="text" name="name" placeholder="Имя" isError={false} errorMessage="Проверьте написание имени" />
+        <InputForm
+          type="text"
+          name="last_name"
+          register={register}
+          placeholder="Фамилия"
+          isError={!!errors.last_name?.message}
+          errorMessage={errors.last_name?.message}
+          required
+        />
+        <InputForm
+          type="text"
+          name="first_name"
+          register={register}
+          placeholder="Имя"
+          isError={!!errors.first_name?.message}
+          errorMessage={errors.first_name?.message}
+          required
+        />
         <InputForm
           type="text"
           name="email"
+          register={register}
           placeholder="E-mail"
-          isError={false}
-          errorMessage="Проверьте адрес почты, он должен состоять из латинских символов"
+          isError={!!errors.email?.message}
+          errorMessage={errors.email?.message}
+          required
         />
-        <InputForm type="password" name="password" placeholder="Пароль" />
-        <InputForm type="password" name="password" placeholder="Пароль повторно" isError={false} errorMessage="Значения не совпадают, проверьте пароль" />
+        <InputForm
+          type="password"
+          name="password"
+          register={register}
+          placeholder="Пароль"
+          isError={!!errors.password?.message}
+          errorMessage={errors.password?.message}
+          required
+        />
+        <InputForm
+          type="password"
+          name="password_repeat"
+          register={register}
+          placeholder="Пароль повторно"
+          isError={!!errors.password_repeat?.message}
+          errorMessage={errors.password_repeat?.message}
+          required
+        />
       </InputsContainer>
-      <CheckboxContainer name='checkbox' id='reg-checkbox' placeholder='Я принимаю «Условия использования» и «Политику конфиденциальности»' />
+      <CheckboxContainer
+        name="checkbox"
+        id="reg-checkbox"
+        register={register}
+        placeholder="Я принимаю «Условия использования» и «Политику конфиденциальности»"
+        required={true}
+        isError={!!errors.checkbox?.message}
+      />
       <ButtonGroup>
-        <Button type='submit' variant="primary">Зарегистрироваться</Button>
+        <Button type="submit" variant="primary" disabled={!isValid}>
+          Зарегистрироваться
+        </Button>
       </ButtonGroup>
     </Container>
   )

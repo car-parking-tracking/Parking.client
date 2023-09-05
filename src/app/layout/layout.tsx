@@ -7,16 +7,17 @@ import { MAIN_ROUTES } from '@app/routes/routes.config'
 
 export const Layout: FC<LayoutProps> = props => {
   const [showModal, setShowModal] = useState(false)
+  const [logged, setLogged] = useState(false)
 
   const handleOpenModal = () => {
     setShowModal(true)
+    setLogged(true)
   }
 
   return (
     <Section>
-      <Header onBtnClick={handleOpenModal} isLoggedIn={false} />
+      <Header onBtnClick={handleOpenModal} isLoggedIn={logged} />
       {props.children}
-
       {showModal && (
         <Modal setOpenCallback={setShowModal}>
           <Routes>
@@ -26,7 +27,7 @@ export const Layout: FC<LayoutProps> = props => {
           </Routes>
         </Modal>
       )}
-      
+
       <Outlet />
     </Section>
   )
