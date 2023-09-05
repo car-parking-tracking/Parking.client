@@ -85,10 +85,12 @@ export const YaMap: React.FC = () => {
   const handleOptionClick = (newValue: string) => {
     let obg
 
+    newValue = newValue.replace('Парковка № ', '')
+
     if (isNaN(Number(newValue))) {
       obg = options.find(item => newValue.includes(item.name))
     } else {
-      obg = options.find(item => item.id === Number(newValue.replace('Парковка № ', '')))
+      obg = options.find(item => item.id === Number(newValue))
     }
 
     let coords
