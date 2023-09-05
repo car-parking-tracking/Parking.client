@@ -5,7 +5,7 @@ import { Container, Label, Span, Checkbox, Text } from './checkboxContainer.styl
 export const CheckboxContainer: FC<CheckboxContainerProps> = ({ name, id, placeholder, errorMessage, isError, register, required }) => {
   return (
     <Container>
-      <Checkbox {...register(name, { required })} type='checkbox' id={id} name={name} required={required} isError={isError} />
+      <Checkbox {...register(name, { required })} type="checkbox" id={id} name={name} required={required} isError={isError} />
       <Label htmlFor={id}></Label>
       <Text>{placeholder}</Text>
       {isError && <Span>{errorMessage}</Span>}

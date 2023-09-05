@@ -85,10 +85,12 @@ export const YaMap: React.FC = () => {
   const handleOptionClick = (newValue: string) => {
     let obg
 
-    if (!isNaN(Number(newValue))) {
+    newValue = newValue.replace('Парковка № ', '')
+
+    if (isNaN(Number(newValue))) {
       obg = options.find(item => newValue.includes(item.name))
     } else {
-      obg = options.find(item => item.id === Number(newValue.replace('Парковка № ', '')))
+      obg = options.find(item => item.id === Number(newValue))
     }
 
     let coords
@@ -141,7 +143,7 @@ export const YaMap: React.FC = () => {
               }}
             />
           )}
-          <ZoomControl options={{ position: { right: 32, top: 90 }, size: 'large' }} />
+          <ZoomControl options={{ position: { left: 32, top: 90 }, size: 'large' }} />
         </Map>
       </YMaps>
       {activePortal && (

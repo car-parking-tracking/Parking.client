@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import CloseIcon from '@assets/icons/close-icon.svg'
+import CloseIcon from '@assets/icons/close.svg'
 
 export const Wrapper = styled.div`
   width: 100%;

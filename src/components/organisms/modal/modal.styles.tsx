@@ -1,34 +1,36 @@
 import styled from 'styled-components'
 
 export const View = styled.div<{ visible: boolean }>`
-  width: 100vw;
+  position: absolute;
+  right: 0;
   height: 100vh;
   display: ${({ visible }) => (visible ? 'flex' : 'none')};
   justify-content: end;
-  position: absolute;
+  z-index: 1;
 `
-
 export const CloseButton = styled.button`
+  display: flex;
   cursor: pointer;
   border: none;
   background: transparent;
-  display: flex;
   align-items: center;
   margin: 0;
   padding: 0;
   position: absolute;
   right: 2rem;
-  top: 2.625rem;
+  top: 2.375rem;
 `
-
+export const CloseIcon = styled.img`
+  width: 1rem;
+  height: 1rem;
+`
 export const Container = styled.div`
-  width: 29.5rem;
-  border-radius: 1.5rem 0 0 0;
   display: flex;
   flex-direction: column;
+  position: relative;
+  width: 29.5rem;
+  border-radius: 1.5rem 0 0 0;
   margin-top: 5rem;
   padding: 2rem;
   background-color: rgba(255, 255, 255, 1);
-  overflow: auto;
-  position: relative;
 `

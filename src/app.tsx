@@ -1,13 +1,10 @@
 import React, { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
-import { BrowserRouter, Route, Routes } from 'react-router-dom'
-
-import MainPage from './pages/MainPage'
-
+import { BrowserRouter } from 'react-router-dom'
 import { GlobalStyle } from './global-styles'
-import { LoginContextProvider } from './context'
 import { Provider } from 'react-redux'
 import { store } from './app/store/store'
+import { App } from '@app/ui/app/app'
 
 const container = document.getElementById('root') as HTMLElement
 
@@ -16,11 +13,7 @@ const initialChildren = (
     <Provider store={store}>
       <GlobalStyle />
       <BrowserRouter>
-        <LoginContextProvider>
-          <Routes>
-            <Route path="/" element={<MainPage />} />
-          </Routes>
-        </LoginContextProvider>
+        <App />
       </BrowserRouter>
     </Provider>
   </StrictMode>
