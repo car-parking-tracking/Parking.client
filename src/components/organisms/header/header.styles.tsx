@@ -8,7 +8,7 @@ export const Wrapper = styled.header`
   left: 0;
   width: 100%;
   display: grid;
-  padding: 0.5rem 3rem 0.5rem 2rem;
+  padding: 0.5rem 3.5rem 0.5rem 2rem;
   grid-template-columns: 1fr max-content;
   align-items: center;
   column-gap: 3rem;
@@ -57,11 +57,11 @@ export const LoginBtn = styled(Button)`
 `
 export const AccountBtn = styled(Button)`
   padding: 0;
-  width: 2.6667rem;
-  height: 2.6667rem;
+  width: 3rem;
+  height: 3rem;
   display: flex;
   align-items: center;
   justify-content: center;
-  border-radius: 50%;
-  background: var(--button-bg-default);
+  border-radius: 12px;
+  background: #BBC1C7;
 `

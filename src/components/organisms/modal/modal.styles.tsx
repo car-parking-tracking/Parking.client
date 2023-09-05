@@ -8,12 +8,11 @@ export const View = styled.div<{ visible: boolean }>`
   position: absolute;
   z-index: 1;
 `
-
 export const CloseButton = styled.button`
+  display: flex;
   cursor: pointer;
   border: none;
   background: transparent;
-  display: flex;
   align-items: center;
   margin: 0;
   padding: 0;
@@ -21,7 +20,10 @@ export const CloseButton = styled.button`
   right: 2rem;
   top: 2.375rem;
 `
-
+export const CloseIcon = styled.img`
+  width: 1rem;
+  height: 1rem;
+`
 export const Container = styled.div`
   width: 29.5rem;
   border-radius: 1.5rem 0 0 0;
