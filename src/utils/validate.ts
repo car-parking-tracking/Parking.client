@@ -27,6 +27,7 @@ export const yupSchemaRegForm = yup.object().shape({
     .string()
     .required('Поле обязательно для заполнения')
     .oneOf([yup.ref('password'), ''], 'Пароли не совпадают'),
+  checkbox: yup.bool().oneOf([true], 'Необходимо принять условия').required()
 })
 
 export const yupSchemaAuthForm = yup.object().shape({

@@ -16,7 +16,6 @@ const secondary = css<ButtonProps>`
   ${shared}
   border: 0.125rem solid transparent;
   background-color: var(--grey);
-  box-shadow: 0rem 0.25rem 0.313rem rgba(0, 0, 0, 0.1);
 
   &:hover {
     background-color: var(--button-bg-default);
@@ -31,7 +30,6 @@ const primary = css<ButtonProps>`
   ${shared}
   background-color: var(--button-bg-default);
   border: none;
-  box-shadow: 0rem 0.25rem 0.313rem rgba(0, 0, 0, 0.1);
 
   &:hover {
     background-color: var(--button-bg-hover);
@@ -47,7 +45,6 @@ const icon = css<ButtonProps>`
   ${shared}
   background-color: var(--button-bg-default);
   border: none;
-  box-shadow: 0rem 0.25rem 0.313rem rgba(0, 0, 0, 0.1);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -86,7 +83,6 @@ const outlined = css<ButtonProps>`
   color: var(--bg-active);
   background-color: transparent;
   border: 0.125rem solid var(--button-bg-default);
-  box-shadow: 0rem 0.25rem 0.313rem rgba(0, 0, 0, 0.1);
 
   &:hover {
     color: var(--txt-white);
@@ -97,6 +93,47 @@ const outlined = css<ButtonProps>`
     border: 0.125rem solid var(--search-item-hover);
     background-color: transparent;
     color: var(--bg-active);
+  }
+`
+
+const filter = css<ButtonProps>`
+  ${shared}
+  color: var(--grey);
+  font-weight: 500;
+  border: none;
+  background-color: transparent;
+  border-bottom: 1px solid #E0E0E0;
+  border-radius: 0;
+  padding: 6px 18px;
+  min-width: 139px;
+
+  &:hover {
+    border-bottom: 1px solid var(--button-bg-hover);
+  }
+
+  &:disabled {
+    color: var(--bg-active);
+    border-bottom: 1px solid var(--button-bg-default);
+  }
+`
+
+const text = css<ButtonProps>`
+  ${shared}
+  font-size: 0.875rem;
+  font-weight: 400;
+  line-height: 1rem;
+  letter-spacing: 0.5px;
+  color: var(--button-bg-hover);
+  background: transparent;
+  border: none;
+  padding: 0;
+
+  &:hover {
+    color: var(--button-bg-hover);
+  }
+
+  &:disabled {
+    color: var(--button-bg-default);
   }
 `
 
@@ -111,6 +148,10 @@ export const Button = styled.button<ButtonProps>`
         return outlined
       case 'icon':
         return icon
+      case 'filter':
+        return filter
+      case 'text':
+        return text
     }
   }}
 `

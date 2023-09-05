@@ -14,3 +14,12 @@ export const Section = styled.div`
   justify-content: center;
   align-items: center;
 `
+export const ButtonGroup = styled.div`
+  display: flex;
+  gap: 1rem;
+`
+export const AuthForm = styled.form`
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+`
