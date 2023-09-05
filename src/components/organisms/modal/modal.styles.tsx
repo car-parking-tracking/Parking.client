@@ -1,11 +1,11 @@
 import styled from 'styled-components'
 
 export const View = styled.div<{ visible: boolean }>`
-  width: 100vw;
+  position: absolute;
+  right: 0;
   height: 100vh;
   display: ${({ visible }) => (visible ? 'flex' : 'none')};
   justify-content: end;
-  position: absolute;
   z-index: 1;
 `
 export const CloseButton = styled.button`
