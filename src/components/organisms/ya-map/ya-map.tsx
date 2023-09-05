@@ -141,7 +141,7 @@ export const YaMap: React.FC = () => {
               }}
             />
           )}
-          <ZoomControl options={{ position: { right: 32, top: 90 }, size: 'large' }} />
+          <ZoomControl options={{ position: { left: 32, top: 90 }, size: 'large' }} />
         </Map>
       </YMaps>
       {activePortal && (
