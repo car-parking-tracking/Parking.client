@@ -4,9 +4,8 @@ import { Container, NavContainer } from './authForm.styles'
 import { Register, Login } from '@components/organisms'
 import { Button } from '@components/atoms'
 
-export const AuthForm: FC<AuthFormProps> = ({ children }) => {
-
-  const [formType, setFormType] = useState<'login' | 'register'>('login');
+export const AuthForm: FC<AuthFormProps> = () => {
+  const [formType, setFormType] = useState<'login' | 'register'>('login')
 
   const handleLoginButton = () => {
     setFormType('login')
@@ -19,11 +18,15 @@ export const AuthForm: FC<AuthFormProps> = ({ children }) => {
   return (
     <Container>
       <NavContainer>
-        <Button type="button" variant="filter" onClick={handleLoginButton} disabled={formType === 'login'}>Вход</Button>
-        <Button type="button" variant="filter" onClick={handleRegButton} disabled={formType === 'register'}>Регистрация</Button>
+        <Button type="button" variant="filter" onClick={handleLoginButton} disabled={formType === 'login'}>
+          Вход
+        </Button>
+        <Button type="button" variant="filter" onClick={handleRegButton} disabled={formType === 'register'}>
+          Регистрация
+        </Button>
       </NavContainer>
       {formType === 'register' && <Register />}
-      {formType === 'login' && <Login />}
+      {formType === 'login' && <Login onOpenRegister={handleRegButton} />}
     </Container>
   )
 }

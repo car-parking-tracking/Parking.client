@@ -83,7 +83,6 @@ const outlined = css<ButtonProps>`
   color: var(--bg-active);
   background-color: transparent;
   border: 0.125rem solid var(--button-bg-default);
-  box-shadow: 0rem 0.25rem 0.313rem rgba(0, 0, 0, 0.1);
 
   &:hover {
     color: var(--txt-white);

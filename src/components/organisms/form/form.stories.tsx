@@ -30,9 +30,9 @@ Default.args = {
   name: 'profile',
   children: (
     <InputWrap>
-      <InputForm name="name" type="text" placeholder="Имя" />
-      <InputForm name="email" type="email" placeholder="E-mail" />
-      <InputForm name="password" type="password" placeholder="Пароль" />
+      <InputForm name="name" type="text" placeholder="Имя" register={null} required={true} />
+      <InputForm name="email" type="email" placeholder="E-mail" register={null} required={true} />
+      <InputForm name="password" type="password" placeholder="Пароль" register={true} required={false} />
     </InputWrap>
   ),
   submitBtnText: 'Сохранить',

@@ -39,11 +39,11 @@ export const UserProfile: FC = () => {
       <Title>Профиль</Title>
       <Form name="profile" onSubmit={onSubmit} submitBtnText={isSuccess ? 'Сохранено' : 'Сохранить'} btnVariant={'animated'} isSuccess={isSuccess}>
         <InputWrap>
-          <InputForm type="text" placeholder="Фамилия" value={lastName} {...register('lastName')} />
-          <InputForm type="text" placeholder="Имя" value={firstName} {...register('firstName')} />
-          <InputForm type="email" placeholder="E-mail" value={email} {...register('email')} />
-          <InputForm type="text" placeholder="Пароль" value={hideTextWithStart(password)} {...register('password')} />
-          <InputForm type="text" placeholder="Изменить пароль" {...register('newPassword')} />
+          <InputForm type="text" placeholder="Фамилия" value={lastName} name="lastName" register={register} required={false} />
+          <InputForm type="text" placeholder="Имя" value={firstName} name="firstName" register={register} required={false} />
+          <InputForm type="email" placeholder="E-mail" value={email} name="email" register={register} required={false} />
+          <InputForm type="text" placeholder="Пароль" value={hideTextWithStart(password)} name="password" register={register} required={false} />
+          <InputForm type="text" placeholder="Изменить пароль" name="newPassword" register={register} required={false} />
         </InputWrap>
       </Form>
     </Section>
