@@ -1,6 +1,6 @@
 import MainPage from '@pages/MainPage'
 import { PAGES, Routes } from './routes.types'
-import { Account, AuthForm, FavoriteList } from '@components/organisms'
+import { Account, AuthForm, FavoriteList, UserProfile } from '@components/organisms'
 
 //TODO: удалить мок
 const favoriteItems = [
@@ -24,7 +24,7 @@ export const MAIN_ROUTES: Routes = [
   {
     path: PAGES.PROFILE,
     main: () => <MainPage />,
-    sidebar: () => <Account />,
+    sidebar: () => <UserProfile />,
   },
   {
     path: PAGES.FAVORITES,
