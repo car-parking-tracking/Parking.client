@@ -1,4 +1,5 @@
 import { FC, useState } from 'react'
+import { useNavigate } from 'react-router'
 import { ModalProps } from './modal.types'
 import close from '@assets/icons/close-icon.png'
 import { CloseButton, View, Container, CloseIcon } from './modal.styles'
