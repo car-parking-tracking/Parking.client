@@ -37,7 +37,6 @@ export const GlobalStyle = createGlobalStyle`
     width: 100%;
     min-width: 20rem;
     min-height: 100vh;
-    background-color: var(--bg-color);
     font-family: 'Raleway', sans-serif;
     font-size: 16px;
     font-weight: 500;
