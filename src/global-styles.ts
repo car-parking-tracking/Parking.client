@@ -8,6 +8,7 @@ export const GlobalStyle = createGlobalStyle`
     --bg-color: lightgray;
     --bg-active: #3C4158;
     --txt-white: #FFF;
+    --txt-black: #000;
     --button-bg-default: #1D65ED;
     --blue-light: #f2f9ff;
     --grey-button: #e0e0e0;
