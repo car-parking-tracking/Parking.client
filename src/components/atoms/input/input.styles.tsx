@@ -18,7 +18,7 @@ const form = css<InputProps>`
 `
 const search = css<InputProps>`
   ${shared}
-  border-bottom: 1px solid var(--grey-light);
+  border-bottom: 1px solid #E0E0E0;
   color: var(--bg-active);
   border-radius: 0.375rem;
   font-weight: 400;
