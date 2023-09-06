@@ -1,4 +1,4 @@
-import { Outlet, Route, Routes } from 'react-router-dom'
+import { Navigate, Outlet, Route, Routes } from 'react-router-dom'
 import { Section } from './layout.style'
 import { LayoutProps } from './layout.types'
 import { FC, Suspense, useState } from 'react'
@@ -11,8 +11,8 @@ import { Loader } from '@components/atoms'
 export const Layout: FC<LayoutProps> = props => {
   const [showModal, setShowModal] = useState(false)
   const isAuth = useSelector((state: RootState) => state.auth.isAuth)
-  const routes = isAuth ? MAIN_ROUTES : UNAUTHORIZED;
-  
+  const routes = isAuth ? MAIN_ROUTES : UNAUTHORIZED
+
   const handleOpenModal = () => {
     setShowModal(true)
   }
@@ -25,6 +25,7 @@ export const Layout: FC<LayoutProps> = props => {
         {showModal && (
           <Modal setOpenCallback={setShowModal}>
             <Routes>
+              <Route path="/*" element={<Navigate to="/404" replace />} />
               {routes.map(({ path, sidebar }) => (
                 <Route path={path} element={sidebar()} key={path} />
               ))}

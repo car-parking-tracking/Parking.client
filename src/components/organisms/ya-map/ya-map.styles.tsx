@@ -42,13 +42,13 @@ export const Wrapper = styled.div`
     position: absolute;
     top: 18.6rem;
     left: 6rem;
-    border-radius: 0.375rem;
+    border-radius: 1rem;
   }
 
   .ymaps-2-1-79-balloon__close {
     position: absolute;
-    top: 0.75rem;
-    right: 0.75rem;
+    top: 1.25rem;
+    right: 1.25rem;
   }
 
   .ymaps-2-1-79-balloon__close-button {

@@ -20,3 +20,10 @@ export interface ILotItem {
   latitude: number
   longitude: number
 }
+
+export type ILotSearchCollection = {
+  name: string
+  description: string
+  coords: number[]
+  id: number
+}

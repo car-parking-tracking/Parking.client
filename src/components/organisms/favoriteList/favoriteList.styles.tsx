@@ -16,7 +16,7 @@ export const Notification = styled(Description)`
   color: #3c4158cc;
   font-size: 1rem;
   line-height: 1.5rem;
-  letter-spacing: 0.5px;
+  letter-spacing: 0.031rem;
 `
 export const List = styled.div`
   display: flex;
@@ -38,6 +38,6 @@ export const List = styled.div`
   ::-webkit-scrollbar-thumb {
     background: #878787;
     border-radius: 1rem;
-    border: 1px solid #fff;
+    border: 0.063rem solid #fff;
   }
 `

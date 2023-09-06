@@ -3,7 +3,7 @@ import styled from 'styled-components'
 export const Section = styled.section``
 
 export const Title = styled.h2`
-  margin-bottom: 36px;
+  margin-bottom: 2.25rem;
   max-width: 23.5rem;
   width: fit-content;
   font-variant-numeric: lining-nums proportional-nums;
@@ -15,8 +15,8 @@ export const Title = styled.h2`
 `
 
 export const InputWrap = styled.div`
-  margin-bottom: 24px;
+  margin-bottom: 1.5rem;
   display: flex;
   flex-direction: column;
-  gap: 24px;
+  gap: 1.5;
 `

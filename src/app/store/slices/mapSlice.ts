@@ -4,12 +4,14 @@ export type MapState = {
   zoom: number
   coords: number[]
   portal: boolean
+  id: number
 }
 
 const initialState = {
   zoom: 16,
   coords: [55.751774, 37.61838],
   portal: false,
+  id: 0
 }
 
 export const mapSlice = createSlice({
@@ -43,8 +45,17 @@ export const mapSlice = createSlice({
     ) {
       state.portal = action.payload
     },
+    setParkingId(
+      state,
+      action: {
+        type: string
+        payload: number
+      }
+    ) {
+      state.id = action.payload
+    },
   },
 })
 
-export const { setZoom, setCoords, setPortal } = mapSlice.actions
+export const { setZoom, setCoords, setPortal, setParkingId } = mapSlice.actions
 export const mapReducer = mapSlice.reducer

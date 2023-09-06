@@ -80,7 +80,7 @@ const outlined = css<ButtonProps>`
   ${shared}
   color: var(--bg-active);
   background-color: transparent;
-  border: 0.125rem solid var(--button-bg-default);
+  border: 0.063rem solid var(--button-bg-default);
 
   &:hover {
     color: var(--txt-white);
@@ -100,7 +100,7 @@ const filter = css<ButtonProps>`
   font-weight: 500;
   border: none;
   background-color: transparent;
-  border-bottom: 1px solid #e0e0e0;
+  border-bottom: 0.063rem solid #e0e0e0;
   border-radius: 0;
   padding: 0.375rem 1.125rem;
   min-width: 8.688rem;
@@ -144,7 +144,7 @@ const animated = css<ButtonProps>`
   font-variant-numeric: lining-nums proportional-nums;
   line-height: 1.5;
   background: var(--button-bg-default);
-  border: 1px solid var(--button-bg-default);
+  border: 0.063rem solid var(--button-bg-default);
 
   &:has(#icon) {
     justify-content: space-between;
@@ -155,8 +155,8 @@ const animated = css<ButtonProps>`
 
   #icon {
     position: relative;
-    width: 16px;
-    height: 16px;
+    width: 1rem;
+    height: 1rem;
   }
 
   #icon::before,
@@ -166,17 +166,17 @@ const animated = css<ButtonProps>`
     left: 0;
     bottom: 0px;
     background: var(--button-bg-default);
-    border-radius: 20px;
+    border-radius: 1.25rem;
   }
 
   #icon::before {
-    width: 2px;
+    width: 0.125rem;
     height: 0;
     animation: 0.5s ease-in showBefore forwards;
   }
 
   #icon::after {
-    height: 2px;
+    height: 0.125rem;
     width: 0;
     animation: 1s ease-out 0.5s showAfter forwards;
   }

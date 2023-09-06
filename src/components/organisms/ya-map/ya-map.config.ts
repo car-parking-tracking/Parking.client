@@ -1,5 +1,3 @@
-import placemark from '@assets/icons/placemark.svg'
-
 export const mapConfig = {
   width: '100%',
   height: '100%',
@@ -10,23 +8,11 @@ export const mapConfig = {
   },
   options: {
     yandexMapDisablePoiInteractivity: true,
+    restrictMapArea: [
+      [56.065309, 37.10394],
+      [55.352992, 38.475325],
+    ],
   },
-  modules: [],
-}
 
-export const managerConfig = {
-  options: {
-    clusterize: true,
-    gridSize: 128,
-  },
-  objects: {
-    iconLayout: 'default#image',
-    iconImageSize: [26, 34],
-    iconImageHref: placemark,
-    hideIconOnBalloonOpen: false,
-  },
-  clusters: {
-    preset: 'islands#blueClusterIcons',
-  },
-  modules: ['objectManager.addon.objectsBalloon'],
+  modules: [],
 }

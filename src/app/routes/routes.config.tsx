@@ -25,7 +25,6 @@ export const MAIN_ROUTES: Routes = [
   },
   {
     path: PAGES.ABOUT,
-    exact: true,
     main: () => <AboutPage />,
     sidebar: () => <Account />,
   },
@@ -39,6 +38,16 @@ export const MAIN_ROUTES: Routes = [
     main: () => <MainPage />,
     sidebar: () => <FavoriteList items={favoriteItems} />,
   },
+  {
+    path: PAGES.NOTFOUND,
+    main: () => <ErrorPage code={404} text="Неправильно набран адрес или такой страницы не существует." />,
+    sidebar: () => <Account />,
+  },
+  {
+    path: PAGES.SERVER_ERROR,
+    main: () => <ErrorPage code={500} text="Internal server error. Кажется что-то пошло не так!" />,
+    sidebar: () => <Account />,
+  },
 ]
 
 export const UNAUTHORIZED: Routes = [
@@ -50,19 +59,16 @@ export const UNAUTHORIZED: Routes = [
   },
   {
     path: PAGES.NOTFOUND,
-    exact: true,
     main: () => <ErrorPage code={404} text="Неправильно набран адрес или такой страницы не существует." />,
     sidebar: () => <AuthForm />,
   },
   {
     path: PAGES.SERVER_ERROR,
-    exact: true,
     main: () => <ErrorPage code={500} text="Internal server error. Кажется что-то пошло не так!" />,
     sidebar: () => <AuthForm />,
   },
   {
     path: PAGES.ABOUT,
-    exact: true,
     main: () => <AboutPage />,
     sidebar: () => <AuthForm />,
   },

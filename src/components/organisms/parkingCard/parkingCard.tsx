@@ -1,36 +1,41 @@
-import { FC } from 'react'
-import { Wrapper, Title, InfoList, InfoItem, InfoTitle, InfoDesc, FavouriteBtn } from './parkingCard.styles'
+import { FC, useState } from 'react'
+import { Wrapper, Title, InfoList, InfoItem, InfoDesc, FavoriteBtn, DeleteBtn } from './parkingCard.styles'
 import { ParkingCardProps } from './parkingCard.types'
 
 export const ParkingCard: FC<ParkingCardProps> = ({ id, address, carCapacity, tariffs }) => {
+  const [favorite, setFavorite] = useState(false)
   const tariff = typeof tariffs === 'string' ? tariffs : `${tariffs[0].hourPrice} ₽`
+
+  const handleChangeFavorite = () => {
+    setFavorite(!favorite)
+  }
 
   return (
     <Wrapper>
       <Title>{`Парковка № ${id}`}</Title>
       <InfoList>
         <InfoItem>
-          <InfoTitle>Адрес</InfoTitle>
-          <InfoDesc>{address}</InfoDesc>
+          <InfoDesc>{address.replace("город Москва, ", "").replace("дом", "").replace(", строение ", "c").replace("переулок", "пер.")}</InfoDesc>
         </InfoItem>
         <InfoItem>
-          <InfoTitle>Цена за час</InfoTitle>
-          <InfoDesc>{tariff}</InfoDesc>
+          <InfoDesc>{tariff} в час</InfoDesc>
         </InfoItem>
         <InfoItem>
-          <InfoTitle>Мест свободно</InfoTitle>
-          <InfoDesc>Нет данных</InfoDesc>
+          <InfoDesc>Мест свободно: нет данных</InfoDesc>
         </InfoItem>
         <InfoItem>
-          <InfoTitle>Мест всего</InfoTitle>
-          <InfoDesc>{carCapacity}</InfoDesc>
+          <InfoDesc>Всего мест: {carCapacity}</InfoDesc>
         </InfoItem>
       </InfoList>
-
-      <FavouriteBtn variant="icon">
-        Добавить в избранное
-        <div id="masked"></div>
-      </FavouriteBtn>
+      {favorite ? (
+        <DeleteBtn variant="outlined" onClick={handleChangeFavorite}>
+          Убрать из Моих парковок
+        </DeleteBtn>
+      ) : (
+        <FavoriteBtn variant="primary" onClick={handleChangeFavorite}>
+          Добавить в Мои парковки
+        </FavoriteBtn>
+      )}
     </Wrapper>
   )
 }

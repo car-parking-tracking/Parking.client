@@ -11,11 +11,11 @@ const page = css<LoaderProps>`
   position: absolute;
   top: 50%;
   left: 50%;
-  width: 80px;
-  height: 80px;
-  margin-left: -50px;
-  margin-top:-50px;
-  border: 10px solid #FFF;
+  width: 5rem;
+  height: 5rem;
+  margin-left: -3.125rem;
+  margin-top:-3.125rem;
+  border: 0.313rem solid #FFF;
   border-bottom-color: var(--button-bg-default);
   border-radius: 50%;
   z-index: 100;

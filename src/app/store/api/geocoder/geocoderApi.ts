@@ -16,6 +16,9 @@ export const geocodeApi = createApi({
         url: `?apikey=${YAMAP_API_KEY}&geocode=${value}&ll=37.620927,55.751590&spn=0.65,0.65&rspn=1&format=json`,
         method: HTTP_METHOD.GET,
       }),
+      transformResponse: (response: any): any => {
+        return response.response.GeoObjectCollection.featureMember.map((item: any) => item.GeoObject)
+      },
     }),
   }),
 })

@@ -21,8 +21,8 @@ export const GlobalStyle = createGlobalStyle`
     --search-item-hover: #F8FAFB;
     --item-desc: #1B1F3BA6;
     --item-name: #191C30E5;
-    --parking-card-width: 283px;
-    --parking-card-height: 313px;
+    --parking-card-width: 267px;
+    --parking-card-height: 251px;
     --red: #FF2121;
   }
 

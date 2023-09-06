@@ -10,14 +10,14 @@ export default {
 }
 
 const FormWrap = styled.div`
-  max-width: 387px;
+  max-width: 24.188rem;
 `
 
 const InputWrap = styled.div`
-  margin-bottom: 24px;
+  margin-bottom: 1.5rem;
   display: flex;
   flex-direction: column;
-  gap: 24px;
+  gap: 1.5rem;
 `
 const Template: StoryFn<FormProps> = args => (
   <FormWrap>
