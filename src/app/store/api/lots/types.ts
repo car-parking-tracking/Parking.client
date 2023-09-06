@@ -5,6 +5,8 @@ type ITariff = {
   FirstHour?: number
   FollowingHours?: number
   HourPrice?: number
+  is_deleted?: number
+  global_id?: number
 }
 
 export type ILotCollection = {
@@ -16,7 +18,7 @@ export interface ILotItem {
   address: string
   car_capacity: number
   is_favorited: boolean
-  tariffs: ITariff[]
+  tariffs: string
   latitude: number
   longitude: number
 }

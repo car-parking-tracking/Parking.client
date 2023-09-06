@@ -40,8 +40,8 @@ export const Wrapper = styled.div`
     animation: fadeIn 0.3s ease-in-out;
     border: none !important;
     position: absolute;
-    top: 18.6rem;
-    left: 6rem;
+    top: 14.5rem;
+    left: 5rem;
     border-radius: 1rem;
   }
 

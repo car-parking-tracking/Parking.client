@@ -31,7 +31,7 @@ export const InfoItem = styled.li`
 export const InfoDesc = styled.p`
   font-size: 1rem;
   color: #3c4158;
-  font-variant-numeric: lining-nums proportional-nums;
+  font-variant-numeric: lining-nums tabular-nums;
   word-wrap: break-word;
   font-weight: 500;
   line-height: 24px;

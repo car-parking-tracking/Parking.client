@@ -22,10 +22,8 @@ export const YaMap: React.FC = () => {
     <Wrapper>
       <YMaps
         version="2.1.79"
-        preload={true}
         query={{
           apikey: YAMAP_API_KEY,
-          mode: 'release',
           load: 'package.full',
         }}>
         <InputSearch />
@@ -42,12 +40,14 @@ export const YaMap: React.FC = () => {
       </YMaps>
       {map.portal && (
         <Portal getHTMLElementId={'parking'}>
-          <ParkingCard
-            id={lotData?.id || 0}
-            address={lotData?.address || 'Нет данных'}
-            carCapacity={lotData?.car_capacity || 'Нет данных'}
-            tariffs={[{ hourPrice: 100 }]}
-          />
+          {lotData && (
+            <ParkingCard
+              id={lotData.id || 0}
+              address={lotData.address || 'Нет данных'}
+              carCapacity={lotData.car_capacity || 'Нет данных'}
+              tariffs={lotData.tariffs}
+            />
+          )}
         </Portal>
       )}
     </Wrapper>

@@ -1,10 +1,11 @@
 import { FC, useState } from 'react'
 import { Wrapper, Title, InfoList, InfoItem, InfoDesc, FavoriteBtn, DeleteBtn } from './parkingCard.styles'
-import { ParkingCardProps } from './parkingCard.types'
+import { ParkingCardProps, Tariff } from './parkingCard.types'
 
 export const ParkingCard: FC<ParkingCardProps> = ({ id, address, carCapacity, tariffs }) => {
   const [favorite, setFavorite] = useState(false)
-  const tariff = typeof tariffs === 'string' ? tariffs : `${tariffs[0].hourPrice} ₽`
+  
+  const tariff = JSON.parse(`{"tariffs": ${tariffs.replaceAll("'", '"')}}`).tariffs
 
   const handleChangeFavorite = () => {
     setFavorite(!favorite)
@@ -15,10 +16,12 @@ export const ParkingCard: FC<ParkingCardProps> = ({ id, address, carCapacity, ta
       <Title>{`Парковка № ${id}`}</Title>
       <InfoList>
         <InfoItem>
-          <InfoDesc>{address.replace("город Москва, ", "").replace("дом", "").replace(", строение ", "c").replace("переулок", "пер.")}</InfoDesc>
+          <InfoDesc>{address.replace('город Москва, ', '').replace('дом', '').replace(', строение ', 'c').replace('переулок', 'пер.')}</InfoDesc>
         </InfoItem>
         <InfoItem>
-          <InfoDesc>{tariff} в час</InfoDesc>
+          {tariff.map((item: Tariff, index: number) => {
+            return <InfoDesc key={index}>{`${item.TimeRange}, ${item.HourPrice || item.FirstHour}₽`}</InfoDesc>
+          })}
         </InfoItem>
         <InfoItem>
           <InfoDesc>Мест свободно: нет данных</InfoDesc>
