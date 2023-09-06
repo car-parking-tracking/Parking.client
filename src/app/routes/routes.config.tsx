@@ -1,6 +1,8 @@
 import MainPage from '@pages/MainPage'
 import { PAGES, Routes } from './routes.types'
 import { Account, AuthForm, FavoriteList, UserProfile } from '@components/organisms'
+import ErrorPage from '@pages/ErrorPage'
+import AboutPage from '@pages/About'
 
 //TODO: удалить мок
 const favoriteItems = [
@@ -22,6 +24,12 @@ export const MAIN_ROUTES: Routes = [
     sidebar: () => <Account />,
   },
   {
+    path: PAGES.ABOUT,
+    exact: true,
+    main: () => <AboutPage />,
+    sidebar: () => <Account />,
+  },
+  {
     path: PAGES.PROFILE,
     main: () => <MainPage />,
     sidebar: () => <UserProfile />,
@@ -31,9 +39,31 @@ export const MAIN_ROUTES: Routes = [
     main: () => <MainPage />,
     sidebar: () => <FavoriteList items={favoriteItems} />,
   },
+]
+
+export const UNAUTHORIZED: Routes = [
   {
-    path: PAGES.AUTH,
+    path: PAGES.MAIN,
+    exact: true,
     main: () => <MainPage />,
+    sidebar: () => <AuthForm />,
+  },
+  {
+    path: PAGES.NOTFOUND,
+    exact: true,
+    main: () => <ErrorPage code={404} text="Неправильно набран адрес или такой страницы не существует." />,
+    sidebar: () => <AuthForm />,
+  },
+  {
+    path: PAGES.SERVER_ERROR,
+    exact: true,
+    main: () => <ErrorPage code={500} text="Internal server error. Кажется что-то пошло не так!" />,
+    sidebar: () => <AuthForm />,
+  },
+  {
+    path: PAGES.ABOUT,
+    exact: true,
+    main: () => <AboutPage />,
     sidebar: () => <AuthForm />,
   },
 ]
