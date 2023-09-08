@@ -18,10 +18,10 @@ export const Title = styled.h2`
   margin-bottom: 0.75rem;
 `
 export const InfoList = styled.ul`
-  margin-bottom: 1.125rem;
+  margin-bottom: 0.75rem;
   display: flex;
   flex-direction: column;
-  gap: 0.375rem;
+  gap: 0.625rem;
 `
 export const InfoItem = styled.li`
   display: flex;
@@ -31,10 +31,14 @@ export const InfoItem = styled.li`
 export const InfoDesc = styled.p`
   font-size: 1rem;
   color: #3c4158;
-  font-variant-numeric: lining-nums tabular-nums;
+  font-variant-numeric: lining-nums proportional-nums;
   word-wrap: break-word;
   font-weight: 500;
   line-height: 24px;
+`
+
+export const InfoCost = styled(InfoDesc)`
+  margin-bottom: 0.25rem;
 `
 
 export const FavoriteBtn = styled(Button)`
@@ -46,13 +50,6 @@ export const FavoriteBtn = styled(Button)`
   font-weight: 600;
   line-height: 1.5rem;
 `
-export const DeleteBtn = styled(Button)`
-  width: 100%;
+export const DeleteBtn = styled(FavoriteBtn)`
   color: #3c4158;
-  border-radius: 0.75rem;
-  padding: 0.688rem 0rem;
-  font-size: 1rem;
-  font-style: normal;
-  font-weight: 600;
-  line-height: 1.5rem;
 `

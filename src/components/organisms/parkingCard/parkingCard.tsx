@@ -1,10 +1,11 @@
 import { FC, useState } from 'react'
-import { Wrapper, Title, InfoList, InfoItem, InfoDesc, FavoriteBtn, DeleteBtn } from './parkingCard.styles'
+import { Wrapper, Title, InfoList, InfoItem, InfoDesc, FavoriteBtn, DeleteBtn, InfoCost } from './parkingCard.styles'
 import { ParkingCardProps, Tariff } from './parkingCard.types'
+import { replaceAddress } from '../../../utils'
 
 export const ParkingCard: FC<ParkingCardProps> = ({ id, address, carCapacity, tariffs }) => {
   const [favorite, setFavorite] = useState(false)
-  
+
   const tariff = JSON.parse(`{"tariffs": ${tariffs.replaceAll("'", '"')}}`).tariffs
 
   const handleChangeFavorite = () => {
@@ -16,11 +17,12 @@ export const ParkingCard: FC<ParkingCardProps> = ({ id, address, carCapacity, ta
       <Title>{`Парковка № ${id}`}</Title>
       <InfoList>
         <InfoItem>
-          <InfoDesc>{address.replace('город Москва, ', '').replace('дом', '').replace(', строение ', 'c').replace('переулок', 'пер.')}</InfoDesc>
+          <InfoDesc>{replaceAddress(address)}</InfoDesc>
         </InfoItem>
         <InfoItem>
+          <InfoCost>Цена</InfoCost>
           {tariff.map((item: Tariff, index: number) => {
-            return <InfoDesc key={index}>{`${item.TimeRange}, ${item.HourPrice || item.FirstHour}₽`}</InfoDesc>
+            return <InfoDesc key={index}>{`${item.TimeRange?.replace('-', ' ... ')} — ${item.HourPrice || item.FirstHour} ₽`}</InfoDesc>
           })}
         </InfoItem>
         <InfoItem>

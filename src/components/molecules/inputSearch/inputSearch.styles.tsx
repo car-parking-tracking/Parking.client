@@ -77,7 +77,7 @@ export const Name = styled.p`
 `
 export const Description = styled.p`
   color: var(--item-desc);
-  font-family: 'Manrope', sans-serif;
+  font-family: 'Raleway', sans-serif;
   line-height: 1.25rem;
   font-size: 0.8125rem;
 `
