@@ -4,8 +4,16 @@ import { Container, AccountTitle, Menu, AccountDesc, LinkItem } from './account.
 import profile from '@assets/icons/profile.svg'
 import favorite from '@assets/icons/favorite.svg'
 import exit from '@assets/icons/exit.svg'
+import { useAppDispatch } from '@app/hooks/redux'
+import { logout } from '@app/store/slices/authSlice'
 
 export const Account: FC<AuthFormProps> = ({ children }) => {
+  const dispatch = useAppDispatch()
+
+  const handleLogout = () => {
+    dispatch(logout())
+  }
+
   return (
     <Container>
       <AccountTitle variant="modal">Мои парковки</AccountTitle>
@@ -19,7 +27,7 @@ export const Account: FC<AuthFormProps> = ({ children }) => {
           <img src={favorite} alt="favorite_icon" />
           Мои парковки
         </LinkItem>
-        <LinkItem to="/auth">
+        <LinkItem to="/" onClick={handleLogout}>
           <img src={exit} alt="exit_icon" /> Выйти
         </LinkItem>
       </Menu>

@@ -62,6 +62,6 @@ export const AccountBtn = styled(Button)`
   display: flex;
   align-items: center;
   justify-content: center;
-  border-radius: 12px;
+  border-radius: 0.75rem;
   background: #bbc1c7;
 `

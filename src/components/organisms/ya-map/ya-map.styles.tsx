@@ -40,15 +40,15 @@ export const Wrapper = styled.div`
     animation: fadeIn 0.3s ease-in-out;
     border: none !important;
     position: absolute;
-    top: 18.6rem;
-    left: 6rem;
-    border-radius: 0.375rem;
+    top: 14.5rem;
+    left: 5rem;
+    border-radius: 1rem;
   }
 
   .ymaps-2-1-79-balloon__close {
     position: absolute;
-    top: 0.75rem;
-    right: 0.75rem;
+    top: 1.25rem;
+    right: 1.25rem;
   }
 
   .ymaps-2-1-79-balloon__close-button {

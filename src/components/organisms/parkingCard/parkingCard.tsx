@@ -1,36 +1,46 @@
-import { FC } from 'react'
-import { Wrapper, Title, InfoList, InfoItem, InfoTitle, InfoDesc, FavouriteBtn } from './parkingCard.styles'
-import { ParkingCardProps } from './parkingCard.types'
+import { FC, useState } from 'react'
+import { Wrapper, Title, InfoList, InfoItem, InfoDesc, FavoriteBtn, DeleteBtn, InfoCost } from './parkingCard.styles'
+import { ParkingCardProps, Tariff } from './parkingCard.types'
+import { replaceAddress } from '../../../utils'
 
 export const ParkingCard: FC<ParkingCardProps> = ({ id, address, carCapacity, tariffs }) => {
-  const tariff = typeof tariffs === 'string' ? tariffs : `${tariffs[0].hourPrice} ₽`
+  const [favorite, setFavorite] = useState(false)
+
+  const tariff = JSON.parse(`{"tariffs": ${tariffs.replaceAll("'", '"')}}`).tariffs
+
+  const handleChangeFavorite = () => {
+    setFavorite(!favorite)
+  }
 
   return (
     <Wrapper>
       <Title>{`Парковка № ${id}`}</Title>
       <InfoList>
         <InfoItem>
-          <InfoTitle>Адрес</InfoTitle>
-          <InfoDesc>{address}</InfoDesc>
+          <InfoDesc>{replaceAddress(address)}</InfoDesc>
         </InfoItem>
         <InfoItem>
-          <InfoTitle>Цена за час</InfoTitle>
-          <InfoDesc>{tariff}</InfoDesc>
+          <InfoCost>Цена</InfoCost>
+          {tariff.map((item: Tariff, index: number) => {
+            return <InfoDesc key={index}>{`${item.TimeRange?.replace('-', ' ... ')} — ${item.HourPrice || item.FirstHour} ₽`}</InfoDesc>
+          })}
         </InfoItem>
         <InfoItem>
-          <InfoTitle>Мест свободно</InfoTitle>
-          <InfoDesc>Нет данных</InfoDesc>
+          <InfoDesc>Мест свободно: нет данных</InfoDesc>
         </InfoItem>
         <InfoItem>
-          <InfoTitle>Мест всего</InfoTitle>
-          <InfoDesc>{carCapacity}</InfoDesc>
+          <InfoDesc>Всего мест: {carCapacity}</InfoDesc>
         </InfoItem>
       </InfoList>
-
-      <FavouriteBtn variant="icon">
-        Добавить в избранное
-        <div id="masked"></div>
-      </FavouriteBtn>
+      {favorite ? (
+        <DeleteBtn variant="outlined" onClick={handleChangeFavorite}>
+          Убрать из Моих парковок
+        </DeleteBtn>
+      ) : (
+        <FavoriteBtn variant="primary" onClick={handleChangeFavorite}>
+          Добавить в Мои парковки
+        </FavoriteBtn>
+      )}
     </Wrapper>
   )
 }

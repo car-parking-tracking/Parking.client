@@ -21,9 +21,16 @@ export const GlobalStyle = createGlobalStyle`
     --search-item-hover: #F8FAFB;
     --item-desc: #1B1F3BA6;
     --item-name: #191C30E5;
-    --parking-card-width: 283px;
-    --parking-card-height: 313px;
+    --parking-card-width: 267px;
+    --parking-card-height: 251px;
     --red: #FF2121;
+    --new-white: #FFFFFF;
+    --new-dark: #3C4158;
+    --new-grey: #878787;
+    --new-grey-light: #E0E0E0;
+    --new-grey-extra: #F8FAFB;
+    --new-bg-hover: #1655BB;
+    --new-bg-active: #1D65ED;
   }
 
   html,
@@ -38,6 +45,7 @@ export const GlobalStyle = createGlobalStyle`
     width: 100%;
     min-width: 20rem;
     min-height: 100vh;
+    background-color: var(--grey-light);
     font-family: 'Raleway', sans-serif;
     font-size: 16px;
     font-weight: 500;

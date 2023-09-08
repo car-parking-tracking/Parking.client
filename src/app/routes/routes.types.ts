@@ -14,5 +14,7 @@ export const enum PAGES {
   MAIN = '/',
   PROFILE = '/profile',
   FAVORITES = '/favorites',
-  AUTH = '/auth',
+  ABOUT = '/about',
+  NOTFOUND = '/404',
+  SERVER_ERROR = '/500',
 }

@@ -1,15 +1,15 @@
-type Tariff = {
-  hourPrice: number
-  tariffType?: string
-  timeRange?: string
-  firstHalfHour?: string
-  firstHour?: number
-  followingHours?: number
+export type Tariff = {
+  HourPrice: number
+  TariffType?: string
+  TimeRange?: string
+  FirstHalfHour?: string
+  FirstHour?: number
+  FollowingHours?: number
 }
 
 export interface ParkingCardProps {
   id: number
   address: string
-  tariffs: [Tariff] | 'Нет данных'
+  tariffs: string
   carCapacity?: number | 'Нет данных'
 }

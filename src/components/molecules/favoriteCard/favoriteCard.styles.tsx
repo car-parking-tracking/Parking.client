@@ -16,11 +16,11 @@ export const Wrapper = styled.div`
   background: var(--grey-light);
 
   :hover {
-    box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.16);
+    box-shadow: 0rem 0.125rem 0.313rem 0rem rgba(0, 0, 0, 0.16);
   }
 
   :active {
-    box-shadow: inset 0px 0px 0px 1px var(--button-bg-default);
+    box-shadow: inset 0rem 0rem 0rem 0.063rem var(--button-bg-default);
     background: var(--blue-light);
   }
 `

@@ -21,7 +21,7 @@ export const Header: FC<HeaderProps> = ({ onBtnClick, isLoggedIn }) => {
             <Logo />
           </li>
           <li>
-            <NavLink to="/">О продукте</NavLink>
+            <NavLink to="/about">О продукте</NavLink>
           </li>
           <li>
             <NavLink to={`mailto:${email}`}>{email}</NavLink>
