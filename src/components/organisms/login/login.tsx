@@ -8,9 +8,14 @@ import { InputForm } from '@components/molecules'
 import { Button } from '@components/atoms'
 
 import { yupSchemaAuthForm } from '../../../utils/validate'
+import { useNavigate } from 'react-router-dom'
+import { useAppDispatch } from '@app/hooks/redux'
+import { login } from '@app/store/slices/authSlice'
 
 export const Login: FC<LoginProps> = ({ onOpenRegister }) => {
   type FormData = yup.InferType<typeof yupSchemaAuthForm>
+  const navigate = useNavigate()
+  const dispatch = useAppDispatch()
 
   const {
     register,
@@ -21,7 +26,11 @@ export const Login: FC<LoginProps> = ({ onOpenRegister }) => {
     resolver: yupResolver(yupSchemaAuthForm),
   })
 
-  const onSubmit: SubmitHandler<ILoginValues> = (data: FormData) => console.log(data)
+  const onSubmit: SubmitHandler<ILoginValues> = (data: FormData) => {
+    dispatch(login())
+    navigate('/')
+    console.log(data)
+  }
 
   return (
     <Container onSubmit={handleSubmit(onSubmit)} noValidate>

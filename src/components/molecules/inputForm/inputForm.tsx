@@ -4,11 +4,11 @@ import { Container, Label, Span, StyledInput } from './inputForm.styles'
 
 //TODO: валидация (после добавления валидации можно будет убрать пропсы сообщения об ошибке и есть ли ошибка)
 
-export const InputForm: FC<InputFormProps> = ({ name, type, placeholder, errorMessage, isError, register, required }) => {
+export const InputForm: FC<InputFormProps> = ({ name, type, value, placeholder, errorMessage, isError, register, required }) => {
   return (
     <Container>
       <Label htmlFor={name}>{placeholder}</Label>
-      <StyledInput {...register(name, { required })} type={type} variant="form" name={name} placeholder={placeholder} isError={isError} required />
+      <StyledInput value={value} {...register(name, { required })} type={type} variant="form" name={name} placeholder={placeholder} isError={isError} />
       {isError && <Span>{errorMessage}</Span>}
     </Container>
   )

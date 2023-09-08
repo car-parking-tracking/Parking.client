@@ -18,7 +18,7 @@ const form = css<InputProps>`
 `
 const search = css<InputProps>`
   ${shared}
-  border-bottom: 1px solid var(--grey-light);
+  border-bottom: 0.063rem solid #E0E0E0;
   color: var(--bg-active);
   border-radius: 0.375rem;
   font-weight: 400;
@@ -26,7 +26,7 @@ const search = css<InputProps>`
   height: 3rem;
   width: 27.625rem;
   line-height: 1.5rem;
-  box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.3);
+  box-shadow: 0rem 0.125rem 0.25rem 0rem rgba(0, 0, 0, 0.3);
 `
 export const Input = styled.input<InputProps>`
   ${({ variant }) => {

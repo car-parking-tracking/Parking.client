@@ -8,9 +8,14 @@ import { InputForm, CheckboxContainer } from '@components/molecules'
 import { Button } from '@components/atoms'
 
 import { yupSchemaRegForm } from '../../../utils/validate'
+import { useNavigate } from 'react-router-dom'
+import { useAppDispatch } from '@app/hooks/redux'
+import { login } from '@app/store/slices/authSlice'
 
 export const Register: FC<RegisterProps> = () => {
   type FormData = yup.InferType<typeof yupSchemaRegForm>
+  const navigate = useNavigate()
+  const dispatch = useAppDispatch()
 
   const {
     register,
@@ -21,7 +26,11 @@ export const Register: FC<RegisterProps> = () => {
     resolver: yupResolver(yupSchemaRegForm),
   })
 
-  const onSubmit: SubmitHandler<IAuthValues> = (data: FormData) => console.log(data)
+  const onSubmit: SubmitHandler<IAuthValues> = (data: FormData) => {
+    dispatch(login())
+    navigate('/')
+    console.log(data)
+  }
 
   return (
     <Container onSubmit={handleSubmit(onSubmit)} noValidate>

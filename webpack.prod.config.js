@@ -5,6 +5,9 @@ const baseWebpackConfig = require('./webpack.config')
 const prodWebpackConfig = merge(baseWebpackConfig, {
   mode: 'production',
   optimization: {
+    splitChunks: {
+      chunks: 'all',
+    },
     minimize: true,
     minimizer: [
       new TerserPlugin({

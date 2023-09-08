@@ -1,7 +1,9 @@
 import React from 'react'
 
+export type variant = 'secondary' | 'outlined' | 'primary' | 'icon' | 'filter' | 'text' | 'animated'
+
 export interface ButtonProps {
-  variant: 'secondary' | 'outlined' | 'primary' | 'icon' | 'filter' | 'text'
+  variant: variant
   onClick?: (event: React.MouseEvent<HTMLButtonElement>) => void
   children?: React.ReactNode
   disabled?: boolean

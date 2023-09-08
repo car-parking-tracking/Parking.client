@@ -62,7 +62,7 @@ export const DataList = styled.div`
     0 1.5625rem 0.9375rem 0 rgba(0, 0, 0, 0.03);
 
   ::-webkit-scrollbar {
-    width: 1px;
+    width: 0.063rem;
   }
   ::-webkit-scrollbar-thumb {
     background-color: transparent;
@@ -72,12 +72,12 @@ export const DataList = styled.div`
   }
 `
 export const Name = styled.p`
-  color: var(--search-item-name);
+  color: var(--item-name);
   line-height: 1.5rem;
 `
 export const Description = styled.p`
-  color: var(--search-item-desc);
-  font-family: 'Manrope', sans-serif;
+  color: var(--item-desc);
+  font-family: 'Raleway', sans-serif;
   line-height: 1.25rem;
   font-size: 0.8125rem;
 `
