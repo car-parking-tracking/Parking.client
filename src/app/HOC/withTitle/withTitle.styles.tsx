@@ -6,16 +6,16 @@ export const Title = styled(DefaultTitle)`
 `
 export const ReturnButton = styled.button`
   display: flex;
-  width: 24px;
-  height: 24px;
+  width: 1.5rem;
+  height: 1.5rem;
   cursor: pointer;
   border: none;
   background: transparent;
-  margin-right: 32px;
+  margin-right: 2rem;
 `
 export const ReturnIcon = styled.img`
-  width: 24px;
-  height: 24px;
+  width: 1.5rem;
+  height: 1.5rem;
 `
 export const Provider = styled.div`
   display: flex;

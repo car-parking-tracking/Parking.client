@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 
 export const Section = styled.section`
-  margin-top: 32px;
+  margin-top: 2rem;
 `
 
 export const InputWrap = styled.div`

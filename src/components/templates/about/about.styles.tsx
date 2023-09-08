@@ -5,11 +5,11 @@ export const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 860px;
+  width: 53.75rem;
 `
 
 export const AboutDescription = styled(Description)`
-  font-size: 20px;
+  font-size: 1.25rem;
   font-style: normal;
   font-weight: 500;
   line-height: normal;
