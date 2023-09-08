@@ -1,4 +1,4 @@
-import { DefaultTitle, Description } from '@components/atoms'
+import { Description } from '@components/atoms'
 import styled from 'styled-components'
 
 export const Wrapper = styled.div`
@@ -7,11 +7,6 @@ export const Wrapper = styled.div`
   align-items: flex-start;
   height: 100%;
 `
-
-export const Title = styled(DefaultTitle)`
-  padding-bottom: 0.5rem;
-`
-
 export const Notification = styled(Description)`
   color: #3c4158cc;
   font-size: 1rem;

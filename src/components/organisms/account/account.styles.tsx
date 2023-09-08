@@ -1,13 +1,10 @@
 import styled from 'styled-components'
-import { Description, DefaultTitle } from '@components/atoms'
+import { Description } from '@components/atoms'
 import { Link } from 'react-router-dom'
 
 export const Container = styled.div`
   display: flex;
   flex-direction: column;
-`
-export const AccountTitle = styled(DefaultTitle)`
-  margin-bottom: 0.5rem;
 `
 export const AccountDesc = styled(Description)`
   margin-bottom: 2rem;

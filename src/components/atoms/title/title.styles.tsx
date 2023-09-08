@@ -2,7 +2,7 @@ import styled, { css } from 'styled-components'
 import { TitleProps } from './title.types'
 
 const shared = css<TitleProps>`
-  color: rgba(25, 28, 48, 0.9);
+  color: var(--new-dark);
   font-size: 1.25rem;
   line-height: 1.5rem;
   font-weight: 700;
