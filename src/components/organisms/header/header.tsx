@@ -1,7 +1,6 @@
-import { FC, useContext } from 'react'
+import { FC } from 'react'
 import { NavLink } from 'react-router-dom'
 
-import { LoginContext } from '../../../context/loginContext'
 import { getInitials } from '../../../utils'
 
 import { Logo } from '@components/molecules'
@@ -10,8 +9,7 @@ import { HeaderProps } from './header.types'
 
 import { email } from '@constants/variables'
 
-export const Header: FC<HeaderProps> = ({ onBtnClick }) => {
-  const { isLoggedIn } = useContext(LoginContext) //здесь будет значение из рeдакса
+export const Header: FC<HeaderProps> = ({ onBtnClick, isLoggedIn }) => {
   const currentUser = 'Имя Фамилия' //здесь будет значение из рeдакса
   const initials = getInitials(currentUser)
 
@@ -23,7 +21,7 @@ export const Header: FC<HeaderProps> = ({ onBtnClick }) => {
             <Logo />
           </li>
           <li>
-            <NavLink to="/">О продукте</NavLink>
+            <NavLink to="/about">О продукте</NavLink>
           </li>
           <li>
             <NavLink to={`mailto:${email}`}>{email}</NavLink>

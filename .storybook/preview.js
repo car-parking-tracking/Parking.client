@@ -1,4 +1,4 @@
-import { decorateWithLoginContext, decorateWithRouter } from './decorators'
+import { decorateWithRouter } from './decorators'
 
 /** @type { import('@storybook/react').Preview } */
 const preview = {
@@ -11,7 +11,7 @@ const preview = {
       },
     },
   },
-  decorators: [decorateWithRouter, decorateWithLoginContext],
+  decorators: [decorateWithRouter],
 }
 
 export default preview

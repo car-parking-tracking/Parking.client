@@ -20,14 +20,14 @@ export const yupSchemaRegForm = yup.object().shape({
   password: yup
     .string()
     .required('Поле обязательно для заполнения')
-    .min(6, 'Минимальное количество символов: 6')
-    .max(10, 'Максимальное количество символов: 10')
+    .min(8, 'Минимальное количество символов: 8')
+    .max(32, 'Максимальное количество символов: 32')
     .matches(/^[a-zA-Z0-9!@#$%^&*()_+=[\]{}|;:\\'"<>,.?/-]*$/, 'Может содержать только буквы латиницы, цифры и спецсимволы'),
   password_repeat: yup
     .string()
     .required('Поле обязательно для заполнения')
     .oneOf([yup.ref('password'), ''], 'Пароли не совпадают'),
-  checkbox: yup.bool().oneOf([true], 'Необходимо принять условия').required()
+  checkbox: yup.bool().oneOf([true], 'Необходимо принять условия').required(),
 })
 
 export const yupSchemaAuthForm = yup.object().shape({
@@ -43,8 +43,8 @@ export const yupRecoverPasswordForm = yup.object().shape({
   password_new: yup
     .string()
     .required('Поле обязательно для заполнения')
-    .min(6, 'Минимальное количество символов: 6')
-    .max(10, 'Максимальное количество символов: 10')
+    .min(8, 'Минимальное количество символов: 8')
+    .max(32, 'Максимальное количество символов: 32')
     .matches(/^[a-zA-Z0-9!@#$%^&*()_+=[\]{}|;:\\'"<>,.?/-]*$/, 'Может содержать только буквы латиницы, цифры и спецсимволы'),
   password_repeat: yup
     .string()
