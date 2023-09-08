@@ -24,6 +24,13 @@ export const GlobalStyle = createGlobalStyle`
     --parking-card-width: 267px;
     --parking-card-height: 251px;
     --red: #FF2121;
+    --new-white: #FFFFFF;
+    --new-dark: #3C4158;
+    --new-grey: #878787;
+    --new-grey-light: #E0E0E0;
+    --new-grey-extra: #F8FAFB;
+    --new-bg-hover: #1655BB;
+    --new-bg-active: #1D65ED;
   }
 
   html,
