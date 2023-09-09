@@ -1,6 +1,6 @@
 import MainPage from '@pages/MainPage'
 import { PAGES, Routes } from './routes.types'
-import { AccountWithTitleWrapper, AuthForm, FavoriteListWithTitle, ProfileWithTitle } from '@components/organisms'
+import { AccountWithTitleWrapper, AuthForm, FavoriteListWithTitle, PasswordWithTitle, ProfileWithTitle } from '@components/organisms'
 import ErrorPage from '@pages/ErrorPage'
 import AboutPage from '@pages/About'
 
@@ -32,6 +32,11 @@ export const MAIN_ROUTES: Routes = [
     path: PAGES.PROFILE,
     main: () => <MainPage />,
     sidebar: () => <ProfileWithTitle title="Профиль" />,
+  },
+  {
+    path: PAGES.PASSWORD,
+    main: () => <MainPage />,
+    sidebar: () => <PasswordWithTitle title="Изменение пароля" />,
   },
   {
     path: PAGES.FAVORITES,

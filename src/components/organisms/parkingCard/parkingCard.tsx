@@ -1,7 +1,7 @@
 import { FC, useState } from 'react'
 import { Wrapper, Title, InfoList, InfoItem, InfoDesc, FavoriteBtn, DeleteBtn, InfoCost } from './parkingCard.styles'
 import { ParkingCardProps, Tariff } from './parkingCard.types'
-import { replaceAddress } from '../../../utils'
+import { replaceAddress } from '@utils/'
 
 export const ParkingCard: FC<ParkingCardProps> = ({ id, address, carCapacity, tariffs }) => {
   const [favorite, setFavorite] = useState(false)

@@ -52,6 +52,25 @@ export const yupRecoverPasswordForm = yup.object().shape({
     .oneOf([yup.ref('password_new'), ''], 'Пароли не совпадают'),
 })
 
+export const yupProfileForm = yup.object().shape({
+  last_name: yup
+    .string()
+    .required('Поле обязательно для заполнения')
+    .min(2, 'Минимальное количество символов: 2')
+    .max(20, 'Максимальное количество символов: 20')
+    .matches(/^[-a-zа-яёA-ZА-ЯЁ]+$/, 'Может содержать только буквы латиницы, кириллицы и тире'),
+  first_name: yup
+    .string()
+    .required('Поле обязательно для заполнения')
+    .min(1, 'Минимальное количество символов: 1')
+    .max(15, 'Максимальное количество символов: 15')
+    .matches(/^[-a-zа-яёA-ZА-ЯЁ]+$/, 'Может содержать только буквы латиницы, кириллицы и тире'),
+  email: yup
+    .string()
+    .required('Поле обязательно для заполнения')
+    .matches(/^[\w-]+@[a-zA-Z]+\.[a-zA-Z]+$/, 'Введите корректный email'),
+})
+
 export const yupSearchForm = yup.object().shape({
   search: yup.string().matches(/^[-а-яёА-ЯЁ0-9,.№/ ]+$/, 'Может содержать только буквы кириллицы, цифры и спецсимволы'),
 })
