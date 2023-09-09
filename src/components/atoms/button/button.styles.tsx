@@ -187,6 +187,7 @@ const animated = css<ButtonProps>`
 
   &:disabled {
     background-color: var(--search-item-hover);
+    border-color: var(--search-item-hover);
     color: var(--grey);
   }
 

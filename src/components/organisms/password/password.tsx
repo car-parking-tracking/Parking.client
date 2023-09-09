@@ -56,7 +56,7 @@ const Password: FC = () => {
           />
           <InputForm
             type="password"
-            placeholder="Повторите новый парорль"
+            placeholder="Повторите новый пароль"
             name="password_repeat"
             register={register}
             isError={!!errors.password_repeat?.message}
