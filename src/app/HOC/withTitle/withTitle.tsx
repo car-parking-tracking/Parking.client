@@ -12,7 +12,7 @@ export const withTitle = <P extends object>(Component: FC<P>) => {
     const navigate = useNavigate()
 
     const handleReturnClick = () => {
-      navigate('/')
+      navigate(-1)
     }
 
     return (

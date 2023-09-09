@@ -1,11 +1,12 @@
 import { FC, useState } from 'react'
 import { Wrapper, Title, InfoList, InfoItem, InfoDesc, FavoriteBtn, DeleteBtn, InfoCost } from './parkingCard.styles'
 import { Tariff } from './parkingCard.types'
-import { replaceAddress } from '@utils/'
+import { replaceAddress } from '@utils/replace-address'
 import { useSelector } from 'react-redux'
 import { RootState } from '@app/store/store'
 import { useFetchLotByIdQuery } from '@app/store/api'
 import { Loader } from '@components/atoms'
+
 
 export const ParkingCard: FC = () => {
   const [favorite, setFavorite] = useState(false)

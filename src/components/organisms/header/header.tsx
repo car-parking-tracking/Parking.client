@@ -1,13 +1,14 @@
 import { FC } from 'react'
 import { NavLink } from 'react-router-dom'
 
-import { getInitials } from '@utils/'
+import { getInitials } from '@utils/get-initials'
 
 import { Logo } from '@components/molecules'
 import { AccountBtn, LoginBtn, NavList, Wrapper, MenuButton } from './header.styles'
 import { HeaderProps } from './header.types'
 
 import { email } from '@constants/variables'
+
 
 export const Header: FC<HeaderProps> = ({ onBtnClick, isLoggedIn }) => {
   const currentUser = 'Имя Фамилия' //здесь будет значение из рeдакса

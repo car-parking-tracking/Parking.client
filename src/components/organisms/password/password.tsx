@@ -2,12 +2,14 @@ import { FC, useState } from 'react'
 import { SubmitHandler, useForm } from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers/yup'
 
-import { yupRecoverPasswordForm } from '@utils/'
+import { yupRecoverPasswordForm } from '@utils/validate'
+
 import { withTitle } from '@app/HOC'
 import { InputForm, Form } from '@components/molecules'
 
 import { InputWrap, Section } from './password.styles'
 import { FormValues } from './password.types'
+
 
 const Password: FC = () => {
   const [isSuccess, setIsSuccess] = useState(false)

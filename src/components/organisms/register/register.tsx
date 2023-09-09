@@ -7,10 +7,11 @@ import { ButtonGroup, Container, InputsContainer } from './register.styles'
 import { InputForm, CheckboxContainer } from '@components/molecules'
 import { Button } from '@components/atoms'
 
-import { yupSchemaRegForm } from '@utils/'
+import { yupSchemaRegForm } from '@utils/validate'
 import { useNavigate } from 'react-router-dom'
 import { useAppDispatch } from '@app/hooks/redux'
 import { login } from '@app/store/slices/authSlice'
+
 
 export const Register: FC<RegisterProps> = () => {
   type FormData = yup.InferType<typeof yupSchemaRegForm>
