@@ -12,6 +12,13 @@ export const Notification = styled(Description)`
   font-size: 1rem;
   line-height: 1.5rem;
   letter-spacing: 0.031rem;
+
+  @media (max-width: 768px) {
+    margin-top: 180px;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 400;
+  }
 `
 export const List = styled.div`
   display: flex;
@@ -37,6 +44,10 @@ export const List = styled.div`
   }
 
   @media (max-width: 768px) {
-    width: 20rem;
+    width: 100%;
+
+    ::-webkit-scrollbar {
+      width: 0;
+    }
   }
 `

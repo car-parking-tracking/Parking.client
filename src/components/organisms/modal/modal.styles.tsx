@@ -26,6 +26,11 @@ export const CloseButton = styled.button`
   position: absolute;
   right: 2rem;
   top: 2.375rem;
+
+  @media (max-width: 768px) {
+    right: 24px;
+    top: 37px;
+  }
 `
 export const CloseIcon = styled.img`
   width: 1rem;
@@ -40,4 +45,10 @@ export const Container = styled.div`
   margin-top: 5rem;
   padding: 2rem;
   background-color: rgba(255, 255, 255, 1);
+
+  @media (max-width: 768px) {
+    width: 100%;
+    margin: 0;
+    padding: 28.5px;
+  }
 `

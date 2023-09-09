@@ -25,7 +25,7 @@ export const Wrapper = styled.div`
   }
 
   @media (max-width: 768px) {
-    width: 18rem;
+    width: 100%;
   }
 `
 export const Info = styled.div`
@@ -45,13 +45,19 @@ export const Address = styled(Description)`
 
 export const ButtonGroup = styled.div`
   display: flex;
-  gap: 0.5rem;
+  gap: 0.75rem;
+  @media (max-width: 768px) {
+    width: 100%;
+  }
 `
 
 export const ButtonSelected = styled(Button)`
   width: 6.25rem;
   font-style: normal;
   line-height: 1.5rem;
+  @media (max-width: 768px) {
+    width: 100%;
+  }
 `
 
 export const ButtonDelete = styled(Button)`
@@ -64,10 +70,17 @@ export const ButtonDelete = styled(Button)`
   :hover {
     color: var(--txt-white);
   }
+
+  @media (max-width: 768px) {
+    width: 100%;
+  }
 `
 
 export const ButtonRestore = styled(Button)`
   width: 8.8125rem;
   font-style: normal;
   line-height: 1.5rem;
+  @media (max-width: 768px) {
+    width: 100%;
+  }
 `
