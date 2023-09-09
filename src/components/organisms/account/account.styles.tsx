@@ -1,18 +1,13 @@
 import styled from 'styled-components'
-import { Description, DefaultTitle } from '@components/atoms'
+import { Description } from '@components/atoms'
 import { Link } from 'react-router-dom'
 
 export const Container = styled.div`
   display: flex;
   flex-direction: column;
 `
-export const AccountTitle = styled(DefaultTitle)`
-  margin-bottom: 0.5rem;
-  color: var(--new-dark)
-`
 export const AccountDesc = styled(Description)`
   margin-bottom: 2rem;
-  color: rgba(60, 65, 88, 0.8);
 `
 export const Menu = styled.div`
   margin-left: -2rem;
@@ -27,7 +22,7 @@ export const MenuItem = styled.div`
   gap: 0.75rem;
 
   &:hover {
-    background-color: var(--new-grey-extra);
+    background-color: #f2f9ff;
   }
 `
 
@@ -40,11 +35,11 @@ export const LinkItem = styled(Link)`
   font-style: normal;
   font-weight: 500;
   line-height: 1.5rem;
+  color: var(--bg-active);
   cursor: pointer;
   transition: 0.3s ease-in-out;
-  color: var(--new-dark);
 
   &:hover {
-    box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 0.1);
+    background-color: #f2f9ff;
   }
 `
