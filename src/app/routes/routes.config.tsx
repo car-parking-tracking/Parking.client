@@ -1,5 +1,5 @@
 import { PAGES, Routes, SidebarRoutes } from './routes.types'
-import { AccountWithTitleWrapper, AuthForm, FavoriteListWithTitle, ProfileWithTitle } from '@components/organisms'
+import { AccountWithTitleWrapper, AuthForm, FavoriteListWithTitle, ProfileWithTitle, PasswordWithTitle } from '@components/organisms'
 import ErrorPage from '@pages/ErrorPage'
 import AboutPage from '@pages/About'
 import { Navigate } from 'react-router-dom'
@@ -45,6 +45,10 @@ export const SIDEBAR_AUTH_ROUTES: SidebarRoutes = [
   {
     path: PAGES.PROFILE,
     sidebar: () => <ProfileWithTitle title="Профиль" />,
+  },
+  {
+    path: PAGES.PASSWORD,
+    sidebar: () => <PasswordWithTitle title="Изменение пароля" />,
   },
   {
     path: PAGES.FAVORITES,

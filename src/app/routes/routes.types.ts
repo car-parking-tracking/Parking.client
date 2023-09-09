@@ -24,4 +24,5 @@ export const enum PAGES {
   ABOUT = 'about',
   NOTFOUND = '404',
   SERVER_ERROR = '500',
+  PASSWORD = 'profile/password',
 }

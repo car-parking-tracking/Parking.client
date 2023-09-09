@@ -1,7 +1,7 @@
 import { FC } from 'react'
 import { NavLink } from 'react-router-dom'
 
-import { getInitials } from '../../../utils'
+import { getInitials } from '@utils/'
 
 import { Logo } from '@components/molecules'
 import { AccountBtn, LoginBtn, NavList, Wrapper, MenuButton } from './header.styles'

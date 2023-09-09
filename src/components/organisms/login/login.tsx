@@ -7,7 +7,7 @@ import { ButtonTextContainer, ButtonGroup, Container, InputsContainer } from './
 import { InputForm } from '@components/molecules'
 import { Button } from '@components/atoms'
 
-import { yupSchemaAuthForm } from '../../../utils/validate'
+import { yupSchemaAuthForm } from '@utils/'
 import { useNavigate } from 'react-router-dom'
 import { useAppDispatch } from '@app/hooks/redux'
 import { login } from '@app/store/slices/authSlice'
