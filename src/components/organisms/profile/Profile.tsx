@@ -1,13 +1,13 @@
-import { FC, SyntheticEvent, useState } from 'react'
-import { useForm } from 'react-hook-form'
+import { FC, useState } from 'react'
+import { SubmitHandler, useForm } from 'react-hook-form'
+import { yupResolver } from '@hookform/resolvers/yup'
 
-import { InputForm } from '@components/molecules'
-import { Form } from '../form'
-import { InputWrap, Section } from './Profile.styles'
-import { FormData } from './Profile.types'
-import { hideTextWithStart } from '../../../utils'
-
+import { yupProfileForm } from '@utils/'
 import { withTitle } from '@app/HOC'
+import { InputForm, Form } from '@components/molecules'
+
+import { InputWrap, Section, LinkItem } from './Profile.styles'
+import { FormValues } from './Profile.types'
 
 const Profile: FC = () => {
   const [isSuccess, setIsSuccess] = useState(false)
@@ -17,35 +17,66 @@ const Profile: FC = () => {
     lastName: 'Файзулин',
     firstName: 'Игорь',
     email: 'faizulin2023@yandex.ru',
-    password: '1234567',
   }
 
-  const { lastName, firstName, email, password } = userData
+  const { lastName, firstName, email } = userData
 
-  //TODO написать валидацию
   const {
     register,
-    setValue,
     handleSubmit,
-    formState: { errors },
-  } = useForm<FormData>()
+    formState: { errors, isValid },
+  } = useForm<FormValues>({
+    mode: 'onChange',
+    resolver: yupResolver(yupProfileForm),
+  })
 
-  async function onSubmit(e: SyntheticEvent) {
-    e.preventDefault()
+  const onSubmit: SubmitHandler<FormValues> = data => {
     setIsSuccess(true)
-    console.log('submit!')
+    console.log('submit!', 'data => ', data)
   }
 
   return (
     <Section>
-      <Form name="profile" onSubmit={onSubmit} submitBtnText={isSuccess ? 'Сохранено' : 'Сохранить'} btnVariant={'animated'} isSuccess={isSuccess}>
+      <Form
+        name="profile"
+        onSubmit={handleSubmit(onSubmit)}
+        submitBtnText={isSuccess ? 'Сохранено' : 'Сохранить'}
+        btnVariant={'animated'}
+        isSuccess={isSuccess}
+        isValid={isValid}>
         <InputWrap>
-          <InputForm type="text" placeholder="Фамилия" value={lastName} name="lastName" register={register} required={false} />
-          <InputForm type="text" placeholder="Имя" value={firstName} name="firstName" register={register} required={false} />
-          <InputForm type="email" placeholder="E-mail" value={email} name="email" register={register} required={false} />
-          <InputForm type="text" placeholder="Пароль" value={hideTextWithStart(password)} name="password" register={register} required={false} />
-          <InputForm type="text" placeholder="Изменить пароль" name="newPassword" register={register} required={false} />
+          <InputForm
+            type="text"
+            placeholder="Фамилия"
+            defaultValue={lastName}
+            name="last_name"
+            register={register}
+            isError={!!errors.last_name?.message}
+            errorMessage={errors.last_name?.message}
+            required={false}
+          />
+          <InputForm
+            type="text"
+            placeholder="Имя"
+            defaultValue={firstName}
+            name="first_name"
+            register={register}
+            isError={!!errors.first_name?.message}
+            errorMessage={errors.first_name?.message}
+            required={false}
+          />
+          <InputForm
+            type="email"
+            placeholder="E-mail"
+            defaultValue={email}
+            name="email"
+            register={register}
+            isError={!!errors.email?.message}
+            errorMessage={errors.email?.message}
+            required={false}
+          />
         </InputWrap>
+        <LinkItem to="./password">Сменить пароль</LinkItem>
       </Form>
     </Section>
   )

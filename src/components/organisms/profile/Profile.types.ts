@@ -1,7 +1,4 @@
-export type FormData = {
-  firstName: string
-  lastName: string
-  email: string
-  password: string
-  newPassword: string
-}
+import * as yup from 'yup'
+import { yupProfileForm } from '../../../utils'
+
+export type FormValues = yup.InferType<typeof yupProfileForm>

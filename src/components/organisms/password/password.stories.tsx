@@ -1,14 +1,14 @@
 import React from 'react'
 import { StoryFn } from '@storybook/react'
-import { ProfileWithTitle } from './Profile'
+import { PasswordWithTitle } from './password'
 import styled from 'styled-components'
 
 export default {
-  title: 'Profile',
-  component: ProfileWithTitle,
+  title: 'Password form',
+  component: PasswordWithTitle,
 }
 
-const ProfileWrap = styled.div`
+const Wrap = styled.div`
   width: 29.5rem;
   border-radius: 1.5rem 0 0 0;
   padding: 2rem;
@@ -16,9 +16,9 @@ const ProfileWrap = styled.div`
 `
 
 const Template: StoryFn = () => (
-  <ProfileWrap>
-    <ProfileWithTitle title="Профиль" />
-  </ProfileWrap>
+  <Wrap>
+    <PasswordWithTitle title="Изменение пароля" />
+  </Wrap>
 )
 
 export const Default = Template.bind({})
