@@ -8,4 +8,5 @@ export interface FormProps {
   submitBtnText?: string
   btnVariant?: variant
   isSuccess?: boolean
+  isValid: boolean
 }
