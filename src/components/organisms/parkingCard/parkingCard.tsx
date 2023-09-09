@@ -1,46 +1,63 @@
 import { FC, useState } from 'react'
 import { Wrapper, Title, InfoList, InfoItem, InfoDesc, FavoriteBtn, DeleteBtn, InfoCost } from './parkingCard.styles'
-import { ParkingCardProps, Tariff } from './parkingCard.types'
+import {  Tariff } from './parkingCard.types'
 import { replaceAddress } from '../../../utils'
+import { useSelector } from 'react-redux'
+import { RootState } from '@app/store/store'
+import { useFetchLotByIdQuery } from '@app/store/api'
+import { Loader } from '@components/atoms'
 
-export const ParkingCard: FC<ParkingCardProps> = ({ id, address, carCapacity, tariffs }) => {
+export const ParkingCard: FC = () => {
   const [favorite, setFavorite] = useState(false)
 
-  const tariff = JSON.parse(`{"tariffs": ${tariffs.replaceAll("'", '"')}}`).tariffs
+  const map = useSelector((state: RootState) => state.map)
+
+  const { data: lotData, isLoading } = useFetchLotByIdQuery(map.id, {
+    skip: !map.id || map.id === 0,
+  })
 
   const handleChangeFavorite = () => {
     setFavorite(!favorite)
   }
 
-  return (
-    <Wrapper>
-      <Title>{`Парковка № ${id}`}</Title>
-      <InfoList>
-        <InfoItem>
-          <InfoDesc>{replaceAddress(address)}</InfoDesc>
-        </InfoItem>
-        <InfoItem>
-          <InfoCost>Цена</InfoCost>
-          {tariff.map((item: Tariff, index: number) => {
-            return <InfoDesc key={index}>{`${item.TimeRange?.replace('-', ' ... ')} — ${item.HourPrice || item.FirstHour} ₽`}</InfoDesc>
-          })}
-        </InfoItem>
-        <InfoItem>
-          <InfoDesc>Мест свободно: нет данных</InfoDesc>
-        </InfoItem>
-        <InfoItem>
-          <InfoDesc>Всего мест: {carCapacity}</InfoDesc>
-        </InfoItem>
-      </InfoList>
-      {favorite ? (
-        <DeleteBtn variant="outlined" onClick={handleChangeFavorite}>
-          Убрать из Моих парковок
-        </DeleteBtn>
-      ) : (
-        <FavoriteBtn variant="primary" onClick={handleChangeFavorite}>
-          Добавить в Мои парковки
-        </FavoriteBtn>
-      )}
-    </Wrapper>
-  )
+  if (isLoading) {
+    return (
+        <Loader variant="page" />
+    )
+  }
+
+  if (lotData) {
+    const tariff = JSON.parse(`{"tariffs": ${lotData.tariffs.replaceAll("'", '"')}}`).tariffs
+    return (
+      <Wrapper>
+        <Title>{`Парковка № ${lotData.id}`}</Title>
+        <InfoList>
+          <InfoItem>
+            <InfoDesc>{replaceAddress(lotData.address)}</InfoDesc>
+          </InfoItem>
+          <InfoItem>
+            <InfoCost>Цена</InfoCost>
+            {tariff.map((item: Tariff, index: number) => {
+              return <InfoDesc key={index}>{`${item.TimeRange?.replace('-', ' ... ')} — ${item.HourPrice || item.FirstHour} ₽`}</InfoDesc>
+            })}
+          </InfoItem>
+          <InfoItem>
+            <InfoDesc>Мест свободно: нет данных</InfoDesc>
+          </InfoItem>
+          <InfoItem>
+            <InfoDesc>Всего мест: {lotData.car_capacity}</InfoDesc>
+          </InfoItem>
+        </InfoList>
+        {favorite ? (
+          <DeleteBtn variant="outlined" onClick={handleChangeFavorite}>
+            Убрать из Моих парковок
+          </DeleteBtn>
+        ) : (
+          <FavoriteBtn variant="primary" onClick={handleChangeFavorite}>
+            Добавить в Мои парковки
+          </FavoriteBtn>
+        )}
+      </Wrapper>
+    )
+  }
 }

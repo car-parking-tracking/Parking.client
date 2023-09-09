@@ -8,9 +8,11 @@ export const Container = styled.div`
 `
 export const AccountTitle = styled(DefaultTitle)`
   margin-bottom: 0.5rem;
+  color: var(--new-dark)
 `
 export const AccountDesc = styled(Description)`
   margin-bottom: 2rem;
+  color: rgba(60, 65, 88, 0.8);
 `
 export const Menu = styled.div`
   margin-left: -2rem;
@@ -25,7 +27,7 @@ export const MenuItem = styled.div`
   gap: 0.75rem;
 
   &:hover {
-    background-color: #f2f9ff;
+    background-color: var(--new-grey-extra);
   }
 `
 
@@ -38,11 +40,11 @@ export const LinkItem = styled(Link)`
   font-style: normal;
   font-weight: 500;
   line-height: 1.5rem;
-  color: var(--bg-active);
   cursor: pointer;
   transition: 0.3s ease-in-out;
+  color: var(--new-dark);
 
   &:hover {
-    background-color: #f2f9ff;
+    box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 0.1);
   }
 `

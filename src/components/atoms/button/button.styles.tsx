@@ -15,82 +15,47 @@ const shared = css<ButtonProps>`
 `
 const secondary = css<ButtonProps>`
   ${shared}
-  background-color: var(--grey);
+  background: var(--new-grey-light);
+  color: var(--new-dark);
 
   &:hover {
-    background-color: var(--button-bg-default);
+    color: var(--new-white);
+    background-color: var(--new-bg-hover);
   }
 
   &:disabled {
-    background-color: var(--search-item-hover);
-    color: var(--grey);
+    background-color: var(--new-grey-extra);
+    color: var(--new-grey);
   }
 `
 const primary = css<ButtonProps>`
   ${shared}
-  background-color: var(--button-bg-default);
+  background-color: var(--new-bg-active);
 
   &:hover {
-    background-color: var(--button-bg-hover);
+    background-color: var(--new-bg-hover);
   }
 
   &:disabled {
-    background-color: var(--search-item-hover);
-    color: var(--grey);
-  }
-`
-
-const icon = css<ButtonProps>`
-  ${shared}
-  background-color: var(--button-bg-default);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.75rem;
-  font-size: 0.875rem;
-  font-weight: 600;
-  line-height: 1.5rem;
-
-  #masked {
-    width: 1.25rem;
-    height: 1.25rem;
-    mask-image: url(${LikeInactive});
-    background: #fff;
-    transition: 0.3s ease-in-out;
-  }
-
-  &:hover {
-    background-color: var(--button-bg-hover);
-    #masked {
-      mask-image: url(${LikeActive});
-    }
-  }
-
-  &:disabled {
-    background-color: var(--search-item-hover);
-    color: var(--grey);
-    #masked {
-      background: var(--grey);
-      mask-image: url(${LikeInactive});
-    }
+    background-color: var(--new-grey-extra);
+    color: var(--new-grey);
   }
 `
 
 const outlined = css<ButtonProps>`
   ${shared}
-  color: var(--bg-active);
+  color: var(--new-dark);
   background-color: transparent;
-  border: 0.063rem solid var(--button-bg-default);
+  border: 0.063rem solid var(--new-bg-hover);
 
   &:hover {
     color: var(--txt-white);
-    background-color: var(--button-bg-default);
+    background-color: var(--new-bg-hover);
   }
 
   &:disabled {
-    border: 0.125rem solid var(--search-item-hover);
-    background-color: transparent;
-    color: var(--bg-active);
+    background-color: var(--new-grey-extra);
+    color: var(--new-grey);
   }
 `
 
@@ -100,18 +65,18 @@ const filter = css<ButtonProps>`
   font-weight: 500;
   border: none;
   background-color: transparent;
-  border-bottom: 0.063rem solid #e0e0e0;
+  border-bottom: 0.063rem solid var(--new-grey-light);
   border-radius: 0;
   padding: 0.375rem 1.125rem;
   min-width: 8.688rem;
 
   &:hover {
-    border-bottom: 0.063rem solid var(--button-bg-hover);
+    border-bottom: 0.063rem solid var(--new-bg-hover);
   }
 
   &:disabled {
-    color: var(--bg-active);
-    border-bottom: 0.063rem solid var(--button-bg-default);
+    color: var(--new-grey);
+    border-bottom: 0.063rem solid var(--new-bg-active);
   }
 `
 
@@ -121,7 +86,7 @@ const text = css<ButtonProps>`
   font-weight: 400;
   line-height: 1rem;
   letter-spacing: 0.031rem;
-  color: var(--button-bg-hover);
+  color: var(--new-bg-active);
   background: transparent;
   padding: 0;
 
@@ -213,8 +178,6 @@ export const Button = styled.button<ButtonProps>`
         return primary
       case 'outlined':
         return outlined
-      case 'icon':
-        return icon
       case 'filter':
         return filter
       case 'text':

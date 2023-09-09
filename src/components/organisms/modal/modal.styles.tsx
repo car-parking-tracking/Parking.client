@@ -2,11 +2,17 @@ import styled from 'styled-components'
 
 export const View = styled.div<{ visible: boolean }>`
   position: absolute;
-  right: 0;
+  right: 2rem;
   height: 100vh;
   display: ${({ visible }) => (visible ? 'flex' : 'none')};
   justify-content: end;
   z-index: 1;
+
+  @media (max-width: 768px) {
+    z-index: 100;
+    width: 100%;
+    right: 0;
+  }
 `
 export const CloseButton = styled.button`
   display: flex;
@@ -17,8 +23,13 @@ export const CloseButton = styled.button`
   margin: 0;
   padding: 0;
   position: absolute;
-  right: 2rem;
+  right: 4rem;
   top: 2.375rem;
+
+  @media (max-width: 768px) {
+    right: 28px;
+    top: 28px;
+  }
 `
 export const CloseIcon = styled.img`
   width: 1rem;
@@ -29,8 +40,15 @@ export const Container = styled.div`
   flex-direction: column;
   position: relative;
   width: 29.5rem;
-  border-radius: 1.5rem 0 0 0;
+  border-radius: 1.5rem 1.5rem 0 0;
   margin-top: 5rem;
   padding: 2rem;
   background-color: rgba(255, 255, 255, 1);
+
+  @media (max-width: 768px) {
+    width: 100%;
+    margin: 0;
+    padding: 28.5px;
+    justify-content: center;
+  }
 `

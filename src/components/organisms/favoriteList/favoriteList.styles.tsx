@@ -40,4 +40,8 @@ export const List = styled.div`
     border-radius: 1rem;
     border: 0.063rem solid #fff;
   }
+
+  @media (max-width: 768px) {
+    width: 20rem;
+  }
 `

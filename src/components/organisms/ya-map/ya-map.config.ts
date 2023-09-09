@@ -12,6 +12,7 @@ export const mapConfig = {
       [56.065309, 37.10394],
       [55.352992, 38.475325],
     ],
+    balloonPanelMaxMapArea: 562500,
   },
 
   modules: [],

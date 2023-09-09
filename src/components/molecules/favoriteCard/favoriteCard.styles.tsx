@@ -23,6 +23,10 @@ export const Wrapper = styled.div`
     box-shadow: inset 0rem 0rem 0rem 0.063rem var(--button-bg-default);
     background: var(--blue-light);
   }
+
+  @media (max-width: 768px) {
+    width: 18rem;
+  }
 `
 export const Info = styled.div`
   color: ${({ isDeleted }: { isDeleted: boolean }) => (isDeleted ? 'var(--grey-button)' : 'var(--item-name)')};

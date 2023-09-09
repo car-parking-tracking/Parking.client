@@ -9,6 +9,11 @@ export const Wrapper = styled.div`
   top: 1rem;
   left: 6.5rem;
   z-index: 10;
+
+  @media (max-width: 768px) {
+    top: 1rem;
+    left: 1rem;
+  }
 `
 export const WrapperInput = styled.div`
   display: flex;
@@ -26,12 +31,26 @@ export const WrapperInput = styled.div`
     background-size: cover;
     background-repeat: no-repeat;
   }
+
+  @media (max-width: 768px) {
+    &::before {
+      display: none;
+    }
+  }
 `
 export const Search = styled(Input)`
   width: 27.625rem;
   padding-left: 3.5rem;
   padding-right: 2.25rem;
   border-radius: ${({ showOptions }: { showOptions: boolean }) => (showOptions ? '0.75rem 0.75rem 0 0' : '0.75rem')};
+
+  @media (max-width: 768px) {
+    padding: 0px 12px 0px 16px;
+    width: 279px;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+  }
 `
 export const Option = styled.div`
   display: flex;
@@ -70,13 +89,17 @@ export const DataList = styled.div`
   ::-webkit-scrollbar-track {
     background-color: transparent;
   }
+
+  @media (max-width: 768px) {
+    width: 279px;
+  }
 `
 export const Name = styled.p`
-  color: var(--item-name);
+  color: var(--new-dark);
   line-height: 1.5rem;
 `
 export const Description = styled.p`
-  color: var(--item-desc);
+  color: var(--new-grey);
   font-family: 'Raleway', sans-serif;
   line-height: 1.25rem;
   font-size: 0.8125rem;

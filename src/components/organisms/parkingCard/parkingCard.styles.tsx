@@ -16,12 +16,21 @@ export const Title = styled.h2`
   font-variant-numeric: lining-nums proportional-nums;
   font-feature-settings: 'liga' off;
   margin-bottom: 0.75rem;
+
+  @media (max-width: 768px) {
+    font-size: 18px;
+    font-weight: 700;
+  }
 `
 export const InfoList = styled.ul`
   margin-bottom: 0.75rem;
   display: flex;
   flex-direction: column;
   gap: 0.625rem;
+
+  @media (max-width: 768px) {
+    gap: 0.5rem;
+  }
 `
 export const InfoItem = styled.li`
   display: flex;

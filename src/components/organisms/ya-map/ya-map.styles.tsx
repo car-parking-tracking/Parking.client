@@ -60,4 +60,26 @@ export const Wrapper = styled.div`
   .ymaps-2-1-79-balloon__tail {
     display: none !important;
   }
+
+  @media (max-width: 768px) {
+    .ymaps-2-1-79-balloon_layout_panel {
+      animation: fadeIn 0.3s ease-in-out;
+      border-radius: 20px 20px 0px 0px;
+    }
+
+    .ymaps-2-1-79-balloon__layout {
+      position: sticky;
+      top: 30px;
+      left: 200px;
+    }
+
+    .ymaps-2-1-79-copyrights-pane {
+      inset: auto 0px 0px !important;
+      z-index: 1000 !important;
+    }
+
+    #parking {
+      width: 100%;
+    }
+  }
 `

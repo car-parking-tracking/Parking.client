@@ -12,7 +12,7 @@ import { useNavigate } from 'react-router-dom'
 import { useAppDispatch } from '@app/hooks/redux'
 import { login } from '@app/store/slices/authSlice'
 
-export const Login: FC<LoginProps> = ({ onOpenRegister }) => {
+export const Login: FC = () => {
   type FormData = yup.InferType<typeof yupSchemaAuthForm>
   const navigate = useNavigate()
   const dispatch = useAppDispatch()
@@ -57,9 +57,6 @@ export const Login: FC<LoginProps> = ({ onOpenRegister }) => {
       <ButtonTextContainer>
         <Button type="button" variant="text">
           Восстановить пароль
-        </Button>
-        <Button type="button" variant="text" onClick={onOpenRegister}>
-          Зарегистрироваться
         </Button>
       </ButtonTextContainer>
       <ButtonGroup>

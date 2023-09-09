@@ -4,7 +4,7 @@ import { NavLink } from 'react-router-dom'
 import { getInitials } from '../../../utils'
 
 import { Logo } from '@components/molecules'
-import { AccountBtn, LoginBtn, NavList, Wrapper } from './header.styles'
+import { AccountBtn, LoginBtn, NavList, Wrapper, MenuButton } from './header.styles'
 import { HeaderProps } from './header.types'
 
 import { email } from '@constants/variables'
@@ -37,6 +37,11 @@ export const Header: FC<HeaderProps> = ({ onBtnClick, isLoggedIn }) => {
           Вход
         </LoginBtn>
       )}
+      <MenuButton variant="secondary" onClick={onBtnClick}>
+        <span></span>
+        <span></span>
+        <span></span>
+      </MenuButton>
     </Wrapper>
   )
 }

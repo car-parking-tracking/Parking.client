@@ -26,7 +26,7 @@ export const AuthForm: FC<AuthFormProps> = () => {
         </Button>
       </NavContainer>
       {formType === 'register' && <Register />}
-      {formType === 'login' && <Login onOpenRegister={handleRegButton} />}
+      {formType === 'login' && <Login />}
     </Container>
   )
 }

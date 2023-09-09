@@ -4,6 +4,13 @@ export const NavContainer = styled.nav`
   display: flex;
   gap: 1rem;
   margin-bottom: 2rem;
+
+  @media (max-width: 768px) {
+    margin-bottom: 1.5rem;
+    justify-content: center;
+    align-items: center;
+    gap: 0;
+  }
 `
 export const ButtonGroup = styled.div`
   display: flex;
