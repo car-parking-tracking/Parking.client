@@ -1,5 +1,4 @@
 import { Description, Title } from '@components/atoms'
-import { Link } from 'react-router-dom'
 import styled from 'styled-components'
 
 export const Wrapper = styled.div`
@@ -8,6 +7,7 @@ export const Wrapper = styled.div`
   gap: 1rem;
   align-items: center;
   text-align: center;
+  max-width: 860px;
 `
 
 export const ErrorTitle = styled(Title)`
@@ -18,12 +18,4 @@ export const ErrorTitle = styled(Title)`
 `
 export const ErrorDescription = styled(Description)`
   color: var(--bg-active);
-`
-export const ErrorLink = styled(Link)`
-  color: var(--bg-active);
-  transition: 0.3s ease-in-out;
-
-  &:hover {
-    color: var(--button-bg-default);
-  }
 `
