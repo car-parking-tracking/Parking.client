@@ -181,6 +181,15 @@ const animated = css<ButtonProps>`
     animation: 1s ease-out 0.5s showAfter forwards;
   }
 
+  &:hover {
+    background-color: var(--button-bg-hover);
+  }
+
+  &:disabled {
+    background-color: var(--search-item-hover);
+    color: var(--grey);
+  }
+
   @keyframes showBefore {
     from {
       height: 0;
