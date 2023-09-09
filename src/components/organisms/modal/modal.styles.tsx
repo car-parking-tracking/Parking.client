@@ -7,6 +7,7 @@ export const View = styled.div<{ visible: boolean }>`
   display: ${({ visible }) => (visible ? 'flex' : 'none')};
   justify-content: end;
   z-index: 1;
+  overflow: hidden;
 `
 export const CloseButton = styled.button`
   display: flex;

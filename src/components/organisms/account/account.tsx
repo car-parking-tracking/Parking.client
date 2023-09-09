@@ -1,13 +1,15 @@
 import { FC } from 'react'
 import { AuthFormProps } from './account.types'
-import { Container, AccountTitle, Menu, AccountDesc, LinkItem } from './account.styles'
+import { Container, Menu, AccountDesc, LinkItem } from './account.styles'
 import profile from '@assets/icons/profile.svg'
 import favorite from '@assets/icons/favorite.svg'
 import exit from '@assets/icons/exit.svg'
 import { useAppDispatch } from '@app/hooks/redux'
 import { logout } from '@app/store/slices/authSlice'
 
-export const Account: FC<AuthFormProps> = ({ children }) => {
+import { withTitle } from '@app/HOC'
+
+const Account: FC<AuthFormProps> = ({ children }) => {
   const dispatch = useAppDispatch()
 
   const handleLogout = () => {
@@ -16,7 +18,6 @@ export const Account: FC<AuthFormProps> = ({ children }) => {
 
   return (
     <Container>
-      <AccountTitle variant="modal">Мои парковки</AccountTitle>
       <AccountDesc variant="modal">faizulin2023@yandex.ru</AccountDesc>
       <Menu>
         <LinkItem to="/profile">
@@ -34,3 +35,7 @@ export const Account: FC<AuthFormProps> = ({ children }) => {
     </Container>
   )
 }
+
+const AccountWithTitle = withTitle(Account)
+
+export const AccountWithTitleWrapper: FC = ({ ...props }) => <AccountWithTitle title="Игорь Файзулин" hideBackButton={true} {...props} />

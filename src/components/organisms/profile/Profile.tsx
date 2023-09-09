@@ -3,11 +3,13 @@ import { useForm } from 'react-hook-form'
 
 import { InputForm } from '@components/molecules'
 import { Form } from '../form'
-import { InputWrap, Section, Title } from './userProfile.styles'
-import { FormData } from './userProfile.types'
+import { InputWrap, Section } from './Profile.styles'
+import { FormData } from './Profile.types'
 import { hideTextWithStart } from '../../../utils'
 
-export const UserProfile: FC = () => {
+import { withTitle } from '@app/HOC'
+
+const Profile: FC = () => {
   const [isSuccess, setIsSuccess] = useState(false)
 
   // TODO - подтянуть данные юзера из редакса
@@ -36,7 +38,6 @@ export const UserProfile: FC = () => {
 
   return (
     <Section>
-      <Title>Профиль</Title>
       <Form name="profile" onSubmit={onSubmit} submitBtnText={isSuccess ? 'Сохранено' : 'Сохранить'} btnVariant={'animated'} isSuccess={isSuccess}>
         <InputWrap>
           <InputForm type="text" placeholder="Фамилия" value={lastName} name="lastName" register={register} required={false} />
@@ -49,3 +50,5 @@ export const UserProfile: FC = () => {
     </Section>
   )
 }
+
+export const ProfileWithTitle = withTitle(Profile)
