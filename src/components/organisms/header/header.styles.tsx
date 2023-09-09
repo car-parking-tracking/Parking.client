@@ -23,7 +23,7 @@ export const Wrapper = styled.header`
     background: rgba(60, 65, 88, 0.8);
   }
 
-  @media (max-width: 768px) {
+  @media (max-width: 48rem) {
     padding: 0.5rem 1rem 0.5rem 1rem;
     &::before {
       display: none;
@@ -38,7 +38,7 @@ export const NavList = styled.ul`
   font-weight: 400;
   line-height: 1.5rem;
   list-style: none;
-  letter-spacing: 0.5px;
+  letter-spacing: .0313rem;
 
   a {
     color: var(--txt-white);
@@ -50,7 +50,7 @@ export const NavList = styled.ul`
     }
   }
 
-  @media (max-width: 768px) {
+  @media (max-width: 48rem) {
     display: none;
   }
 `
@@ -67,7 +67,7 @@ export const LoginBtn = styled(Button)`
   box-shadow: none;
   margin-left: 3.938rem;
 
-  @media (max-width: 768px) {
+  @media (max-width: 48rem) {
     display: none;
   }
 `
@@ -81,26 +81,26 @@ export const AccountBtn = styled(Button)`
   border-radius: 0.75rem;
   margin-left: 5.563rem;
 
-  @media (max-width: 768px) {
+  @media (max-width: 48rem) {
     display: none;
   }
 `
 export const MenuButton = styled(Button)`
   display: none;
-  @media (max-width: 768px) {
+  @media (max-width: 48rem) {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    border-radius: 12px;
-    height: 48px;
+    border-radius: .75rem;
+    height: 3rem;
     background: var(--new-white);
-    gap: 5px;
-    box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.3);
+    gap: .3125rem;
+    box-shadow: 0rem .125rem .25rem 0rem rgba(0, 0, 0, 0.3);
     
     span {
-      width: 22px;
-      height: 2px;
+      width: 1.375rem;
+      height: .125rem;
       background: var(--new-grey);
     }
   }

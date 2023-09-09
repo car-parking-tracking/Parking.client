@@ -7,7 +7,7 @@ export const Wrapper = styled.div`
   gap: 1rem;
   align-items: center;
   text-align: center;
-  max-width: 860px;
+  max-width: 53.75rem;
 `
 
 export const ErrorTitle = styled(Title)`

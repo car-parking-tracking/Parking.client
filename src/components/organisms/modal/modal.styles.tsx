@@ -9,7 +9,7 @@ export const View = styled.div<{ visible: boolean }>`
   z-index: 1;
   overflow: hidden;
 
-  @media (max-width: 768px) {
+  @media (max-width: 48rem) {
     z-index: 100;
     width: 100%;
     right: 0;
@@ -27,9 +27,9 @@ export const CloseButton = styled.button`
   right: 2rem;
   top: 2.375rem;
 
-  @media (max-width: 768px) {
-    right: 24px;
-    top: 37px;
+  @media (max-width: 48rem) {
+    right: 1.5rem;
+    top: 2.3125rem;
   }
 `
 export const CloseIcon = styled.img`
@@ -46,9 +46,9 @@ export const Container = styled.div`
   padding: 2rem;
   background-color: rgba(255, 255, 255, 1);
 
-  @media (max-width: 768px) {
+  @media (max-width: 48rem) {
     width: 100%;
     margin: 0;
-    padding: 28.5px;
+    padding: 1.7813rem;
   }
 `

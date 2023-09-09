@@ -21,8 +21,8 @@ export const GlobalStyle = createGlobalStyle`
     --search-item-hover: #F8FAFB;
     --item-desc: #1B1F3BA6;
     --item-name: #191C30E5;
-    --parking-card-width: 267px;
-    --parking-card-height: 251px;
+    --parking-card-width: 16.6875rem;
+    --parking-card-height: 15.6875rem;
     --red: #FF2121;
     --new-white: #FFFFFF;
     --new-dark: #3C4158;
@@ -47,7 +47,7 @@ export const GlobalStyle = createGlobalStyle`
     min-height: 100vh;
     background-color: var(--grey-light);
     font-family: 'Raleway', sans-serif;
-    font-size: 16px;
+    font-size: 1rem;
     font-weight: 500;
     font-style: normal;
     font-variant-numeric: lining-nums proportional-nums;

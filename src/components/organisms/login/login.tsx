@@ -12,7 +12,6 @@ import { useNavigate } from 'react-router-dom'
 import { useAppDispatch } from '@app/hooks/redux'
 import { login } from '@app/store/slices/authSlice'
 
-
 export const Login: FC = () => {
   type FormData = yup.InferType<typeof yupSchemaAuthForm>
   const navigate = useNavigate()
@@ -56,7 +55,12 @@ export const Login: FC = () => {
         />
       </InputsContainer>
       <ButtonTextContainer>
-        <Button type="button" variant="text">
+        <Button
+          type="button"
+          variant="text"
+          onClick={() => {
+            navigate('/reset')
+          }}>
           Восстановить пароль
         </Button>
       </ButtonTextContainer>

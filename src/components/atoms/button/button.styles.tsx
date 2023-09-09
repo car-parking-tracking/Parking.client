@@ -129,7 +129,7 @@ const animated = css<ButtonProps>`
     content: '';
     position: absolute;
     left: 0;
-    bottom: 0px;
+    bottom: 0rem;
     background: var(--button-bg-default);
     border-radius: 1.25rem;
   }
@@ -159,22 +159,22 @@ const animated = css<ButtonProps>`
   @keyframes showBefore {
     from {
       height: 0;
-      transform: rotate(-45deg) translate(4px, -5px);
+      transform: rotate(-45deg) translate(.25rem, -0.3125rem);
     }
     to {
       height: 48%;
-      transform: rotate(-45deg) translate(1.5px, 1px);
+      transform: rotate(-45deg) translate(.0938rem, .0625rem);
     }
   }
 
   @keyframes showAfter {
     from {
       width: 0;
-      transform: rotate(-50deg) translate(3px, 3px);
+      transform: rotate(-50deg) translate(.1875rem, .1875rem);
     }
     to {
       width: 100%;
-      transform: rotate(-50deg) translate(6px, -3px);
+      transform: rotate(-50deg) translate(.375rem, -0.1875rem);
     }
   }
 `

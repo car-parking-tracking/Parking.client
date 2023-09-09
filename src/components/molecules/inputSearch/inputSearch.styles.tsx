@@ -10,7 +10,7 @@ export const Wrapper = styled.div`
   left: 6.5rem;
   z-index: 10;
 
-  @media (max-width: 768px) {
+  @media (max-width: 48rem) {
     top: 1rem;
     left: 1rem;
   }
@@ -32,7 +32,7 @@ export const WrapperInput = styled.div`
     background-repeat: no-repeat;
   }
 
-  @media (max-width: 768px) {
+  @media (max-width: 48rem) {
     &::before {
       display: none;
     }
@@ -44,10 +44,10 @@ export const Search = styled(Input)`
   padding-right: 2.25rem;
   border-radius: ${({ showOptions }: { showOptions: boolean }) => (showOptions ? '0.75rem 0.75rem 0 0' : '0.75rem')};
 
-  @media (max-width: 768px) {
-    padding: 0px 12px 0px 16px;
-    width: 279px;
-    font-size: 14px;
+  @media (max-width: 48rem) {
+    padding: 0rem .75rem 0rem 1rem;
+    width: 17.4375rem;
+    font-size: .875rem;
     font-style: normal;
     font-weight: 400;
   }
@@ -90,8 +90,8 @@ export const DataList = styled.div`
     background-color: transparent;
   }
 
-  @media (max-width: 768px) {
-    width: 279px;
+  @media (max-width: 48rem) {
+    width: 17.4375rem;
   }
 `
 export const Name = styled.p`

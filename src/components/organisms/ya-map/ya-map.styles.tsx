@@ -61,20 +61,20 @@ export const Wrapper = styled.div`
     display: none !important;
   }
 
-  @media (max-width: 768px) {
+  @media (max-width: 48rem) {
     .ymaps-2-1-79-balloon_layout_panel {
       animation: fadeIn 0.3s ease-in-out;
-      border-radius: 20px 20px 0px 0px;
+      border-radius: 1.25rem 1.25rem 0rem 0rem;
     }
 
     .ymaps-2-1-79-balloon__layout {
       position: sticky;
-      top: 30px;
-      left: 200px;
+      top: 1.875rem;
+      left: 12.5rem;
     }
 
     .ymaps-2-1-79-copyrights-pane {
-      inset: auto 0px 0px !important;
+      inset: auto 0rem 0rem !important;
       z-index: 1000 !important;
     }
 

@@ -19,6 +19,8 @@ export type SidebarRoutes = SidebarRoute[]
 export const enum PAGES {
   ALL = '*',
   MAIN = '/',
+  RESET_PASSWORD = 'reset',
+  UPDATE_PASSWORD = 'update/:code',
   PROFILE = 'profile',
   FAVORITES = 'favorites',
   ABOUT = 'about',

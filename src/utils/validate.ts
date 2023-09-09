@@ -38,8 +38,28 @@ export const yupSchemaAuthForm = yup.object().shape({
   password: yup.string().required('Поле обязательно для заполнения'),
 })
 
+export const yupSchemaResetForm = yup.object().shape({
+  email: yup
+    .string()
+    .required('Поле обязательно для заполнения')
+    .matches(/^[\w-]+@[a-zA-Z]+\.[a-zA-Z]+$/, 'Введите корректный email'),
+})
+
 export const yupRecoverPasswordForm = yup.object().shape({
   password_old: yup.string().required('Поле обязательно для заполнения'),
+  password_new: yup
+    .string()
+    .required('Поле обязательно для заполнения')
+    .min(8, 'Минимальное количество символов: 8')
+    .max(32, 'Максимальное количество символов: 32')
+    .matches(/^[a-zA-Z0-9!@#$%^&*()_+=[\]{}|;:\\'"<>,.?/-]*$/, 'Может содержать только буквы латиницы, цифры и спецсимволы'),
+  password_repeat: yup
+    .string()
+    .required('Поле обязательно для заполнения')
+    .oneOf([yup.ref('password_new'), ''], 'Пароли не совпадают'),
+})
+
+export const yupUpdatePasswordForm = yup.object().shape({
   password_new: yup
     .string()
     .required('Поле обязательно для заполнения')

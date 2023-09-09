@@ -16,6 +16,8 @@ export function App() {
       <Route path="/*" element={<Layout />}>
         <Route index element={<MainPage />} />
         <Route path={'about'} element={<MainPage />} />
+        <Route path={'reset'} element={<MainPage />} />
+        <Route path={'update/:code'} element={<MainPage />} />
         {isAuth && (
           <>
             <Route path={'profile/*'} element={<MainPage />} />

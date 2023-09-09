@@ -17,8 +17,8 @@ export const Title = styled.h2`
   font-feature-settings: 'liga' off;
   margin-bottom: 0.75rem;
 
-  @media (max-width: 768px) {
-    font-size: 18px;
+  @media (max-width: 48rem) {
+    font-size: 1.125rem;
     font-weight: 700;
   }
 `
@@ -28,7 +28,7 @@ export const InfoList = styled.ul`
   flex-direction: column;
   gap: 0.625rem;
 
-  @media (max-width: 768px) {
+  @media (max-width: 48rem) {
     gap: 0.5rem;
   }
 `
@@ -43,7 +43,7 @@ export const InfoDesc = styled.p`
   font-variant-numeric: lining-nums proportional-nums;
   word-wrap: break-word;
   font-weight: 500;
-  line-height: 24px;
+  line-height: 1.5rem;
 `
 
 export const InfoCost = styled(InfoDesc)`
