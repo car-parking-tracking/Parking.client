@@ -1,6 +1,6 @@
 import MainPage from '@pages/MainPage'
 import { PAGES, Routes } from './routes.types'
-import { Account, AuthForm, FavoriteList, UserProfile } from '@components/organisms'
+import { AccountWithTitleWrapper, AuthForm, FavoriteListWithTitle, ProfileWithTitle } from '@components/organisms'
 import ErrorPage from '@pages/ErrorPage'
 import AboutPage from '@pages/About'
 
@@ -21,32 +21,32 @@ export const MAIN_ROUTES: Routes = [
     path: PAGES.MAIN,
     exact: true,
     main: () => <MainPage />,
-    sidebar: () => <Account />,
+    sidebar: () => <AccountWithTitleWrapper />,
   },
   {
     path: PAGES.ABOUT,
     main: () => <AboutPage />,
-    sidebar: () => <Account />,
+    sidebar: () => <AccountWithTitleWrapper />,
   },
   {
     path: PAGES.PROFILE,
     main: () => <MainPage />,
-    sidebar: () => <UserProfile />,
+    sidebar: () => <ProfileWithTitle title="Профиль" />,
   },
   {
     path: PAGES.FAVORITES,
     main: () => <MainPage />,
-    sidebar: () => <FavoriteList items={favoriteItems} />,
+    sidebar: () => <FavoriteListWithTitle title="Мои парковки" items={favoriteItems} />,
   },
   {
     path: PAGES.NOTFOUND,
     main: () => <ErrorPage code={404} text="Неправильно набран адрес или такой страницы не существует." />,
-    sidebar: () => <Account />,
+    sidebar: () => <AccountWithTitleWrapper />,
   },
   {
     path: PAGES.SERVER_ERROR,
     main: () => <ErrorPage code={500} text="Internal server error. Кажется что-то пошло не так!" />,
-    sidebar: () => <Account />,
+    sidebar: () => <AccountWithTitleWrapper />,
   },
 ]
 
