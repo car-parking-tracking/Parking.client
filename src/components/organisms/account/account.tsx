@@ -8,6 +8,7 @@ import { useAppDispatch } from '@app/hooks/redux'
 import { logout } from '@app/store/slices/authSlice'
 
 import { withTitle } from '@app/HOC'
+import { FooterMobile } from '@components/molecules'
 
 const Account: FC<AuthFormProps> = ({ children }) => {
   const dispatch = useAppDispatch()
@@ -32,6 +33,7 @@ const Account: FC<AuthFormProps> = ({ children }) => {
           <img src={exit} alt="exit_icon" /> Выйти
         </LinkItem>
       </Menu>
+      <FooterMobile hasAbout={true} />
     </Container>
   )
 }

@@ -51,11 +51,11 @@ export const ParkingCard: FC = () => {
         </InfoList>
         {favorite ? (
           <DeleteBtn variant="outlined" onClick={handleChangeFavorite}>
-            Убрать из Моих парковок
+            Убрать из избранного
           </DeleteBtn>
         ) : (
           <FavoriteBtn variant="primary" onClick={handleChangeFavorite}>
-            Добавить в Мои парковки
+            Добавить в избранное
           </FavoriteBtn>
         )}
       </Wrapper>

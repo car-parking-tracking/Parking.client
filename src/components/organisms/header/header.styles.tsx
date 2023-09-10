@@ -1,5 +1,6 @@
 import styled from 'styled-components'
 import { Button } from '@components/atoms'
+import { NavLink } from 'react-router-dom'
 
 export const Wrapper = styled.header`
   position: absolute;
@@ -35,25 +36,19 @@ export const NavList = styled.ul`
   grid-template-columns: 1fr repeat(2, max-content);
   align-items: center;
   column-gap: 2rem;
-  font-weight: 400;
-  line-height: 1.5rem;
-  list-style: none;
-  letter-spacing: .0313rem;
-
-  a {
-    color: var(--txt-white);
-    text-decoration: none;
-    transition: 0.3s;
-
-    :hover {
-      color: var(--button-bg-hover);
-    }
-  }
 
   @media (max-width: 48rem) {
     display: none;
   }
 `
+
+export const HeaderLink = styled(NavLink)`
+  font-weight: 400;
+  line-height: 1.5rem;
+  list-style: none;
+  letter-spacing: 0.0313rem;
+`
+
 export const LoginBtn = styled(Button)`
   display: flex;
   justify-content: center;
@@ -92,15 +87,15 @@ export const MenuButton = styled(Button)`
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    border-radius: .75rem;
+    border-radius: 0.75rem;
     height: 3rem;
     background: var(--new-white);
-    gap: .3125rem;
-    box-shadow: 0rem .125rem .25rem 0rem rgba(0, 0, 0, 0.3);
-    
+    gap: 0.3125rem;
+    box-shadow: 0rem 0.125rem 0.25rem 0rem rgba(0, 0, 0, 0.3);
+
     span {
       width: 1.375rem;
-      height: .125rem;
+      height: 0.125rem;
       background: var(--new-grey);
     }
   }

@@ -36,7 +36,7 @@ export const Info = styled.div`
 export const Title = styled.p`
   font-weight: 700;
   line-height: 1.75rem;
-  letter-spacing: .02rem;
+  letter-spacing: 0.02rem;
 `
 export const Address = styled(Description)`
   font-size: 0.875rem;
@@ -57,6 +57,7 @@ export const ButtonSelected = styled(Button)`
   line-height: 1.5rem;
   @media (max-width: 48rem) {
     width: 100%;
+    order: 2;
   }
 `
 
@@ -73,6 +74,7 @@ export const ButtonDelete = styled(Button)`
 
   @media (max-width: 48rem) {
     width: 100%;
+    order: 1;
   }
 `
 

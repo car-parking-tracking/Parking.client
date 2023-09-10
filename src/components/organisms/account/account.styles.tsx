@@ -5,6 +5,10 @@ import { Link } from 'react-router-dom'
 export const Container = styled.div`
   display: flex;
   flex-direction: column;
+  @media (max-width: 48rem) {
+    height: 100%;
+    justify-content: space-between;
+  }
 `
 export const AccountDesc = styled(Description)`
   margin-bottom: 2rem;
@@ -41,6 +45,6 @@ export const LinkItem = styled(Link)`
   transition: 0.3s ease-in-out;
 
   &:hover {
-    box-shadow: 0rem 0rem .9375rem 0rem rgba(0, 0, 0, 0.1);
+    box-shadow: 0rem 0rem 0.9375rem 0rem rgba(0, 0, 0, 0.1);
   }
 `

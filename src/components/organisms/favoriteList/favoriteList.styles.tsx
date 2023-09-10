@@ -25,6 +25,7 @@ export const List = styled.div`
   width: 26.875rem;
   flex-direction: column;
   margin-top: 1.75rem;
+  margin-bottom: 1.5rem;
   gap: 1.5rem;
   overflow-y: auto;
   padding-bottom: 0.375rem;

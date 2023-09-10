@@ -1,7 +1,15 @@
 import { PAGES, Routes, SidebarRoutes } from './routes.types'
-import { AccountWithTitleWrapper, AuthForm, FavoriteListWithTitle, ProfileWithTitle, PasswordWithTitle, ResetWithTitleWrapper, UpdateWithTitleWrapper } from '@components/organisms'
+import {
+  AccountWithTitleWrapper,
+  AuthForm,
+  FavoriteListWithTitle,
+  ProfileWithTitle,
+  PasswordWithTitle,
+  ResetWithTitleWrapper,
+  UpdateWithTitleWrapper,
+  AboutWithTitleWrapper,
+} from '@components/organisms'
 import ErrorPage from '@pages/ErrorPage'
-import AboutPage from '@pages/About'
 import { Navigate } from 'react-router-dom'
 
 //TODO: удалить мок
@@ -40,7 +48,7 @@ export const SIDEBAR_AUTH_ROUTES: SidebarRoutes = [
   },
   {
     path: PAGES.ABOUT,
-    sidebar: () => <AboutPage />,
+    sidebar: () => <AboutWithTitleWrapper />,
   },
   {
     path: PAGES.PROFILE,
@@ -63,7 +71,7 @@ export const SIDEBAR_UNAUTH_ROUTES: SidebarRoutes = [
   },
   {
     path: PAGES.ABOUT,
-    sidebar: () => <AboutPage />,
+    sidebar: () => <AboutWithTitleWrapper />,
   },
   {
     path: PAGES.RESET_PASSWORD,

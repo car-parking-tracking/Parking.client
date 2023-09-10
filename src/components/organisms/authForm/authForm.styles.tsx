@@ -1,3 +1,4 @@
+import { Button } from '@components/atoms'
 import styled from 'styled-components'
 
 export const NavContainer = styled.nav`
@@ -7,29 +8,23 @@ export const NavContainer = styled.nav`
 
   @media (max-width: 48rem) {
     margin-bottom: 1.5rem;
-    justify-content: center;
+    margin-top: 3.0313rem;
+    justify-content: space-between;
     align-items: center;
     gap: 0;
   }
 `
-export const ButtonGroup = styled.div`
-  display: flex;
-  gap: 1rem;
+export const NavButton = styled(Button)`
+  @media (max-width: 48rem) {
+    width: 100%;
+  }
 `
 export const Container = styled.div`
   display: flex;
   flex-direction: column;
-`
-export const InputsContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-`
 
-export const ButtonTextContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-  align-items: flex-start;
-  margin: 1.5rem 0;
+  @media (max-width: 48rem) {
+    height: 100%;
+    justify-content: space-between;
+  }
 `
