@@ -1,8 +1,8 @@
 import { FC, useState } from 'react'
 import { AuthFormProps } from './authForm.types'
-import { Container, NavContainer } from './authForm.styles'
+import { Container, NavContainer, NavButton } from './authForm.styles'
 import { Register, Login } from '@components/organisms'
-import { Button } from '@components/atoms'
+import { FooterMobile } from '@components/molecules'
 
 export const AuthForm: FC<AuthFormProps> = () => {
   const [formType, setFormType] = useState<'login' | 'register'>('login')
@@ -18,15 +18,25 @@ export const AuthForm: FC<AuthFormProps> = () => {
   return (
     <Container>
       <NavContainer>
-        <Button type="button" variant="filter" onClick={handleLoginButton} disabled={formType === 'login'}>
+        <NavButton type="button" variant="filter" onClick={handleLoginButton} disabled={formType === 'login'}>
           Вход
-        </Button>
-        <Button type="button" variant="filter" onClick={handleRegButton} disabled={formType === 'register'}>
+        </NavButton>
+        <NavButton type="button" variant="filter" onClick={handleRegButton} disabled={formType === 'register'}>
           Регистрация
-        </Button>
+        </NavButton>
       </NavContainer>
-      {formType === 'register' && <Register />}
-      {formType === 'login' && <Login onOpenRegister={handleRegButton} />}
+      {formType === 'register' && (
+        <>
+          <Register />
+          <FooterMobile hasAbout={false} />
+        </>
+      )}
+      {formType === 'login' && (
+        <>
+          <Login />
+          <FooterMobile hasAbout={true} />
+        </>
+      )}
     </Container>
   )
 }

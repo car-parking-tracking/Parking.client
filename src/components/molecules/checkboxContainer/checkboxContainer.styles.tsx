@@ -15,7 +15,7 @@ export const Label = styled.label`
 
   ::before {
     content: '';
-    background-color: var(--grey-light);
+    background-color: var(--new-grey-light);
     width: 1.5rem;
     height: 1.5rem;
     border: none;
@@ -30,27 +30,28 @@ export const Checkbox = styled.input`
   :checked {
     & + Label::before {
       content: url(${CheckboxActive});
-      background-color: var(--button-bg-default);
+      background-color: var(--new-bg-active);
       display: flex;
       justify-content: center;
       align-items: center;
     }
   }
 `
-
 export const Text = styled.p`
-  color: var(--bg-active);
+  color: var(--new-dark);
   font-size: 0.875rem;
   font-weight: 400;
   line-height: 1rem;
   max-width: 17.68rem;
   letter-spacing: 0.031rem;
 `
-
 export const Span = styled.span`
   margin-top: 0.438rem;
   font-size: 0.813rem;
   color: rgba(221, 76, 30, 1);
   min-height: 1rem;
   display: block;
+`
+export const Link = styled.span`
+color: var(--new-bg-active);
 `

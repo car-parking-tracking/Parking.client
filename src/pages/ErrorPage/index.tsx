@@ -1,4 +1,4 @@
-import { ErrorTemplate } from '@components/templates/error'
+import { ErrorTemplate } from '@components/templates'
 import { FC } from 'react'
 
 type ErrorPageProps = {

@@ -8,16 +8,24 @@ export const Wrapper = styled.div`
   height: 100%;
 `
 export const Notification = styled(Description)`
-  color: #3c4158cc;
+  color: var(--new-dark);
   font-size: 1rem;
   line-height: 1.5rem;
   letter-spacing: 0.031rem;
+
+  @media (max-width: 48rem) {
+    margin-top: 11.25rem;
+    font-size: 1.25rem;
+    font-style: normal;
+    font-weight: 400;
+  }
 `
 export const List = styled.div`
   display: flex;
   width: 26.875rem;
   flex-direction: column;
-  margin-top: 1.75rem;
+  margin-top: 2rem;
+  margin-bottom: 1.5rem;
   gap: 1.5rem;
   overflow-y: auto;
   padding-bottom: 0.375rem;
@@ -34,5 +42,13 @@ export const List = styled.div`
     background: #878787;
     border-radius: 1rem;
     border: 0.063rem solid #fff;
+  }
+
+  @media (max-width: 48rem) {
+    width: 100%;
+
+    ::-webkit-scrollbar {
+      width: 0;
+    }
   }
 `
