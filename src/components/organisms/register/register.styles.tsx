@@ -3,9 +3,12 @@ import styled from 'styled-components'
 export const ButtonGroup = styled.div`
   display: flex;
   gap: 1rem;
-  button {
-    width: 100%;
-    margin-top: .625rem;
+
+  @media (max-width: 48rem) {
+    button {
+      width: 100%;
+      margin-top: 0.625rem;
+    }
   }
 `
 export const Container = styled.form`
