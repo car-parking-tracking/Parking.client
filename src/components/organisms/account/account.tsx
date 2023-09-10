@@ -27,7 +27,7 @@ const Account: FC<AuthFormProps> = ({ children }) => {
         </LinkItem>
         <LinkItem to="/favorites">
           <img src={favorite} alt="favorite_icon" />
-          Мои парковки
+          Избранное
         </LinkItem>
         <LinkItem to="/" onClick={handleLogout}>
           <img src={exit} alt="exit_icon" /> Выйти

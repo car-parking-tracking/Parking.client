@@ -1,5 +1,4 @@
 import { FC, useState } from 'react'
-import { Wrapper, Title, InfoList, InfoItem, InfoDesc, FavoriteBtn, DeleteBtn, InfoCost } from './parkingCard.styles'
 import { Tariff } from './parkingCard.types'
 import { replaceAddress } from '@utils/replace-address'
 import { useSelector } from 'react-redux'
@@ -7,6 +6,7 @@ import { RootState } from '@app/store/store'
 import { useFetchLotByIdQuery } from '@app/store/api'
 import { Loader } from '@components/atoms'
 
+import { Wrapper, Title, InfoList, InfoItem, InfoDesc, FavoriteBtn, DeleteBtn, InfoCost, PriceInfo, TimeRange, Price, Place } from './parkingCard.styles'
 
 export const ParkingCard: FC = () => {
   const [favorite, setFavorite] = useState(false)
@@ -22,13 +22,12 @@ export const ParkingCard: FC = () => {
   }
 
   if (isLoading) {
-    return (
-        <Loader variant="page" />
-    )
+    return <Loader variant="page" />
   }
 
   if (lotData) {
     const tariff = JSON.parse(`{"tariffs": ${lotData.tariffs.replaceAll("'", '"')}}`).tariffs
+    
     return (
       <Wrapper>
         <Title>{`Парковка № ${lotData.id}`}</Title>
@@ -39,14 +38,23 @@ export const ParkingCard: FC = () => {
           <InfoItem>
             <InfoCost>Цена</InfoCost>
             {tariff.map((item: Tariff, index: number) => {
-              return <InfoDesc key={index}>{`${item.TimeRange?.replace('-', ' ... ')} — ${item.HourPrice || item.FirstHour} ₽`}</InfoDesc>
+              return (
+                <PriceInfo key={index}>
+                  <TimeRange>{`${item.TimeRange?.replace('-', ' ... ')}`}</TimeRange>
+                  <Price> {item.HourPrice || item.FirstHour} ₽ в час</Price>
+                </PriceInfo>
+              )
             })}
           </InfoItem>
           <InfoItem>
-            <InfoDesc>Мест свободно: нет данных</InfoDesc>
+            <InfoCost>
+              Свободно <Place>нет данных</Place>
+            </InfoCost>
           </InfoItem>
           <InfoItem>
-            <InfoDesc>Всего мест: {lotData.car_capacity}</InfoDesc>
+            <InfoCost>
+              Всего <Place>{lotData.car_capacity}</Place>
+            </InfoCost>
           </InfoItem>
         </InfoList>
         {favorite ? (

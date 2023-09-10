@@ -9,7 +9,7 @@ export const Wrapper = styled.header`
   left: 0;
   width: 100%;
   display: grid;
-  padding: 0.5rem 2.5rem 0.5rem 2rem;
+  padding: 0.5rem 2rem;
   grid-template-columns: 1fr max-content;
   align-items: center;
 
@@ -60,7 +60,7 @@ export const LoginBtn = styled(Button)`
   line-height: 1.5;
   border: none;
   box-shadow: none;
-  margin-left: 3.938rem;
+  margin: 0 0.5rem 0 3.9375rem;
 
   @media (max-width: 48rem) {
     display: none;
@@ -74,7 +74,7 @@ export const AccountBtn = styled(Button)`
   align-items: center;
   justify-content: center;
   border-radius: 0.75rem;
-  margin-left: 5.563rem;
+  margin: 0 0.5rem 0 5.5625rem;
 
   @media (max-width: 48rem) {
     display: none;

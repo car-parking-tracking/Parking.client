@@ -3,7 +3,7 @@ import { useForm, SubmitHandler } from 'react-hook-form'
 import * as yup from 'yup'
 import { yupResolver } from '@hookform/resolvers/yup'
 import { ILoginValues } from './login.types'
-import { ButtonTextContainer, ButtonGroup, Container, InputsContainer } from './login.styles'
+import { ButtonTextContainer, ButtonGroup, Container, InputsContainer, ButtonSubmit } from './login.styles'
 import { InputForm } from '@components/molecules'
 import { Button } from '@components/atoms'
 
@@ -65,9 +65,9 @@ export const Login: FC = () => {
         </Button>
       </ButtonTextContainer>
       <ButtonGroup>
-        <Button type="submit" variant="primary" disabled={!isValid}>
+        <ButtonSubmit type="submit" variant="primary" disabled={!isValid}>
           Войти
-        </Button>
+        </ButtonSubmit>
       </ButtonGroup>
     </Container>
   )

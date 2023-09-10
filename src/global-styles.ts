@@ -5,22 +5,6 @@ export const GlobalStyle = createGlobalStyle`
   ${normalize()}
   
   :root {
-    --bg-color: lightgray;
-    --bg-active: #3C4158;
-    --txt-white: #FFF;
-    --txt-black: #000;
-    --button-bg-default: #1D65ED;
-    --blue-light: #f2f9ff;
-    --grey-button: #e0e0e0;
-    --grey: #878787;
-    --grey-light: #F8FAFB;
-    --button-bg-hover: #1655BB;
-    --button-bg-active: #3D3ACE;
-    --button-bg-disabled: #F4F3FE;
-    --button-text-disabled: #C5C0DB;
-    --search-item-hover: #F8FAFB;
-    --item-desc: #1B1F3BA6;
-    --item-name: #191C30E5;
     --parking-card-width: 16.6875rem;
     --parking-card-height: 15.6875rem;
     --red: #FF2121;
@@ -45,14 +29,14 @@ export const GlobalStyle = createGlobalStyle`
     width: 100%;
     min-width: 20rem;
     min-height: 100vh;
-    background-color: var(--grey-light);
+    background-color: var(--new-grey-extra);
     font-family: 'Raleway', sans-serif;
-    font-size: 1rem;
+    font-size: 16px;
     font-weight: 500;
     font-style: normal;
     font-variant-numeric: lining-nums proportional-nums;
     line-height: 1.5rem;
-    color: var(--txt-white);
+    color: var(--new-white);
   *,
   *::after,
   *::before {
@@ -105,6 +89,6 @@ export const GlobalStyle = createGlobalStyle`
     cursor: pointer;
     display: inline-block;
     text-decoration: none;
-    color: var(--txt-white)
+    color: var(--new-white)
   }
 }`

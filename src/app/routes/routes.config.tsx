@@ -52,7 +52,7 @@ export const SIDEBAR_AUTH_ROUTES: SidebarRoutes = [
   },
   {
     path: PAGES.PROFILE,
-    sidebar: () => <ProfileWithTitle title="Профиль" />,
+    sidebar: () => <ProfileWithTitle title="Мой профиль" />,
   },
   {
     path: PAGES.PASSWORD,

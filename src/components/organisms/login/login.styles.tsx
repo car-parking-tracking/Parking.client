@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import { Button } from '@components/atoms'
 
 export const Container = styled.form`
   display: flex;
@@ -22,4 +23,10 @@ export const ButtonTextContainer = styled.div`
   gap: 0.5rem;
   align-items: flex-start;
   margin: 1.5rem 0;
+`
+export const ButtonSubmit = styled(Button)`
+  height: 3rem;
+  width: 5.125rem;
+  padding: 0.75rem 1.125rem;
+  font-weight: 500;
 `

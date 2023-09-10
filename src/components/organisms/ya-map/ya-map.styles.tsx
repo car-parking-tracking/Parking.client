@@ -55,6 +55,7 @@ export const Wrapper = styled.div`
     width: 1rem;
     height: 1rem;
     background: url(${CloseIcon}) center/contain no-repeat;
+    opacity: 1;
   }
 
   .ymaps-2-1-79-balloon__tail {

@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import { Button } from '@components/atoms'
 
 export const ButtonGroup = styled.div`
   display: flex;
@@ -19,4 +20,10 @@ export const InputsContainer = styled.div`
   display: flex;
   flex-direction: column;
   gap: 1rem;
+`
+export const ButtonSubmit = styled(Button)`
+  height: 3rem;
+  width: 12.375rem;
+  padding: 0.75rem 1.125rem;
+  font-weight: 500;
 `

@@ -8,7 +8,7 @@ export const Wrapper = styled.div`
   height: 100%;
 `
 export const Notification = styled(Description)`
-  color: #3c4158cc;
+  color: var(--new-dark);
   font-size: 1rem;
   line-height: 1.5rem;
   letter-spacing: 0.031rem;
@@ -24,7 +24,7 @@ export const List = styled.div`
   display: flex;
   width: 26.875rem;
   flex-direction: column;
-  margin-top: 1.75rem;
+  margin-top: 2rem;
   margin-bottom: 1.5rem;
   gap: 1.5rem;
   overflow-y: auto;

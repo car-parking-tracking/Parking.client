@@ -3,15 +3,13 @@ import { useForm, SubmitHandler } from 'react-hook-form'
 import * as yup from 'yup'
 import { yupResolver } from '@hookform/resolvers/yup'
 import { IAuthValues, RegisterProps } from './register.types'
-import { ButtonGroup, Container, InputsContainer } from './register.styles'
+import { ButtonGroup, Container, InputsContainer, ButtonSubmit } from './register.styles'
 import { InputForm, CheckboxContainer } from '@components/molecules'
-import { Button } from '@components/atoms'
 
 import { yupSchemaRegForm } from '@utils/validate'
 import { useNavigate } from 'react-router-dom'
 import { useAppDispatch } from '@app/hooks/redux'
 import { login } from '@app/store/slices/authSlice'
-
 
 export const Register: FC<RegisterProps> = () => {
   type FormData = yup.InferType<typeof yupSchemaRegForm>
@@ -91,9 +89,9 @@ export const Register: FC<RegisterProps> = () => {
         isError={!!errors.checkbox?.message}
       />
       <ButtonGroup>
-        <Button type="submit" variant="primary" disabled={!isValid}>
+        <ButtonSubmit type="submit" variant="primary" disabled={!isValid}>
           Зарегистрироваться
-        </Button>
+        </ButtonSubmit>
       </ButtonGroup>
     </Container>
   )

@@ -11,8 +11,8 @@ export const Container = styled.div`
   }
 `
 export const AccountDesc = styled(Description)`
-  margin-bottom: 2rem;
-  color: rgba(60, 65, 88, 0.8);
+  margin-bottom: 1.5rem;
+  color: var(--new-dark);
 `
 export const Menu = styled.div`
   margin-left: -2rem;
@@ -40,7 +40,7 @@ export const LinkItem = styled(Link)`
   font-style: normal;
   font-weight: 500;
   line-height: 1.5rem;
-  color: var(--bg-active);
+  color: var(--new-dark);
   cursor: pointer;
   transition: 0.3s ease-in-out;
 

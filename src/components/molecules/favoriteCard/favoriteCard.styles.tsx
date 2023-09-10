@@ -13,15 +13,14 @@ export const Wrapper = styled.div`
   align-self: stretch;
   gap: 0.75rem;
   border-radius: 1rem;
-  background: var(--grey-light);
+  background: var(--new-grey-extra);
 
   :hover {
     box-shadow: 0rem 0.125rem 0.313rem 0rem rgba(0, 0, 0, 0.16);
   }
 
   :active {
-    box-shadow: inset 0rem 0rem 0rem 0.063rem var(--button-bg-default);
-    background: var(--blue-light);
+    box-shadow: inset 0rem 0rem 0rem 0.063rem var(--new-bg-active);
   }
 
   @media (max-width: 48rem) {
@@ -29,10 +28,9 @@ export const Wrapper = styled.div`
   }
 `
 export const Info = styled.div`
-  color: ${({ isDeleted }: { isDeleted: boolean }) => (isDeleted ? 'var(--grey-button)' : 'var(--item-name)')};
+  color: ${({ isDeleted }: { isDeleted: boolean }) => (isDeleted ? 'var(--new-grey-light)' : 'var(--new-dark)')};
   height: 3.25rem;
 `
-
 export const Title = styled.p`
   font-weight: 700;
   line-height: 1.75rem;
@@ -42,7 +40,6 @@ export const Address = styled(Description)`
   font-size: 0.875rem;
   font-weight: 500;
 `
-
 export const ButtonGroup = styled.div`
   display: flex;
   gap: 0.75rem;
@@ -50,7 +47,6 @@ export const ButtonGroup = styled.div`
     width: 100%;
   }
 `
-
 export const ButtonSelected = styled(Button)`
   width: 6.25rem;
   font-style: normal;
@@ -60,16 +56,15 @@ export const ButtonSelected = styled(Button)`
     order: 2;
   }
 `
-
 export const ButtonDelete = styled(Button)`
   width: 6.0625rem;
   font-style: normal;
   line-height: 1.5rem;
-  color: var(--bg-active);
-  background: var(--grey-button);
+  color: var(--new-dark);
+  background: var(--new-grey-light);
 
   :hover {
-    color: var(--txt-white);
+    color: var(--new-white);
   }
 
   @media (max-width: 48rem) {
@@ -77,7 +72,6 @@ export const ButtonDelete = styled(Button)`
     order: 1;
   }
 `
-
 export const ButtonRestore = styled(Button)`
   width: 8.8125rem;
   font-style: normal;

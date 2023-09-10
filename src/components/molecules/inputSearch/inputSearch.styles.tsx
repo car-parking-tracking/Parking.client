@@ -58,21 +58,21 @@ export const Option = styled.div`
   cursor: pointer;
   border-radius: 0.5rem;
   padding: 0.625rem 0.5rem;
-  background-color: var(--txt-white);
+  background-color: var(--new-white);
 
   :hover {
-    background-color: var(--search-item-hover);
+    background-color: var(--new-grey-extra);
   }
 `
 export const DataList = styled.div`
   display: flex;
   flex-direction: column;
   width: 27.625rem;
-  max-height: 16.5rem;
+  max-height: 14.5rem;
   padding: 0.5rem;
   gap: 0.25rem;
   overflow-y: auto;
-  background-color: var(--txt-white);
+  background-color: var(--new-white);
   border-radius: 0 0 0.75rem 0.75rem;
   font-weight: 400;
   box-shadow:

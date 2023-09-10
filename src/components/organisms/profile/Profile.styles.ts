@@ -14,10 +14,10 @@ export const InputWrap = styled.div`
 
 export const LinkItem = styled(Link)`
   margin-bottom: 1.5rem;
-  color: var(--button-bg-default);
+  color: var(--new-bg-active);
   transition: 0.3s ease-in-out;
 
   &:hover {
-    color: var(--button-bg-hover);
+    color: var(--new-bg-hover);
   }
 `
