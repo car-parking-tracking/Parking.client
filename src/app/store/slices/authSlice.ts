@@ -1,4 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit'
+import { authApi } from '../api'
 
 export type AuthState = {
   isAuth: boolean
@@ -18,6 +19,11 @@ export const authSlice = createSlice({
     logout(state) {
       state.isAuth = false
     },
+  },
+  extraReducers: builder => {
+    builder.addMatcher(authApi.endpoints.signIn.matchFulfilled, state => {
+      state.isAuth = true
+    })
   },
 })
 

@@ -3,7 +3,7 @@ import { baseApi } from './api/baseApi'
 import { rootReducer } from './reducer'
 import { collectionApi } from './api/collection/collectionApi'
 import { geocodeApi } from './api/geocoder/geocoderApi'
-import { lotsApi } from './api'
+import { authApi, lotsApi, userApi } from './api'
 import { authSlice } from './slices/authSlice'
 
 const saveToLocalStorage = (state: RootState) => {
@@ -22,7 +22,14 @@ export const setupStore = (preloadedState = {}) => {
   return configureStore({
     reducer: rootReducer,
     middleware: getDefaultMiddleware =>
-      getDefaultMiddleware().concat(baseApi.middleware, collectionApi.middleware, geocodeApi.middleware, lotsApi.middleware),
+      getDefaultMiddleware().concat(
+        baseApi.middleware,
+        collectionApi.middleware,
+        geocodeApi.middleware,
+        lotsApi.middleware,
+        userApi.middleware,
+        authApi.middleware
+      ),
   })
 }
 

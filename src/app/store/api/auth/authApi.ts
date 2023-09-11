@@ -16,7 +16,7 @@ export const authApi = baseApi.injectEndpoints({
         body: credentials,
         responseHandler: response => response.text(),
       }),
-      // invalidatesTags: [{ type: 'USER_INFO', id: 'INFO' }],
+      invalidatesTags: [{ type: 'USER_INFO', id: 'INFO' }],
     }),
     signUp: builder.mutation<SignUpResponse, SignUpRequestBody>({
       query: credentials => ({
@@ -24,7 +24,7 @@ export const authApi = baseApi.injectEndpoints({
         method: HTTP_METHOD.POST,
         body: credentials,
       }),
-      // invalidatesTags: [{ type: 'USER_INFO', id: 'INFO' }],
+      invalidatesTags: [{ type: 'USER_INFO', id: 'INFO' }],
     }),
     logout: builder.mutation<SignUpResponse, void>({
       query: credentials => ({
@@ -32,7 +32,7 @@ export const authApi = baseApi.injectEndpoints({
         method: HTTP_METHOD.POST,
         body: credentials,
       }),
-      // invalidatesTags: [{ type: 'USER_INFO', id: 'INFO' }],
+      invalidatesTags: [{ type: 'USER_INFO', id: 'INFO' }],
     }),
   })
 })

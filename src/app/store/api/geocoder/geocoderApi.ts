@@ -9,6 +9,7 @@ const geocodeBaseQuery = fetchBaseQuery({ baseUrl: GEOCODE_API_URL })
 
 export const geocodeApi = createApi({
   reducerPath: 'geocodeApi',
+  tagTypes: ['MAP_INFO'],
   baseQuery: geocodeBaseQuery,
   endpoints: builder => ({
     fetchGeocodeData: builder.query<any, string>({
@@ -19,6 +20,7 @@ export const geocodeApi = createApi({
       transformResponse: (response: any): any => {
         return response.response.GeoObjectCollection.featureMember.map((item: any) => item.GeoObject)
       },
+      providesTags: [{ type: 'MAP_INFO', id: 'INFO' }],
     }),
   }),
 })

@@ -11,8 +11,9 @@ import { yupSchemaRegForm } from '@utils/'
 import { useNavigate } from 'react-router-dom'
 import { useAppDispatch } from '@app/hooks/redux'
 import { login } from '@app/store/slices/authSlice'
+import { useSignUpMutation } from '@app/store/api'
 
-import { useSignUpMutation } from '../../../app/store/api/auth/authApi'
+
 
 export const Register: FC<RegisterProps> = () => {
   type FormData = yup.InferType<typeof yupSchemaRegForm>

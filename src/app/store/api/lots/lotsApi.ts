@@ -4,7 +4,7 @@ import { ILotCollection, ILotItem, ILotSearchCollection } from './types'
 
 const LOTS_API_PATH = 'parking_lots'
 
-export const lotsApi = baseApi.injectEndpoints({
+export const lotsApi = baseApi.enhanceEndpoints({ addTagTypes: ['LOTS_DATA'] }).injectEndpoints({
   endpoints: builder => ({
     fetchLotById: builder.query<ILotItem, number>({
       query: (id: number) => ({
