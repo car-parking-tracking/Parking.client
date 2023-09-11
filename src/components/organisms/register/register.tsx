@@ -12,10 +12,13 @@ import { useNavigate } from 'react-router-dom'
 import { useAppDispatch } from '@app/hooks/redux'
 import { login } from '@app/store/slices/authSlice'
 
+import { useSignUpMutation } from '../../../app/store/api/auth/authApi'
+
 export const Register: FC<RegisterProps> = () => {
   type FormData = yup.InferType<typeof yupSchemaRegForm>
   const navigate = useNavigate()
   const dispatch = useAppDispatch()
+  const [signUp] = useSignUpMutation()
 
   const {
     register,
@@ -26,10 +29,18 @@ export const Register: FC<RegisterProps> = () => {
     resolver: yupResolver(yupSchemaRegForm),
   })
 
-  const onSubmit: SubmitHandler<IAuthValues> = (data: FormData) => {
+  const onSubmit: SubmitHandler<IAuthValues> = async (data: FormData) => {
     dispatch(login())
     navigate('/')
     console.log(data)
+    const response = await signUp(data)
+    const isError = 'error' in response;
+
+    if (!isError) {
+      navigate('/');
+    } else {
+      alert('что-то пошло не так, попробуйте еще раз');
+    }
   }
 
   return (
