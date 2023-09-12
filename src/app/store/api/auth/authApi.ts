@@ -1,20 +1,22 @@
-import { HTTP_METHOD } from '@constants/variables';
-import { baseApi } from '../baseApi';
+import { HTTP_METHOD } from '@constants/variables'
+import { baseApi } from '../baseApi'
 
 import { SignInRequestBody, SignUpResponse, SignUpRequestBody } from './types'
 
-const SIGN_IN_API_PATH = '/auth/token/logoin';
-const SIGN_UP_API_PATH = '/users';
-const LOGOUT_API_PATH = '/auth/token/logout';
+const SIGN_IN_API_PATH = '/auth/token/login/'
+const SIGN_UP_API_PATH = '/users/'
+const LOGOUT_API_PATH = '/auth/token/logout/'
 
 export const authApi = baseApi.injectEndpoints({
   endpoints: builder => ({
-    signIn: builder.mutation<void, SignInRequestBody>({
+    signIn: builder.mutation<Record<string, string>, SignInRequestBody>({
       query: credentials => ({
         url: SIGN_IN_API_PATH,
         method: HTTP_METHOD.POST,
         body: credentials,
-        responseHandler: response => response.text(),
+        transformResponse: (response: { data: { auth_token: string } }) => {
+          return response.data.auth_token
+        },
       }),
       invalidatesTags: [{ type: 'USER_INFO', id: 'INFO' }],
     }),
@@ -26,15 +28,17 @@ export const authApi = baseApi.injectEndpoints({
       }),
       invalidatesTags: [{ type: 'USER_INFO', id: 'INFO' }],
     }),
-    logout: builder.mutation<SignUpResponse, void>({
-      query: credentials => ({
+    signOut: builder.mutation<SignUpResponse, string>({
+      query: token => ({
         url: LOGOUT_API_PATH,
         method: HTTP_METHOD.POST,
-        body: credentials,
+        headers: {
+          authorization: `token ${token}`,
+        },
       }),
       invalidatesTags: [{ type: 'USER_INFO', id: 'INFO' }],
     }),
-  })
+  }),
 })
 
-export const { useSignInMutation, useSignUpMutation } = authApi;
+export const { useSignInMutation, useSignUpMutation, useSignOutMutation } = authApi

@@ -9,12 +9,27 @@ import { logout } from '@app/store/slices/authSlice'
 
 import { withTitle } from '@app/HOC'
 import { FooterMobile } from '@components/molecules'
+import { useSignOutMutation } from '@app/store/api'
+import { useNavigate } from 'react-router'
+import { useSelector } from 'react-redux'
+import { RootState } from '@app/store/store'
 
 const Account: FC<AuthFormProps> = ({ children }) => {
+  const token = useSelector((state: RootState) => state.auth.token)
   const dispatch = useAppDispatch()
+  const [signOut] = useSignOutMutation()
+  const navigate = useNavigate()
 
-  const handleLogout = () => {
-    dispatch(logout())
+  const handleLogout = async () => {
+    const response = await signOut(token)
+    const isError = 'error' in response
+
+    if (!isError) {
+      dispatch(logout())
+      navigate('/')
+    } else {
+      console.log(isError)
+    }
   }
 
   return (

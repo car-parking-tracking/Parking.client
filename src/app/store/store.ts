@@ -9,6 +9,7 @@ import { authSlice } from './slices/authSlice'
 const saveToLocalStorage = (state: RootState) => {
   try {
     localStorage.setItem('auth', JSON.stringify(state.auth.isAuth))
+    localStorage.setItem('token', JSON.stringify(state.auth.token))
   } catch (e) {
     console.error(e)
   }

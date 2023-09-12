@@ -12,8 +12,6 @@ import { useAppDispatch } from '@app/hooks/redux'
 import { login } from '@app/store/slices/authSlice'
 import { useSignUpMutation } from '@app/store/api'
 
-
-
 export const Register: FC<RegisterProps> = () => {
   type FormData = yup.InferType<typeof yupSchemaRegForm>
   const navigate = useNavigate()
@@ -30,16 +28,21 @@ export const Register: FC<RegisterProps> = () => {
   })
 
   const onSubmit: SubmitHandler<IAuthValues> = async (data: FormData) => {
-    dispatch(login())
-    navigate('/')
-    console.log(data)
-    const response = await signUp(data)
-    const isError = 'error' in response;
+    const newdata = {
+      first_name: data.first_name,
+      last_name: data.last_name,
+      email: data.email,
+      password: data.password,
+    }
+
+    const response = await signUp(newdata)
+    const isError = 'error' in response
 
     if (!isError) {
-      navigate('/');
+      dispatch(login())
+      navigate('/')
     } else {
-      alert('что-то пошло не так, попробуйте еще раз');
+      console.log(isError)
     }
   }
 

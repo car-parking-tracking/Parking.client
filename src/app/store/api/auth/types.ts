@@ -13,3 +13,4 @@ export type SignUpRequestBody = {
 export type SignUpResponse = {
   id: number;
 };
+

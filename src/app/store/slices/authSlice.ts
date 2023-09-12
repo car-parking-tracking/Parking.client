@@ -3,10 +3,12 @@ import { authApi } from '../api'
 
 export type AuthState = {
   isAuth: boolean
+  token: string
 }
 
 const initialState = {
   isAuth: JSON.parse(localStorage.getItem('auth') || '{}') || false,
+  token: ' ',
 }
 
 export const authSlice = createSlice({
@@ -23,6 +25,9 @@ export const authSlice = createSlice({
   extraReducers: builder => {
     builder.addMatcher(authApi.endpoints.signIn.matchFulfilled, state => {
       state.isAuth = true
+    })
+    builder.addMatcher(authApi.endpoints.signIn.matchFulfilled, (state, { payload }) => {
+      state.token = payload.auth_token
     })
   },
 })

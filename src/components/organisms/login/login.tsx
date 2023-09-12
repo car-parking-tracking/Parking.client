@@ -30,17 +30,14 @@ export const Login: FC = () => {
   })
 
   const onSubmit: SubmitHandler<ILoginValues> = async (data: FormData) => {
-    dispatch(login())
-    navigate('/')
-    console.log(data)
-
     const response = await signIn(data)
     const isError = 'error' in response;
-
+    console.log(response)
     if (!isError) {
+      dispatch(login())
       navigate('/');
     } else {
-      alert('что-то пошло не так, попробуйте еще раз');
+      console.log(isError)
     }
   }
 
