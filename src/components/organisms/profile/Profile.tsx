@@ -2,12 +2,13 @@ import { FC, useState } from 'react'
 import { SubmitHandler, useForm } from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers/yup'
 
-import { yupProfileForm } from '@utils/'
+import { yupProfileForm } from '@utils/validate'
 import { withTitle } from '@app/HOC'
 import { InputForm, Form } from '@components/molecules'
 
 import { InputWrap, Section, LinkItem } from './Profile.styles'
 import { FormValues } from './Profile.types'
+
 
 const Profile: FC = () => {
   const [isSuccess, setIsSuccess] = useState(false)

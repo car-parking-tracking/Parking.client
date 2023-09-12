@@ -79,7 +79,7 @@ export const InputSearch: FC = () => {
   }
 
   const handleClearClick = () => {
-    setValue('')
+    setStringValue('')
     setShowOptions(false)
   }
 
@@ -102,7 +102,7 @@ export const InputSearch: FC = () => {
           autoComplete="off"
           showOptions={showOptions}
         />
-        {isInputFocused && value && (
+        {isInputFocused && stringValue && (
           <ClearButton onClick={handleClearClick}>
             <ClearIcon src={close} alt="Очистить" />
           </ClearButton>

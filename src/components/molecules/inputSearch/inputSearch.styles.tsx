@@ -9,6 +9,11 @@ export const Wrapper = styled.div`
   top: 1rem;
   left: 6.5rem;
   z-index: 10;
+
+  @media (max-width: 48rem) {
+    top: 1rem;
+    left: 1rem;
+  }
 `
 export const WrapperInput = styled.div`
   display: flex;
@@ -26,12 +31,26 @@ export const WrapperInput = styled.div`
     background-size: cover;
     background-repeat: no-repeat;
   }
+
+  @media (max-width: 48rem) {
+    &::before {
+      display: none;
+    }
+  }
 `
 export const Search = styled(Input)`
   width: 27.625rem;
   padding-left: 3.5rem;
   padding-right: 2.25rem;
   border-radius: ${({ showOptions }: { showOptions: boolean }) => (showOptions ? '0.75rem 0.75rem 0 0' : '0.75rem')};
+
+  @media (max-width: 48rem) {
+    padding: 0rem .75rem 0rem 1rem;
+    width: 17.4375rem;
+    font-size: .875rem;
+    font-style: normal;
+    font-weight: 400;
+  }
 `
 export const Option = styled.div`
   display: flex;
@@ -39,21 +58,21 @@ export const Option = styled.div`
   cursor: pointer;
   border-radius: 0.5rem;
   padding: 0.625rem 0.5rem;
-  background-color: var(--txt-white);
+  background-color: var(--new-white);
 
   :hover {
-    background-color: var(--search-item-hover);
+    background-color: var(--new-grey-extra);
   }
 `
 export const DataList = styled.div`
   display: flex;
   flex-direction: column;
   width: 27.625rem;
-  max-height: 16.5rem;
+  max-height: 14.5rem;
   padding: 0.5rem;
   gap: 0.25rem;
   overflow-y: auto;
-  background-color: var(--txt-white);
+  background-color: var(--new-white);
   border-radius: 0 0 0.75rem 0.75rem;
   font-weight: 400;
   box-shadow:
@@ -70,13 +89,17 @@ export const DataList = styled.div`
   ::-webkit-scrollbar-track {
     background-color: transparent;
   }
+
+  @media (max-width: 48rem) {
+    width: 17.4375rem;
+  }
 `
 export const Name = styled.p`
-  color: var(--item-name);
+  color: var(--new-dark);
   line-height: 1.5rem;
 `
 export const Description = styled.p`
-  color: var(--item-desc);
+  color: var(--new-grey);
   font-family: 'Raleway', sans-serif;
   line-height: 1.25rem;
   font-size: 0.8125rem;

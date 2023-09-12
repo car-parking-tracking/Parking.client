@@ -1,6 +1,6 @@
 import React from 'react'
 
-export type variant = 'secondary' | 'outlined' | 'primary' | 'icon' | 'filter' | 'text' | 'animated'
+export type variant = 'secondary' | 'outlined' | 'primary' | 'filter' | 'text' | 'animated'
 
 export interface ButtonProps {
   variant: variant
