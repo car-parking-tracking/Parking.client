@@ -8,14 +8,11 @@ import { InputForm, CheckboxContainer } from '@components/molecules'
 
 import { yupSchemaRegForm } from '@utils/validate'
 import { useNavigate } from 'react-router-dom'
-import { useAppDispatch } from '@app/hooks/redux'
-import { login } from '@app/store/slices/authSlice'
 import { useSignUpMutation } from '@app/store/api'
 
 export const Register: FC<RegisterProps> = () => {
   type FormData = yup.InferType<typeof yupSchemaRegForm>
   const navigate = useNavigate()
-  const dispatch = useAppDispatch()
   const [signUp] = useSignUpMutation()
 
   const {
@@ -39,7 +36,6 @@ export const Register: FC<RegisterProps> = () => {
     const isError = 'error' in response
 
     if (!isError) {
-      dispatch(login())
       navigate('/')
     } else {
       console.log(isError)

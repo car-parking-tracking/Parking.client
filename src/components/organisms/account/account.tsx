@@ -4,8 +4,6 @@ import { Container, Menu, AccountDesc, LinkItem } from './account.styles'
 import profile from '@assets/icons/profile.svg'
 import favorite from '@assets/icons/favorite.svg'
 import exit from '@assets/icons/exit.svg'
-import { useAppDispatch } from '@app/hooks/redux'
-import { logout } from '@app/store/slices/authSlice'
 
 import { withTitle } from '@app/HOC'
 import { FooterMobile } from '@components/molecules'
@@ -16,7 +14,6 @@ import { RootState } from '@app/store/store'
 
 const Account: FC<AuthFormProps> = ({ children }) => {
   const token = useSelector((state: RootState) => state.auth.token)
-  const dispatch = useAppDispatch()
   const [signOut] = useSignOutMutation()
   const navigate = useNavigate()
 
@@ -25,7 +22,6 @@ const Account: FC<AuthFormProps> = ({ children }) => {
     const isError = 'error' in response
 
     if (!isError) {
-      dispatch(logout())
       navigate('/')
     } else {
       console.log(isError)
