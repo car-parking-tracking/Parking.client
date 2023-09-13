@@ -13,12 +13,22 @@ export const Label = styled.label`
   pointer-events: none;
   transition: 0.3s ease all;
   color: rgba(27, 31, 59, 0.65);
+
+  @media (max-width: 48rem) {
+    display: none;
+  }
 `
 export const StyledInput = styled(Input)`
   ::placeholder {
     opacity: 0;
   }
   margin: 0;
+  @media (max-width: 48rem) {
+    ::placeholder {
+      opacity: 1;
+      color: var(--new-grey);
+    }
+  }
 `
 export const Span = styled.span`
   margin-top: 0.438rem;

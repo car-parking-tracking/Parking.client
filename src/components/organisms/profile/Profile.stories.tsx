@@ -1,10 +1,11 @@
+import React from 'react'
 import { StoryFn } from '@storybook/react'
-import { UserProfile } from './userProfile'
+import { ProfileWithTitle } from './Profile'
 import styled from 'styled-components'
 
 export default {
-  title: 'User Profile',
-  component: UserProfile,
+  title: 'Profile',
+  component: ProfileWithTitle,
 }
 
 const ProfileWrap = styled.div`
@@ -16,7 +17,7 @@ const ProfileWrap = styled.div`
 
 const Template: StoryFn = () => (
   <ProfileWrap>
-    <UserProfile />
+    <ProfileWithTitle title="Профиль" />
   </ProfileWrap>
 )
 

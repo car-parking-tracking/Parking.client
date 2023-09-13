@@ -1,10 +1,9 @@
 import { FC } from 'react'
-import { NavLink } from 'react-router-dom'
 
-import { getInitials } from '../../../utils'
+import { getInitials } from '@utils/get-initials'
 
 import { Logo } from '@components/molecules'
-import { AccountBtn, LoginBtn, NavList, Wrapper } from './header.styles'
+import { AccountBtn, LoginBtn, NavList, Wrapper, MenuButton, HeaderLink } from './header.styles'
 import { HeaderProps } from './header.types'
 
 import { email } from '@constants/variables'
@@ -21,10 +20,12 @@ export const Header: FC<HeaderProps> = ({ onBtnClick, isLoggedIn }) => {
             <Logo />
           </li>
           <li>
-            <NavLink to="/about">О продукте</NavLink>
+            <HeaderLink to="/about" onClick={onBtnClick}>
+              О продукте
+            </HeaderLink>
           </li>
           <li>
-            <NavLink to={`mailto:${email}`}>{email}</NavLink>
+            <HeaderLink to={`mailto:${email}`}>{email}</HeaderLink>
           </li>
         </NavList>
       </nav>
@@ -37,6 +38,11 @@ export const Header: FC<HeaderProps> = ({ onBtnClick, isLoggedIn }) => {
           Вход
         </LoginBtn>
       )}
+      <MenuButton variant="secondary" onClick={onBtnClick}>
+        <span></span>
+        <span></span>
+        <span></span>
+      </MenuButton>
     </Wrapper>
   )
 }

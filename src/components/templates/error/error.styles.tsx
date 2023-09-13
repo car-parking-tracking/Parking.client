@@ -1,29 +1,26 @@
-import { Description, Title } from '@components/atoms'
-import { Link } from 'react-router-dom'
+import { Description } from '@components/atoms'
 import styled from 'styled-components'
 
 export const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 1rem;
   align-items: center;
   text-align: center;
+  max-width: 53.75rem;
 `
 
-export const ErrorTitle = styled(Title)`
-  display: inline-block;
-  color: var(--button-bg-default);
-  font-size: 10rem;
-  margin-bottom: 4rem;
-`
 export const ErrorDescription = styled(Description)`
-  color: var(--bg-active);
+  width: 85%;
+  padding: 0 1rem 0 1rem;
+  color: var(--new-dark);
+  margin-top: 4rem;
+  margin-bottom: 2.875rem;
+  font-size: 1.25rem;
+  line-height: 1.5rem;
+  font-style: normal;
+  font-weight: 500;
 `
-export const ErrorLink = styled(Link)`
-  color: var(--bg-active);
-  transition: 0.3s ease-in-out;
-
-  &:hover {
-    color: var(--button-bg-default);
-  }
+export const ErrorImage = styled.img`
+  max-width: 100%;
+  padding: 0 1rem 0 1rem;
 `

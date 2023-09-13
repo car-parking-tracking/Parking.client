@@ -3,19 +3,17 @@ import { useForm, SubmitHandler } from 'react-hook-form'
 import * as yup from 'yup'
 import { yupResolver } from '@hookform/resolvers/yup'
 import { IAuthValues, RegisterProps } from './register.types'
-import { ButtonGroup, Container, InputsContainer } from './register.styles'
+import { ButtonGroup, Container, InputsContainer, ButtonSubmit } from './register.styles'
 import { InputForm, CheckboxContainer } from '@components/molecules'
-import { Button } from '@components/atoms'
 
-import { yupSchemaRegForm } from '../../../utils/validate'
+import { yupSchemaRegForm } from '@utils/validate'
 import { useNavigate } from 'react-router-dom'
-import { useAppDispatch } from '@app/hooks/redux'
-import { login } from '@app/store/slices/authSlice'
+import { useSignUpMutation } from '@app/store/api'
 
 export const Register: FC<RegisterProps> = () => {
   type FormData = yup.InferType<typeof yupSchemaRegForm>
   const navigate = useNavigate()
-  const dispatch = useAppDispatch()
+  const [signUp] = useSignUpMutation()
 
   const {
     register,
@@ -26,10 +24,22 @@ export const Register: FC<RegisterProps> = () => {
     resolver: yupResolver(yupSchemaRegForm),
   })
 
-  const onSubmit: SubmitHandler<IAuthValues> = (data: FormData) => {
-    dispatch(login())
-    navigate('/')
-    console.log(data)
+  const onSubmit: SubmitHandler<IAuthValues> = async (data: FormData) => {
+    const newdata = {
+      first_name: data.first_name,
+      last_name: data.last_name,
+      email: data.email,
+      password: data.password,
+    }
+
+    const response = await signUp(newdata)
+    const isError = 'error' in response
+
+    if (!isError) {
+      navigate('/')
+    } else {
+      console.log(isError)
+    }
   }
 
   return (
@@ -90,9 +100,9 @@ export const Register: FC<RegisterProps> = () => {
         isError={!!errors.checkbox?.message}
       />
       <ButtonGroup>
-        <Button type="submit" variant="primary" disabled={!isValid}>
+        <ButtonSubmit type="submit" variant="primary" disabled={!isValid}>
           Зарегистрироваться
-        </Button>
+        </ButtonSubmit>
       </ButtonGroup>
     </Container>
   )

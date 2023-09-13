@@ -55,9 +55,32 @@ export const Wrapper = styled.div`
     width: 1rem;
     height: 1rem;
     background: url(${CloseIcon}) center/contain no-repeat;
+    opacity: 1;
   }
 
   .ymaps-2-1-79-balloon__tail {
     display: none !important;
+  }
+
+  @media (max-width: 48rem) {
+    .ymaps-2-1-79-balloon_layout_panel {
+      animation: fadeIn 0.3s ease-in-out;
+      border-radius: 1.25rem 1.25rem 0rem 0rem;
+    }
+
+    .ymaps-2-1-79-balloon__layout {
+      position: sticky;
+      top: 1.875rem;
+      left: 12.5rem;
+    }
+
+    .ymaps-2-1-79-copyrights-pane {
+      inset: auto 0rem 0rem !important;
+      z-index: 1000 !important;
+    }
+
+    #parking {
+      width: 100%;
+    }
   }
 `

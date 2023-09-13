@@ -16,7 +16,7 @@ const page = css<LoaderProps>`
   margin-left: -3.125rem;
   margin-top:-3.125rem;
   border: 0.313rem solid #FFF;
-  border-bottom-color: var(--button-bg-default);
+  border-bottom-color: var(--new-bg-active);
   border-radius: 50%;
   z-index: 100;
   animation: rotation 1s linear infinite;
