@@ -4,15 +4,16 @@ import { LayoutProps } from './layout.types'
 import { FC, useState } from 'react'
 import { Header, Modal } from '@components/organisms'
 import { SIDEBAR_AUTH_ROUTES, SIDEBAR_UNAUTH_ROUTES } from '@app/routes/routes.config'
-import { useSelector } from 'react-redux'
-import { RootState } from '@app/store/store'
 import { useFetchUserInfoQuery } from '@app/store/api'
+import { useAuthSlice } from '@app/store/slices/authSlice'
 
 export const Layout: FC<LayoutProps> = props => {
   const [showModal, setShowModal] = useState(false)
-  const auth = useSelector((state: RootState) => state.auth)
-  const routes = auth.isAuth ? SIDEBAR_AUTH_ROUTES : SIDEBAR_UNAUTH_ROUTES
-  useFetchUserInfoQuery(auth.token)
+  const { isAuth } = useAuthSlice()
+  const { token } = useAuthSlice()
+  const routes = isAuth ? SIDEBAR_AUTH_ROUTES : SIDEBAR_UNAUTH_ROUTES
+
+  useFetchUserInfoQuery(token, { skip: !token })
 
   const handleOpenModal = () => {
     setShowModal(true)
@@ -20,7 +21,7 @@ export const Layout: FC<LayoutProps> = props => {
 
   return (
     <Section>
-      <Header onBtnClick={handleOpenModal} isLoggedIn={auth.isAuth} />
+      <Header onBtnClick={handleOpenModal} isLoggedIn={isAuth} />
       {props.children}
       {showModal && (
         <Modal setOpenCallback={setShowModal}>

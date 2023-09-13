@@ -8,13 +8,12 @@ import { InputForm, Form } from '@components/molecules'
 
 import { InputWrap, Section, LinkItem } from './Profile.styles'
 import { FormValues } from './Profile.types'
-import { useSelector } from 'react-redux'
-import { RootState } from '@app/store/store'
 import { useChangeUserProfileMutation } from '@app/store/api'
+import { useUserSlice } from '@app/store/slices/userSlice'
 
 const Profile: FC = () => {
   const [isSuccess, setIsSuccess] = useState(false)
-  const user = useSelector((state: RootState) => state.user.user)
+  const { user } = useUserSlice()
   const [changeUserInfo] = useChangeUserProfileMutation()
 
   const userData = {

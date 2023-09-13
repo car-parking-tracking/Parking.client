@@ -1,29 +1,41 @@
 import { HTTP_METHOD } from '@constants/variables'
-import { baseApi } from '../baseApi'
+import { BASE_API_PATH } from '../baseApi'
 import { UserInfoResponse, UserProfileRequest, UserProfileResponse } from './types'
+import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
+import { RootState } from '@app/store/store'
+
+const baseQuery = fetchBaseQuery({
+  baseUrl: BASE_API_PATH,
+  prepareHeaders(headers, { getState }) {
+    const token = (getState() as RootState).auth.token
+
+    if (token) {
+      headers.set('authorization', `token ${token}`)
+    }
+
+    return headers
+  },
+})
 
 const USER_INFO_API_PATH = '/users/me/'
 
-export const userApi = baseApi.injectEndpoints({
+export const userApi = createApi({
+  reducerPath: 'userApi',
+  tagTypes: ['USER_INFO'],
+  baseQuery,
   endpoints: builder => ({
-    fetchUserInfo: builder.query<UserInfoResponse, string>({
-      query: (token: string) => ({
+    fetchUserInfo: builder.query<UserInfoResponse, void>({
+      query: () => ({
         url: USER_INFO_API_PATH,
         method: HTTP_METHOD.GET,
         providesTags: [{ type: 'USER_INFO', id: 'INFO' }],
-        headers: {
-          authorization: `token ${token}`,
-        },
       }),
     }),
     changeUserProfile: builder.mutation<UserProfileResponse, UserProfileRequest>({
-      query: (userProfile) => ({
+      query: userProfile => ({
         url: USER_INFO_API_PATH,
         method: HTTP_METHOD.PUT,
         body: userProfile,
-        headers: {
-          authorization: `token 2a37fbb78018c637d7130b33ec23b18ca7fdc244`,
-        },
       }),
       invalidatesTags: [{ type: 'USER_INFO', id: 'INFO' }],
     }),

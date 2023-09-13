@@ -1,5 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit'
 import { authApi } from '../api'
+import { useAppSelector } from '@app/hooks/redux'
 
 export type AuthState = {
   isAuth: boolean
@@ -28,3 +29,4 @@ export const authSlice = createSlice({
 })
 
 export const authReducer = authSlice.reducer
+export const useAuthSlice = () => useAppSelector(state => state.auth)

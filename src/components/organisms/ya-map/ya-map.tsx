@@ -7,11 +7,10 @@ import { YAMAP_API_KEY } from '@constants/environment'
 import { Portal } from '@components/atoms'
 import { InputSearch } from '@components/molecules'
 import { Manager } from '../manager'
-import { useSelector } from 'react-redux'
-import { RootState } from '@app/store/store'
+import { useMapSlice } from '@app/store/slices/mapSlice'
 
 export const YaMap: React.FC = () => {
-  const map = useSelector((state: RootState) => state.map)
+  const map = useMapSlice()
 
   return (
     <Wrapper>

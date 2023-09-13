@@ -1,18 +1,17 @@
 import { FC, useState } from 'react'
 import { Tariff } from './parkingCard.types'
 import { replaceAddress } from '@utils/replace-address'
-import { useSelector } from 'react-redux'
-import { RootState } from '@app/store/store'
 import { useFetchLotByIdQuery } from '@app/store/api'
 import { Loader } from '@components/atoms'
 
 import { Wrapper, Title, InfoList, InfoItem, InfoDesc, FavoriteBtn, DeleteBtn, InfoCost, PriceInfo, TimeRange, Price, Place } from './parkingCard.styles'
 import { endsSymbol } from '@utils/ends-symbol'
+import { useMapSlice } from '@app/store/slices/mapSlice'
 
 export const ParkingCard: FC = () => {
   const [favorite, setFavorite] = useState(false)
 
-  const map = useSelector((state: RootState) => state.map)
+  const map = useMapSlice()
 
   const { data: lotData, isLoading } = useFetchLotByIdQuery(map.id, {
     skip: !map.id || map.id === 0,

@@ -23,12 +23,12 @@ export interface IReducer {
 
 export const rootReducer = combineReducers({
   [baseApi.reducerPath]: baseApi.reducer,
+  [userApi.reducerPath]: userApi.reducer,
   auth: authReducer,
   map: mapReducer,
   user: userReducer,
   collectionApi: collectionApi.reducer,
   geocodeApi: geocodeApi.reducer,
   lotsApi: lotsApi.reducer,
-  userApi: userApi.reducer,
   authApi: authApi.reducer,
 })

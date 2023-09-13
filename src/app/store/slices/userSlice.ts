@@ -1,6 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit'
 import { userApi } from '../api'
 import { ILotItem } from '../api/lots/types'
+import { useAppSelector } from '@app/hooks/redux'
 
 export type UserDataState = {
   email: string
@@ -40,3 +41,6 @@ export const userSlice = createSlice({
 })
 
 export const userReducer = userSlice.reducer
+export const useUserSlice = () => useAppSelector(state => state.user)
+
+

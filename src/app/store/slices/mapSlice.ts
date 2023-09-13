@@ -1,3 +1,4 @@
+import { useAppSelector } from '@app/hooks/redux'
 import { createSlice } from '@reduxjs/toolkit'
 
 export type MapState = {
@@ -59,3 +60,4 @@ export const mapSlice = createSlice({
 
 export const { setZoom, setCoords, setPortal, setParkingId } = mapSlice.actions
 export const mapReducer = mapSlice.reducer
+export const useMapSlice = () => useAppSelector(state => state.map)
