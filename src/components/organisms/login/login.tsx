@@ -9,13 +9,13 @@ import { Button } from '@components/atoms'
 
 import { yupSchemaAuthForm } from '@utils/validate'
 import { useNavigate } from 'react-router-dom'
-import { useAppDispatch } from '@app/hooks/redux'
-import { login } from '@app/store/slices/authSlice'
+
+import { useSignInMutation } from '../../../app/store/api/auth/authApi'
 
 export const Login: FC = () => {
   type FormData = yup.InferType<typeof yupSchemaAuthForm>
   const navigate = useNavigate()
-  const dispatch = useAppDispatch()
+  const [signIn] = useSignInMutation()
 
   const {
     register,
@@ -26,10 +26,15 @@ export const Login: FC = () => {
     resolver: yupResolver(yupSchemaAuthForm),
   })
 
-  const onSubmit: SubmitHandler<ILoginValues> = (data: FormData) => {
-    dispatch(login())
-    navigate('/')
-    console.log(data)
+  const onSubmit: SubmitHandler<ILoginValues> = async (data: FormData) => {
+    const response = await signIn(data)
+    const isError = 'error' in response
+
+    if (!isError) {
+      navigate('/')
+    } else {
+      console.log(isError)
+    }
   }
 
   return (

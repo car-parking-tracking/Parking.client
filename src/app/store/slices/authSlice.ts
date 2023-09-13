@@ -1,25 +1,30 @@
 import { createSlice } from '@reduxjs/toolkit'
+import { authApi } from '../api'
 
 export type AuthState = {
   isAuth: boolean
+  token: string
 }
 
 const initialState = {
-  isAuth: JSON.parse(localStorage.getItem('auth') || '{}') || false,
+  isAuth: JSON.parse(localStorage.getItem('auth') || 'false'),
+  token: JSON.parse(localStorage.getItem('token') || '""'),
 }
 
 export const authSlice = createSlice({
   name: 'auth',
   initialState,
-  reducers: {
-    login(state) {
+  reducers: {},
+  extraReducers: builder => {
+    builder.addMatcher(authApi.endpoints.signIn.matchFulfilled, (state, { payload }) => {
       state.isAuth = true
-    },
-    logout(state) {
+      state.token = payload.auth_token
+    })
+    builder.addMatcher(authApi.endpoints.signOut.matchFulfilled, state => {
       state.isAuth = false
-    },
+      state.token = ''
+    })
   },
 })
 
-export const { login, logout } = authSlice.actions
 export const authReducer = authSlice.reducer

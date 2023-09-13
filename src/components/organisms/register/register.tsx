@@ -8,13 +8,12 @@ import { InputForm, CheckboxContainer } from '@components/molecules'
 
 import { yupSchemaRegForm } from '@utils/validate'
 import { useNavigate } from 'react-router-dom'
-import { useAppDispatch } from '@app/hooks/redux'
-import { login } from '@app/store/slices/authSlice'
+import { useSignUpMutation } from '@app/store/api'
 
 export const Register: FC<RegisterProps> = () => {
   type FormData = yup.InferType<typeof yupSchemaRegForm>
   const navigate = useNavigate()
-  const dispatch = useAppDispatch()
+  const [signUp] = useSignUpMutation()
 
   const {
     register,
@@ -25,10 +24,22 @@ export const Register: FC<RegisterProps> = () => {
     resolver: yupResolver(yupSchemaRegForm),
   })
 
-  const onSubmit: SubmitHandler<IAuthValues> = (data: FormData) => {
-    dispatch(login())
-    navigate('/')
-    console.log(data)
+  const onSubmit: SubmitHandler<IAuthValues> = async (data: FormData) => {
+    const newdata = {
+      first_name: data.first_name,
+      last_name: data.last_name,
+      email: data.email,
+      password: data.password,
+    }
+
+    const response = await signUp(newdata)
+    const isError = 'error' in response
+
+    if (!isError) {
+      navigate('/')
+    } else {
+      console.log(isError)
+    }
   }
 
   return (

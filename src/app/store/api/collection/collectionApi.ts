@@ -4,7 +4,7 @@ import { IFeatureCollection } from './types'
 
 const COLLECTION_API_PATH = 'feature_collection/'
 
-export const collectionApi = baseApi.injectEndpoints({
+export const collectionApi = baseApi.enhanceEndpoints({ addTagTypes: ['COLLECTION_DATA'] }).injectEndpoints({
   endpoints: builder => ({
     fetchFeatureCollection: builder.query<IFeatureCollection, void>({
       query: () => ({
