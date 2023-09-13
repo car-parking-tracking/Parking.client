@@ -14,6 +14,7 @@ import { RootState } from '@app/store/store'
 
 const Account: FC<AuthFormProps> = ({ children }) => {
   const token = useSelector((state: RootState) => state.auth.token)
+  const user = useSelector((state: RootState) => state.user)
   const [signOut] = useSignOutMutation()
   const navigate = useNavigate()
 
@@ -30,7 +31,7 @@ const Account: FC<AuthFormProps> = ({ children }) => {
 
   return (
     <Container>
-      <AccountDesc variant="modal">faizulin2023@yandex.ru</AccountDesc>
+      <AccountDesc variant="modal">{user.user.email}</AccountDesc>
       <Menu>
         <LinkItem to="/profile">
           <img src={profile} alt="profile_icon" />
@@ -51,4 +52,8 @@ const Account: FC<AuthFormProps> = ({ children }) => {
 
 const AccountWithTitle = withTitle(Account)
 
-export const AccountWithTitleWrapper: FC = ({ ...props }) => <AccountWithTitle title="Игорь Файзулин" hideBackButton={true} {...props} />
+export const AccountWithTitleWrapper: FC = ({ ...props }) => {
+  const user = useSelector((state: RootState) => state.user)
+
+  return <AccountWithTitle title={`${user.user.first_name} ${user.user.last_name}`} hideBackButton={true} {...props} />
+}

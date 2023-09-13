@@ -7,9 +7,12 @@ import { AccountBtn, LoginBtn, NavList, Wrapper, MenuButton, HeaderLink } from '
 import { HeaderProps } from './header.types'
 
 import { email } from '@constants/variables'
+import { useSelector } from 'react-redux'
+import { RootState } from '@app/store/store'
 
 export const Header: FC<HeaderProps> = ({ onBtnClick, isLoggedIn }) => {
-  const currentUser = 'Имя Фамилия' //здесь будет значение из рeдакса
+  const user = useSelector((state: RootState) => state.user)
+  const currentUser = `${user.user.last_name} ${user.user.first_name}` //здесь будет значение из рeдакса
   const initials = getInitials(currentUser)
 
   return (

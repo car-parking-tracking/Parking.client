@@ -5,7 +5,7 @@ export type IResetPassword = {
 }
 
 export type UserInfoResponse = {
-  id: 0
+  id: number
   first_name: string
   last_name: string
   email: string

@@ -7,6 +7,7 @@ import { useFetchLotByIdQuery } from '@app/store/api'
 import { Loader } from '@components/atoms'
 
 import { Wrapper, Title, InfoList, InfoItem, InfoDesc, FavoriteBtn, DeleteBtn, InfoCost, PriceInfo, TimeRange, Price, Place } from './parkingCard.styles'
+import { endsSymbol } from '@utils/ends-symbol'
 
 export const ParkingCard: FC = () => {
   const [favorite, setFavorite] = useState(false)
@@ -27,7 +28,7 @@ export const ParkingCard: FC = () => {
 
   if (lotData) {
     const tariff = JSON.parse(`{"tariffs": ${lotData.tariffs.replaceAll("'", '"')}}`).tariffs
-    
+    console.log([lotData.latitude, lotData.longitude])
     return (
       <Wrapper>
         <Title>{`Парковка № ${lotData.id}`}</Title>
@@ -53,7 +54,10 @@ export const ParkingCard: FC = () => {
           </InfoItem>
           <InfoItem>
             <InfoCost>
-              Всего <Place>{lotData.car_capacity}</Place>
+              Всего{' '}
+              <Place>
+                {lotData.car_capacity} {endsSymbol(lotData.car_capacity)}
+              </Place>
             </InfoCost>
           </InfoItem>
         </InfoList>
