@@ -25,15 +25,25 @@ export type UserPasswordResponse = {
   current_password: string
 }
 
-export type UserPasswordRequest = {
-  new_password: string
-  current_password: string
-}
+export type UserPasswordRequest = UserPasswordResponse
 
 export type UserEmailResponse = {
   email: string
 }
 
-export type UserEmailRequest = {
-  email: string
+export type UserEmailRequest = UserEmailResponse
+
+export type PasswordUpdateResponse = {
+  uid: string
+  token: string
+  new_password: string
 }
+
+export type PasswordUpdateRequest = PasswordUpdateResponse
+
+export type ActivationRequest = {
+  uid: string
+  token: string
+}
+
+export type ActivationResponse = ActivationRequest

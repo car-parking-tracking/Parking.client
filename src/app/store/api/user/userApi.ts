@@ -1,6 +1,18 @@
 import { HTTP_METHOD } from '@constants/variables'
 import { BASE_API_PATH } from '../baseApi'
-import { UserEmailRequest, UserEmailResponse, UserInfoResponse, UserPasswordRequest, UserPasswordResponse, UserProfileRequest, UserProfileResponse } from './types'
+import {
+  ActivationRequest,
+  ActivationResponse,
+  PasswordUpdateRequest,
+  PasswordUpdateResponse,
+  UserEmailRequest,
+  UserEmailResponse,
+  UserInfoResponse,
+  UserPasswordRequest,
+  UserPasswordResponse,
+  UserProfileRequest,
+  UserProfileResponse,
+} from './types'
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
 import { RootState } from '@app/store/store'
 
@@ -33,6 +45,14 @@ export const userApi = createApi({
         providesTags: [{ type: 'USER_INFO', id: 'INFO' }],
       }),
     }),
+    activation: builder.mutation<ActivationResponse, ActivationRequest>({
+      query: data => ({
+        url: RESET_PASSWORD_API_PATH,
+        method: HTTP_METHOD.POST,
+        body: data,
+      }),
+      invalidatesTags: [{ type: 'USER_INFO', id: 'INFO' }],
+    }),
     changeUserProfile: builder.mutation<UserProfileResponse, UserProfileRequest>({
       query: userProfile => ({
         url: USER_INFO_API_PATH,
@@ -57,7 +77,15 @@ export const userApi = createApi({
       }),
       invalidatesTags: [{ type: 'USER_INFO', id: 'INFO' }],
     }),
+    updatePassword: builder.mutation<PasswordUpdateResponse, PasswordUpdateRequest>({
+      query: userPassword => ({
+        url: RESET_PASSWORD_API_PATH,
+        method: HTTP_METHOD.POST,
+        body: userPassword,
+      }),
+      invalidatesTags: [{ type: 'USER_INFO', id: 'INFO' }],
+    }),
   }),
 })
 
-export const { useFetchUserInfoQuery, useChangeUserProfileMutation, useChangePasswordMutation, useResetPasswordMutation } = userApi
+export const { useFetchUserInfoQuery, useChangeUserProfileMutation, useChangePasswordMutation, useResetPasswordMutation, useUpdatePasswordMutation } = userApi
