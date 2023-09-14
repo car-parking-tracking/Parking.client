@@ -25,14 +25,13 @@ export const Register: FC<RegisterProps> = () => {
   })
 
   const onSubmit: SubmitHandler<IAuthValues> = async (data: FormData) => {
-    const newdata = {
+    const response = await signUp({
       first_name: data.first_name,
       last_name: data.last_name,
       email: data.email,
       password: data.password,
-    }
+    })
 
-    const response = await signUp(newdata)
     const isError = 'error' in response
 
     if (!isError) {

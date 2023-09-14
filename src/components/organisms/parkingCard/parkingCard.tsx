@@ -10,11 +10,10 @@ import { useMapSlice } from '@app/store/slices/mapSlice'
 
 export const ParkingCard: FC = () => {
   const [favorite, setFavorite] = useState(false)
+  const { id } = useMapSlice()
 
-  const map = useMapSlice()
-
-  const { data: lotData, isLoading } = useFetchLotByIdQuery(map.id, {
-    skip: !map.id || map.id === 0,
+  const { data: lotData, isLoading } = useFetchLotByIdQuery(id, {
+    skip: !id || id === 0,
   })
 
   const handleChangeFavorite = () => {

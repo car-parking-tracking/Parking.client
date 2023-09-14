@@ -19,3 +19,21 @@ export type UserProfileRequest = {
   last_name: string
   email: string
 }
+
+export type UserPasswordResponse = {
+  new_password: string
+  current_password: string
+}
+
+export type UserPasswordRequest = {
+  new_password: string
+  current_password: string
+}
+
+export type UserEmailResponse = {
+  email: string
+}
+
+export type UserEmailRequest = {
+  email: string
+}

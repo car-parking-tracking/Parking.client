@@ -10,7 +10,7 @@ import { Manager } from '../manager'
 import { useMapSlice } from '@app/store/slices/mapSlice'
 
 export const YaMap: React.FC = () => {
-  const map = useMapSlice()
+  const { portal, coords, zoom } = useMapSlice()
 
   return (
     <Wrapper>
@@ -25,14 +25,14 @@ export const YaMap: React.FC = () => {
           {...mapConfig}
           state={{
             ...mapConfig.defaultState,
-            center: map.coords,
-            zoom: map.zoom,
+            center: coords,
+            zoom: zoom,
           }}>
           <Manager />
           <ZoomControl options={{ position: { left: 32, top: 90 }, size: 'large' }} />
         </Map>
       </YMaps>
-      {map.portal && (
+      {portal && (
         <Portal getHTMLElementId={'parking'}>
           <ParkingCard />
         </Portal>
