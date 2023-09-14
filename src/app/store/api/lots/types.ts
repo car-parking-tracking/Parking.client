@@ -29,3 +29,15 @@ export type ILotSearchCollection = {
   coords: number[]
   id: number
 }
+
+export type LotsFavoriteResponse = {
+  token: string
+  id: number
+  address: string
+  car_capacity: number
+  tariffs: string
+  latitude: number
+  longitude: number
+}
+
+export type LotsFavoriteRequest = LotsFavoriteResponse

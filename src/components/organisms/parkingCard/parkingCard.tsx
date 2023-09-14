@@ -3,6 +3,8 @@ import { Tariff } from './parkingCard.types'
 import { replaceAddress } from '@utils/replace-address'
 import { useFetchLotByIdQuery } from '@app/store/api'
 import { Loader } from '@components/atoms'
+import { useUpdateFavoriteStatusMutation } from '@app/store/api'
+import { useAuthSlice } from '@app/store/slices/authSlice'
 
 import { Wrapper, Title, InfoList, InfoItem, InfoDesc, FavoriteBtn, DeleteBtn, InfoCost, PriceInfo, TimeRange, Price, Place } from './parkingCard.styles'
 import { endsSymbol } from '@utils/ends-symbol'
@@ -11,13 +13,31 @@ import { useMapSlice } from '@app/store/slices/mapSlice'
 export const ParkingCard: FC = () => {
   const [favorite, setFavorite] = useState(false)
   const { id } = useMapSlice()
+  const { token } = useAuthSlice()
+
+  const [updateFavoriteStatus] = useUpdateFavoriteStatusMutation()
 
   const { data: lotData, isLoading } = useFetchLotByIdQuery(id, {
     skip: !id || id === 0,
   })
 
-  const handleChangeFavorite = () => {
-    setFavorite(!favorite)
+  const handleChangeFavorite = async () => {
+    if (lotData) {
+      const response = await updateFavoriteStatus({
+        token,
+        id,
+        address: lotData.address,
+        car_capacity: lotData.car_capacity,
+        tariffs: lotData.tariffs,
+        latitude: lotData.latitude,
+        longitude: lotData.longitude,
+      })
+      console.log(response)
+      setFavorite(!favorite)
+
+      const isError = 'error' in response
+      console.error(isError)
+    }
   }
 
   if (isLoading) {

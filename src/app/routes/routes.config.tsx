@@ -14,14 +14,14 @@ import { Navigate } from 'react-router-dom'
 
 //TODO: удалить мок
 const favoriteItems = [
-  { id: 2402, address: 'ул. Херсонская, дом 32' },
-  { id: 2411, address: 'ул. Каховка, дом 33 к. 1' },
-  { id: 2412, address: 'ул. Каховка, дом 33 к. 1' },
-  { id: 2413, address: 'ул. Каховка, дом 33 к. 1' },
-  { id: 2414, address: 'ул. Каховка, дом 33 к. 1' },
-  { id: 2415, address: 'ул. Каховка, дом 33 к. 1' },
-  { id: 2416, address: 'ул. Каховка, дом 33 к. 1' },
-  { id: 2417, address: 'ул. Каховка, дом 33 к. 1' },
+  { id: 4648, address: 'ул. Херсонская, дом 32', longitude: 55.748203, latitude: 37.632349 },
+  { id: 133, address: 'ул. Каховка, дом 33 к. 1', longitude: 55.74848, latitude: 37.610348 },
+  { id: 2412, address: 'ул. Каховка, дом 33 к. 1', longitude: 55.748950, latitude: 37.633599 },
+  { id: 2413, address: 'ул. Каховка, дом 33 к. 1', longitude: 55.748709, latitude: 37.632178 },
+  { id: 2414, address: 'ул. Каховка, дом 33 к. 1', longitude: 55.748203, latitude: 37.632349 },
+  { id: 2415, address: 'ул. Каховка, дом 33 к. 1', longitude: 55.748203, latitude: 37.632349 },
+  { id: 2416, address: 'ул. Каховка, дом 33 к. 1', longitude: 55.748203, latitude: 37.632349 },
+  { id: 2417, address: 'ул. Каховка, дом 33 к. 1', longitude: 55.748203, latitude: 37.632349 },
 ]
 
 export const ERROR_ROUTES: Routes = [
