@@ -31,11 +31,10 @@ export const userSlice = createSlice({
   initialState,
   reducers: {
     deleteFavorite: (state, { payload }) => {
-      console.log(state.user.favorites.filter(element => element === payload.data))
-      state.user.favorites = state.user.favorites.filter(element => element === payload.data)
+      state.user.favorites = state.user.favorites.filter((element: ILotItem) => element.id !== payload.data.id)
     },
     addFavorite: (state, { payload }) => {
-      state.user.favorites = [...state.user.favorites, payload.data]
+      state.user.favorites = [...state.user.favorites.filter((element: ILotItem) => element.id !== payload.data.id), payload.data]
     },
   },
   extraReducers: builder => {

@@ -1,4 +1,4 @@
-import { FC, useState } from 'react'
+import { FC } from 'react'
 import { Tariff } from './parkingCard.types'
 import { replaceAddress } from '@utils/replace-address'
 import { useFetchLotByIdQuery } from '@app/store/api'
@@ -11,11 +11,13 @@ import { useMapSlice } from '@app/store/slices/mapSlice'
 
 import { useAuthSlice } from '@app/store/slices/authSlice'
 import { useAppDispatch } from '@app/hooks/redux'
-import { addFavorite, deleteFavorite } from '@app/store/slices/userSlice'
+import { addFavorite, deleteFavorite, useUserSlice } from '@app/store/slices/userSlice'
+import { ILotItem } from '@app/store/api/lots/types'
 
 export const ParkingCard: FC = () => {
   const { id } = useMapSlice()
   const { token } = useAuthSlice()
+  const { user } = useUserSlice()
   const dispatch = useAppDispatch()
   const [updateFavoriteStatus] = useUpdateFavoriteStatusMutation()
 
@@ -23,10 +25,21 @@ export const ParkingCard: FC = () => {
     skip: !id || id === 0,
   })
 
-  const [favorite, setFavorite] = useState(false)
+  if (isLoading) {
+    return <Loader variant="page" />
+  }
 
-  const handleChangeFavorite = async () => {
-    if (lotData) {
+  if (lotData) {
+    const tariff = JSON.parse(`{"tariffs": ${lotData.tariffs.replaceAll("'", '"')}}`).tariffs
+
+    const isFav =
+      user.favorites.find((item: ILotItem) => {
+        return item.id === lotData.id
+      }) === undefined
+        ? false
+        : true
+
+    const handleChangeFavorite = async () => {
       const response = await updateFavoriteStatus({
         token,
         id,
@@ -34,25 +47,12 @@ export const ParkingCard: FC = () => {
       const isError = 'error' in response
 
       if (!isError) {
-        setFavorite(!favorite)
-        if (favorite) {
-          dispatch(deleteFavorite(response))
-        } else {
-          dispatch(addFavorite(response))
-        }
+        isFav ? dispatch(deleteFavorite(response)) : dispatch(addFavorite(response))
       } else {
         console.log(isError)
       }
     }
-  }
 
-  if (isLoading) {
-    return <Loader variant="page" />
-  }
-
-  if (lotData) {
-    const tariff = JSON.parse(`{"tariffs": ${lotData.tariffs.replaceAll("'", '"')}}`).tariffs
-    console.log(lotData)
     return (
       <Wrapper>
         <Title>{`Парковка № ${lotData.id}`}</Title>
@@ -85,7 +85,7 @@ export const ParkingCard: FC = () => {
             </InfoCost>
           </InfoItem>
         </InfoList>
-        {favorite ? (
+        {isFav ? (
           <DeleteBtn variant="outlined" onClick={handleChangeFavorite}>
             Убрать из избранного
           </DeleteBtn>
