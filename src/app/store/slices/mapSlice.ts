@@ -12,7 +12,7 @@ const initialState = {
   zoom: 16,
   coords: [55.751774, 37.61838],
   portal: false,
-  id: 0
+  id: 0,
 }
 
 export const mapSlice = createSlice({
