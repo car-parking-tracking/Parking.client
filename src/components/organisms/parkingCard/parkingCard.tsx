@@ -1,4 +1,5 @@
 import { FC } from 'react'
+import { useNavigate } from 'react-router'
 import { Tariff } from './parkingCard.types'
 import { replaceAddress } from '@utils/replace-address'
 import { useFetchLotByIdQuery } from '@app/store/api'
@@ -16,10 +17,12 @@ import { ILotItem } from '@app/store/api/lots/types'
 
 export const ParkingCard: FC = () => {
   const { id } = useMapSlice()
-  const { token } = useAuthSlice()
+  const { token, isAuth } = useAuthSlice()
   const { user } = useUserSlice()
   const dispatch = useAppDispatch()
   const [updateFavoriteStatus] = useUpdateFavoriteStatusMutation()
+
+  const navigate = useNavigate()
 
   const { data: lotData, isLoading } = useFetchLotByIdQuery(id, {
     skip: !id || id === 0,
@@ -40,6 +43,9 @@ export const ParkingCard: FC = () => {
         : true
 
     const handleChangeFavorite = async () => {
+      // if (!isAuth) {
+      //   navigate('/')
+      // }
       const response = await updateFavoriteStatus({
         token,
         id,
@@ -90,7 +96,7 @@ export const ParkingCard: FC = () => {
             Убрать из избранного
           </DeleteBtn>
         ) : (
-          <FavoriteBtn variant="primary" onClick={handleChangeFavorite}>
+          <FavoriteBtn variant="primary" disabled={!isAuth} onClick={handleChangeFavorite}>
             Добавить в избранное
           </FavoriteBtn>
         )}

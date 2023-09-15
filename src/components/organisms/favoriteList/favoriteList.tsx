@@ -27,4 +27,11 @@ const FavoriteList: FC = () => {
   )
 }
 
-export const FavoriteListWithTitle = withTitle(FavoriteList)
+const FavoriteListWithTitle = withTitle(FavoriteList)
+
+export const FavoriteListWithTitleWrapper: FC = () => {
+  const { user } = useUserSlice()
+  const count = user.favorites.length > 0 ? user.favorites.length : undefined
+
+  return <FavoriteListWithTitle title="Избранное" count={count} />
+}

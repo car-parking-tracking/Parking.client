@@ -21,3 +21,13 @@ export const Provider = styled.div`
   display: flex;
   width: max-content;
 `
+
+export const Count = styled.span`
+  color: var(--new-grey);
+  margin-left: 10px;
+  font-variant-numeric: lining-nums proportional-nums;
+  font-feature-settings: 'liga' off;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 28px;
+`

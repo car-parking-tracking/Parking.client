@@ -1,7 +1,7 @@
 import { PAGES, Routes, SidebarRoutes } from './routes.types'
 import {
   AccountWithTitleWrapper,
-  FavoriteListWithTitle,
+  FavoriteListWithTitleWrapper,
   ProfileWithTitle,
   PasswordWithTitle,
   ResetWithTitleWrapper,
@@ -48,7 +48,7 @@ export const SIDEBAR_AUTH_ROUTES: SidebarRoutes = [
   },
   {
     path: PAGES.FAVORITES,
-    sidebar: () => <FavoriteListWithTitle title="Избранное" />,
+    sidebar: () => <FavoriteListWithTitleWrapper />,
   },
 ]
 
