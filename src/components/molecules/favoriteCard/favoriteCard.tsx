@@ -4,17 +4,33 @@ import { useAppDispatch } from '@app/hooks/redux'
 
 import { FavoriteCardProps } from './favoriteCard.types'
 import { Wrapper, Title, Address, ButtonGroup, ButtonSelected, ButtonDelete, Info, ButtonRestore } from './favoriteCard.styles'
+import { useAuthSlice } from '@app/store/slices/authSlice'
+import { useUpdateFavoriteStatusMutation } from '@app/store/api'
 
 export const FavoriteCard: FC<FavoriteCardProps> = ({ id, address, latitude, longitude }) => {
   const [isDeleted, setIsDeleted] = useState(false)
-  const dispatch = useAppDispatch()
-  const coords = [longitude, latitude]
+  const { token } = useAuthSlice()
 
-  const handleDeleteClick = () => {
+  const coords = [latitude, longitude]
+
+  const [updateFavoriteStatus] = useUpdateFavoriteStatusMutation()
+  const dispatch = useAppDispatch()
+
+  const handleDeleteClick = async () => {
+    await updateFavoriteStatus({
+      token,
+      id,
+    })
+
     setIsDeleted(true)
   }
 
-  const handleRestoreClick = () => {
+  const handleRestoreClick = async () => {
+    await updateFavoriteStatus({
+      token,
+      id,
+    })
+
     setIsDeleted(false)
   }
 

@@ -13,7 +13,7 @@ export const lotsApi = baseApi.enhanceEndpoints({ addTagTypes: ['LOTS_DATA'] }).
         providesTags: [{ type: 'LOTS_DATA', id: 'INFO' }],
       }),
     }),
-    updateFavoriteStatus: builder.mutation<LotsFavoriteResponse, LotsFavoriteRequest>({
+    updateFavoriteStatus: builder.mutation<LotsFavoriteRequest, LotsFavoriteResponse>({
       query: data => ({
         url: `${LOTS_API_PATH}/${data.id}/favorite/`,
         method: HTTP_METHOD.POST,

@@ -29,7 +29,15 @@ const initialState = {
 export const userSlice = createSlice({
   name: 'user',
   initialState,
-  reducers: {},
+  reducers: {
+    deleteFavorite: (state, { payload }) => {
+      console.log(state.user.favorites.filter(element => element === payload.data))
+      state.user.favorites = state.user.favorites.filter(element => element === payload.data)
+    },
+    addFavorite: (state, { payload }) => {
+      state.user.favorites = [...state.user.favorites, payload.data]
+    },
+  },
   extraReducers: builder => {
     builder.addMatcher(userApi.endpoints.fetchUserInfo.matchFulfilled, (state, { payload }) => {
       state.user = payload
@@ -41,4 +49,5 @@ export const userSlice = createSlice({
 })
 
 export const userReducer = userSlice.reducer
+export const { deleteFavorite, addFavorite } = userSlice.actions
 export const useUserSlice = () => useAppSelector(state => state.user)

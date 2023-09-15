@@ -10,17 +10,20 @@ import { endsSymbol } from '@utils/ends-symbol'
 import { useMapSlice } from '@app/store/slices/mapSlice'
 
 import { useAuthSlice } from '@app/store/slices/authSlice'
+import { useAppDispatch } from '@app/hooks/redux'
+import { addFavorite, deleteFavorite } from '@app/store/slices/userSlice'
 
 export const ParkingCard: FC = () => {
-  const [favorite, setFavorite] = useState(false)
   const { id } = useMapSlice()
   const { token } = useAuthSlice()
-
+  const dispatch = useAppDispatch()
   const [updateFavoriteStatus] = useUpdateFavoriteStatusMutation()
 
   const { data: lotData, isLoading } = useFetchLotByIdQuery(id, {
     skip: !id || id === 0,
   })
+
+  const [favorite, setFavorite] = useState(false)
 
   const handleChangeFavorite = async () => {
     if (lotData) {
@@ -28,11 +31,18 @@ export const ParkingCard: FC = () => {
         token,
         id,
       })
-      console.log(response)
-      setFavorite(!favorite)
-
       const isError = 'error' in response
-      console.error(isError)
+
+      if (!isError) {
+        setFavorite(!favorite)
+        if (favorite) {
+          dispatch(deleteFavorite(response))
+        } else {
+          dispatch(addFavorite(response))
+        }
+      } else {
+        console.log(isError)
+      }
     }
   }
 
@@ -42,7 +52,7 @@ export const ParkingCard: FC = () => {
 
   if (lotData) {
     const tariff = JSON.parse(`{"tariffs": ${lotData.tariffs.replaceAll("'", '"')}}`).tariffs
-    console.log([lotData.latitude, lotData.longitude])
+console.log(lotData)
     return (
       <Wrapper>
         <Title>{`Парковка № ${lotData.id}`}</Title>

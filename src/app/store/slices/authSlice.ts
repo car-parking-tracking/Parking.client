@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit'
-import { authApi } from '../api'
+import { authApi, lotsApi } from '../api'
 import { useAppSelector } from '@app/hooks/redux'
 
 export type AuthState = {
