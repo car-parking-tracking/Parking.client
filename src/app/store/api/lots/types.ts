@@ -1,3 +1,5 @@
+import { UserDataState } from '@app/store/slices/userSlice'
+
 type ITariff = {
   TariffType: string
   TimeRange: string
@@ -33,11 +35,11 @@ export type ILotSearchCollection = {
 export type LotsFavoriteResponse = {
   token: string
   id: number
-  address: string
-  car_capacity: number
-  tariffs: string
-  latitude: number
-  longitude: number
+  // address: string
+  // car_capacity: number
+  // tariffs: string
+  // latitude: number
+  // longitude: number
 }
 
 export type LotsFavoriteRequest = LotsFavoriteResponse

@@ -20,7 +20,7 @@ const initialState = {
   user: {
     email: 'test@example.com',
     id: 0,
-    favorites: [{}],
+    favorites: [] as ILotItem[],
     first_name: 'test',
     last_name: 'test',
   },
@@ -42,5 +42,3 @@ export const userSlice = createSlice({
 
 export const userReducer = userSlice.reducer
 export const useUserSlice = () => useAppSelector(state => state.user)
-
-

@@ -17,7 +17,6 @@ export const lotsApi = baseApi.enhanceEndpoints({ addTagTypes: ['LOTS_DATA'] }).
       query: data => ({
         url: `${LOTS_API_PATH}/${data.id}/favorite/`,
         method: HTTP_METHOD.POST,
-        body: data,
         headers: {
           authorization: `token ${data.token}`,
         },

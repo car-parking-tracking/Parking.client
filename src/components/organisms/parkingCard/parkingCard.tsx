@@ -4,11 +4,12 @@ import { replaceAddress } from '@utils/replace-address'
 import { useFetchLotByIdQuery } from '@app/store/api'
 import { Loader } from '@components/atoms'
 import { useUpdateFavoriteStatusMutation } from '@app/store/api'
-import { useAuthSlice } from '@app/store/slices/authSlice'
 
 import { Wrapper, Title, InfoList, InfoItem, InfoDesc, FavoriteBtn, DeleteBtn, InfoCost, PriceInfo, TimeRange, Price, Place } from './parkingCard.styles'
 import { endsSymbol } from '@utils/ends-symbol'
 import { useMapSlice } from '@app/store/slices/mapSlice'
+
+import { useAuthSlice } from '@app/store/slices/authSlice'
 
 export const ParkingCard: FC = () => {
   const [favorite, setFavorite] = useState(false)
@@ -26,11 +27,6 @@ export const ParkingCard: FC = () => {
       const response = await updateFavoriteStatus({
         token,
         id,
-        address: lotData.address,
-        car_capacity: lotData.car_capacity,
-        tariffs: lotData.tariffs,
-        latitude: lotData.latitude,
-        longitude: lotData.longitude,
       })
       console.log(response)
       setFavorite(!favorite)
