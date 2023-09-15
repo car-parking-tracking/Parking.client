@@ -79,11 +79,6 @@ export const ParkingCard: FC = () => {
           </InfoItem>
           <InfoItem>
             <InfoCost>
-              Свободно <Place>нет данных</Place>
-            </InfoCost>
-          </InfoItem>
-          <InfoItem>
-            <InfoCost>
               Всего{' '}
               <Place>
                 {lotData.car_capacity} {endsSymbol(lotData.car_capacity)}
