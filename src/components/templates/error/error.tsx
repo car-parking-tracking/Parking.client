@@ -4,6 +4,7 @@ import { Wrapper, ErrorDescription, ErrorImage } from './error.styles'
 import { Button } from '@components/atoms'
 import { useNavigate } from 'react-router-dom'
 import notfound from '@assets/images/ill404.svg'
+import serverError from '@assets/images/illError500.svg'
 
 type ErrorPageProps = {
   code: number
@@ -16,6 +17,7 @@ export const ErrorTemplate: FC<ErrorPageProps> = ({ code, text }) => {
   return (
     <Wrapper>
       {code === 404 && <ErrorImage src={notfound} alt="404" />}
+      {code === 500 && <ErrorImage src={serverError} alt="500" />}
       <ErrorDescription variant="modal">{text}</ErrorDescription>
       <Button variant="primary" onClick={() => navigate(PAGES.MAIN)}>
         Перейти на главную

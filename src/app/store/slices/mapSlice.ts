@@ -6,6 +6,7 @@ export type MapState = {
   coords: number[]
   portal: boolean
   id: number
+  yamap: object
 }
 
 const initialState = {
@@ -13,12 +14,22 @@ const initialState = {
   coords: [55.751774, 37.61838],
   portal: false,
   id: 0,
+  yamap: {},
 }
 
 export const mapSlice = createSlice({
   name: 'map',
   initialState,
   reducers: {
+    setMap(
+      state,
+      action: {
+        type: string
+        payload: object
+      }
+    ) {
+      state.yamap = action.payload
+    },
     setZoom(
       state,
       action: {
@@ -58,6 +69,6 @@ export const mapSlice = createSlice({
   },
 })
 
-export const { setZoom, setCoords, setPortal, setParkingId } = mapSlice.actions
+export const { setZoom, setCoords, setPortal, setParkingId, setMap } = mapSlice.actions
 export const mapReducer = mapSlice.reducer
 export const useMapSlice = () => useAppSelector(state => state.map)
