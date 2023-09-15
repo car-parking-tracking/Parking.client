@@ -9,7 +9,7 @@ import { AnyObject } from '@pbe/react-yandex-maps/typings/util/typing'
 import { useFetchFeatureCollectionQuery } from '@app/store/api'
 import { Loader } from '@components/atoms'
 import { useAppDispatch } from '@app/hooks/redux'
-import { setParkingId, setPortal } from '@app/store/slices/mapSlice'
+import { setCoords, setParkingId, setPortal } from '@app/store/slices/mapSlice'
 
 export const Manager: FC = () => {
   const dispatch = useAppDispatch()
@@ -19,7 +19,7 @@ export const Manager: FC = () => {
     const parkingID = e.get('objectId')
     if (typeof parkingID !== 'number') return
     dispatch(setParkingId(parkingID))
-
+    dispatch(setCoords(e.get('target').getPosition()))
     e.get('target').getOwner().setObjectOptions(parkingID, {
       iconImageHref: placemarkActive,
     })

@@ -8,6 +8,7 @@ import { Portal } from '@components/atoms'
 import { InputSearch } from '@components/molecules'
 import { Manager } from '../manager'
 import { useMapSlice } from '@app/store/slices/mapSlice'
+import { AnyObject } from 'yup'
 
 export const YaMap: React.FC = () => {
   const { portal, coords, zoom } = useMapSlice()
@@ -27,6 +28,11 @@ export const YaMap: React.FC = () => {
             ...mapConfig.defaultState,
             center: coords,
             zoom: zoom,
+          }}
+          instanceRef={(ref: AnyObject) => {
+            if (ref) {
+              ref.setCenter(coords)
+            }
           }}>
           <Manager />
           <ZoomControl options={{ position: { left: 32, top: 90 }, size: 'large' }} />
