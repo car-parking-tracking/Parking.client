@@ -10,7 +10,7 @@ import { yupSchemaRegForm } from '@utils/validate'
 import { useNavigate } from 'react-router-dom'
 import { useSignUpMutation } from '@app/store/api'
 
-export const Register: FC<RegisterProps> = () => {
+export const Register: FC<RegisterProps> = ({ onShowButtonsChange }) => {
   type FormData = yup.InferType<typeof yupSchemaRegForm>
   const [success, setSuccess] = useState(false)
   const navigate = useNavigate()
@@ -43,9 +43,10 @@ export const Register: FC<RegisterProps> = () => {
   }
 
   if (success) {
-    return <Info text="На ваш e-mail скоро придёт письмо с подтверждением." isButton={false} />
+    onShowButtonsChange(false)
+    return <Info title="Пользователь загеристрирован" text="На ваш e-mail скоро придёт письмо с подтверждением." isButton={false} />
   }
-  
+
   return (
     <Container onSubmit={handleSubmit(onSubmit)} noValidate>
       <InputsContainer>

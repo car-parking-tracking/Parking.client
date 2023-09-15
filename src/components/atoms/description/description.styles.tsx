@@ -2,7 +2,7 @@ import styled, { css } from 'styled-components'
 import { DescriptionProps } from './description.types'
 
 const shared = css<DescriptionProps>`
-  color: rgba(25, 28, 48, 0.9);
+  color: var(--new-dark);
   font-size: 0.938rem;
 `
 const modal = css<DescriptionProps>`

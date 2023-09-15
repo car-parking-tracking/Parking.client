@@ -1,7 +1,6 @@
 import { PAGES, Routes, SidebarRoutes } from './routes.types'
 import {
   AccountWithTitleWrapper,
-  AuthForm,
   FavoriteListWithTitle,
   ProfileWithTitle,
   PasswordWithTitle,
@@ -9,6 +8,7 @@ import {
   UpdateWithTitleWrapper,
   AboutWithTitleWrapper,
 } from '@components/organisms'
+import { AuthForm } from '@components/molecules'
 import ErrorPage from '@pages/ErrorPage'
 import { Navigate } from 'react-router-dom'
 

@@ -29,7 +29,7 @@ export const YaMap: React.FC = () => {
             zoom: zoom,
           }}>
           <Manager />
-          <ZoomControl options={{ position: { left: 32, top: 90 }, size: 'large' }} />
+          <ZoomControl options={{ position: { left: 32, top: 90 }, size: 'auto' }} />
         </Map>
       </YMaps>
       {portal && (

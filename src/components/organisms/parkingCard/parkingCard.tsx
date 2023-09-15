@@ -52,7 +52,7 @@ export const ParkingCard: FC = () => {
 
   if (lotData) {
     const tariff = JSON.parse(`{"tariffs": ${lotData.tariffs.replaceAll("'", '"')}}`).tariffs
-console.log(lotData)
+    console.log(lotData)
     return (
       <Wrapper>
         <Title>{`Парковка № ${lotData.id}`}</Title>

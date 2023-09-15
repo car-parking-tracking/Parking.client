@@ -8,7 +8,15 @@ export const InputForm: FC<InputFormProps> = ({ name, type, defaultValue = '', p
   return (
     <Container>
       <Label htmlFor={name}>{placeholder}</Label>
-      <StyledInput defaultValue={defaultValue} {...register(name, { required })} type={type} variant="form" name={name} placeholder={placeholder} isError={isError} />
+      <StyledInput
+        defaultValue={defaultValue}
+        {...register(name, { required })}
+        type={type}
+        variant="form"
+        name={name}
+        placeholder={placeholder}
+        isError={isError}
+      />
       {isError && <Span>{errorMessage}</Span>}
     </Container>
   )
