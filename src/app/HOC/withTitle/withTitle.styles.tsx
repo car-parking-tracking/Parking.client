@@ -24,10 +24,10 @@ export const Provider = styled.div`
 
 export const Count = styled.span`
   color: var(--new-grey);
-  margin-left: 10px;
+  margin-left: 0.625rem;
   font-variant-numeric: lining-nums proportional-nums;
   font-feature-settings: 'liga' off;
   font-style: normal;
   font-weight: 400;
-  line-height: 28px;
+  line-height: 1.75rem;
 `

@@ -3,7 +3,7 @@ import styled from 'styled-components'
 
 export const InfoDesc = styled(Description)`
   letter-spacing: 0.0313rem;
-  margin-bottom: 8px;
+  margin-bottom: 0.5rem;
 `
 export const InfoButton = styled(Button)`
   margin-top: 1.5rem;
