@@ -1,4 +1,4 @@
-import { FC, useState } from 'react'
+import { FC } from 'react'
 import { Tariff } from './parkingCard.types'
 import { replaceAddress } from '@utils/replace-address'
 import { useFetchLotByIdQuery } from '@app/store/api'
@@ -11,19 +11,19 @@ import { useMapSlice } from '@app/store/slices/mapSlice'
 
 import { useAuthSlice } from '@app/store/slices/authSlice'
 import { useAppDispatch } from '@app/hooks/redux'
-import { addFavorite, deleteFavorite } from '@app/store/slices/userSlice'
+import { addFavorite, deleteFavorite, useUserSlice } from '@app/store/slices/userSlice'
+import { ILotItem } from '@app/store/api/lots/types'
 
 export const ParkingCard: FC = () => {
   const { id } = useMapSlice()
   const { token } = useAuthSlice()
+  const { user } = useUserSlice()
   const dispatch = useAppDispatch()
   const [updateFavoriteStatus] = useUpdateFavoriteStatusMutation()
 
   const { data: lotData, isLoading } = useFetchLotByIdQuery(id, {
     skip: !id || id === 0,
   })
-
-  const [favorite, setFavorite] = useState(false)
 
   const handleChangeFavorite = async () => {
     if (lotData) {
@@ -34,8 +34,14 @@ export const ParkingCard: FC = () => {
       const isError = 'error' in response
 
       if (!isError) {
-        setFavorite(!favorite)
-        if (favorite) {
+        const isFav =
+          user.favorites.find((item: ILotItem) => {
+            return item.id === lotData.id
+          }) === undefined
+            ? false
+            : true
+
+        if (isFav) {
           dispatch(deleteFavorite(response))
         } else {
           dispatch(addFavorite(response))
@@ -52,7 +58,14 @@ export const ParkingCard: FC = () => {
 
   if (lotData) {
     const tariff = JSON.parse(`{"tariffs": ${lotData.tariffs.replaceAll("'", '"')}}`).tariffs
-console.log(lotData)
+
+    const isFav =
+      user.favorites.find((item: ILotItem) => {
+        return item.id === lotData.id
+      }) === undefined
+        ? false
+        : true
+
     return (
       <Wrapper>
         <Title>{`Парковка № ${lotData.id}`}</Title>
@@ -85,7 +98,7 @@ console.log(lotData)
             </InfoCost>
           </InfoItem>
         </InfoList>
-        {favorite ? (
+        {isFav ? (
           <DeleteBtn variant="outlined" onClick={handleChangeFavorite}>
             Убрать из избранного
           </DeleteBtn>

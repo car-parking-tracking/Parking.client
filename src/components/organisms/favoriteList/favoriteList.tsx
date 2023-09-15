@@ -9,7 +9,7 @@ import { withTitle } from '@app/HOC'
 
 const FavoriteList: FC = () => {
   const { user } = useUserSlice()
-  console.log(user.favorites)
+
   return (
     <Wrapper>
       {user.favorites.length === 0 ? (
