@@ -25,33 +25,6 @@ export const ParkingCard: FC = () => {
     skip: !id || id === 0,
   })
 
-  const handleChangeFavorite = async () => {
-    if (lotData) {
-      const response = await updateFavoriteStatus({
-        token,
-        id,
-      })
-      const isError = 'error' in response
-
-      if (!isError) {
-        const isFav =
-          user.favorites.find((item: ILotItem) => {
-            return item.id === lotData.id
-          }) === undefined
-            ? false
-            : true
-
-        if (isFav) {
-          dispatch(deleteFavorite(response))
-        } else {
-          dispatch(addFavorite(response))
-        }
-      } else {
-        console.log(isError)
-      }
-    }
-  }
-
   if (isLoading) {
     return <Loader variant="page" />
   }
@@ -65,6 +38,20 @@ export const ParkingCard: FC = () => {
       }) === undefined
         ? false
         : true
+
+    const handleChangeFavorite = async () => {
+      const response = await updateFavoriteStatus({
+        token,
+        id,
+      })
+      const isError = 'error' in response
+
+      if (!isError) {
+        isFav ? dispatch(deleteFavorite(response)) : dispatch(addFavorite(response))
+      } else {
+        console.log(isError)
+      }
+    }
 
     return (
       <Wrapper>
