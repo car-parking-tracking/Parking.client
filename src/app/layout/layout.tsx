@@ -2,15 +2,19 @@ import { Outlet, Route, Routes } from 'react-router-dom'
 import { Section } from './layout.style'
 import { LayoutProps } from './layout.types'
 import { FC, useState } from 'react'
-import { Header, Modal } from '@components/organisms'
+import { Header } from '@components/organisms'
+import { Modal } from '@components/molecules'
 import { SIDEBAR_AUTH_ROUTES, SIDEBAR_UNAUTH_ROUTES } from '@app/routes/routes.config'
-import { useSelector } from 'react-redux'
-import { RootState } from '@app/store/store'
+import { useFetchUserInfoQuery } from '@app/store/api'
+import { useAuthSlice } from '@app/store/slices/authSlice'
 
 export const Layout: FC<LayoutProps> = props => {
   const [showModal, setShowModal] = useState(false)
-  const isAuth = useSelector((state: RootState) => state.auth.isAuth)
+  const { isAuth } = useAuthSlice()
+  const { token } = useAuthSlice()
   const routes = isAuth ? SIDEBAR_AUTH_ROUTES : SIDEBAR_UNAUTH_ROUTES
+
+  useFetchUserInfoQuery(token, { skip: !token })
 
   const handleOpenModal = () => {
     setShowModal(true)

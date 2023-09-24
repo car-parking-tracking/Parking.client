@@ -29,7 +29,6 @@ export const Wrapper = styled.div`
 `
 export const Info = styled.div`
   color: ${({ isDeleted }: { isDeleted: boolean }) => (isDeleted ? 'var(--new-grey-light)' : 'var(--new-dark)')};
-  height: 3.25rem;
 `
 export const Title = styled.p`
   font-weight: 700;

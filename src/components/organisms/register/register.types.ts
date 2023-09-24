@@ -3,6 +3,7 @@ import React from 'react'
 export interface RegisterProps {
   children?: React.ReactNode
   buttonText?: string
+  onShowButtonsChange: (show: boolean) => void
 }
 
 export interface IAuthValues {

@@ -7,6 +7,12 @@ import { FooterMobile } from '@components/molecules'
 export const AuthForm: FC<AuthFormProps> = () => {
   const [formType, setFormType] = useState<'login' | 'register'>('login')
 
+  const [showButtons, setShowButtons] = useState(true)
+
+  const handleShowButtonsChange = (show: boolean) => {
+    setShowButtons(show)
+  }
+
   const handleLoginButton = () => {
     setFormType('login')
   }
@@ -17,17 +23,20 @@ export const AuthForm: FC<AuthFormProps> = () => {
 
   return (
     <Container>
-      <NavContainer>
-        <NavButton type="button" variant="filter" onClick={handleLoginButton} disabled={formType === 'login'}>
-          Вход
-        </NavButton>
-        <NavButton type="button" variant="filter" onClick={handleRegButton} disabled={formType === 'register'}>
-          Регистрация
-        </NavButton>
-      </NavContainer>
+      {showButtons && (
+        <NavContainer>
+          <NavButton type="button" variant="filter" onClick={handleLoginButton} disabled={formType === 'login'}>
+            Вход
+          </NavButton>
+          <NavButton type="button" variant="filter" onClick={handleRegButton} disabled={formType === 'register'}>
+            Регистрация
+          </NavButton>
+        </NavContainer>
+      )}
+
       {formType === 'register' && (
         <>
-          <Register />
+          <Register onShowButtonsChange={handleShowButtonsChange} />
           <FooterMobile hasAbout={false} />
         </>
       )}

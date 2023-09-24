@@ -36,3 +36,20 @@ export const Span = styled.span`
   color: rgba(221, 76, 30, 1);
   line-height: 1rem;
 `
+export const InputPassword = styled(Input)`
+  width: 100%;
+`
+export const WrapperPassword = styled.div`
+  display: flex;
+`
+export const ButtonPassword = styled.button`
+  position: absolute;
+  top: 2.625rem;
+  right: 0.625rem;
+  width: 1rem;
+  height: 1rem;
+  border: none;
+  background: transparent;
+  padding: 0;
+`
+export const ImgPassword = styled.img``

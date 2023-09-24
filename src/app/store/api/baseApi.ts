@@ -1,6 +1,6 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
 
-const BASE_API_PATH = 'https://parkonaft.acceleratorpracticum.ru/api/v1/'
+export const BASE_API_PATH = 'https://parkonaft.acceleratorpracticum.ru/api/v1/'
 
 export const baseQuery = fetchBaseQuery({
   baseUrl: `${BASE_API_PATH}`,

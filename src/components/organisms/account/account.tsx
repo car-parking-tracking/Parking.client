@@ -9,11 +9,12 @@ import { withTitle } from '@app/HOC'
 import { FooterMobile } from '@components/molecules'
 import { useSignOutMutation } from '@app/store/api'
 import { useNavigate } from 'react-router'
-import { useSelector } from 'react-redux'
-import { RootState } from '@app/store/store'
+import { useUserSlice } from '@app/store/slices/userSlice'
+import { useAuthSlice } from '@app/store/slices/authSlice'
 
 const Account: FC<AuthFormProps> = ({ children }) => {
-  const token = useSelector((state: RootState) => state.auth.token)
+  const { token } = useAuthSlice()
+  const { user } = useUserSlice()
   const [signOut] = useSignOutMutation()
   const navigate = useNavigate()
 
@@ -30,7 +31,7 @@ const Account: FC<AuthFormProps> = ({ children }) => {
 
   return (
     <Container>
-      <AccountDesc variant="modal">faizulin2023@yandex.ru</AccountDesc>
+      <AccountDesc variant="modal">{user.email}</AccountDesc>
       <Menu>
         <LinkItem to="/profile">
           <img src={profile} alt="profile_icon" />
@@ -51,4 +52,8 @@ const Account: FC<AuthFormProps> = ({ children }) => {
 
 const AccountWithTitle = withTitle(Account)
 
-export const AccountWithTitleWrapper: FC = ({ ...props }) => <AccountWithTitle title="Игорь Файзулин" hideBackButton={true} {...props} />
+export const AccountWithTitleWrapper: FC = ({ ...props }) => {
+  const { user } = useUserSlice()
+
+  return <AccountWithTitle title={`${user.first_name} ${user.last_name}`} hideBackButton={true} {...props} />
+}

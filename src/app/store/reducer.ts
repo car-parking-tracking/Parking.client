@@ -7,11 +7,13 @@ import { lotsApi } from './api/lots/lotsApi'
 import { AuthState, authReducer } from './slices/authSlice'
 import { MapState, mapReducer } from './slices/mapSlice'
 import { authApi, userApi } from './api'
+import { UserState, userReducer } from './slices/userSlice'
 
 export interface IReducer {
   baseApi: CombinedState<Record<never, never>, 'USER_INFO', 'baseApi'>
   auth: AuthState
   map: MapState
+  user: UserState
   collectionApi: CombinedState<Record<never, never>, 'COLLECTION_DATA', 'collectionApi'>
   geocodeApi: CombinedState<Record<never, never>, 'MAP_INFO', 'geocodeApi'>
   lotsApi: CombinedState<Record<never, never>, 'LOTS_DATA', 'lotsApi'>
@@ -21,11 +23,12 @@ export interface IReducer {
 
 export const rootReducer = combineReducers({
   [baseApi.reducerPath]: baseApi.reducer,
+  [userApi.reducerPath]: userApi.reducer,
   auth: authReducer,
   map: mapReducer,
+  user: userReducer,
   collectionApi: collectionApi.reducer,
   geocodeApi: geocodeApi.reducer,
   lotsApi: lotsApi.reducer,
-  userApi: userApi.reducer,
   authApi: authApi.reducer,
 })

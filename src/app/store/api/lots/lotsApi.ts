@@ -1,6 +1,6 @@
 import { HTTP_METHOD } from '@constants/variables'
 import { baseApi } from '../baseApi'
-import { ILotCollection, ILotItem, ILotSearchCollection } from './types'
+import { ILotCollection, ILotItem, ILotSearchCollection, LotsFavoriteResponse, LotsFavoriteRequest } from './types'
 
 const LOTS_API_PATH = 'parking_lots'
 
@@ -12,6 +12,16 @@ export const lotsApi = baseApi.enhanceEndpoints({ addTagTypes: ['LOTS_DATA'] }).
         method: HTTP_METHOD.GET,
         providesTags: [{ type: 'LOTS_DATA', id: 'INFO' }],
       }),
+    }),
+    updateFavoriteStatus: builder.mutation<LotsFavoriteRequest, LotsFavoriteResponse>({
+      query: data => ({
+        url: `${LOTS_API_PATH}/${data.id}/favorite/`,
+        method: HTTP_METHOD.POST,
+        headers: {
+          authorization: `token ${data.token}`,
+        },
+      }),
+      invalidatesTags: [{ type: 'LOTS_DATA', id: 'INFO' }],
     }),
     fetchLotsIdCollection: builder.query<ILotSearchCollection[], string>({
       query: (id: string) => ({
@@ -37,4 +47,4 @@ export const lotsApi = baseApi.enhanceEndpoints({ addTagTypes: ['LOTS_DATA'] }).
   }),
 })
 
-export const { useFetchLotByIdQuery, useFetchLotsIdCollectionQuery } = lotsApi
+export const { useFetchLotByIdQuery, useFetchLotsIdCollectionQuery, useUpdateFavoriteStatusMutation } = lotsApi

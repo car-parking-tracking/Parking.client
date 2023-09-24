@@ -1,19 +1,18 @@
 import { FC, useState } from 'react'
 import { SubmitHandler, useForm } from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers/yup'
-import { v4 as uuidv4 } from 'uuid'
 import { yupSchemaResetForm } from '@utils/validate'
 
 import { withTitle } from '@app/HOC'
 import { InputForm, Form, Info } from '@components/molecules'
 
-import { InputWrap, ResetInfo, Section } from './reset.styles'
+import { InputWrap, Section } from './reset.styles'
 import { FormValues } from './reset.types'
-import { useNavigate } from 'react-router-dom'
+import { useResetPasswordMutation } from '@app/store/api'
 
 const Reset: FC = () => {
   const [reset, setReset] = useState(false)
-  const navigate = useNavigate()
+  const [resetPassword] = useResetPasswordMutation()
   const {
     register,
     handleSubmit,
@@ -23,10 +22,18 @@ const Reset: FC = () => {
     resolver: yupResolver(yupSchemaResetForm),
   })
 
-  const onSubmit: SubmitHandler<FormValues> = data => {
-    setReset(true)
-    // navigate(`/update/${uuidv4()}`)
-    console.log('submit!', 'data => ', data)
+  const onSubmit: SubmitHandler<FormValues> = async data => {
+    const response = await resetPassword({
+      email: data.email,
+    })
+    
+    const isError = 'error' in response
+
+    if (!isError) {
+      setReset(true)
+    } else {
+      console.log(isError)
+    }
   }
 
   if (reset) {

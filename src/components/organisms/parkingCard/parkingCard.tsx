@@ -1,25 +1,32 @@
-import { FC, useState } from 'react'
+import { FC } from 'react'
+import { useNavigate } from 'react-router'
 import { Tariff } from './parkingCard.types'
 import { replaceAddress } from '@utils/replace-address'
-import { useSelector } from 'react-redux'
-import { RootState } from '@app/store/store'
 import { useFetchLotByIdQuery } from '@app/store/api'
 import { Loader } from '@components/atoms'
+import { useUpdateFavoriteStatusMutation } from '@app/store/api'
 
 import { Wrapper, Title, InfoList, InfoItem, InfoDesc, FavoriteBtn, DeleteBtn, InfoCost, PriceInfo, TimeRange, Price, Place } from './parkingCard.styles'
+import { endsSymbol } from '@utils/ends-symbol'
+import { useMapSlice } from '@app/store/slices/mapSlice'
+
+import { useAuthSlice } from '@app/store/slices/authSlice'
+import { useAppDispatch } from '@app/hooks/redux'
+import { addFavorite, deleteFavorite, useUserSlice } from '@app/store/slices/userSlice'
+import { ILotItem } from '@app/store/api/lots/types'
 
 export const ParkingCard: FC = () => {
-  const [favorite, setFavorite] = useState(false)
+  const { id } = useMapSlice()
+  const { token, isAuth } = useAuthSlice()
+  const { user } = useUserSlice()
+  const dispatch = useAppDispatch()
+  const [updateFavoriteStatus] = useUpdateFavoriteStatusMutation()
 
-  const map = useSelector((state: RootState) => state.map)
+  const navigate = useNavigate()
 
-  const { data: lotData, isLoading } = useFetchLotByIdQuery(map.id, {
-    skip: !map.id || map.id === 0,
+  const { data: lotData, isLoading } = useFetchLotByIdQuery(id, {
+    skip: !id || id === 0,
   })
-
-  const handleChangeFavorite = () => {
-    setFavorite(!favorite)
-  }
 
   if (isLoading) {
     return <Loader variant="page" />
@@ -27,7 +34,31 @@ export const ParkingCard: FC = () => {
 
   if (lotData) {
     const tariff = JSON.parse(`{"tariffs": ${lotData.tariffs.replaceAll("'", '"')}}`).tariffs
-    
+
+    const isFav =
+      user.favorites.find((item: ILotItem) => {
+        return item.id === lotData.id
+      }) === undefined
+        ? false
+        : true
+
+    const handleChangeFavorite = async () => {
+      // if (!isAuth) {
+      //   navigate('/')
+      // }
+      const response = await updateFavoriteStatus({
+        token,
+        id,
+      })
+      const isError = 'error' in response
+
+      if (!isError) {
+        isFav ? dispatch(deleteFavorite(response)) : dispatch(addFavorite(response))
+      } else {
+        console.log(isError)
+      }
+    }
+
     return (
       <Wrapper>
         <Title>{`Парковка № ${lotData.id}`}</Title>
@@ -48,21 +79,19 @@ export const ParkingCard: FC = () => {
           </InfoItem>
           <InfoItem>
             <InfoCost>
-              Свободно <Place>нет данных</Place>
-            </InfoCost>
-          </InfoItem>
-          <InfoItem>
-            <InfoCost>
-              Всего <Place>{lotData.car_capacity}</Place>
+              Всего{' '}
+              <Place>
+                {lotData.car_capacity} {endsSymbol(lotData.car_capacity)}
+              </Place>
             </InfoCost>
           </InfoItem>
         </InfoList>
-        {favorite ? (
+        {isFav ? (
           <DeleteBtn variant="outlined" onClick={handleChangeFavorite}>
             Убрать из избранного
           </DeleteBtn>
         ) : (
-          <FavoriteBtn variant="primary" onClick={handleChangeFavorite}>
+          <FavoriteBtn variant="primary" disabled={!isAuth} onClick={handleChangeFavorite}>
             Добавить в избранное
           </FavoriteBtn>
         )}

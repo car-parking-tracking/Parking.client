@@ -8,16 +8,18 @@ import { InputForm, Form } from '@components/molecules'
 
 import { InputWrap, Section, LinkItem } from './Profile.styles'
 import { FormValues } from './Profile.types'
-
+import { useChangeUserProfileMutation } from '@app/store/api'
+import { useUserSlice } from '@app/store/slices/userSlice'
 
 const Profile: FC = () => {
   const [isSuccess, setIsSuccess] = useState(false)
+  const { user } = useUserSlice()
+  const [changeUserInfo] = useChangeUserProfileMutation()
 
-  // TODO - подтянуть данные юзера из редакса
   const userData = {
-    lastName: 'Файзулин',
-    firstName: 'Игорь',
-    email: 'faizulin2023@yandex.ru',
+    lastName: user.last_name,
+    firstName: user.first_name,
+    email: user.email,
   }
 
   const { lastName, firstName, email } = userData
@@ -31,9 +33,15 @@ const Profile: FC = () => {
     resolver: yupResolver(yupProfileForm),
   })
 
-  const onSubmit: SubmitHandler<FormValues> = data => {
-    setIsSuccess(true)
-    console.log('submit!', 'data => ', data)
+  const onSubmit: SubmitHandler<FormValues> = async data => {
+    const response = await changeUserInfo(data)
+    const isError = 'error' in response
+
+    if (!isError) {
+      setIsSuccess(true)
+    } else {
+      console.log(isError)
+    }
   }
 
   return (

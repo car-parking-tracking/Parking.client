@@ -9,10 +9,11 @@ import { InputForm, Form } from '@components/molecules'
 
 import { InputWrap, Section } from './password.styles'
 import { FormValues } from './password.types'
-
+import { useChangePasswordMutation } from '@app/store/api'
 
 const Password: FC = () => {
   const [isSuccess, setIsSuccess] = useState(false)
+  const [changePassword] = useChangePasswordMutation()
 
   const {
     register,
@@ -23,9 +24,18 @@ const Password: FC = () => {
     resolver: yupResolver(yupRecoverPasswordForm),
   })
 
-  const onSubmit: SubmitHandler<FormValues> = data => {
-    setIsSuccess(true)
-    console.log('submit!', 'data => ', data)
+  const onSubmit: SubmitHandler<FormValues> = async data => {
+    const response = await changePassword({
+      new_password: data.password_new,
+      current_password: data.password_old,
+    })
+    const isError = 'error' in response
+
+    if (!isError) {
+      setIsSuccess(true)
+    } else {
+      console.log(isError)
+    }
   }
 
   return (

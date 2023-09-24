@@ -29,3 +29,10 @@ export type ILotSearchCollection = {
   coords: number[]
   id: number
 }
+
+export type LotsFavoriteResponse = {
+  token: string
+  id: number
+}
+
+export type LotsFavoriteRequest = ILotItem
