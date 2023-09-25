@@ -9,7 +9,7 @@ export const InputForm: FC<InputFormProps> = ({ name, type, defaultValue = '', p
 
   const togglePasswordVisibility = () => {
     setPasswordVisible(prev => !prev)
-  } // TODO: необходимо для inputPassword 
+  } // TODO: необходимо для inputPassword
 
   return (
     <Container>

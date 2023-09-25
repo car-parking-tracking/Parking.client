@@ -1,16 +1,18 @@
 import { FC } from 'react'
 import { AuthFormProps } from './account.types'
 import { Container, Menu, AccountDesc, LinkItem } from './account.styles'
-import profile from '@assets/icons/profile.svg'
-import favorite from '@assets/icons/favorite.svg'
-import exit from '@assets/icons/exit.svg'
 
+import { getInitials } from '@utils/get-initials'
 import { withTitle } from '@app/HOC'
 import { FooterMobile } from '@components/molecules'
 import { useSignOutMutation } from '@app/store/api'
 import { useNavigate } from 'react-router'
 import { useUserSlice } from '@app/store/slices/userSlice'
 import { useAuthSlice } from '@app/store/slices/authSlice'
+
+import profile from '@assets/icons/profile.svg'
+import favorite from '@assets/icons/favorite.svg'
+import exit from '@assets/icons/exit.svg'
 
 const Account: FC<AuthFormProps> = ({ children }) => {
   const { token } = useAuthSlice()
@@ -54,6 +56,8 @@ const AccountWithTitle = withTitle(Account)
 
 export const AccountWithTitleWrapper: FC = ({ ...props }) => {
   const { user } = useUserSlice()
+  const currentUser = `${user.last_name} ${user.first_name}`
+  const initials = getInitials(currentUser)
 
-  return <AccountWithTitle title={`${user.first_name} ${user.last_name}`} hideBackButton={true} {...props} />
+  return <AccountWithTitle initials={initials} title={`${user.first_name} ${user.last_name}`} hideBackButton={true} {...props} />
 }

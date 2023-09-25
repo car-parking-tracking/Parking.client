@@ -53,5 +53,5 @@ export const Span = styled.span`
   display: block;
 `
 export const Link = styled.span`
-color: var(--new-bg-active);
+  color: var(--new-bg-active);
 `

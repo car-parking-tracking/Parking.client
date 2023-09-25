@@ -9,12 +9,19 @@ import { withTitle } from '@app/HOC'
 
 const FavoriteList: FC = () => {
   const { user } = useUserSlice()
+  const screenWidth = window.innerWidth
 
   return (
     <Wrapper>
       {user.favorites.length === 0 ? (
         <Notification variant="text">
-          У Вас пока нет сохраненных парковок. <br /> Вы можете выбрать парковку на карте <br /> или воспользоваться поиском.
+          {screenWidth <= 768 ? (
+            <>Нет сохранённых парковок. Выберите парковку на карте или воспользоваться поиском.</>
+          ) : (
+            <>
+              У Вас пока нет сохраненных парковок. <br /> Вы можете выбрать парковку на карте <br /> или воспользоваться поиском.
+            </>
+          )}
         </Notification>
       ) : (
         <List>

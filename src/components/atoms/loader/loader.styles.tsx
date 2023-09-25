@@ -14,8 +14,8 @@ const page = css<LoaderProps>`
   width: 5rem;
   height: 5rem;
   margin-left: -3.125rem;
-  margin-top:-3.125rem;
-  border: 0.313rem solid #FFF;
+  margin-top: -3.125rem;
+  border: 0.313rem solid #fff;
   border-bottom-color: var(--new-bg-active);
   border-radius: 50%;
   z-index: 100;
@@ -27,6 +27,7 @@ const page = css<LoaderProps>`
     }
     100% {
       transform: rotate(360deg);
+    }
   }
 `
 export const Loader = styled.div<LoaderProps>`

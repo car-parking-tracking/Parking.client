@@ -1,6 +1,6 @@
 import React from 'react'
 import { StoryFn } from '@storybook/react'
-import { ProfileWithTitle } from './Profile'
+import { ProfileWithTitle } from './profile'
 import styled from 'styled-components'
 
 export default {

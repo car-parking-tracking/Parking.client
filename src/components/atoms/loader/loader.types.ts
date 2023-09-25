@@ -1,3 +1,3 @@
 export interface LoaderProps {
-  variant: 'modal' | 'page' 
+  variant: 'modal' | 'page'
 }

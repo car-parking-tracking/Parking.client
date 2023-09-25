@@ -24,9 +24,10 @@ export const Wrapper = styled.header`
     background: rgba(60, 65, 88, 0.8);
   }
 
-  @media (max-width: 48rem) {
-    padding: 0.5rem 1rem 0.5rem 1rem;
-    &::before {
+  @media (max-width: 768px) {
+    padding: 8px 16px 8px 16px;
+
+    ::before {
       display: none;
     }
   }
@@ -37,7 +38,7 @@ export const NavList = styled.ul`
   align-items: center;
   column-gap: 2rem;
 
-  @media (max-width: 48rem) {
+  @media (max-width: 768px) {
     display: none;
   }
 `
@@ -62,7 +63,7 @@ export const LoginBtn = styled(Button)`
   box-shadow: none;
   margin: 0 0.5rem 0 3.9375rem;
 
-  @media (max-width: 48rem) {
+  @media (max-width: 768px) {
     display: none;
   }
 `
@@ -76,27 +77,35 @@ export const AccountBtn = styled(Button)`
   border-radius: 0.75rem;
   margin: 0 0.5rem 0 5.5625rem;
 
-  @media (max-width: 48rem) {
+  @media (max-width: 768px) {
     display: none;
   }
 `
 export const MenuButton = styled(Button)`
   display: none;
-  @media (max-width: 48rem) {
+
+  @media (max-width: 768px) {
     display: flex;
+    height: 48px;
+    width: 44px;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     border-radius: 0.75rem;
-    height: 3rem;
     background: var(--new-white);
     gap: 0.3125rem;
+    padding: 0 10px;
     box-shadow: 0rem 0.125rem 0.25rem 0rem rgba(0, 0, 0, 0.3);
 
     span {
       width: 1.375rem;
       height: 0.125rem;
       background: var(--new-grey);
+    }
+
+    :hover {
+      color: var(--new-dark);
+      background-color: var(--new-white);
     }
   }
 `

@@ -26,7 +26,7 @@ const Reset: FC = () => {
     const response = await resetPassword({
       email: data.email,
     })
-    
+
     const isError = 'error' in response
 
     if (!isError) {

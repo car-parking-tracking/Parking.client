@@ -1,5 +1,5 @@
 import { Outlet, Route, Routes } from 'react-router-dom'
-import { Section } from './layout.style'
+import { Section } from './layout.styles'
 import { LayoutProps } from './layout.types'
 import { FC, useState } from 'react'
 import { Header } from '@components/organisms'

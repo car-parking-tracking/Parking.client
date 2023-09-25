@@ -7,4 +7,3 @@ export const decorateWithRouter = Story => (
     <Story />
   </MemoryRouter>
 )
-

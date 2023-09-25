@@ -12,6 +12,7 @@ import { AnyObject } from 'yup'
 
 export const YaMap: React.FC = () => {
   const { portal, coords, zoom } = useMapSlice()
+  const screenWidth = window.innerWidth
 
   return (
     <Wrapper>
@@ -35,7 +36,11 @@ export const YaMap: React.FC = () => {
             }
           }}>
           <Manager />
-          <ZoomControl options={{ position: { left: 32, top: 90 }, size: 'auto' }} />
+          {screenWidth <= 768 ? (
+            <ZoomControl options={{ position: { right: 24, top: 260 }, size: 'small' }} />
+          ) : (
+            <ZoomControl options={{ position: { left: 32, top: 90 }, size: 'large' }} />
+          )}
         </Map>
       </YMaps>
       {portal && (
