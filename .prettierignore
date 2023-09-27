@@ -1,3 +1,8 @@
-storybook-static
-*.md
 
+*.md
+*.js
+*.json
+storybook-static
+.prettierrc
+.github
+.storybook

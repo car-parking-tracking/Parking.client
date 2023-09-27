@@ -7,7 +7,9 @@ export const CheckboxContainer: FC<CheckboxContainerProps> = ({ name, id, placeh
     <Container>
       <Checkbox {...register(name, { required })} type="checkbox" id={id} name={name} required={required} isError={isError} />
       <Label htmlFor={id}></Label>
-      <Text>Я принимаю <Link>Условия использования</Link> <br/>и <Link>Политику конфиденциальности</Link></Text>
+      <Text>
+        Я принимаю <Link>Условия использования</Link> <br />и <Link>Политику конфиденциальности</Link>
+      </Text>
       {isError && <Span>{errorMessage}</Span>}
     </Container>
   )

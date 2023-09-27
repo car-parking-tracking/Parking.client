@@ -13,11 +13,13 @@ export const Notification = styled(Description)`
   line-height: 1.5rem;
   letter-spacing: 0.031rem;
 
-  @media (max-width: 48rem) {
-    margin-top: 11.25rem;
-    font-size: 1.25rem;
+  @media (max-width: 768px) {
+    margin-top: 230px;
+    padding: 0 21px;
+    font-size: 18px;
     font-style: normal;
     font-weight: 400;
+    letter-spacing: 0.5px;
   }
 `
 export const List = styled.div`

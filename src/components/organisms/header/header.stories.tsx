@@ -12,5 +12,5 @@ const Template: StoryFn<HeaderProps> = args => <Header {...args} />
 
 export const Default = Template.bind({})
 Default.args = {
-  isLoggedIn: true
+  isLoggedIn: true,
 }

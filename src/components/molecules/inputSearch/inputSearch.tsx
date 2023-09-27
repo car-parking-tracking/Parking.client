@@ -1,7 +1,20 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { useState, FC, useEffect } from 'react'
 
-import { WrapperInput, DataList, Option, Search, Wrapper, Name, Description, ClearButton, ClearIcon } from './inputSearch.styles'
+import {
+  WrapperInput,
+  DataList,
+  Option,
+  Search,
+  Wrapper,
+  Name,
+  Description,
+  ClearButton,
+  ClearIcon,
+  DataListMobile,
+  WrapperMobile,
+  Return,
+} from './inputSearch.styles'
 
 import close from '@assets/icons/close.svg'
 import { useFetchGeocodeDataQuery, useFetchLotsIdCollectionQuery } from '@app/store/api'
@@ -16,6 +29,7 @@ export const InputSearch: FC = () => {
   const [isEmptyOptions, setIsEmptyOptions] = useState(false)
   const [options, setOptions] = useState<any[]>([])
   const dispatch = useAppDispatch()
+  const screenWidth = window.innerWidth
 
   const { data: geocodeData } = useFetchGeocodeDataQuery(value, {
     skip: !value || !isNaN(Number(value)) || Number(value) === 0,
@@ -72,7 +86,7 @@ export const InputSearch: FC = () => {
         dispatch(
           setCoords(
             obg.coords.map((item: number) => {
-              return item + 0.0000001 // для корректного отображения меток при поиске 
+              return item + 0.0000001 // для корректного отображения меток при поиске
             })
           )
         )
@@ -93,9 +107,15 @@ export const InputSearch: FC = () => {
     setIsInputFocused(true)
   }
 
+  const handleInputFocusMobile = () => {
+    setIsInputFocused(false)
+    setShowOptions(false)
+  }
+
   return (
     <Wrapper>
       <WrapperInput>
+        <Return onClick={handleInputFocusMobile} isInputFocused={isInputFocused} />
         <Search
           variant="search"
           name="search"
@@ -108,26 +128,55 @@ export const InputSearch: FC = () => {
           autoComplete="off"
           showOptions={showOptions}
         />
-        {isInputFocused && stringValue && (
-          <ClearButton onClick={handleClearClick}>
-            <ClearIcon src={close} alt="Очистить" />
-          </ClearButton>
-        )}
-        {showOptions && (
-          <DataList>
-            {isEmptyOptions ? (
-              <Option>
-                <Name>Ничего не найдено</Name>
-              </Option>
-            ) : (
-              options.map((item: any, index) => (
-                <Option key={index} onClick={() => handleOptionClick(`${item.name}`)}>
-                  <Name>{item.name}</Name>
-                  <Description>{item.description}</Description>
-                </Option>
-              ))
+
+        {isInputFocused && screenWidth <= 768 ? (
+          <WrapperMobile onClick={handleInputFocusMobile}>
+            {showOptions && (
+              <DataListMobile>
+                {isEmptyOptions ? (
+                  <Option>
+                    <Name>Ничего не найдено</Name>
+                  </Option>
+                ) : (
+                  options.map((item: any, index) => (
+                    <Option
+                      key={index}
+                      onClick={() => {
+                        handleOptionClick(`${item.name}`)
+                        handleInputFocusMobile()
+                      }}>
+                      <Name>{item.name}</Name>
+                      <Description>{item.description}</Description>
+                    </Option>
+                  ))
+                )}
+              </DataListMobile>
             )}
-          </DataList>
+          </WrapperMobile>
+        ) : (
+          <>
+            {isInputFocused && stringValue && (
+              <ClearButton onClick={handleClearClick}>
+                <ClearIcon src={close} alt="Очистить" />
+              </ClearButton>
+            )}
+            {showOptions && (
+              <DataList>
+                {isEmptyOptions ? (
+                  <Option>
+                    <Name>Ничего не найдено</Name>
+                  </Option>
+                ) : (
+                  options.map((item: any, index) => (
+                    <Option key={index} onClick={() => handleOptionClick(`${item.name}`)}>
+                      <Name>{item.name}</Name>
+                      <Description>{item.description}</Description>
+                    </Option>
+                  ))
+                )}
+              </DataList>
+            )}
+          </>
         )}
       </WrapperInput>
     </Wrapper>

@@ -5,10 +5,10 @@ export const ButtonGroup = styled.div`
   display: flex;
   gap: 1rem;
 
-  @media (max-width: 48rem) {
+  @media (max-width: 768px) {
     button {
       width: 100%;
-      margin-top: 0.625rem;
+      margin-bottom: 20px;
     }
   }
 `

@@ -6,8 +6,8 @@ import { yupProfileForm } from '@utils/validate'
 import { withTitle } from '@app/HOC'
 import { InputForm, Form } from '@components/molecules'
 
-import { InputWrap, Section, LinkItem } from './Profile.styles'
-import { FormValues } from './Profile.types'
+import { InputWrap, Section, LinkItem } from './profile.styles'
+import { FormValues } from './profile.types'
 import { useChangeUserProfileMutation } from '@app/store/api'
 import { useUserSlice } from '@app/store/slices/userSlice'
 

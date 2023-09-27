@@ -3,6 +3,11 @@ import styled from 'styled-components'
 import { Input } from '@components/atoms'
 
 import search from '@assets/icons/search.svg'
+import arrow from '@assets/icons/arrow.svg'
+
+interface ReturnProps {
+  isInputFocused: boolean
+}
 
 export const Wrapper = styled.div`
   position: absolute;
@@ -10,7 +15,7 @@ export const Wrapper = styled.div`
   left: 6.5rem;
   z-index: 10;
 
-  @media (max-width: 48rem) {
+  @media (max-width: 768px) {
     top: 1rem;
     left: 1rem;
   }
@@ -22,6 +27,7 @@ export const WrapperInput = styled.div`
 
   ::before {
     content: '';
+    z-index: 100;
     position: absolute;
     top: 0.75rem;
     left: 1rem;
@@ -32,24 +38,39 @@ export const WrapperInput = styled.div`
     background-repeat: no-repeat;
   }
 
-  @media (max-width: 48rem) {
-    &::before {
+  @media (max-width: 768px) {
+    ::before {
       display: none;
     }
   }
 `
 export const Search = styled(Input)`
+  z-index: 99;
   width: 27.625rem;
-  padding-left: 3.5rem;
-  padding-right: 2.25rem;
+  padding: 0 2.25rem 0 3.5rem;
   border-radius: ${({ showOptions }: { showOptions: boolean }) => (showOptions ? '0.75rem 0.75rem 0 0' : '0.75rem')};
 
-  @media (max-width: 48rem) {
-    padding: 0rem .75rem 0rem 1rem;
+  @media (max-width: 1000px) {
+    width: 360px;
+    padding: 0 24px 0 3.5rem;
+  }
+
+  @media (max-width: 768px) {
+    padding: 0rem 0.75rem 0rem 1rem;
     width: 17.4375rem;
-    font-size: .875rem;
+    font-size: 0.875rem;
     font-style: normal;
     font-weight: 400;
+    letter-spacing: 0.5px;
+
+    :focus {
+      width: 328px;
+      padding-left: 48px;
+      border: none;
+      border-radius: 0;
+      box-shadow: none;
+      border-bottom: 1px solid var(--new-grey-light);
+    }
   }
 `
 export const Option = styled.div`
@@ -89,10 +110,6 @@ export const DataList = styled.div`
   ::-webkit-scrollbar-track {
     background-color: transparent;
   }
-
-  @media (max-width: 48rem) {
-    width: 17.4375rem;
-  }
 `
 export const Name = styled.p`
   color: var(--new-dark);
@@ -100,7 +117,6 @@ export const Name = styled.p`
 `
 export const Description = styled.p`
   color: var(--new-grey);
-  font-family: 'Raleway', sans-serif;
   line-height: 1.25rem;
   font-size: 0.8125rem;
 `
@@ -115,8 +131,47 @@ export const ClearButton = styled.button`
   border: none;
   cursor: pointer;
   z-index: 11;
+
+  @media (max-width: 768px) {
+    z-index: 100;
+  }
 `
 export const ClearIcon = styled.img`
   width: 1rem;
   height: 1rem;
+`
+export const SearchMobile = styled(Search)``
+
+export const DataListMobile = styled.div`
+  padding: 56px 8px 8px 8px;
+  max-height: 610px;
+  overflow-y: auto;
+`
+
+export const WrapperMobile = styled.div`
+  z-index: 98;
+  position: absolute;
+  top: -16px;
+  left: -16px;
+  height: 100vh;
+  width: 100vw;
+  padding-top: 16px;
+  background: var(--new-white);
+`
+export const Return = styled.button<ReturnProps>`
+  display: none;
+
+  @media (max-width: 768px) {
+    display: ${props => (props.isInputFocused ? 'flex' : 'none')};
+    position: absolute;
+    z-index: 100;
+    top: 12px;
+    width: 24px;
+    height: 24px;
+    border: none;
+    background: transparent;
+    background-image: url(${arrow});
+    background-size: cover;
+    background-repeat: no-repeat;
+  }
 `

@@ -2,7 +2,6 @@ import { StoryFn } from '@storybook/react'
 import { Loader } from './loader.styles'
 import { LoaderProps } from './loader.types'
 
-
 export default {
   title: 'Description',
   component: Loader,
@@ -45,9 +44,7 @@ export default {
   },
 }
 
-const Template: StoryFn<LoaderProps> = args => (
-  <Loader {...args} />
-)
+const Template: StoryFn<LoaderProps> = args => <Loader {...args} />
 
 export const Default = Template.bind({})
 Default.args = {

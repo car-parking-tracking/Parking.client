@@ -7,13 +7,11 @@ import { ButtonGroup, Container, InputsContainer, ButtonSubmit } from './registe
 import { InputForm, CheckboxContainer, Info } from '@components/molecules'
 
 import { yupSchemaRegForm } from '@utils/validate'
-import { useNavigate } from 'react-router-dom'
 import { useSignUpMutation } from '@app/store/api'
 
 export const Register: FC<RegisterProps> = ({ onShowButtonsChange }) => {
   type FormData = yup.InferType<typeof yupSchemaRegForm>
   const [success, setSuccess] = useState(false)
-  const navigate = useNavigate()
   const [signUp] = useSignUpMutation()
 
   const {

@@ -1,4 +1,4 @@
-import { Description } from '@components/atoms'
+import { Button, Description } from '@components/atoms'
 import styled from 'styled-components'
 
 export const Wrapper = styled.div`
@@ -7,6 +7,9 @@ export const Wrapper = styled.div`
   align-items: center;
   text-align: center;
   max-width: 53.75rem;
+  @media (max-width: 768px) {
+    padding: 32px 16px 16px 16px;
+  }
 `
 
 export const ErrorDescription = styled(Description)`
@@ -20,7 +23,7 @@ export const ErrorDescription = styled(Description)`
   font-weight: 500;
   max-width: 40.625rem;
 
-  @media (max-width: 48rem) {
+  @media (max-width: 768px) {
     font-size: 1rem;
     font-size: 1rem;
     margin-bottom: 2rem;
@@ -29,4 +32,9 @@ export const ErrorDescription = styled(Description)`
 export const ErrorImage = styled.img`
   max-width: 100%;
   padding: 0 1rem 0 1rem;
+`
+export const ButtonReturn = styled(Button)`
+  @media (max-width: 768px) {
+    width: 100%;
+  }
 `
