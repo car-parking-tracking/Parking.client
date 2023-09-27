@@ -19,6 +19,7 @@ export type SidebarRoutes = SidebarRoute[]
 export const enum PAGES {
   ALL = '*',
   MAIN = '/',
+  ACTIVATION = ':uid/:token',
   RESET_PASSWORD = 'reset',
   UPDATE_PASSWORD = 'update/:uid/:token',
   PROFILE = 'profile',

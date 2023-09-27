@@ -1,10 +1,35 @@
-import { FC, useState } from 'react'
+import { FC, useEffect, useState } from 'react'
 import { AuthFormProps } from './authForm.types'
 import { Container, NavContainer, NavButton } from './authForm.styles'
 import { Register, Login } from '@components/organisms'
 import { FooterMobile } from '@components/molecules'
+import { useNavigate, useParams } from 'react-router-dom'
+import { useActivationMutation } from '@app/store/api'
 
 export const AuthForm: FC<AuthFormProps> = () => {
+  const { uid, token } = useParams()
+  const navigate = useNavigate()
+  const [activation] = useActivationMutation()
+
+  useEffect(() => {
+    const handleActivation = async () => {
+      if (uid && token) {
+        const response = await activation({
+          uid: uid,
+          token: token,
+        })
+        const isError = 'error' in response
+        if (!isError) {
+          navigate('/')
+        } else {
+          navigate('/')
+        }
+      }
+    }
+
+    handleActivation()
+  }, [])
+
   const [formType, setFormType] = useState<'login' | 'register'>('login')
 
   const [showButtons, setShowButtons] = useState(true)

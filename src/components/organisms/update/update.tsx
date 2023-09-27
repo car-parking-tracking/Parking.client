@@ -16,6 +16,7 @@ const Update: FC = () => {
   const [update, setUpdate] = useState(false)
   const [updatePassword] = useUpdatePasswordMutation()
   const { uid, token } = useParams()
+  
   const {
     register,
     handleSubmit,
@@ -32,7 +33,6 @@ const Update: FC = () => {
       new_password: data.password_new,
     })
 
-    console.log('submit!', 'data => ', data)
     const isError = 'error' in response
 
     if (!isError) {

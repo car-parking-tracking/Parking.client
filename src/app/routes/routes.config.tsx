@@ -56,6 +56,10 @@ export const SIDEBAR_UNAUTH_ROUTES: SidebarRoutes = [
     sidebar: () => <AuthForm />,
   },
   {
+    path: PAGES.ACTIVATION,
+    sidebar: () => <AuthForm />,
+  },
+  {
     path: PAGES.ABOUT,
     sidebar: () => <AboutWithTitleWrapper />,
   },

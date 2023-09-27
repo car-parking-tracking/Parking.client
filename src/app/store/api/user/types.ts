@@ -46,4 +46,7 @@ export type ActivationRequest = {
   token: string
 }
 
-export type ActivationResponse = ActivationRequest
+export type ActivationResponse = {
+  uid: string
+  token: string
+}

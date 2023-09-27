@@ -32,6 +32,8 @@ const baseQuery = fetchBaseQuery({
 const USER_INFO_API_PATH = 'me/'
 const UPDATE_PASSWORD_API_PATH = 'set_password/'
 const RESET_PASSWORD_API_PATH = 'reset_password/'
+const ACTIVATION_USER_API_PATH = 'activation/'
+
 
 export const userApi = createApi({
   reducerPath: 'userApi',
@@ -47,7 +49,7 @@ export const userApi = createApi({
     }),
     activation: builder.mutation<ActivationResponse, ActivationRequest>({
       query: data => ({
-        url: RESET_PASSWORD_API_PATH,
+        url: ACTIVATION_USER_API_PATH,
         method: HTTP_METHOD.POST,
         body: data,
       }),
@@ -88,4 +90,4 @@ export const userApi = createApi({
   }),
 })
 
-export const { useFetchUserInfoQuery, useChangeUserProfileMutation, useChangePasswordMutation, useResetPasswordMutation, useUpdatePasswordMutation } = userApi
+export const { useFetchUserInfoQuery, useChangeUserProfileMutation, useChangePasswordMutation, useResetPasswordMutation, useUpdatePasswordMutation, useActivationMutation } = userApi

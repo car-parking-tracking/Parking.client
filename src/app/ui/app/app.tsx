@@ -16,6 +16,7 @@ export function App() {
         <Route index element={<MainPage />} />
         <Route path={'about'} element={<MainPage />} />
         <Route path={'reset'} element={<MainPage />} />
+        <Route path={':uid/:token'} element={<MainPage />} />
         <Route path={'update/:uid/:token'} element={<MainPage />} />
         {isAuth.isAuth && (
           <>
