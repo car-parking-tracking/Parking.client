@@ -24,7 +24,16 @@
 | --- | --- |
 | `dev` | Run project in developer mode |
 | `build` | Build project to `dist` |
-| `storybook` | Run Storybook |
+| `sb` | Run Storybook |
 | `build-storybook` | Build Storybook |
 | `lint` | Linter |
 | `test` | Tests |
+
+### Methodology
+| Level | Description |
+| --- | --- |
+| atoms | The smallest independent parts that make up a UI |
+| molecules | Groups of atoms fused together to form UI elements that work together as a unit |
+| organisms | Include things like forms, tables, and text groups |
+| templates | Skeletal displays that form the foundational structure of the user interface |
+| pages | Finalized specific instances of templates that display the actual appearance of the UI with their representative content in position |
