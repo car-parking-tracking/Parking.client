@@ -7,11 +7,11 @@ import { YAMAP_API_KEY } from '@constants/environment'
 import { Portal } from '@components/atoms'
 import { InputSearch } from '@components/molecules'
 import { Manager } from '../manager'
-import { useSelector } from 'react-redux'
-import { RootState } from '@app/store/store'
+import { useMapSlice } from '@app/store/slices/mapSlice'
+import { AnyObject } from 'yup'
 
 export const YaMap: React.FC = () => {
-  const map = useSelector((state: RootState) => state.map)
+  const { portal, coords, zoom } = useMapSlice()
 
   return (
     <Wrapper>
@@ -26,14 +26,19 @@ export const YaMap: React.FC = () => {
           {...mapConfig}
           state={{
             ...mapConfig.defaultState,
-            center: map.coords,
-            zoom: map.zoom,
+            center: coords,
+            zoom: zoom,
+          }}
+          instanceRef={(ref: AnyObject) => {
+            if (ref) {
+              ref.setCenter(coords)
+            }
           }}>
           <Manager />
-          <ZoomControl options={{ position: { left: 32, top: 90 }, size: 'large' }} />
+          <ZoomControl options={{ position: { left: 32, top: 90 }, size: 'auto' }} />
         </Map>
       </YMaps>
-      {map.portal && (
+      {portal && (
         <Portal getHTMLElementId={'parking'}>
           <ParkingCard />
         </Portal>

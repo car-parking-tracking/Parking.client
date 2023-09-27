@@ -7,9 +7,11 @@ import { AccountBtn, LoginBtn, NavList, Wrapper, MenuButton, HeaderLink } from '
 import { HeaderProps } from './header.types'
 
 import { email } from '@constants/variables'
+import { useUserSlice } from '@app/store/slices/userSlice'
 
 export const Header: FC<HeaderProps> = ({ onBtnClick, isLoggedIn }) => {
-  const currentUser = 'Имя Фамилия' //здесь будет значение из рeдакса
+  const { user } = useUserSlice()
+  const currentUser = `${user.last_name} ${user.first_name}`
   const initials = getInitials(currentUser)
 
   return (

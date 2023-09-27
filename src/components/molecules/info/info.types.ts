@@ -1,4 +1,5 @@
 export interface InfoProps {
-  text: string;
-  isButton: boolean;
+  title?: string
+  text: string
+  isButton: boolean
 }

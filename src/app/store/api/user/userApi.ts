@@ -1,10 +1,42 @@
 import { HTTP_METHOD } from '@constants/variables'
-import { baseApi } from '../baseApi'
-import { UserInfoResponse, UserProfileRequest, UserProfileResponse } from './types'
+import { BASE_API_PATH } from '../baseApi'
+import {
+  ActivationRequest,
+  ActivationResponse,
+  PasswordUpdateRequest,
+  PasswordUpdateResponse,
+  UserEmailRequest,
+  UserEmailResponse,
+  UserInfoResponse,
+  UserPasswordRequest,
+  UserPasswordResponse,
+  UserProfileRequest,
+  UserProfileResponse,
+} from './types'
+import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
+import { RootState } from '@app/store/store'
 
-const USER_INFO_API_PATH = '/users/me/'
+const baseQuery = fetchBaseQuery({
+  baseUrl: `${BASE_API_PATH}users/`,
+  prepareHeaders(headers, { getState }) {
+    const token = (getState() as RootState).auth.token
 
-export const userApi = baseApi.injectEndpoints({
+    if (token) {
+      headers.set('authorization', `token ${token}`)
+    }
+
+    return headers
+  },
+})
+
+const USER_INFO_API_PATH = 'me/'
+const UPDATE_PASSWORD_API_PATH = 'set_password/'
+const RESET_PASSWORD_API_PATH = 'reset_password/'
+
+export const userApi = createApi({
+  reducerPath: 'userApi',
+  tagTypes: ['USER_INFO'],
+  baseQuery,
   endpoints: builder => ({
     fetchUserInfo: builder.query<UserInfoResponse, void>({
       query: () => ({
@@ -12,6 +44,14 @@ export const userApi = baseApi.injectEndpoints({
         method: HTTP_METHOD.GET,
         providesTags: [{ type: 'USER_INFO', id: 'INFO' }],
       }),
+    }),
+    activation: builder.mutation<ActivationResponse, ActivationRequest>({
+      query: data => ({
+        url: RESET_PASSWORD_API_PATH,
+        method: HTTP_METHOD.POST,
+        body: data,
+      }),
+      invalidatesTags: [{ type: 'USER_INFO', id: 'INFO' }],
     }),
     changeUserProfile: builder.mutation<UserProfileResponse, UserProfileRequest>({
       query: userProfile => ({
@@ -21,7 +61,31 @@ export const userApi = baseApi.injectEndpoints({
       }),
       invalidatesTags: [{ type: 'USER_INFO', id: 'INFO' }],
     }),
+    changePassword: builder.mutation<UserPasswordResponse, UserPasswordRequest>({
+      query: userPassword => ({
+        url: UPDATE_PASSWORD_API_PATH,
+        method: HTTP_METHOD.POST,
+        body: userPassword,
+      }),
+      invalidatesTags: [{ type: 'USER_INFO', id: 'INFO' }],
+    }),
+    resetPassword: builder.mutation<UserEmailResponse, UserEmailRequest>({
+      query: userEmail => ({
+        url: RESET_PASSWORD_API_PATH,
+        method: HTTP_METHOD.POST,
+        body: userEmail,
+      }),
+      invalidatesTags: [{ type: 'USER_INFO', id: 'INFO' }],
+    }),
+    updatePassword: builder.mutation<PasswordUpdateResponse, PasswordUpdateRequest>({
+      query: userPassword => ({
+        url: RESET_PASSWORD_API_PATH,
+        method: HTTP_METHOD.POST,
+        body: userPassword,
+      }),
+      invalidatesTags: [{ type: 'USER_INFO', id: 'INFO' }],
+    }),
   }),
 })
 
-export const { useFetchUserInfoQuery, useChangeUserProfileMutation } = userApi
+export const { useFetchUserInfoQuery, useChangeUserProfileMutation, useChangePasswordMutation, useResetPasswordMutation, useUpdatePasswordMutation } = userApi
