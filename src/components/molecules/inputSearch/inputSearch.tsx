@@ -67,12 +67,18 @@ export const InputSearch: FC = () => {
           .map((item: any) => Number(item))
           .reverse()
         dispatch(setCoords(coords))
-        dispatch(setZoom(21))
+        dispatch(setZoom(20))
       } else {
-        dispatch(setCoords(obg.coords))
+        dispatch(
+          setCoords(
+            obg.coords.map((item: number) => {
+              return item + 0.0000001 // для корректного отображения меток при поиске 
+            })
+          )
+        )
         dispatch(setParkingId(obg.id))
         //manager?.objects.balloon.open(Number(obg.name)) //TODO: доделать открытие балуна
-        dispatch(setZoom(21))
+        dispatch(setZoom(20))
       }
     }
     setShowOptions(false)

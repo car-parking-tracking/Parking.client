@@ -20,7 +20,7 @@ export const enum PAGES {
   ALL = '*',
   MAIN = '/',
   RESET_PASSWORD = 'reset',
-  UPDATE_PASSWORD = 'update/:code',
+  UPDATE_PASSWORD = 'update/:uid/:token',
   PROFILE = 'profile',
   FAVORITES = 'favorites',
   ABOUT = 'about',

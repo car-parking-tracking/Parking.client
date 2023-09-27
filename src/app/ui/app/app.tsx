@@ -1,12 +1,11 @@
 import { Layout } from '@app/layout'
 import { ERROR_ROUTES } from '@app/routes/routes.config'
-import { RootState } from '@app/store/store'
+import { useAuthSlice } from '@app/store/slices/authSlice'
 import MainPage from '@pages/MainPage'
-import { useSelector } from 'react-redux'
 import { Route, Routes } from 'react-router-dom'
 
 export function App() {
-  const isAuth = useSelector((state: RootState) => state.auth.isAuth)
+  const isAuth = useAuthSlice()
 
   return (
     <Routes>
@@ -17,8 +16,8 @@ export function App() {
         <Route index element={<MainPage />} />
         <Route path={'about'} element={<MainPage />} />
         <Route path={'reset'} element={<MainPage />} />
-        <Route path={'update/:code'} element={<MainPage />} />
-        {isAuth && (
+        <Route path={'update/:uid/:token'} element={<MainPage />} />
+        {isAuth.isAuth && (
           <>
             <Route path={'profile/*'} element={<MainPage />} />
             <Route path={'favorites'} element={<MainPage />} />

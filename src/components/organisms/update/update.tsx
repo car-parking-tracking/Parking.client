@@ -7,13 +7,15 @@ import { yupUpdatePasswordForm } from '@utils/validate'
 import { withTitle } from '@app/HOC'
 import { InputForm, Form, Info } from '@components/molecules'
 
-import { InputWrap, Section} from './update.styles'
+import { InputWrap, Section } from './update.styles'
 import { FormValues } from './update.types'
-
+import { useUpdatePasswordMutation } from '@app/store/api'
+import { useParams } from 'react-router-dom'
 
 const Update: FC = () => {
   const [update, setUpdate] = useState(false)
-
+  const [updatePassword] = useUpdatePasswordMutation()
+  const { uid, token } = useParams()
   const {
     register,
     handleSubmit,
@@ -23,9 +25,21 @@ const Update: FC = () => {
     resolver: yupResolver(yupUpdatePasswordForm),
   })
 
-  const onSubmit: SubmitHandler<FormValues> = data => {
-    setUpdate(true)
+  const onSubmit: SubmitHandler<FormValues> = async data => {
+    const response = await updatePassword({
+      uid: uid as string,
+      token: token as string,
+      new_password: data.password_new,
+    })
+
     console.log('submit!', 'data => ', data)
+    const isError = 'error' in response
+
+    if (!isError) {
+      setUpdate(true)
+    } else {
+      console.log(isError)
+    }
   }
 
   if (update) {

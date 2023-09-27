@@ -1,17 +1,18 @@
-import { FC } from 'react'
+import { FC, useState } from 'react'
 import { useForm, SubmitHandler } from 'react-hook-form'
 import * as yup from 'yup'
 import { yupResolver } from '@hookform/resolvers/yup'
 import { IAuthValues, RegisterProps } from './register.types'
 import { ButtonGroup, Container, InputsContainer, ButtonSubmit } from './register.styles'
-import { InputForm, CheckboxContainer } from '@components/molecules'
+import { InputForm, CheckboxContainer, Info } from '@components/molecules'
 
 import { yupSchemaRegForm } from '@utils/validate'
 import { useNavigate } from 'react-router-dom'
 import { useSignUpMutation } from '@app/store/api'
 
-export const Register: FC<RegisterProps> = () => {
+export const Register: FC<RegisterProps> = ({ onShowButtonsChange }) => {
   type FormData = yup.InferType<typeof yupSchemaRegForm>
+  const [success, setSuccess] = useState(false)
   const navigate = useNavigate()
   const [signUp] = useSignUpMutation()
 
@@ -25,21 +26,25 @@ export const Register: FC<RegisterProps> = () => {
   })
 
   const onSubmit: SubmitHandler<IAuthValues> = async (data: FormData) => {
-    const newdata = {
+    const response = await signUp({
       first_name: data.first_name,
       last_name: data.last_name,
       email: data.email,
       password: data.password,
-    }
+    })
 
-    const response = await signUp(newdata)
     const isError = 'error' in response
 
     if (!isError) {
-      navigate('/')
+      setSuccess(true)
     } else {
       console.log(isError)
     }
+  }
+
+  if (success) {
+    onShowButtonsChange(false)
+    return <Info title="Пользователь загеристрирован" text="На ваш e-mail скоро придёт письмо с подтверждением." isButton={false} />
   }
 
   return (

@@ -1,28 +1,16 @@
 import { PAGES, Routes, SidebarRoutes } from './routes.types'
 import {
   AccountWithTitleWrapper,
-  AuthForm,
-  FavoriteListWithTitle,
+  FavoriteListWithTitleWrapper,
   ProfileWithTitle,
   PasswordWithTitle,
   ResetWithTitleWrapper,
   UpdateWithTitleWrapper,
   AboutWithTitleWrapper,
 } from '@components/organisms'
+import { AuthForm } from '@components/molecules'
 import ErrorPage from '@pages/ErrorPage'
 import { Navigate } from 'react-router-dom'
-
-//TODO: удалить мок
-const favoriteItems = [
-  { id: 2402, address: 'ул. Херсонская, дом 32' },
-  { id: 2411, address: 'ул. Каховка, дом 33 к. 1' },
-  { id: 2412, address: 'ул. Каховка, дом 33 к. 1' },
-  { id: 2413, address: 'ул. Каховка, дом 33 к. 1' },
-  { id: 2414, address: 'ул. Каховка, дом 33 к. 1' },
-  { id: 2415, address: 'ул. Каховка, дом 33 к. 1' },
-  { id: 2416, address: 'ул. Каховка, дом 33 к. 1' },
-  { id: 2417, address: 'ул. Каховка, дом 33 к. 1' },
-]
 
 export const ERROR_ROUTES: Routes = [
   {
@@ -31,13 +19,11 @@ export const ERROR_ROUTES: Routes = [
   },
   {
     path: PAGES.NOTFOUND,
-    main: () => (
-      <ErrorPage code={404} text="Кажется что-то пошло не так! Страница, которую вы запрашиваете, не существует. Возможно она устарела или была удалена." />
-    ),
+    main: () => <ErrorPage code={404} text="Страница, которую вы запрашиваете, не существует. Возможно она устарела или была удалена." />,
   },
   {
     path: PAGES.SERVER_ERROR,
-    main: () => <ErrorPage code={500} text="Internal server error. Кажется что-то пошло не так!" />,
+    main: () => <ErrorPage code={500} text="При обработке запроса произошла ошибка на сервере или превышен лимит времени обработки." />,
   },
 ]
 
@@ -60,7 +46,7 @@ export const SIDEBAR_AUTH_ROUTES: SidebarRoutes = [
   },
   {
     path: PAGES.FAVORITES,
-    sidebar: () => <FavoriteListWithTitle title="Избранное" items={favoriteItems} />,
+    sidebar: () => <FavoriteListWithTitleWrapper />,
   },
 ]
 

@@ -43,7 +43,7 @@ export const NavList = styled.ul`
 `
 
 export const HeaderLink = styled(NavLink)`
-  font-weight: 400;
+  font-weight: 500;
   line-height: 1.5rem;
   list-style: none;
   letter-spacing: 0.0313rem;
