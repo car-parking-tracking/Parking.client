@@ -6,7 +6,7 @@ export const Container = styled.div`
   display: flex;
   flex-direction: column;
 
-  @media (max-width: 768px) {
+  @media (max-width: 48rem) {
     height: 100%;
     justify-content: space-between;
   }
@@ -15,10 +15,10 @@ export const AccountDesc = styled(Description)`
   margin-bottom: 1.5rem;
   color: var(--new-dark);
 
-  @media (max-width: 768px) {
+  @media (max-width: 48rem) {
     width: max-content;
-    padding-left: 66px;
-    margin-top: -20px;
+    padding-left: 4.125rem;
+    margin-top: -1.25rem;
   }
 `
 export const Menu = styled.div`
@@ -27,8 +27,8 @@ export const Menu = styled.div`
   margin-left: -2rem;
   margin-right: -2rem;
 
-  @media (max-width: 768px) {
-    gap: 10px;
+  @media (max-width: 48rem) {
+    gap: 0.625rem;
   }
 `
 export const MenuItem = styled.div`

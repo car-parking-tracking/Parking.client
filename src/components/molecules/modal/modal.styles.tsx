@@ -11,7 +11,7 @@ export const View = styled.div<{ visible: boolean }>`
   z-index: 1;
   overflow: hidden;
 
-  @media (max-width: 768px) {
+  @media (max-width: 48rem) {
     z-index: 100;
     width: 100%;
     right: 0;
@@ -34,11 +34,11 @@ export const CloseButton = styled.button`
   background-size: cover;
   background-repeat: no-repeat;
 
-  @media (max-width: 768px) {
-    right: 15px;
-    top: 20px;
-    padding: 24px;
-    background-size: 16px 16px;
+  @media (max-width: 48rem) {
+    right: 0.9375rem;
+    top: 1.25rem;
+    padding: 1.5rem;
+    background-size: 1rem 1rem;
     background-position: center;
   }
 `
@@ -53,10 +53,10 @@ export const Container = styled.div`
   padding: 2rem;
   background-color: rgba(255, 255, 255, 1);
 
-  @media (max-width: 768px) {
+  @media (max-width: 48rem) {
     width: 100%;
     margin: 0;
-    padding: 32px 16px 16px 16px;
+    padding: 2rem 1rem 1rem 1rem;
     border-radius: 0 0 0 0;
   }
 `

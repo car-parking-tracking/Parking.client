@@ -8,7 +8,7 @@ export const Wrapper = styled.div`
   margin-top: 4rem;
   gap: 0.625rem;
 
-  @media (max-width: 768px) {
+  @media (max-width: 48rem) {
     justify-content: space-between;
     height: 100%;
     margin-top: 1.6875rem;
@@ -21,8 +21,8 @@ export const AboutDescription = styled(Description)`
   font-weight: 500;
   line-height: normal;
 
-  @media (max-width: 768px) {
-    font-size: 14px;
+  @media (max-width: 48rem) {
+    font-size: 0.875rem;
   }
 `
 export const AboutSelected = styled.strong`

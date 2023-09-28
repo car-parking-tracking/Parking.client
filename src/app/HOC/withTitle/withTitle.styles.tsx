@@ -5,10 +5,10 @@ import { AccountBtn } from '@components/organisms/header/header.styles'
 export const Title = styled(DefaultTitle)`
   padding-bottom: 0.5rem;
 
-  @media (max-width: 768px) {
-    font-size: 20px;
+  @media (max-width: 48rem) {
+    font-size: 1.25rem;
     font-weight: 700;
-    line-height: 28px; /* 140% */
+    line-height: 1.75rem;
   }
 `
 export const ReturnButton = styled.button`
@@ -38,16 +38,16 @@ export const Count = styled.span`
   font-weight: 400;
   line-height: 1.75rem;
 
-  @media (max-width: 768px) {
-    font-size: 16px;
-    line-height: 28px; /* 175% */
+  @media (max-width: 48rem) {
+    font-size: 1rem;
+    line-height: 1.75rem;
   }
 `
 export const Account = styled(AccountBtn)`
   display: flex;
-  margin: 0 16px 0 0;
-  width: 50px;
-  height: 50px;
+  margin: 0 1rem 0 0;
+  width: 3.125rem;
+  height: 3.125rem;
 
   :hover {
     background: var(--new-grey-light);

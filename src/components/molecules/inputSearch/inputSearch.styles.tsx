@@ -15,7 +15,7 @@ export const Wrapper = styled.div`
   left: 6.5rem;
   z-index: 10;
 
-  @media (max-width: 768px) {
+  @media (max-width: 48rem) {
     top: 1rem;
     left: 1rem;
   }
@@ -38,7 +38,7 @@ export const WrapperInput = styled.div`
     background-repeat: no-repeat;
   }
 
-  @media (max-width: 768px) {
+  @media (max-width: 48rem) {
     ::before {
       display: none;
     }
@@ -50,12 +50,12 @@ export const Search = styled(Input)`
   padding: 0 2.25rem 0 3.5rem;
   border-radius: ${({ showOptions }: { showOptions: boolean }) => (showOptions ? '0.75rem 0.75rem 0 0' : '0.75rem')};
 
-  @media (max-width: 1000px) {
-    width: 360px;
-    padding: 0 24px 0 3.5rem;
+  @media (max-width: 62.5rem) {
+    width: 22.5rem;
+    padding: 0 1.5rem 0 3.5rem;
   }
 
-  @media (max-width: 768px) {
+  @media (max-width: 48rem) {
     padding: 0rem 0.75rem 0rem 1rem;
     width: 17.4375rem;
     font-size: 0.875rem;
@@ -63,9 +63,10 @@ export const Search = styled(Input)`
     font-weight: 400;
     letter-spacing: 0.5px;
 
-    :focus {
-      width: 328px;
-      padding-left: 48px;
+    &.focused {
+      min-width: 20.5rem;
+      width: 95vw;
+      padding-left: 3rem;
       border: none;
       border-radius: 0;
       box-shadow: none;
@@ -73,6 +74,7 @@ export const Search = styled(Input)`
     }
   }
 `
+
 export const Option = styled.div`
   display: flex;
   flex-direction: column;
@@ -110,6 +112,10 @@ export const DataList = styled.div`
   ::-webkit-scrollbar-track {
     background-color: transparent;
   }
+
+  @media (max-width: 62.5rem) {
+    width: 22.5rem;
+  }
 `
 export const Name = styled.p`
   color: var(--new-dark);
@@ -132,7 +138,7 @@ export const ClearButton = styled.button`
   cursor: pointer;
   z-index: 11;
 
-  @media (max-width: 768px) {
+  @media (max-width: 48rem) {
     z-index: 100;
   }
 `
@@ -140,34 +146,33 @@ export const ClearIcon = styled.img`
   width: 1rem;
   height: 1rem;
 `
-export const SearchMobile = styled(Search)``
 
 export const DataListMobile = styled.div`
-  padding: 56px 8px 8px 8px;
-  max-height: 610px;
+  padding: 3.5rem 0.5rem 0.5rem 0.5rem;
+  max-height: 38.125rem;
   overflow-y: auto;
 `
 
 export const WrapperMobile = styled.div`
   z-index: 98;
   position: absolute;
-  top: -16px;
-  left: -16px;
+  top: -1rem;
+  left: -1rem;
   height: 100vh;
   width: 100vw;
-  padding-top: 16px;
+  padding-top: 1rem;
   background: var(--new-white);
 `
 export const Return = styled.button<ReturnProps>`
   display: none;
 
-  @media (max-width: 768px) {
+  @media (max-width: 48rem) {
     display: ${props => (props.isInputFocused ? 'flex' : 'none')};
     position: absolute;
     z-index: 100;
-    top: 12px;
-    width: 24px;
-    height: 24px;
+    top: 0.75rem;
+    width: 1.5rem;
+    height: 1.5rem;
     border: none;
     background: transparent;
     background-image: url(${arrow});

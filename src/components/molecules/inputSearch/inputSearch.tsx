@@ -27,6 +27,7 @@ export const InputSearch: FC = () => {
   const [showOptions, setShowOptions] = useState(false)
   const [isInputFocused, setIsInputFocused] = useState(false)
   const [isEmptyOptions, setIsEmptyOptions] = useState(false)
+  const [isDataListOpen, setIsDataListOpen] = useState(false)
   const [options, setOptions] = useState<any[]>([])
   const dispatch = useAppDispatch()
   const screenWidth = window.innerWidth
@@ -105,6 +106,7 @@ export const InputSearch: FC = () => {
 
   const handleInputFocus = () => {
     setIsInputFocused(true)
+    setIsDataListOpen(true)
   }
 
   const handleInputFocusMobile = () => {
@@ -127,6 +129,7 @@ export const InputSearch: FC = () => {
           placeholder="Название улицы или № парковки"
           autoComplete="off"
           showOptions={showOptions}
+          className={isInputFocused ? 'focused' : ''}
         />
 
         {isInputFocused && screenWidth <= 768 ? (
