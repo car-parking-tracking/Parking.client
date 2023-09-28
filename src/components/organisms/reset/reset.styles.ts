@@ -12,5 +12,5 @@ export const InputWrap = styled.div`
   gap: 1.5rem;
 `
 export const ResetInfo = styled(Description)`
-  letter-spacing: .0313rem;
+  letter-spacing: 0.0313rem;
 `

@@ -1,5 +1,7 @@
 import styled from 'styled-components'
 
+import close from '@assets/icons/close-icon.svg'
+
 export const View = styled.div<{ visible: boolean }>`
   position: absolute;
   right: 2rem;
@@ -9,7 +11,7 @@ export const View = styled.div<{ visible: boolean }>`
   z-index: 1;
   overflow: hidden;
 
-  @media (max-width: 48rem) {
+  @media (max-width: 768px) {
     z-index: 100;
     width: 100%;
     right: 0;
@@ -19,6 +21,8 @@ export const CloseButton = styled.button`
   display: flex;
   cursor: pointer;
   border: none;
+  width: 1rem;
+  height: 1rem;
   background: transparent;
   align-items: center;
   margin: 0;
@@ -26,16 +30,19 @@ export const CloseButton = styled.button`
   position: absolute;
   right: 2rem;
   top: 2.375rem;
+  background-image: url(${close});
+  background-size: cover;
+  background-repeat: no-repeat;
 
-  @media (max-width: 48rem) {
-    right: 1.5rem;
-    top: 2.3125rem;
+  @media (max-width: 768px) {
+    right: 15px;
+    top: 20px;
+    padding: 24px;
+    background-size: 16px 16px;
+    background-position: center;
   }
 `
-export const CloseIcon = styled.img`
-  width: 1rem;
-  height: 1rem;
-`
+
 export const Container = styled.div`
   display: flex;
   flex-direction: column;
@@ -46,10 +53,10 @@ export const Container = styled.div`
   padding: 2rem;
   background-color: rgba(255, 255, 255, 1);
 
-  @media (max-width: 48rem) {
+  @media (max-width: 768px) {
     width: 100%;
     margin: 0;
-    padding: 1.7813rem;
+    padding: 32px 16px 16px 16px;
     border-radius: 0 0 0 0;
   }
 `

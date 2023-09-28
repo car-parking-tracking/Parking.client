@@ -5,7 +5,8 @@ import { Link } from 'react-router-dom'
 export const Container = styled.div`
   display: flex;
   flex-direction: column;
-  @media (max-width: 48rem) {
+
+  @media (max-width: 768px) {
     height: 100%;
     justify-content: space-between;
   }
@@ -13,10 +14,22 @@ export const Container = styled.div`
 export const AccountDesc = styled(Description)`
   margin-bottom: 1.5rem;
   color: var(--new-dark);
+
+  @media (max-width: 768px) {
+    width: max-content;
+    padding-left: 66px;
+    margin-top: -20px;
+  }
 `
 export const Menu = styled.div`
+  display: flex;
+  flex-direction: column;
   margin-left: -2rem;
   margin-right: -2rem;
+
+  @media (max-width: 768px) {
+    gap: 10px;
+  }
 `
 export const MenuItem = styled.div`
   padding: 0.75rem 3rem 0.75rem 2rem;
