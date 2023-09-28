@@ -176,7 +176,7 @@ export const Return = styled.button<ReturnProps>`
     border: none;
     background: transparent;
     background-image: url(${arrow});
-    background-size: cover;
+    background-size: 1.5rem 1.5rem;
     background-repeat: no-repeat;
   }
 `

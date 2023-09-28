@@ -5,6 +5,10 @@ export const Wrapper = styled.div`
   width: 100%;
   flex-grow: 1;
 
+  @media (max-width: 48rem) {
+    height: 90%;
+  }
+
   #parking {
     width: var(--parking-card-width);
     min-height: var(--parking-card-height);
@@ -56,6 +60,12 @@ export const Wrapper = styled.div`
     height: 1rem;
     background: url(${CloseIcon}) center/contain no-repeat;
     opacity: 1;
+
+    @media (max-width: 48rem) {
+      width: 1.5rem;
+      height: 1.5rem;
+      background-size: 1.375rem 1.375rem;
+    }
   }
 
   .ymaps-2-1-79-balloon__tail {

@@ -14,7 +14,9 @@ export const View = styled.div<{ visible: boolean }>`
   @media (max-width: 48rem) {
     z-index: 100;
     width: 100%;
+    height: 101.2%;
     right: 0;
+    top: 0;
   }
 `
 export const CloseButton = styled.button`
@@ -55,6 +57,7 @@ export const Container = styled.div`
 
   @media (max-width: 48rem) {
     width: 100%;
+    height: 102%;
     margin: 0;
     padding: 2rem 1rem 1rem 1rem;
     border-radius: 0 0 0 0;

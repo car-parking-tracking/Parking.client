@@ -29,6 +29,7 @@ export const GlobalStyle = createGlobalStyle`
     width: 100%;
     min-width: 20rem;
     min-height: 100vh;
+    min-height: -webkit-fill-available;
     background-color: var(--new-grey-extra);
     font-family: 'Raleway', sans-serif;
     font-size: 16px;
@@ -37,6 +38,11 @@ export const GlobalStyle = createGlobalStyle`
     font-variant-numeric: lining-nums proportional-nums;
     line-height: 1.5rem;
     color: var(--new-white);
+
+    @media (max-width: 48rem) {
+      height: 90%;
+      min-height: 90%;
+  }
   *,
   *::after,
   *::before {
