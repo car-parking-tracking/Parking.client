@@ -25,6 +25,9 @@ export const Wrapper = styled.div`
 
   @media (max-width: 48rem) {
     width: 100%;
+    :hover {
+      box-shadow: none;
+    }
   }
 `
 export const Info = styled.div`

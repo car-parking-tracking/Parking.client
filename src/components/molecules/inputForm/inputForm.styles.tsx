@@ -14,7 +14,7 @@ export const Label = styled.label`
   transition: 0.3s ease all;
   color: rgba(27, 31, 59, 0.65);
 
-  @media (max-width: 768px) {
+  @media (max-width: 48rem) {
     display: none;
   }
 `

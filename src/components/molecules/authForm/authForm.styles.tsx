@@ -6,7 +6,7 @@ export const NavContainer = styled.nav`
   gap: 1rem;
   margin-bottom: 2rem;
 
-  @media (max-width: 768px) {
+  @media (max-width: 48rem) {
     margin-bottom: 1.5rem;
     margin-top: 3.0313rem;
     justify-content: space-between;
